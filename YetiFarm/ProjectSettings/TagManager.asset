@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - ProjectileTag
   layers:
   - Default
   - TransparentFX
@@ -11,7 +12,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - ProjectileLayer
   - 
   - 
   - 
@@ -40,4 +41,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Sorting Layer 1
+    uniqueID: 3541594929
+    locked: 0
+  - name: Sorting Layer 2
+    uniqueID: 2667762819
+    locked: 0
+  - name: Sorting Layer 3
+    uniqueID: 2669646375
     locked: 0
