@@ -194,8 +194,8 @@ Transform:
   m_GameObject: {fileID: 6756061736347720215}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6756061735818782341}
   - {fileID: 6756061737855236724}
@@ -220,13 +220,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: eaa8e02d00cc3bc40959762c5c1d29ce, type: 3}
   - {fileID: 21300000, guid: 679587c0a9feb61448cd28b4a8660581, type: 3}
   primaryColor:
-  - {r: 0.9056604, g: 0.06407974, b: 0.06407974, a: 0}
-  - {r: 0.11294055, g: 0.23022892, b: 0.8867924, a: 0}
+  - {r: 0.9056604, g: 0.06407974, b: 0.06407974, a: 1}
+  - {r: 0.11294055, g: 0.23022892, b: 0.8867924, a: 1}
   - {r: 0.9245283, g: 0.9208079, b: 0.17880027, a: 0}
   secondaryColor:
-  - {r: 0.9433962, g: 0.515039, b: 0.10234961, a: 0}
-  - {r: 0.52529806, g: 0.13105197, b: 0.8962264, a: 0}
-  - {r: 0.086507656, g: 0.6792453, b: 0.1543753, a: 0}
+  - {r: 0.9433962, g: 0.515039, b: 0.10234961, a: 1}
+  - {r: 0.52529806, g: 0.13105197, b: 0.8962264, a: 1}
+  - {r: 0.086507656, g: 0.6792453, b: 0.1543753, a: 1}
   primaryColorRenderer: {fileID: 6756061736084081674}
   patternRenderer: {fileID: 6756061737855236725}
 --- !u!1 &6756061737855236727
