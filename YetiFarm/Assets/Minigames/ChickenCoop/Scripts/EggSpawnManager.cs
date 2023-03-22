@@ -15,14 +15,46 @@ public class EggSpawnManager : MonoBehaviour
     private int failedEggs; // The amount of eggs that missed the baskets and broke on the ground.
     private IEnumerator coroutine; // The coroutine that handles spawning egg waves.
 
+    public GameObject basketPrefab;
+    public List<GameObject> basketSpawnerList;
+
 
     private void Start()
     {
         coroutine = DoSpawns();
     }
 
-    public void StartEggSpawns(int desired_score, int game_mode)
+    public void StartEggSpawns(int desired_score, int game_mode, int basket_amount)
     {
+        basketAmount = basket_amount;
+
+        // Collection basket instantiation based on the amount of baskets.
+        // Basket names: Basket1, Basket2Left & Basket2Right, Basket3Left & Basket3Middle & Basket3Right
+        if (basketAmount == 1)
+        {
+            GameObject basket = Instantiate(basketPrefab, basketSpawnerList[1].transform.position, basketSpawnerList[1].transform.rotation);
+            basket.gameObject.name = "Basket1";
+        }
+        if (basketAmount == 2)
+        {
+            GameObject basket1 = Instantiate(basketPrefab, basketSpawnerList[0].transform.position, basketSpawnerList[0].transform.rotation);
+            basket1.gameObject.name = "Basket2Left";
+
+            GameObject basket2 = Instantiate(basketPrefab, basketSpawnerList[2].transform.position, basketSpawnerList[2].transform.rotation);
+            basket2.gameObject.name = "Basket2Left";
+        }
+        if (basketAmount == 3)
+        {
+            GameObject basket1 = Instantiate(basketPrefab, basketSpawnerList[0].transform.position, basketSpawnerList[0].transform.rotation);
+            basket1.gameObject.name = "Basket3Left";
+
+            GameObject basket2 = Instantiate(basketPrefab, basketSpawnerList[1].transform.position, basketSpawnerList[1].transform.rotation);
+            basket2.gameObject.name = "Basket3Middle";
+
+            GameObject basket3 = Instantiate(basketPrefab, basketSpawnerList[2].transform.position, basketSpawnerList[2].transform.rotation);
+            basket2.gameObject.name = "Basket3Right";
+        }
+
         if (game_mode == 1)
         {
             desiredScore = desired_score;
