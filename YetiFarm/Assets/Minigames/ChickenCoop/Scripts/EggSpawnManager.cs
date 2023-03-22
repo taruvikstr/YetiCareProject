@@ -21,8 +21,16 @@ public class EggSpawnManager : MonoBehaviour
         coroutine = DoSpawns();
     }
 
-    public void StartEggSpawns()
+    public void StartEggSpawns(int desired_score, int game_mode)
     {
+        if (game_mode == 1)
+        {
+            desiredScore = desired_score;
+        }
+        else if (game_mode == 2)
+        {
+            desiredScore = int.MaxValue;
+        }
         score = 0;
         gameOn = true;
         StartCoroutine(coroutine);
@@ -31,9 +39,12 @@ public class EggSpawnManager : MonoBehaviour
     private void Update()
     {
         // Stops egg spawning if three eggs fall on the ground in endless mode.
-        if (failedEggs >= 3 && gameMode == 2)
+        if (((failedEggs >= 3) && gameMode == 2) || ((score >= desiredScore) && gameMode == 1) && gameOn == true)
         {
             StopCoroutine(coroutine);
+            gameOn = false;
+            score = 0;
+            desiredScore = 0;
         }
     }
 
@@ -49,7 +60,7 @@ public class EggSpawnManager : MonoBehaviour
 
     public IEnumerator DoSpawns()
     {
-        switch (difficulty)
+        switch (difficulty) // Set the spawnrate of eggs based on the chosen difficulty.
         {
             case 1:
                 spawnRate = 3.0f;
@@ -80,6 +91,10 @@ public class EggSpawnManager : MonoBehaviour
         float timeDelay2;
         while (!(((failedEggs >= 3) && gameMode == 2) || ((score >= desiredScore) && gameMode == 1) || gameOn == false))
         {
+            if (gameMode == 2) // Increase the spawnrate of eggs in endless mode.
+            {
+                spawnRate -= 0.01f;
+            }
             timeDelay1 = ((float) Random.Range(1, 10)) / 10;
             timeDelay2 = ((float) Random.Range(1, 10)) / 10;
             // Stop the game if three eggs are broken in endless mode or if the player has collected the desired amount of eggs.
@@ -175,7 +190,7 @@ public class EggSpawnManager : MonoBehaviour
                     }
                 }
             }
-            yield return new WaitForSeconds(spawnRate);
+            yield return new WaitForSeconds(spawnRate); // The time window between waves.
         }
     }
 }
