@@ -5,11 +5,11 @@ using UnityEngine;
 public class SpawnEgg : MonoBehaviour
 {
     public GameObject egg;
+    public SpriteRenderer idle;
+    public SpriteRenderer laying;
     public void SpawnSingleEgg()
     {
-        Instantiate(egg, transform.position, transform.rotation); // Spawn an egg.
-
-        // TODO - Play egg spawning animation for the parent chicken of the egg spawn point.
+        StartCoroutine(PlayLayingAnimation());
 
 
         /*
@@ -22,5 +22,16 @@ public class SpawnEgg : MonoBehaviour
                 Debug.Log("Debug alert - Audio Manager not found.");
             }
         */
+    }
+
+    public IEnumerator PlayLayingAnimation()
+    {
+        idle.enabled = false;
+        laying.enabled = true;
+        yield return new WaitForSeconds(0.5f);
+        Instantiate(egg, transform.position, transform.rotation); // Spawn an egg.
+        yield return new WaitForSeconds(0.5f);
+        laying.enabled = false;
+        idle.enabled = true;
     }
 }
