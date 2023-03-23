@@ -193,8 +193,8 @@ public class Mole : MonoBehaviour
         {
             animator.enabled = false;
         }
-
-        if(random < hardRate)
+        random = Random.Range(0f, 1f);
+        if (random < hardRate)
         {
             moleType = MoleType.HardHat;
             spriteRenderer.sprite = moleHardHat;
