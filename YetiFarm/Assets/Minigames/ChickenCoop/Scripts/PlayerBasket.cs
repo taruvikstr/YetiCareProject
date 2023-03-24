@@ -26,8 +26,8 @@ public class PlayerBasket : MonoBehaviour
         }
         if (baskets == 2)
         {
-            leftBasketConstraintRight = -1;
-            rightBasketConstraintLeft = 1;
+            leftBasketConstraintRight = -0.6f;
+            rightBasketConstraintLeft = 0.6f;
         }
     }
 
