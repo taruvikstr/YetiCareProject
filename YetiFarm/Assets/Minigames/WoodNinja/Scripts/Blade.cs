@@ -5,7 +5,7 @@ using UnityEngine;
 public class Blade : MonoBehaviour
 {
     private Camera mainCamera;
-    private Collider bladeCollider;
+    private Collider2D bladeCollider;
     private TrailRenderer bladeTrail;
     private bool slicing;
     public float minSliceVelocity = 0.01f;
@@ -15,7 +15,7 @@ public class Blade : MonoBehaviour
     private void Awake()
     {
         mainCamera = Camera.main;
-        bladeCollider = GetComponent<Collider>();
+        bladeCollider = GetComponent<Collider2D>();
         bladeTrail = GetComponentInChildren<TrailRenderer>();
     }
     private void OnEnable()

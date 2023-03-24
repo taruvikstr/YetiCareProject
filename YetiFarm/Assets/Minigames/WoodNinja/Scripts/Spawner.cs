@@ -10,9 +10,9 @@ public class Spawner : MonoBehaviour
     public GameObject prefab;
 
 
-    void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-         if (other.gameObject.CompareTag("Player"))
+         if (other.tag == "Player")
          {
              Instantiate(prefab, transform.position, transform.rotation);
              Debug.Log("HIT");
