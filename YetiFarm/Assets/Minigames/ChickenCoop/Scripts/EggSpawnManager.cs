@@ -9,7 +9,7 @@ public class EggSpawnManager : MonoBehaviour
     public int difficulty; // Defines how difficult the game is.
     public int gameMode; // The game mode. 1 = collect defined number of eggs and try to avoid breaking any. 2 = endless, survive until three eggs are broken.
     public int basketAmount; // The amount of collection baskets. Defines, how many eggs will spawn at once.
-    private float spawnRate = 1.0f; // The frequency of egg spawns in seconds.
+    private float spawnRate = 2.0f; // The frequency of egg spawns in seconds.
     private bool gameOn = false; // Whether or not the game is still going or not.
     public int desiredScore; // The score that the player is trying to achieve.
     private int failedEggs; // The amount of eggs that missed the baskets and broke on the ground.
@@ -24,10 +24,12 @@ public class EggSpawnManager : MonoBehaviour
         coroutine = DoSpawns();
     }
 
-    public void StartEggSpawns(int desired_score, int game_mode, int basket_amount)
+    // Difficulty: 1-3, Desired score: 0-100, Game mode: 1 or 2, Basket amount: 1-3
+    public void StartEggSpawns(int difficulty_value, int desired_score, int game_mode, int basket_amount)
     {
         basketAmount = basket_amount;
-
+        gameMode = game_mode;
+        difficulty = difficulty_value;
         // Collection basket instantiation based on the amount of baskets.
         // Basket names: Basket1, Basket2Left & Basket2Right, Basket3Left & Basket3Middle & Basket3Right
         if (basketAmount == 1)
@@ -41,7 +43,7 @@ public class EggSpawnManager : MonoBehaviour
             basket1.gameObject.name = "Basket2Left";
 
             GameObject basket2 = Instantiate(basketPrefab, basketSpawnerList[2].transform.position, basketSpawnerList[2].transform.rotation);
-            basket2.gameObject.name = "Basket2Left";
+            basket2.gameObject.name = "Basket2Right";
         }
         if (basketAmount == 3)
         {
@@ -70,13 +72,25 @@ public class EggSpawnManager : MonoBehaviour
 
     private void Update()
     {
-        // Stops egg spawning if three eggs fall on the ground in endless mode.
-        if (((failedEggs >= 3) && gameMode == 2) || ((score >= desiredScore) && gameMode == 1) && gameOn == true)
+        // Stops egg spawning if three eggs fall on the ground in endless mode or if desired score is reached in goal mode.
+        if ((((failedEggs >= 3) && gameMode == 2) || ((score >= desiredScore) && gameMode == 1)) && gameOn == true)
         {
             StopCoroutine(coroutine);
             gameOn = false;
-            score = 0;
             desiredScore = 0;
+            difficulty = 2;
+            gameMode = 1;
+            spawnRate = 2.0f;
+            basketAmount = 0;
+            foreach (GameObject playerBasket in GameObject.FindGameObjectsWithTag("Player"))
+            {
+                Destroy(playerBasket);
+            }
+
+            // TODO - Pass score and failed eggs to the end screen.
+
+            score = 0;
+            failedEggs = 0;
         }
     }
 
@@ -121,7 +135,7 @@ public class EggSpawnManager : MonoBehaviour
         int r3;
         float timeDelay1;
         float timeDelay2;
-        while (!(((failedEggs >= 3) && gameMode == 2) || ((score >= desiredScore) && gameMode == 1) || gameOn == false))
+        while (!((((failedEggs >= 3) && gameMode == 2) || ((score >= desiredScore) && gameMode == 1)) && gameOn == false))
         {
             if (gameMode == 2) // Increase the spawnrate of eggs in endless mode.
             {
@@ -130,7 +144,7 @@ public class EggSpawnManager : MonoBehaviour
             timeDelay1 = ((float) Random.Range(1, 10)) / 10;
             timeDelay2 = ((float) Random.Range(1, 10)) / 10;
             // Stop the game if three eggs are broken in endless mode or if the player has collected the desired amount of eggs.
-            if (((failedEggs >= 3) && gameMode == 2) || ((score >= desiredScore) && gameMode == 1) || gameOn == false)
+            if ((((failedEggs >= 3) && gameMode == 2) || ((score >= desiredScore) && gameMode == 1)) && gameOn == true)
             {
                 gameOn = false;
                 break;
