@@ -7,7 +7,7 @@ public class Fish_GameManager : MonoBehaviour
     [SerializeField] private GameObject fishPrefab;
     [SerializeField] public List<GameObject> fishInstances;
     [SerializeField] private List<GameObject> spawnpoints;
-    [SerializeField] private SpriteRenderer dicePrimary, diceSecondary, dicePattern;
+    [SerializeField] public SpriteRenderer dicePrimary, diceSecondary, dicePattern;
 
     public GameObject selectedObject;
     private Vector3 offset;
@@ -25,7 +25,7 @@ public class Fish_GameManager : MonoBehaviour
             Collider2D targetObject = Physics2D.OverlapPoint(mousePosition);
             if (targetObject)
             {
-                Debug.Log("dragging " + targetObject.name);
+                //Debug.Log("dragging " + targetObject.name);
                 selectedObject = targetObject.transform.gameObject;
                 offset = selectedObject.transform.position - mousePosition;
             }
@@ -53,9 +53,22 @@ public class Fish_GameManager : MonoBehaviour
     public void RollDice()
     {
         GameObject chosenFish = fishInstances[Random.Range(0, fishInstances.Count)];
-        dicePrimary.color = chosenFish.GetComponent<FishController>().primaryColor[0];
-        diceSecondary.color = chosenFish.GetComponent<FishController>().secondaryColor[0];
-        dicePattern.sprite = chosenFish.GetComponent<FishController>().pattern[0];
+        FishController chosenFishController = chosenFish.GetComponent<FishController>();
+        dicePrimary.color = chosenFishController.primaryColor[0];
+        diceSecondary.color = chosenFishController.secondaryColor[0];
+        dicePattern.sprite = chosenFishController.pattern[0];
+
+        foreach(GameObject fish in fishInstances)
+        {
+            FishController fishController = fish.GetComponent<FishController>();
+            if(chosenFishController.primaryColor[0] == fishController.primaryColor[0]
+                && chosenFishController.secondaryColor[0] == fishController.secondaryColor[0]
+                && chosenFishController.pattern[0] == fishController.pattern[0])
+            {
+                fishController.chosenFish = true;
+            }
+            else fishController.chosenFish = false;
+        }
     }
 
     public void ResetGame()

@@ -518,6 +518,8 @@ GameObject:
   m_Component:
   - component: {fileID: 283908841}
   - component: {fileID: 283908842}
+  - component: {fileID: 283908843}
+  - component: {fileID: 283908844}
   m_Layer: 0
   m_Name: Bowl4
   m_TagString: Untagged
@@ -593,6 +595,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!70 &283908843
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 283908840}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1.0000002, y: 2.0000005}
+  m_Direction: 0
+--- !u!114 &283908844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 283908840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeb8a4518210d0a45a862051cec7d2cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fishAmount: 0
+  amountTxt: {fileID: 29164482}
 --- !u!1 &336060233
 GameObject:
   m_ObjectHideFlags: 0
@@ -634,6 +666,8 @@ GameObject:
   m_Component:
   - component: {fileID: 339367035}
   - component: {fileID: 339367036}
+  - component: {fileID: 339367037}
+  - component: {fileID: 339367038}
   m_Layer: 0
   m_Name: Bowl1
   m_TagString: Untagged
@@ -709,6 +743,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!70 &339367037
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 339367034}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1.0000002, y: 2.0000005}
+  m_Direction: 0
+--- !u!114 &339367038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 339367034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeb8a4518210d0a45a862051cec7d2cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fishAmount: 0
+  amountTxt: {fileID: 922741156}
 --- !u!1 &358465160
 GameObject:
   m_ObjectHideFlags: 0
@@ -1756,6 +1820,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1186280196}
   - component: {fileID: 1186280197}
+  - component: {fileID: 1186280198}
+  - component: {fileID: 1186280199}
   m_Layer: 0
   m_Name: Bowl2
   m_TagString: Untagged
@@ -1831,6 +1897,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!70 &1186280198
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1186280195}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1.0000002, y: 2.0000005}
+  m_Direction: 0
+--- !u!114 &1186280199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1186280195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeb8a4518210d0a45a862051cec7d2cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fishAmount: 0
+  amountTxt: {fileID: 585908178}
 --- !u!1 &1201182950
 GameObject:
   m_ObjectHideFlags: 0
@@ -3050,6 +3146,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2104402374}
   - component: {fileID: 2104402375}
+  - component: {fileID: 2104402376}
+  - component: {fileID: 2104402377}
   m_Layer: 0
   m_Name: Bowl3
   m_TagString: Untagged
@@ -3125,3 +3223,33 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!70 &2104402376
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2104402373}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1.0000002, y: 2.0000005}
+  m_Direction: 0
+--- !u!114 &2104402377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2104402373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeb8a4518210d0a45a862051cec7d2cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fishAmount: 0
+  amountTxt: {fileID: 245088920}

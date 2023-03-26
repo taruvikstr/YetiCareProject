@@ -13,6 +13,8 @@ public class FishController : MonoBehaviour
 
     public SpriteRenderer primaryColorRenderer, patternRenderer;
 
+    public bool chosenFish = false;
+
     private void Start()
     {
         ShuffleFeatures();
