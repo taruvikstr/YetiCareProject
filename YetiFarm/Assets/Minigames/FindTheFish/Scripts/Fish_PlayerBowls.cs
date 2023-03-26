@@ -18,6 +18,7 @@ public class Fish_PlayerBowls : MonoBehaviour
     {
         GameObject fish = collision.gameObject;
         FishController fishController = fish.GetComponent<FishController>();
+
         if (fish.CompareTag("Collectible"))
         {
             if(fishController.chosenFish)
@@ -27,6 +28,11 @@ public class Fish_PlayerBowls : MonoBehaviour
                 fish_GameManager.fishInstances.Remove(fish);
                 Destroy(collision.gameObject, 0.2f);
                 fish_GameManager.RollDice();
+            }
+            else
+            {
+                StartCoroutine("FishBowlCooldown");
+                Debug.Log("Wrong fish, 2 sec cd.");
             }
    
         }
@@ -42,5 +48,16 @@ public class Fish_PlayerBowls : MonoBehaviour
     {
         fishAmount = 0;
         amountTxt.text = fishAmount.ToString();
+    }
+
+    private IEnumerator FishBowlCooldown()
+    {
+        Color colorNormal = GetComponent<SpriteRenderer>().color;
+        GetComponent<Collider2D>().enabled = false;
+        GetComponent<SpriteRenderer>().color = Color.red;
+        yield return new WaitForSeconds(2f);
+        GetComponent<Collider2D>().enabled = true;
+        GetComponent<SpriteRenderer>().color = colorNormal;
+
     }
 }

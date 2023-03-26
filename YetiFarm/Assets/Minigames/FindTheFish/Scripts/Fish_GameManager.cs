@@ -27,6 +27,7 @@ public class Fish_GameManager : MonoBehaviour
             {
                 //Debug.Log("dragging " + targetObject.name);
                 selectedObject = targetObject.transform.gameObject;
+                selectedObject.GetComponent<FishController>().isDragged = true;
                 offset = selectedObject.transform.position - mousePosition;
             }
         }
@@ -36,6 +37,7 @@ public class Fish_GameManager : MonoBehaviour
         }
         if (Input.GetMouseButtonUp(0) && selectedObject)
         {
+            selectedObject.GetComponent<FishController>().isDragged = false;
             selectedObject = null;
         }
     }

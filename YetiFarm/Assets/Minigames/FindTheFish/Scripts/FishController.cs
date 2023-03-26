@@ -13,12 +13,25 @@ public class FishController : MonoBehaviour
 
     public SpriteRenderer primaryColorRenderer, patternRenderer;
 
+    GameObject spawnParent;
+
+    public bool isDragged = false;
+
     public bool chosenFish = false;
 
     private void Start()
     {
+        spawnParent = transform.parent.gameObject;
         ShuffleFeatures();
         RefreshFish();
+    }
+
+    private void Update()
+    {
+        if(!isDragged)
+        {
+            MoveFishBackToBucket();
+        }
     }
 
     private void ShuffleFeatures()
@@ -33,5 +46,12 @@ public class FishController : MonoBehaviour
         primaryColorRenderer.color = primaryColor[0];
         patternRenderer.color = secondaryColor[0];
         patternRenderer.sprite = pattern[0];
+    }
+
+    private void MoveFishBackToBucket() //Found item is moved to the center after being found
+    {
+        Vector3 parentPos = spawnParent.transform.position;
+    
+        transform.position = Vector3.MoveTowards(transform.position, parentPos, 10f * Time.deltaTime);
     }
 }
