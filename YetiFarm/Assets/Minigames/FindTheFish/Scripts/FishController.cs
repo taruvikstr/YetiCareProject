@@ -11,7 +11,6 @@ public class FishController : MonoBehaviour
     public List<Color> primaryColor = new List<Color>();
     public List<Color> secondaryColor = new List<Color>();
 
-
     public SpriteRenderer primaryColorRenderer, patternRenderer;
 
     private void Start()

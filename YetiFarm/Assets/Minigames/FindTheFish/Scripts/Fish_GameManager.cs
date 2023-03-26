@@ -9,9 +9,35 @@ public class Fish_GameManager : MonoBehaviour
     [SerializeField] private List<GameObject> spawnpoints;
     [SerializeField] private SpriteRenderer dicePrimary, diceSecondary, dicePattern;
 
+    public GameObject selectedObject;
+    private Vector3 offset;
+
     private void Start()
     {
         StartGame();    
+    }
+
+    void Update()
+    {
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        if (Input.GetMouseButtonDown(0))
+        {
+            Collider2D targetObject = Physics2D.OverlapPoint(mousePosition);
+            if (targetObject)
+            {
+                Debug.Log("dragging " + targetObject.name);
+                selectedObject = targetObject.transform.gameObject;
+                offset = selectedObject.transform.position - mousePosition;
+            }
+        }
+        if (selectedObject)
+        {
+            selectedObject.transform.position = mousePosition + offset;
+        }
+        if (Input.GetMouseButtonUp(0) && selectedObject)
+        {
+            selectedObject = null;
+        }
     }
 
     public void StartGame()
