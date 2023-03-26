@@ -6,12 +6,14 @@ public class Spawner : MonoBehaviour
 {
 
     public Transform spawnPoint;
-    
-    public GameObject prefab;
 
-    private bool isSpawned=true;
+    public GameObject[] woodPrefabs;
 
-    private void OnTriggerEnter2D(Collider2D other)
+ 
+
+    //private bool isSpawned=true;
+
+    /*private void OnTriggerEnter2D(Collider2D other)
     {
          if (other.tag == "Player" && isSpawned)
          {
@@ -28,10 +30,11 @@ public class Spawner : MonoBehaviour
         {
             isSpawned = true;
         } 
-    }
+    }*/
     private void OnMouseDown()
     {
-        Instantiate(prefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
+        int n = Random.Range(0, woodPrefabs.Length);
+        Instantiate(woodPrefabs[n], spawnPoint.transform.position, spawnPoint.transform.rotation);
     }
 
 }
