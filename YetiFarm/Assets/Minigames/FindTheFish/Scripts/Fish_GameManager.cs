@@ -19,6 +19,7 @@ public class Fish_GameManager : MonoBehaviour
 
     void Update()
     {
+        //This if for dragging 
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         if (Input.GetMouseButtonDown(0))
         {
@@ -44,6 +45,7 @@ public class Fish_GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        //Spawning of the fishes
         foreach(GameObject spawn in spawnpoints)
         {
             GameObject fishInstance = Instantiate(fishPrefab, spawn.transform);
@@ -53,12 +55,15 @@ public class Fish_GameManager : MonoBehaviour
 
     public void RollDice()
     {
+        //Randomly choosing one of the fishes of the instantiated fish
         GameObject chosenFish = fishInstances[Random.Range(0, fishInstances.Count)];
         FishController chosenFishController = chosenFish.GetComponent<FishController>();
+        //Setting the dice features according to the chosen fish
         dicePrimary.color = chosenFishController.primaryColor[0];
         diceSecondary.color = chosenFishController.secondaryColor[0];
         dicePattern.sprite = chosenFishController.pattern[0];
 
+        //Going through all the instantiated fish and comparing which have the chosen fish features and tagging them as chosen fish
         foreach(GameObject fish in fishInstances)
         {
             FishController fishController = fish.GetComponent<FishController>();
@@ -74,10 +79,11 @@ public class Fish_GameManager : MonoBehaviour
 
     public IEnumerator AddNewFish()
     {
+        //When previously found fish is destroyed, this function is called to fill out the spawnpoint slot
         yield return new WaitForSeconds(1f);
         foreach (GameObject spawn in spawnpoints)
         {
-            if(spawn.transform.childCount == 0)
+            if(spawn.transform.childCount == 0) //If spawnpoint has no child, it gets a new one
             {
                 GameObject fishInstance = Instantiate(fishPrefab, spawn.transform);
                 fishInstances.Add(fishInstance);

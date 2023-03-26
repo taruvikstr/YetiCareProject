@@ -14,14 +14,15 @@ public class Fish_PlayerBowls : MonoBehaviour
         fish_GameManager = GameObject.Find("GameManager").GetComponent<Fish_GameManager>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision) 
     {
-        GameObject fish = collision.gameObject;
-        FishController fishController = fish.GetComponent<FishController>();
-
+        
         if (fish.CompareTag("Collectible"))
         {
-            if(fishController.chosenFish)
+            GameObject fish = collision.gameObject;
+            FishController fishController = fish.GetComponent<FishController>();
+
+            if (fishController.chosenFish)
             {
                 Debug.Log("More fishes for " + gameObject.name);
                 IncreaseFishAmount();
