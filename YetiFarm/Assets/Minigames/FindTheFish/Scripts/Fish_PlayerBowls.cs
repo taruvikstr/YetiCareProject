@@ -26,8 +26,8 @@ public class Fish_PlayerBowls : MonoBehaviour
                 Debug.Log("More fishes for " + gameObject.name);
                 IncreaseFishAmount();
                 fish_GameManager.fishInstances.Remove(fish);
-                Destroy(collision.gameObject, 0.2f);
-                fish_GameManager.RollDice();
+                Destroy(collision.gameObject, 0.1f);
+                fish_GameManager.StartCoroutine("AddNewFish");
             }
             else
             {

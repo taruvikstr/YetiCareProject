@@ -49,7 +49,6 @@ public class Fish_GameManager : MonoBehaviour
             GameObject fishInstance = Instantiate(fishPrefab, spawn.transform);
             fishInstances.Add(fishInstance);
         }
-
     }
 
     public void RollDice()
@@ -71,6 +70,23 @@ public class Fish_GameManager : MonoBehaviour
             }
             else fishController.chosenFish = false;
         }
+    }
+
+    public IEnumerator AddNewFish()
+    {
+        yield return new WaitForSeconds(1f);
+        foreach (GameObject spawn in spawnpoints)
+        {
+            if(spawn.transform.childCount == 0)
+            {
+                GameObject fishInstance = Instantiate(fishPrefab, spawn.transform);
+                fishInstances.Add(fishInstance);
+                break;
+            }
+
+        }
+
+        RollDice();
     }
 
     public void ResetGame()
