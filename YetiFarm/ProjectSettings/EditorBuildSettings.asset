@@ -5,10 +5,22 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Main/Main_Farm.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Minigames/ForestBounty/ForestBounty.unity
     guid: 72a0a2b665fe72b47a4d848723bffad4
+  - enabled: 1
+    path: Assets/Minigames/WhackAMole/WhackAMole.unity
+    guid: e945453d025523847a4c31c2a950e5fe
+  - enabled: 1
+    path: Assets/Minigames/ChickenCoop/ChickenCoop.unity
+    guid: 8ab09e165bdb8c04092ad7d70dcaac8a
+  - enabled: 1
+    path: Assets/Minigames/FindTheFish/FindTheFish.unity
+    guid: 2828be1da17ccb44b93a6776a274aef3
+  - enabled: 1
+    path: Assets/Minigames/WoodNinja/WoodNinja.unity
+    guid: 6332df571731d334d8e547ff4f336b5d
   m_configObjects: {}
