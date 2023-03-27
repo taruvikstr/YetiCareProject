@@ -24,9 +24,10 @@ public class BlueberryBucket : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "Blueberry")
+        if (collision.gameObject.name.StartsWith("Blueberry"))
         {
             Destroy(collision.gameObject, 2);
+            BerryManager.blueberryCount--;
             counter--;
             txt.text = counter.ToString();
         }

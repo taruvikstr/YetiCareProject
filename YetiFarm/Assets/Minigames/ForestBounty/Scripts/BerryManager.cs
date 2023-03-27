@@ -1,40 +1,65 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class BerryManager : MonoBehaviour
 {
-
     public Transform[] strawberrySpawnPoints;
     public Transform[] blueberrySpawnPoints;
     public GameObject strawberryPrefab;
-    public static int berryCount;
-    public int berryLimit;
+    public GameObject blueberryPrefab;
+    
+    public static int strawberryCount = 0;
+    public int strawberryLimit = 2;
 
-    public GameObject sb_prefab;
+    public static int blueberryCount = 0;
+    public int blueberryLimit = 2;
 
-    void Start()
+    private void Start()
     {
-        berryCount = 1;
-        berryLimit = 12;
 
     }
 
     private void Update()
     {
-        SpawnBerries();
-    }
-
-    private void SpawnBerries()
-    {
-        if (berryCount <= 0)
+        if (strawberryCount < strawberryLimit)
         {
-            Instantiate(strawberryPrefab, strawberrySpawnPoints[1].position, strawberrySpawnPoints[1].rotation);
+            SpawnStrawberries();
+        }
+
+        if (blueberryCount < blueberryLimit)
+        {
+            SpawnBlueberries();
         }
     }
 
-        
+    public void startInvoke()
+    {
+        InvokeRepeating("Spawn", 0f, 5f);
+    }
 
+    void SpawnStrawberries()
+    {
+        int spawnPointIndex = Random.Range(0, strawberrySpawnPoints.Length);
+
+        if (strawberryCount >= strawberryLimit)
+        {
+            return;
+        }
+
+        Instantiate(strawberryPrefab, strawberrySpawnPoints[spawnPointIndex].position, strawberrySpawnPoints[spawnPointIndex].rotation);
+        strawberryCount++;
+    }
+    void SpawnBlueberries()
+    {
+        int spawnPointIndex = Random.Range(0, blueberrySpawnPoints.Length);
+
+        if (blueberryCount >= blueberryLimit)
+        {
+            return;
+        }
+
+        Instantiate(blueberryPrefab, blueberrySpawnPoints[spawnPointIndex].position, blueberrySpawnPoints[spawnPointIndex].rotation);
+        blueberryCount++;
+    }
 }

@@ -24,10 +24,10 @@ public class StrawberryBucket : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "Strawberry")
+        if (collision.gameObject.name.StartsWith("Strawberry"))
         {
             Destroy(collision.gameObject, 2);
-            BerryManager.berryCount--;
+            BerryManager.strawberryCount--;
             counter--;
             txt.text = counter.ToString();
         }
