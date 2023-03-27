@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5427434160933444626}
   - component: {fileID: 8519861171568986846}
   - component: {fileID: 3494256567515623236}
+  - component: {fileID: -2496585320232757416}
   m_Layer: 8
   m_Name: Strawberry
   m_TagString: Untagged
@@ -100,3 +101,29 @@ MonoBehaviour:
   movableLayers:
     serializedVersion: 2
     m_Bits: 256
+--- !u!61 &-2496585320232757416
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3389419005248863815}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.5, y: 0.5}
+    newSize: {x: 0.32, y: 0.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5}
+  m_EdgeRadius: 0
