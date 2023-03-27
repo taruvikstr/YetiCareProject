@@ -6,6 +6,7 @@ using TMPro;
 public class BlueberryBucket : MonoBehaviour
 {
     int counter;
+    int i = 1;
     public TMP_Text txt;
 
 
@@ -19,14 +20,24 @@ public class BlueberryBucket : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        while (i == 1)
+        {
+            if (counter == 0)
+            {
+                txt.text = "kaikki marjat keratty!";
+                BerryManager.endGame++;
+                i = 0;
+            }
 
+            break;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.name.StartsWith("Blueberry"))
         {
-            Destroy(collision.gameObject, 2);
+            Destroy(collision.gameObject, 1);
             BerryManager.blueberryCount--;
             counter--;
             txt.text = counter.ToString();
