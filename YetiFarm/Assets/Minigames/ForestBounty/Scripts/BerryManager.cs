@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class BerryManager : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class BerryManager : MonoBehaviour
     public Transform[] blueberrySpawnPoints;
     public GameObject strawberryPrefab;
     public GameObject blueberryPrefab;
+    public TMP_Text txt;
+    public static int endGame = 0;
     
     public static int strawberryCount = 0;
     public int strawberryLimit = 2;
@@ -31,6 +34,8 @@ public class BerryManager : MonoBehaviour
         {
             SpawnBlueberries();
         }
+
+        EndGame();
     }
 
     public void startInvoke()
@@ -61,5 +66,14 @@ public class BerryManager : MonoBehaviour
 
         Instantiate(blueberryPrefab, blueberrySpawnPoints[spawnPointIndex].position, blueberrySpawnPoints[spawnPointIndex].rotation);
         blueberryCount++;
+    }
+
+    // End the game after gathering all needed berries
+    void EndGame()
+    {
+        if (endGame == 2)
+        {
+            txt.text = "voitit pelin";
+        }
     }
 }
