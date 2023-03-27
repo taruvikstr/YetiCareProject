@@ -12,11 +12,6 @@ public class Fish_GameManager : MonoBehaviour
     public GameObject selectedObject;
     private Vector3 offset;
 
-    private void Start()
-    {
-        StartGame();    
-    }
-
     void Update()
     {
         //This if for dragging 
@@ -24,7 +19,7 @@ public class Fish_GameManager : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Collider2D targetObject = Physics2D.OverlapPoint(mousePosition);
-            if (targetObject)
+            if (targetObject && targetObject.gameObject.CompareTag("Collectible"))
             {
                 //Debug.Log("dragging " + targetObject.name);
                 selectedObject = targetObject.transform.gameObject;
@@ -46,15 +41,22 @@ public class Fish_GameManager : MonoBehaviour
     public void StartGame()
     {
         //Spawning of the fishes
-        foreach(GameObject spawn in spawnpoints)
+        foreach (GameObject spawn in spawnpoints)
         {
             GameObject fishInstance = Instantiate(fishPrefab, spawn.transform);
             fishInstances.Add(fishInstance);
         }
+
+        dicePrimary.gameObject.SetActive(true);
+        diceSecondary.gameObject.SetActive(true);
+        dicePattern.gameObject.SetActive(true);
+
+        StartCoroutine("RollDice");
     }
 
-    public void RollDice()
+    public IEnumerator RollDice()
     {
+        yield return new WaitForSeconds(0.5f);
         //Randomly choosing one of the fishes of the instantiated fish
         GameObject chosenFish = fishInstances[Random.Range(0, fishInstances.Count)];
         FishController chosenFishController = chosenFish.GetComponent<FishController>();
@@ -92,12 +94,20 @@ public class Fish_GameManager : MonoBehaviour
 
         }
 
-        RollDice();
+        StartCoroutine("RollDice");
     }
 
     public void ResetGame()
     {
+        foreach (GameObject spawn in spawnpoints)
+        {
+            Destroy(spawn.transform.GetChild(0).gameObject);
+        }
 
+        fishInstances.Clear();
+        dicePrimary.gameObject.SetActive(false);
+        diceSecondary.gameObject.SetActive(false);
+        dicePattern.gameObject.SetActive(false);
     }
 
 }
