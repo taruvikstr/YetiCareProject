@@ -7,11 +7,12 @@ public class Fish_PlayerBowls : MonoBehaviour
 {
     public int fishAmount = 0;
     public TMP_Text amountTxt;
-    private Fish_GameManager fish_GameManager;
+    [SerializeField] private Fish_GameManager fish_GameManager;
+    [SerializeField] private FishUIController fish_UIController;
 
-    private void Start()
+    private void OnEnable()
     {
-        fish_GameManager = GameObject.Find("GameManager").GetComponent<Fish_GameManager>();
+        ResetFishBowl();
     }
 
     private void OnTriggerEnter2D(Collider2D collision) 
@@ -25,7 +26,6 @@ public class Fish_PlayerBowls : MonoBehaviour
 
             if (fishController.chosenFish)
             {
-                Debug.Log("More fishes for " + gameObject.name);
                 IncreaseFishAmount();
                 fish_GameManager.fishInstances.Remove(fish);
                 Destroy(collision.gameObject, 0.1f);
@@ -34,7 +34,6 @@ public class Fish_PlayerBowls : MonoBehaviour
             else
             {
                 StartCoroutine("FishBowlCooldown");
-                Debug.Log("Wrong fish, 2 sec cd.");
             }
    
         }
@@ -44,6 +43,11 @@ public class Fish_PlayerBowls : MonoBehaviour
     {
         fishAmount++;
         amountTxt.text = fishAmount.ToString();
+        if(fishAmount == fish_UIController.fishToWin)
+        {
+            fish_UIController.SetPlacements();
+            fish_GameManager.ResetGame();
+        }
     }
 
     public void ResetFishBowl()
