@@ -182,6 +182,7 @@ public class Mole : MonoBehaviour
         // Mark as hittable so we can register an onclick event.
         hittable = true;
     }
+    // As the level progresses the game gets harder.
     private void SetLevel(int level)
     {
         //As level increases increase the bomb rate to 0.25 at level 10
@@ -213,15 +214,13 @@ public class Mole : MonoBehaviour
         CreateNext();
         StartCoroutine(ShowHide(startPosition, endPosition));
     }
-
+    // Used by the game manager to uniquely identify moles. 
     public void SetIndex(int index)
     {
         moleIndex = index;
     }
-    
 
-    //Progression difficulty
-    
+    // Used to freeze the game on finish.
     public void StopGame()
     {
         hittable = false;
