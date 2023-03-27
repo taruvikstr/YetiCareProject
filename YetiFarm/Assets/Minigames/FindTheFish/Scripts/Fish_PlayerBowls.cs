@@ -16,10 +16,11 @@ public class Fish_PlayerBowls : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision) 
     {
-        
+        GameObject fish = collision.gameObject;
+
         if (fish.CompareTag("Collectible"))
         {
-            GameObject fish = collision.gameObject;
+            
             FishController fishController = fish.GetComponent<FishController>();
 
             if (fishController.chosenFish)
