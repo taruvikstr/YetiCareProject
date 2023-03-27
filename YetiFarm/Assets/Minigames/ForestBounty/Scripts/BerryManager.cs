@@ -4,58 +4,62 @@ using UnityEngine;
 
 public class BerryManager : MonoBehaviour
 {
-    // t‰s skriptis ei oo mit‰‰ fiksuu viel. l‰j‰ kokeilui vaa. 
+    public Transform[] strawberrySpawnPoints;
+    public Transform[] blueberrySpawnPoints;
+    public GameObject strawberryPrefab;
+    public GameObject blueberryPrefab;
+    
+    public static int strawberryCount = 0;
+    public int strawberryLimit = 2;
 
-    //public GameObject strawberryBasket;
-    //public GameObject blueberryBasket;
-    //public GameObject raspberryBasket;
-    //public GameObject cowberryBasket;
+    public static int blueberryCount = 0;
+    public int blueberryLimit = 2;
 
-    //[SerializeField] private GameObject strawberry;
-    //[SerializeField] private GameObject blueberry;
-    //[SerializeField] private GameObject raspberry;
-    //[SerializeField] private GameObject cowberry;
+    private void Start()
+    {
 
-    //private Vector2 offset;
-    //private bool dragging = false;
+    }
 
-    //// Start is called before the first frame update
-    //void Start()
-    //{
+    private void Update()
+    {
+        if (strawberryCount < strawberryLimit)
+        {
+            SpawnStrawberries();
+        }
 
-    //}
+        if (blueberryCount < blueberryLimit)
+        {
+            SpawnBlueberries();
+        }
+    }
 
-    //// Update is called once per frame
-    //void Update()
-    //{
-    //    // Move objects
-    //    if (Input.touchCount > 0)
-    //    {
-    //        Touch touch = Input.GetTouch(0);
+    public void startInvoke()
+    {
+        InvokeRepeating("Spawn", 0f, 5f);
+    }
 
-    //        switch (touch.phase)
-    //        {
-    //            case TouchPhase.Began:
-                    
-    //                offset = transform.position - Camera.main.ScreenToWorldPoint(touch.position);
-    //                dragging = true;
-    //                break;
+    void SpawnStrawberries()
+    {
+        int spawnPointIndex = Random.Range(0, strawberrySpawnPoints.Length);
 
-    //            case TouchPhase.Moved:
-    //                if (dragging)
-    //                {
-    //                    Vector2 newPos = Camera.main.ScreenToWorldPoint(touch.position);
-    //                    transform.position = newPos + offset;
-    //                }
-    //                break;
+        if (strawberryCount >= strawberryLimit)
+        {
+            return;
+        }
 
-    //            case TouchPhase.Ended:
-    //                dragging = false;
-    //                break;
-    //        }
-    //    }
-    //}
+        Instantiate(strawberryPrefab, strawberrySpawnPoints[spawnPointIndex].position, strawberrySpawnPoints[spawnPointIndex].rotation);
+        strawberryCount++;
+    }
+    void SpawnBlueberries()
+    {
+        int spawnPointIndex = Random.Range(0, blueberrySpawnPoints.Length);
 
-   
+        if (blueberryCount >= blueberryLimit)
+        {
+            return;
+        }
 
+        Instantiate(blueberryPrefab, blueberrySpawnPoints[spawnPointIndex].position, blueberrySpawnPoints[spawnPointIndex].rotation);
+        blueberryCount++;
+    }
 }
