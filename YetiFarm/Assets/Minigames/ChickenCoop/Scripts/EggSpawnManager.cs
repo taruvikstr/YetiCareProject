@@ -22,6 +22,7 @@ public class EggSpawnManager : MonoBehaviour
     private void Start()
     {
         coroutine = DoSpawns();
+        StartEggSpawns(1, 100, 2, 1);
     }
 
     // Difficulty: 1-3, Desired score: 0-100, Game mode: 1 or 2, Basket amount: 1-3
@@ -54,7 +55,7 @@ public class EggSpawnManager : MonoBehaviour
             basket2.gameObject.name = "Basket3Middle";
 
             GameObject basket3 = Instantiate(basketPrefab, basketSpawnerList[2].transform.position, basketSpawnerList[2].transform.rotation);
-            basket2.gameObject.name = "Basket3Right";
+            basket3.gameObject.name = "Basket3Right";
         }
 
         if (game_mode == 1)
@@ -73,7 +74,7 @@ public class EggSpawnManager : MonoBehaviour
     private void Update()
     {
         // Stops egg spawning if three eggs fall on the ground in endless mode or if desired score is reached in goal mode.
-        if ((((failedEggs >= 3) && gameMode == 2) || ((score >= desiredScore) && gameMode == 1)) && gameOn == true)
+        if ((((failedEggs >= 1) && gameMode == 2) || ((score >= desiredScore) && gameMode == 1)) && gameOn == true)
         {
             StopCoroutine(coroutine);
             gameOn = false;
@@ -82,9 +83,17 @@ public class EggSpawnManager : MonoBehaviour
             gameMode = 1;
             spawnRate = 2.0f;
             basketAmount = 0;
+
+            // Delete baskets.
             foreach (GameObject playerBasket in GameObject.FindGameObjectsWithTag("Player"))
             {
                 Destroy(playerBasket);
+            }
+
+            // Delete falling eggs.
+            foreach (GameObject egg in GameObject.FindGameObjectsWithTag("ProjectileTag"))
+            {
+                Destroy(egg);
             }
 
             // TODO - Pass score and failed eggs to the end screen.
@@ -135,16 +144,16 @@ public class EggSpawnManager : MonoBehaviour
         int r3;
         float timeDelay1;
         float timeDelay2;
-        while (!((((failedEggs >= 3) && gameMode == 2) || ((score >= desiredScore) && gameMode == 1)) && gameOn == false))
+        while (!((((failedEggs >= 1) && gameMode == 2) || ((score >= desiredScore) && gameMode == 1)) && gameOn == false))
         {
             if (gameMode == 2) // Increase the spawnrate of eggs in endless mode.
             {
-                spawnRate -= 0.01f;
+                spawnRate -= 0.05f;
             }
             timeDelay1 = ((float) Random.Range(1, 10)) / 10;
             timeDelay2 = ((float) Random.Range(1, 10)) / 10;
             // Stop the game if three eggs are broken in endless mode or if the player has collected the desired amount of eggs.
-            if ((((failedEggs >= 3) && gameMode == 2) || ((score >= desiredScore) && gameMode == 1)) && gameOn == true)
+            if ((((failedEggs >= 1) && gameMode == 2) || ((score >= desiredScore) && gameMode == 1)) && gameOn == true)
             {
                 gameOn = false;
                 break;
