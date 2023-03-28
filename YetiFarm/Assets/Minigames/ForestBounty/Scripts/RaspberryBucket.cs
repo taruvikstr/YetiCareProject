@@ -26,7 +26,7 @@ public class RaspberryBucket : MonoBehaviour
     {
         if (collision.gameObject.name == "Raspberry")
         {
-            Destroy(collision.gameObject, 2);
+            Destroy(collision.gameObject);
             counter--;
             txt.text = counter.ToString();
         }
