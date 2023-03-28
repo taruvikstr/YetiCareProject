@@ -26,7 +26,7 @@ public class CowberryBucket : MonoBehaviour
     {
         if (collision.gameObject.name == "Cowberry")
         {
-            Destroy(collision.gameObject, 2);
+            Destroy(collision.gameObject);
             counter--;
             txt.text = counter.ToString();
         }
