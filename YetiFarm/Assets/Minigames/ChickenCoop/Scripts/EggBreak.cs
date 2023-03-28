@@ -23,6 +23,7 @@ public class EggBreak : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             eggSpawnParent.GetComponent<EggSpawnManager>().IncreaseScore();
+            collision.gameObject.GetComponent<PlayerBasket>().BasketPointIncrease();
             Destroy(gameObject);
         }
     }

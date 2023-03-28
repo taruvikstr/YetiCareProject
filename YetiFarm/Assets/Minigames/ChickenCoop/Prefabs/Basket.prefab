@@ -267,6 +267,7 @@ MonoBehaviour:
   rightBasketConstraintLeft: 3
   rightBasketConstraintRight: 6.6
   basketConstraint_Y: -3.2
+  basketPointText: {fileID: 1582361910164506435}
 --- !u!1 &6986977532761468319
 GameObject:
   m_ObjectHideFlags: 0
@@ -304,7 +305,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: -1}
+  m_AnchoredPosition: {x: 0, y: -0.75}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &7560678522093267097
@@ -325,7 +326,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
+  m_SortingLayerID: -1625320921
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &7197887101974425582

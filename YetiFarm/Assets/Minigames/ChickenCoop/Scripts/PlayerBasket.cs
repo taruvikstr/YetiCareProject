@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerBasket : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class PlayerBasket : MonoBehaviour
     public float rightBasketConstraintRight;
     public float basketConstraint_Y;
     private string basketName;
+    public TextMeshProUGUI basketPointText;
+    private int basketPoints;
 
 
     private void Start()
@@ -29,6 +32,7 @@ public class PlayerBasket : MonoBehaviour
             leftBasketConstraintRight = -0.6f;
             rightBasketConstraintLeft = 0.6f;
         }
+        basketPointText.text = "0";
     }
 
     void Update()
@@ -86,5 +90,11 @@ public class PlayerBasket : MonoBehaviour
                     break;
             }
         }
+    }
+
+    public void BasketPointIncrease()
+    {
+        basketPoints++;
+        basketPointText.text = basketPoints.ToString();
     }
 }
