@@ -9,6 +9,6 @@ public class DifficultySlider : MonoBehaviour
 
     public void Awake()
     {
-        mySlider.GetComponent<Slider>().value = Mole.difficulty;
+        mySlider.GetComponent<Slider>();
     }
 }

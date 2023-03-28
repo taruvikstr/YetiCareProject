@@ -11,6 +11,7 @@ public class Mole : MonoBehaviour
     [SerializeField] private Sprite moleHatBroken;
     [SerializeField] private Sprite moleHit;
     [SerializeField] private Sprite moleHatHit;
+    [SerializeField] private Slider slider;
 
 
     [Header("GameManager")]
@@ -36,7 +37,7 @@ public class Mole : MonoBehaviour
 
     //Set difficulty
 
-    public static float difficulty = 2;
+    public float difficulty;
     public Slider mySlider;
 
     //Mole Parameters
@@ -48,7 +49,7 @@ public class Mole : MonoBehaviour
     private int lives;
     private int moleIndex;
 
-    public void Update()
+   /* public()
     {
         if(mySlider.GetComponent<Slider>().value == 1)
         {
@@ -63,7 +64,7 @@ public class Mole : MonoBehaviour
         {
             difficulty = 3;
         }
-    }
+    }*/
 
 
 
@@ -216,6 +217,19 @@ public class Mole : MonoBehaviour
         float durationMin = Mathf.Clamp(1 - level * 0.1f, 0.01f, 1f);
         float durationMax = Mathf.Clamp(2 - level * 0.1f, 0.01f, 2f);
         duration = Random.Range(durationMin, durationMax);
+
+        if(slider.value == 0)
+        {
+            difficulty = 0.025f;
+        }
+        if(slider.value == 1)
+        {
+            difficulty = 0.5f;
+        }
+        if(slider.value == 2)
+        {
+            difficulty = 0.1f;
+        }
     }
     private void Awake()
     {
@@ -229,6 +243,8 @@ public class Mole : MonoBehaviour
         boxSize = boxCollider2D.size;
         boxOffsetHidden = new Vector2(boxOffset.x, -startPosition.y / 2f);
         boxSizeHidden = new Vector2(boxSize.x, 0f);
+
+        slider = gameObject.GetComponent<Slider>();
 
     }
     
