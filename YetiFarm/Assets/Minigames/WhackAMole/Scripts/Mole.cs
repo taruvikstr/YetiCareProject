@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Mole : MonoBehaviour
 {
@@ -33,6 +34,11 @@ public class Mole : MonoBehaviour
     private Vector2 boxOffsetHidden;
     private Vector2 boxSizeHidden;
 
+    //Set difficulty
+
+    public static float difficulty = 2;
+    public Slider mySlider;
+
     //Mole Parameters
 
     public enum MoleType {Standard,HardHat,Bomb };
@@ -41,6 +47,24 @@ public class Mole : MonoBehaviour
     private float bombRate = 0f;
     private int lives;
     private int moleIndex;
+
+    public void Update()
+    {
+        if(mySlider.GetComponent<Slider>().value == 1)
+        {
+            difficulty = 1;
+        }
+        else if (mySlider.GetComponent<Slider>().value == 2)
+        {
+            difficulty = 2;
+
+        }
+        else if (mySlider.GetComponent<Slider>().value == 3)
+        {
+            difficulty = 3;
+        }
+    }
+
 
 
     private IEnumerator ShowHide(Vector2 start, Vector2 end)
@@ -183,7 +207,7 @@ public class Mole : MonoBehaviour
         hittable = true;
     }
     // As the level progresses the game gets harder.
-    private void SetLevel(int level)
+    public void SetLevel(int level)
     {
         //As level increases increase the bomb rate to 0.25 at level 10
         bombRate = Mathf.Min(level * 0.025f, 0.25f);

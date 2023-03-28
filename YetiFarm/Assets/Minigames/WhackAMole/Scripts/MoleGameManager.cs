@@ -13,6 +13,7 @@ public class MoleGameManager : MonoBehaviour
     [SerializeField] private GameObject bombText;
     [SerializeField] private TMPro.TextMeshProUGUI timeText;
     [SerializeField] private TMPro.TextMeshProUGUI scoreText;
+ 
 
 
 
@@ -23,6 +24,8 @@ public class MoleGameManager : MonoBehaviour
     private HashSet<Mole> currentMoles = new HashSet<Mole>();
     int score;
     private bool playing = false;
+    
+   
     //This is public so the play button can see it.
     public void StartGame()
     {
@@ -89,6 +92,7 @@ public class MoleGameManager : MonoBehaviour
     
     void Update()
     {
+        
         if (playing)
         {
             //Update time
