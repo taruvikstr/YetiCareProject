@@ -10,13 +10,13 @@ public class Mole : MonoBehaviour
     [SerializeField] private Sprite moleHatBroken;
     [SerializeField] private Sprite moleHit;
     [SerializeField] private Sprite moleHatHit;
-
+    [SerializeField] public GameObject moleHands;
 
     [Header("GameManager")]
     [SerializeField] private MoleGameManager gameManager;
 
     //Sprite offset of the sprite to hide it
-    private Vector2 startPosition = new Vector2(0f, -4f); //Pixelsize / PixelsPerUnit
+    private Vector2 startPosition = new Vector2(0f, -2f); //Pixelsize / PixelsPerUnit
     private Vector2 endPosition = Vector2.zero;
     //How long it takes to show a mole
     private float showDuration = 0.5f;
@@ -46,6 +46,7 @@ public class Mole : MonoBehaviour
     private IEnumerator ShowHide(Vector2 start, Vector2 end)
     {
         // Startposition
+       
         transform.localPosition = start;
         float elapsed = 0f;
         while (elapsed < showDuration)
@@ -61,9 +62,14 @@ public class Mole : MonoBehaviour
         transform.localPosition = end;
         boxCollider2D.offset = boxOffset;
         boxCollider2D.size = boxSize;
+        if (moleType != MoleType.Bomb)
+        {
+            moleHands.SetActive(true);
+        }
 
         //Wait for duration to pass
         yield return new WaitForSeconds(duration);
+        moleHands.SetActive(false);
 
         //Hide mole
         elapsed = 0f;
@@ -76,6 +82,7 @@ public class Mole : MonoBehaviour
             elapsed += Time.deltaTime;
             yield return null;
         }
+        moleHands.SetActive(false);
         transform.localPosition = start;
         boxCollider2D.offset = boxOffsetHidden;
         boxCollider2D.size = boxSizeHidden;
@@ -90,6 +97,8 @@ public class Mole : MonoBehaviour
     }
     public void Hide()
     {
+
+        moleHands.SetActive(false);
         transform.localPosition = startPosition;
         boxCollider2D.offset = boxOffsetHidden;
         boxCollider2D.size = boxSizeHidden;
@@ -110,6 +119,7 @@ public class Mole : MonoBehaviour
             switch (moleType)
             {
                 case MoleType.Standard:
+                    moleHands.SetActive(false);
                     Debug.Log("normal hit");
                     spriteRenderer.sprite = moleHit;
                     gameManager.AddScore(moleIndex);
@@ -138,6 +148,7 @@ public class Mole : MonoBehaviour
                     }
                     break;
                 case MoleType.Bomb:
+                    
                     //Game over, 1 for bomb.
                     Debug.Log("Bomb hit");
                     gameManager.GameOver(1);

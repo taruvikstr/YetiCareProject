@@ -40,7 +40,7 @@ public class StrawberryBucket : MonoBehaviour
     {
         if (collision.gameObject.name.StartsWith("Strawberry"))
         {
-            Destroy(collision.gameObject, 1);
+            Destroy(collision.gameObject);
             BerryManager.strawberryCount--;
             counter--;
             txt.text = counter.ToString();

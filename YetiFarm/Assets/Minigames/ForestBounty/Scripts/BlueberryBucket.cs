@@ -37,7 +37,7 @@ public class BlueberryBucket : MonoBehaviour
     {
         if (collision.gameObject.name.StartsWith("Blueberry"))
         {
-            Destroy(collision.gameObject, 1);
+            Destroy(collision.gameObject);
             BerryManager.blueberryCount--;
             counter--;
             txt.text = counter.ToString();

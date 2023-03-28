@@ -9,7 +9,7 @@ public class BerryManager : MonoBehaviour
     public Transform[] blueberrySpawnPoints;
     public GameObject strawberryPrefab;
     public GameObject blueberryPrefab;
-    public TMP_Text txt;
+    public TMP_Text endgame_txt;
     public static int endGame = 0;
     
     public static int strawberryCount = 0;
@@ -57,7 +57,7 @@ public class BerryManager : MonoBehaviour
     }
     void SpawnBlueberries()
     {
-        int spawnPointIndex = Random.Range(0, blueberrySpawnPoints.Length);
+        int spawnPointIndex = Random.Range(0, blueberrySpawnPoints.Length - 1);
 
         if (blueberryCount >= blueberryLimit)
         {
@@ -71,9 +71,9 @@ public class BerryManager : MonoBehaviour
     // End the game after gathering all needed berries
     void EndGame()
     {
-        if (endGame == 2)
+        if (endGame == 2 && endgame_txt != null)
         {
-            txt.text = "voitit pelin";
+            endgame_txt.text = "voitit pelin";
         }
     }
 }
