@@ -8,6 +8,7 @@ public class Fish_GameManager : MonoBehaviour
     [SerializeField] public List<GameObject> fishInstances;
     [SerializeField] private List<GameObject> spawnpoints;
     [SerializeField] public SpriteRenderer dicePrimary, diceSecondary, dicePattern;
+    [SerializeField] private Sprite[] dicePatternSprites;
 
     public GameObject selectedObject;
     private Vector3 offset;
@@ -63,10 +64,23 @@ public class Fish_GameManager : MonoBehaviour
         //Setting the dice features according to the chosen fish
         dicePrimary.color = chosenFishController.primaryColor[0];
         diceSecondary.color = chosenFishController.secondaryColor[0];
-        dicePattern.sprite = chosenFishController.pattern[0];
+
+        if (chosenFishController.pattern[0].name.Contains("3a"))
+            dicePattern.sprite = dicePatternSprites[0];
+        else if (chosenFishController.pattern[0].name.Contains("3b"))
+            dicePattern.sprite = dicePatternSprites[1];
+        else if (chosenFishController.pattern[0].name.Contains("3c"))
+            dicePattern.sprite = dicePatternSprites[2];
+        else if (chosenFishController.pattern[0].name.Contains("3d"))
+            dicePattern.sprite = dicePatternSprites[3];
+        else if (chosenFishController.pattern[0].name.Contains("3e"))
+            dicePattern.sprite = dicePatternSprites[4];
+        else if (chosenFishController.pattern[0].name.Contains("3f"))
+            dicePattern.sprite = dicePatternSprites[5];
+
 
         //Going through all the instantiated fish and comparing which have the chosen fish features and tagging them as chosen fish
-        foreach(GameObject fish in fishInstances)
+        foreach (GameObject fish in fishInstances)
         {
             FishController fishController = fish.GetComponent<FishController>();
             if(chosenFishController.primaryColor[0] == fishController.primaryColor[0]
