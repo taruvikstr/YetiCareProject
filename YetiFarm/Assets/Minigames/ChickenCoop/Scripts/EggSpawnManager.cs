@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EggSpawnManager : MonoBehaviour
 {
+    public GameObject buttonManager;
     public List<GameObject> eggSpawnerList;
     public int score; // Counts how many eggs have been collected.
     public int difficulty; // Defines how difficult the game is.
@@ -95,6 +96,8 @@ public class EggSpawnManager : MonoBehaviour
                 Destroy(egg);
             }
 
+
+            //buttonManager.GetCo
             // TODO - Pass score and failed eggs to the end screen.
 
             score = 0;

@@ -75,14 +75,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 642b8caa473e43540b4e8ef3b113de7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  topLeftCollider: {fileID: 4864124718098581496}
-  topRightCollider: {fileID: 4864124717732145092}
-  topCenterCollider: {fileID: 4864124716263050959}
-  bottomCenterCollider: {fileID: 388335102491955071}
-  bottomLeftCollider: {fileID: 3304909887680442347}
-  bottomRightCollider: {fileID: 5386453441617483811}
-  leftSideCollider: {fileID: 6225053451306103990}
-  rightSideCollider: {fileID: 490477245366963157}
+  colliderList:
+  - {fileID: 8217315635095751298}
+  - {fileID: 7420137887036669374}
+  - {fileID: 4402284278541781657}
+  - {fileID: 1560777456658135117}
+  - {fileID: 5963651238252938427}
+  - {fileID: 300914113805214958}
+  - {fileID: 5774258382691259294}
+  - {fileID: 3400572716076276628}
+  woodPartList:
+  - {fileID: 3519624461662536940, guid: 6a7edb1b14902154c8fadf449fa22cd4, type: 3}
+  - {fileID: 1139593788487122549, guid: efbdeeb1f86aaea4391a2948d1010622, type: 3}
+  - {fileID: 5562597212034411425, guid: f33169fef98a5a0468754a286cfa0750, type: 3}
+  - {fileID: 1962352758426409435, guid: 50d9579ae47b1b84196cdb9fbcb5c6cd, type: 3}
+  - {fileID: 2259165706150948117, guid: 568ddcd375a8fe649a4864a0fe635dab, type: 3}
+  - {fileID: 6365416360677528137, guid: 26b6c4bd8941c3b47bf5d25c01ed99bf, type: 3}
+  - {fileID: 1606734141516593246, guid: ae6abc2cc7501aa4e86c84137d031fc8, type: 3}
+  - {fileID: 6136455392185710795, guid: 40f137bd537dd1a47ab751e3b9fae21b, type: 3}
+  - {fileID: 2403739687877237954, guid: b999143cdfc1aad4b8ff2b31fcc7de1b, type: 3}
+  - {fileID: 6363734124760731940, guid: a7ed6fb5fc7999c4e8f42f4062154253, type: 3}
+  birchPartList:
+  - {fileID: 1468196690454309885, guid: bb109d3b4f50f2b43b0987dbbcd2b4ff, type: 3}
+  - {fileID: 829021621409263763, guid: bb5a8a7e8e32ee0438c576c49e67119a, type: 3}
+  - {fileID: 6925384904861883487, guid: 7417cf0bf1c055940b04fafccfbcea75, type: 3}
+  - {fileID: 3897706773317579494, guid: 8e9abd22904693d4499a61dc3b1ec34c, type: 3}
+  - {fileID: 7997353319786852765, guid: 9f4a4e8005009c8458f96f1d5b3f1fb0, type: 3}
+  - {fileID: 7426674836373452717, guid: 614e5058c691e1d4e8898dc869d47262, type: 3}
+  - {fileID: 1709634050282034394, guid: b053978873f3e4f44a3a741955581a2b, type: 3}
+  - {fileID: 1107612737417204184, guid: ee0c90ac572a27a43903e0b0501d6b57, type: 3}
+  - {fileID: 5405524721669527579, guid: ec0fd2031e063bf45aae331473f39926, type: 3}
+  - {fileID: 1070530540260555155, guid: 4930e60a37e9a7e4b8e3655052f2160c, type: 3}
+  woodType: 1
 --- !u!1 &4214842871421363317
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,6 +201,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4864124716263050956}
   - component: {fileID: 4864124716263050959}
+  - component: {fileID: 7420137887036669374}
   m_Layer: 0
   m_Name: TopCenterCollider
   m_TagString: Untagged
@@ -225,6 +250,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.04}
   m_EdgeRadius: 0
+--- !u!114 &7420137887036669374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4864124716263050958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63678714caa7ad45b6a275364ea9be8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cutTimer: 0
+  cutOn: 0
 --- !u!1 &4864124717732145095
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,6 +274,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4864124717732145093}
   - component: {fileID: 4864124717732145092}
+  - component: {fileID: 4402284278541781657}
   m_Layer: 0
   m_Name: TopRightCollider
   m_TagString: Untagged
@@ -283,6 +323,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.04}
   m_EdgeRadius: 0
+--- !u!114 &4402284278541781657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4864124717732145095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63678714caa7ad45b6a275364ea9be8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cutTimer: 0
+  cutOn: 0
 --- !u!1 &4864124718098581499
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,6 +347,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4864124718098581497}
   - component: {fileID: 4864124718098581496}
+  - component: {fileID: 8217315635095751298}
   m_Layer: 0
   m_Name: TopLeftCollider
   m_TagString: Untagged
@@ -341,6 +396,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.04}
   m_EdgeRadius: 0
+--- !u!114 &8217315635095751298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4864124718098581499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63678714caa7ad45b6a275364ea9be8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cutTimer: 0
+  cutOn: 0
 --- !u!1 &5761507658571352981
 GameObject:
   m_ObjectHideFlags: 0
@@ -351,6 +420,7 @@ GameObject:
   m_Component:
   - component: {fileID: 157455813455629660}
   - component: {fileID: 490477245366963157}
+  - component: {fileID: 3400572716076276628}
   m_Layer: 0
   m_Name: RightSideCollider
   m_TagString: Untagged
@@ -399,6 +469,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.03, y: 0.9}
   m_EdgeRadius: 0
+--- !u!114 &3400572716076276628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5761507658571352981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63678714caa7ad45b6a275364ea9be8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cutTimer: 0
+  cutOn: 0
 --- !u!1 &5872755264485470001
 GameObject:
   m_ObjectHideFlags: 0
@@ -409,6 +493,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3400481521861339927}
   - component: {fileID: 3304909887680442347}
+  - component: {fileID: 1560777456658135117}
   m_Layer: 0
   m_Name: BottomLeftCollider
   m_TagString: Untagged
@@ -457,6 +542,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.04}
   m_EdgeRadius: 0
+--- !u!114 &1560777456658135117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5872755264485470001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63678714caa7ad45b6a275364ea9be8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cutTimer: 0
+  cutOn: 0
 --- !u!1 &5917704722115451179
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,6 +566,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2526351219941285056}
   - component: {fileID: 388335102491955071}
+  - component: {fileID: 5963651238252938427}
   m_Layer: 0
   m_Name: BottomCenterCollider
   m_TagString: Untagged
@@ -515,6 +615,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.04}
   m_EdgeRadius: 0
+--- !u!114 &5963651238252938427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5917704722115451179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63678714caa7ad45b6a275364ea9be8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cutTimer: 0
+  cutOn: 0
 --- !u!1 &6171082287108508607
 GameObject:
   m_ObjectHideFlags: 0
@@ -525,6 +639,7 @@ GameObject:
   m_Component:
   - component: {fileID: 870808767326955330}
   - component: {fileID: 6225053451306103990}
+  - component: {fileID: 5774258382691259294}
   m_Layer: 0
   m_Name: LeftSideCollider
   m_TagString: Untagged
@@ -573,6 +688,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.03, y: 0.9}
   m_EdgeRadius: 0
+--- !u!114 &5774258382691259294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6171082287108508607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63678714caa7ad45b6a275364ea9be8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cutTimer: 0
+  cutOn: 0
 --- !u!1 &9212542139651667445
 GameObject:
   m_ObjectHideFlags: 0
@@ -583,6 +712,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6668378238730432302}
   - component: {fileID: 5386453441617483811}
+  - component: {fileID: 300914113805214958}
   m_Layer: 0
   m_Name: BottomRightCollider
   m_TagString: Untagged
@@ -631,3 +761,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.04}
   m_EdgeRadius: 0
+--- !u!114 &300914113805214958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9212542139651667445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63678714caa7ad45b6a275364ea9be8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cutTimer: 0
+  cutOn: 0
