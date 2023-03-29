@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 public class BirdManager : MonoBehaviour
 {
