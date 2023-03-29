@@ -224,6 +224,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 798d49137c913804e872f8e16496562c, type: 3}
   - {fileID: 21300000, guid: 5e591dbce2c19c2499eb5cec9ee904dd, type: 3}
   - {fileID: 21300000, guid: 4e13f220b94182242bf53b8c84e31334, type: 3}
+  - {fileID: 21300000, guid: 1f60775e2adbeba48b157c5f05a5781a, type: 3}
+  - {fileID: 21300000, guid: ec562d8d9664ecb47bfb2424c7f31e9b, type: 3}
   primaryColor:
   - {r: 0.79215693, g: 0.121568635, b: 0.121568635, a: 1}
   - {r: 0.28230685, g: 0.38926968, b: 0.9811321, a: 1}

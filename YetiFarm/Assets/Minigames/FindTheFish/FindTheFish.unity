@@ -596,7 +596,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 43e9713a222f7b9448c14ac9cfb31389, type: 3}
-  m_Color: {r: 0.5176471, g: 0.5176471, b: 0.5176471, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1349,7 +1349,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe62337116b639342a0fb3abd301ab2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fishPrefab: {fileID: 6756061736347720215, guid: 6a1c2eee7ac52e348959a0134067cbd7, type: 3}
+  fishPrefab:
+  - {fileID: 6756061736347720215, guid: 6a1c2eee7ac52e348959a0134067cbd7, type: 3}
+  - {fileID: 6756061736347720215, guid: 92f5bdf071a59984a81294e8905fec2e, type: 3}
   fishInstances: []
   spawnpoints:
   - {fileID: 513048441}
@@ -1377,7 +1379,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: bf0f11208698bed41a901c98fdebe178, type: 3}
   - {fileID: 21300000, guid: e7270384856110442875481ee6026bb9, type: 3}
   - {fileID: 21300000, guid: b460985bf9e51744aba18085d6a40ecf, type: 3}
-  selectedObject: {fileID: 0}
+  - {fileID: 21300000, guid: d9b696421fc3b704599a9c5a9911d553, type: 3}
+  - {fileID: 21300000, guid: a7e6f59517e567e4194715b5cb542149, type: 3}
 --- !u!1 &470095158
 GameObject:
   m_ObjectHideFlags: 0
@@ -4429,7 +4432,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 43e9713a222f7b9448c14ac9cfb31389, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5176471, g: 0.5176471, b: 0.5176471, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4584,10 +4587,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bf21635dbb5f6f4fb0b79bc57cbc321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fishbowl:
-  - {fileID: 339367034}
+  fishBucket:
   - {fileID: 1186280195}
   - {fileID: 2104402373}
+  - {fileID: 339367034}
   - {fileID: 283908840}
   placementImage: []
   gamePanel: {fileID: 784509212}
