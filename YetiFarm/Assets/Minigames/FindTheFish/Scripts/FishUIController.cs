@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class FishUIController : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> fishbowl = new List<GameObject>();
+    [SerializeField] private List<GameObject> fishBucket = new List<GameObject>();
     [SerializeField] private Image[] placementImage;
 
     [SerializeField] private GameObject gamePanel, gameEnd;
@@ -15,15 +15,15 @@ public class FishUIController : MonoBehaviour
     
     public void ActivatePlayer(int index)
     {
-        fishbowl[index].SetActive(true);
+        fishBucket[index].SetActive(true);
     }
 
     public void SetPlacements()
     {
-        int fishAmount_0 = fishbowl[0].GetComponent<Fish_PlayerBowls>().fishAmount;
-        int fishAmount_1 = fishbowl[1].GetComponent<Fish_PlayerBowls>().fishAmount;
-        int fishAmount_2 = fishbowl[2].GetComponent<Fish_PlayerBowls>().fishAmount;
-        int fishAmount_3 = fishbowl[3].GetComponent<Fish_PlayerBowls>().fishAmount;
+        int fishAmount_0 = fishBucket[0].GetComponent<Fish_PlayerBowls>().fishAmount;
+        int fishAmount_1 = fishBucket[1].GetComponent<Fish_PlayerBowls>().fishAmount;
+        int fishAmount_2 = fishBucket[2].GetComponent<Fish_PlayerBowls>().fishAmount;
+        int fishAmount_3 = fishBucket[3].GetComponent<Fish_PlayerBowls>().fishAmount;
 
         //j‰rjest‰ fishbowl lista kalam‰‰rn mukaan, kirjasto (avain ja arvoparit?)
 
@@ -35,7 +35,7 @@ public class FishUIController : MonoBehaviour
         gamePanel.SetActive(true);
         gameEnd.SetActive(true);
 
-        foreach(GameObject bowl in fishbowl)
+        foreach(GameObject bowl in fishBucket)
         {
             bowl.SetActive(false);
         }

@@ -30,7 +30,7 @@ public class FishController : MonoBehaviour
     {
         if(!isDragged)
         {
-            MoveFishBackToBucket();
+            MoveFishBackToSea();
         }
     }
 
@@ -48,7 +48,7 @@ public class FishController : MonoBehaviour
         patternRenderer.sprite = pattern[0];
     }
 
-    private void MoveFishBackToBucket() //Found item is moved to the center after being found
+    private void MoveFishBackToSea() //Found item is moved to it's original position if released
     {
         Vector3 parentPos = spawnParent.transform.position;
     
