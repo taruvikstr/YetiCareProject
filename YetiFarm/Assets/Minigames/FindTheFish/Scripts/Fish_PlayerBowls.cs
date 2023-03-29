@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class Fish_PlayerBowls : MonoBehaviour
 {
@@ -10,6 +11,29 @@ public class Fish_PlayerBowls : MonoBehaviour
     [SerializeField] private Fish_GameManager fish_GameManager;
     [SerializeField] private FishUIController fish_UIController;
 
+    [SerializeField] private float timer;
+    [SerializeField] private Image timerBackground, timerImage;
+
+    private void Start()
+    {
+        timer = fish_GameManager.timer;
+    }
+
+    private void Update()
+    {
+        if (fish_GameManager.gameON && timer > 0)
+        {
+            timerBackground.gameObject.SetActive(true);
+            timerImage.fillAmount = timer / fish_GameManager.timer;
+            timer -= Time.deltaTime;
+        }
+        else if (fish_GameManager.gameON && timer <= 0)
+        {
+            fish_UIController.SetPlacements(true, fishAmount);
+            fish_GameManager.ResetGame();
+
+        }
+    }
     private void OnEnable()
     {
         ResetFishBucket();
@@ -43,9 +67,9 @@ public class Fish_PlayerBowls : MonoBehaviour
     {
         fishAmount++;
         amountTxt.text = fishAmount.ToString();
-        if(fishAmount == fish_UIController.fishToWin)
+        if(fishAmount == fish_UIController.fishToWin && fish_GameManager.playerAmount > 1)
         {
-            fish_UIController.SetPlacements();
+            fish_UIController.SetPlacements(false, fishAmount);
             fish_GameManager.ResetGame();
         }
         else fish_GameManager.StartCoroutine("AddNewFish");

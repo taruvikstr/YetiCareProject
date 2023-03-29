@@ -10,11 +10,19 @@ public class Fish_GameManager : MonoBehaviour
     [SerializeField] public SpriteRenderer dicePrimary, diceSecondary, dicePattern;
     [SerializeField] private Sprite[] dicePatternSprites;
 
+    public float timer = 30f; //Public because the time can be set in settings
+    public int playerAmount = 0;
+
     private GameObject selectedObject;
     private Vector3 offset;
+    [HideInInspector]
+    public bool gameON = false;
+
+    [SerializeField] private FishUIController fish_UIController;
 
     void Update()
     {
+
         //This if for dragging 
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         if (Input.GetMouseButtonDown(0))
@@ -41,6 +49,7 @@ public class Fish_GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        if (playerAmount == 1) gameON = true;
         //Spawning of the fishes
         foreach (GameObject spawn in spawnpoints)
         {
@@ -67,21 +76,21 @@ public class Fish_GameManager : MonoBehaviour
         diceSecondary.color = chosenFishController.secondaryColor[0];
 
         //Setting the dice sprite according to the name of the pattern of the chosen fish (Will change this later to Case style, i guess)
-        if (chosenFishController.pattern[0].name.Contains("3a"))
+        if (chosenFishController.pattern[0].name == "3a")
             dicePattern.sprite = dicePatternSprites[0];
-        else if (chosenFishController.pattern[0].name.Contains("3b"))
+        else if (chosenFishController.pattern[0].name == "3b")
             dicePattern.sprite = dicePatternSprites[1];
-        else if (chosenFishController.pattern[0].name.Contains("3c"))
+        else if (chosenFishController.pattern[0].name == "3c")
             dicePattern.sprite = dicePatternSprites[2];
-        else if (chosenFishController.pattern[0].name.Contains("3d"))
+        else if (chosenFishController.pattern[0].name == "3d")
             dicePattern.sprite = dicePatternSprites[3];
-        else if (chosenFishController.pattern[0].name.Contains("3e"))
+        else if (chosenFishController.pattern[0].name == "3e")
             dicePattern.sprite = dicePatternSprites[4];
-        else if (chosenFishController.pattern[0].name.Contains("3f"))
+        else if (chosenFishController.pattern[0].name == "3f")
             dicePattern.sprite = dicePatternSprites[5];
-        else if (chosenFishController.pattern[0].name.Contains("3g"))
+        else if (chosenFishController.pattern[0].name == "3g")
             dicePattern.sprite = dicePatternSprites[6];
-        else if (chosenFishController.pattern[0].name.Contains("3h"))
+        else if (chosenFishController.pattern[0].name == "3h")
             dicePattern.sprite = dicePatternSprites[7];
 
 
@@ -89,9 +98,9 @@ public class Fish_GameManager : MonoBehaviour
         foreach (GameObject fish in fishInstances)
         {
             FishController fishController = fish.GetComponent<FishController>();
-            if(chosenFishController.primaryColor[0] == fishController.primaryColor[0]
+            if (chosenFishController.primaryColor[0] == fishController.primaryColor[0]
                 && chosenFishController.secondaryColor[0] == fishController.secondaryColor[0]
-                && chosenFishController.pattern[0] == fishController.pattern[0])
+                && chosenFishController.pattern[0].name == fishController.pattern[0].name)
             {
                 fishController.chosenFish = true;
             }
@@ -119,6 +128,8 @@ public class Fish_GameManager : MonoBehaviour
 
     public void ResetGame()
     {
+        StopAllCoroutines();
+
         foreach (GameObject spawn in spawnpoints)
         {
             Destroy(spawn.transform.GetChild(0).gameObject);
@@ -128,6 +139,8 @@ public class Fish_GameManager : MonoBehaviour
         dicePrimary.gameObject.SetActive(false);
         diceSecondary.gameObject.SetActive(false);
         dicePattern.gameObject.SetActive(false);
+        playerAmount = 0;
+        gameON = false;
     }
 
 }

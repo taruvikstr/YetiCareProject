@@ -11,7 +11,7 @@ public class FishController : MonoBehaviour
     public List<Color> primaryColor = new List<Color>();
     public List<Color> secondaryColor = new List<Color>();
 
-    public SpriteRenderer primaryColorRenderer, patternRenderer;
+    [SerializeField] private SpriteRenderer primaryColorRenderer, patternRenderer;
 
     GameObject spawnParent;
 
