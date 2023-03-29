@@ -100,7 +100,7 @@ public class Fish_GameManager : MonoBehaviour
             FishController fishController = fish.GetComponent<FishController>();
             if (chosenFishController.primaryColor[0] == fishController.primaryColor[0]
                 && chosenFishController.secondaryColor[0] == fishController.secondaryColor[0]
-                && chosenFishController.pattern[0].name == fishController.pattern[0].name)
+                && chosenFishController.pattern[0].name == fishController.pattern[0].name) // Is this causing the bug of not getting chosenfish tag for different type of fish with same features?
             {
                 fishController.chosenFish = true;
             }
