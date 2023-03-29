@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Fish_GameManager : MonoBehaviour
 {
-    [SerializeField] private GameObject fishPrefab;
+    [SerializeField] private GameObject[] fishPrefab;
     [SerializeField] public List<GameObject> fishInstances;
     [SerializeField] private List<GameObject> spawnpoints;
     [SerializeField] public SpriteRenderer dicePrimary, diceSecondary, dicePattern;
     [SerializeField] private Sprite[] dicePatternSprites;
 
-    public GameObject selectedObject;
+    private GameObject selectedObject;
     private Vector3 offset;
 
     void Update()
@@ -44,7 +44,7 @@ public class Fish_GameManager : MonoBehaviour
         //Spawning of the fishes
         foreach (GameObject spawn in spawnpoints)
         {
-            GameObject fishInstance = Instantiate(fishPrefab, spawn.transform);
+            GameObject fishInstance = Instantiate(fishPrefab[Random.Range(0, fishPrefab.Length)], spawn.transform);
             fishInstances.Add(fishInstance);
         }
 
@@ -61,10 +61,12 @@ public class Fish_GameManager : MonoBehaviour
         //Randomly choosing one of the fishes of the instantiated fish
         GameObject chosenFish = fishInstances[Random.Range(0, fishInstances.Count)];
         FishController chosenFishController = chosenFish.GetComponent<FishController>();
+
         //Setting the dice features according to the chosen fish
         dicePrimary.color = chosenFishController.primaryColor[0];
         diceSecondary.color = chosenFishController.secondaryColor[0];
 
+        //Setting the dice sprite according to the name of the pattern of the chosen fish (Will change this later to Case style, i guess)
         if (chosenFishController.pattern[0].name.Contains("3a"))
             dicePattern.sprite = dicePatternSprites[0];
         else if (chosenFishController.pattern[0].name.Contains("3b"))
@@ -77,6 +79,10 @@ public class Fish_GameManager : MonoBehaviour
             dicePattern.sprite = dicePatternSprites[4];
         else if (chosenFishController.pattern[0].name.Contains("3f"))
             dicePattern.sprite = dicePatternSprites[5];
+        else if (chosenFishController.pattern[0].name.Contains("3g"))
+            dicePattern.sprite = dicePatternSprites[6];
+        else if (chosenFishController.pattern[0].name.Contains("3h"))
+            dicePattern.sprite = dicePatternSprites[7];
 
 
         //Going through all the instantiated fish and comparing which have the chosen fish features and tagging them as chosen fish
@@ -101,7 +107,7 @@ public class Fish_GameManager : MonoBehaviour
         {
             if(spawn.transform.childCount == 0) //If spawnpoint has no child, it gets a new one
             {
-                GameObject fishInstance = Instantiate(fishPrefab, spawn.transform);
+                GameObject fishInstance = Instantiate(fishPrefab[Random.Range(0, fishPrefab.Length)], spawn.transform);
                 fishInstances.Add(fishInstance);
                 break;
             }

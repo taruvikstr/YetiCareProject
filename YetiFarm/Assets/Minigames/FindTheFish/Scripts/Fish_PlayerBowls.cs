@@ -12,7 +12,7 @@ public class Fish_PlayerBowls : MonoBehaviour
 
     private void OnEnable()
     {
-        ResetFishBowl();
+        ResetFishBucket();
     }
 
     private void OnTriggerEnter2D(Collider2D collision) 
@@ -29,11 +29,11 @@ public class Fish_PlayerBowls : MonoBehaviour
                 IncreaseFishAmount();
                 fish_GameManager.fishInstances.Remove(fish);
                 Destroy(collision.gameObject, 0.1f);
-                fish_GameManager.StartCoroutine("AddNewFish");
+                
             }
             else
             {
-                StartCoroutine("FishBowlCooldown");
+                StartCoroutine("FishBucketCooldown");
             }
    
         }
@@ -48,15 +48,17 @@ public class Fish_PlayerBowls : MonoBehaviour
             fish_UIController.SetPlacements();
             fish_GameManager.ResetGame();
         }
+        else fish_GameManager.StartCoroutine("AddNewFish");
     }
 
-    public void ResetFishBowl()
+    public void ResetFishBucket()
     {
         fishAmount = 0;
         amountTxt.text = fishAmount.ToString();
     }
 
-    private IEnumerator FishBowlCooldown()
+    private IEnumerator FishBucketCooldown() //If wrong fish is dragged to the bucket, the bucket has a cooldown,
+                                             //so that the player can't drag multiple fish at the same time
     {
         Color colorNormal = GetComponent<SpriteRenderer>().color;
         GetComponent<Collider2D>().enabled = false;
