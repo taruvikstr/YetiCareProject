@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2230477629499915585}
   - component: {fileID: 3033270513250306547}
   - component: {fileID: 4295537804724582213}
+  - component: {fileID: 7805746459129681558}
   m_Layer: 0
   m_Name: BirchWood
   m_TagString: Untagged
@@ -59,9 +60,9 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!114 &4295537804724582213
 MonoBehaviour:
@@ -107,6 +108,32 @@ MonoBehaviour:
   - {fileID: 5405524721669527579, guid: ec0fd2031e063bf45aae331473f39926, type: 3}
   - {fileID: 1070530540260555155, guid: 4930e60a37e9a7e4b8e3655052f2160c, type: 3}
   woodType: 1
+--- !u!61 &7805746459129681558
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4012230004345538147}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.85}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.6, y: 0.05}
+  m_EdgeRadius: 0
 --- !u!1 &4214842871421363317
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,8 +204,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -753372367
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c056b86e7a8762349b6ec5a481782140, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -249,7 +276,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.04}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 0.02
 --- !u!114 &7420137887036669374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -322,7 +349,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.04}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 0.02
 --- !u!114 &4402284278541781657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -395,7 +422,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.04}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 0.02
 --- !u!114 &8217315635095751298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -456,7 +483,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.3, y: 0.008}
+  m_Offset: {x: 0.35, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -468,7 +495,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 0.03, y: 0.9}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 0.03
 --- !u!114 &3400572716076276628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -541,7 +568,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.04}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 0.02
 --- !u!114 &1560777456658135117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -614,7 +641,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.04}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 0.02
 --- !u!114 &5963651238252938427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -675,7 +702,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.3, y: 0.008}
+  m_Offset: {x: -0.35, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -687,7 +714,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 0.03, y: 0.9}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 0.03
 --- !u!114 &5774258382691259294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -760,7 +787,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.04}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 0.02
 --- !u!114 &300914113805214958
 MonoBehaviour:
   m_ObjectHideFlags: 0

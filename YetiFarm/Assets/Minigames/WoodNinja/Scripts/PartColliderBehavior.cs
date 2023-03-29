@@ -5,7 +5,7 @@ using UnityEngine;
 public class PartColliderBehavior : MonoBehaviour
 {
     public float cutTimer = 0.0f;
-    private float cutTimeLimit = 2.0f;
+    private float cutTimeLimit = 0.5f;
     public bool cutOn = false;
     private IEnumerator coroutine;
 
@@ -28,8 +28,9 @@ public class PartColliderBehavior : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && cutOn == false)
         {
+            cutOn = true;
             StartCoroutine(coroutine);
         }
     }
