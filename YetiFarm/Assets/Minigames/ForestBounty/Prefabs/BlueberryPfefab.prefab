@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6266981540468286543}
   - component: {fileID: 4622563500507400738}
   - component: {fileID: 7128145785763709577}
+  - component: {fileID: 7276738606373670231}
   m_Layer: 8
   m_Name: BlueberryPfefab
   m_TagString: Collectible
@@ -111,7 +112,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -127,3 +128,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
+--- !u!114 &7276738606373670231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7463643815155332548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f45403fce436b6848985a25d84b7b53c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

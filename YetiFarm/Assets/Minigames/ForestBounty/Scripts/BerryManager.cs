@@ -38,11 +38,6 @@ public class BerryManager : MonoBehaviour
         EndGame();
     }
 
-    public void startInvoke()
-    {
-        InvokeRepeating("Spawn", 0f, 5f);
-    }
-
     void SpawnStrawberries()
     {
         int spawnPointIndex = Random.Range(0, strawberrySpawnPoints.Length);
