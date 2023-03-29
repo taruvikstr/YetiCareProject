@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 202819750}
   - component: {fileID: 202819749}
+  - component: {fileID: 6903768260724783897}
   m_Layer: 0
   m_Name: TopCenterCollider
   m_TagString: Untagged
@@ -58,6 +59,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.04}
   m_EdgeRadius: 0
+--- !u!114 &6903768260724783897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202819748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63678714caa7ad45b6a275364ea9be8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cutTimer: 0
+  cutOn: 0
 --- !u!1 &1535599021
 GameObject:
   m_ObjectHideFlags: 0
@@ -68,6 +83,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1535599023}
   - component: {fileID: 1535599022}
+  - component: {fileID: 1238329570650177384}
   m_Layer: 0
   m_Name: TopRightCollider
   m_TagString: Untagged
@@ -116,6 +132,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.04}
   m_EdgeRadius: 0
+--- !u!114 &1238329570650177384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1535599021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63678714caa7ad45b6a275364ea9be8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cutTimer: 0
+  cutOn: 0
 --- !u!1 &1634648465
 GameObject:
   m_ObjectHideFlags: 0
@@ -126,6 +156,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1634648467}
   - component: {fileID: 1634648466}
+  - component: {fileID: 6383212043741522287}
   m_Layer: 0
   m_Name: TopLeftCollider
   m_TagString: Untagged
@@ -174,6 +205,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.04}
   m_EdgeRadius: 0
+--- !u!114 &6383212043741522287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634648465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63678714caa7ad45b6a275364ea9be8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cutTimer: 0
+  cutOn: 0
 --- !u!1 &897389607896665599
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,6 +229,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4733198077430565686}
   - component: {fileID: 4994019042950565311}
+  - component: {fileID: 5753807432776410632}
   m_Layer: 0
   m_Name: RightSideCollider
   m_TagString: Untagged
@@ -232,6 +278,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.03, y: 0.9}
   m_EdgeRadius: 0
+--- !u!114 &5753807432776410632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897389607896665599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63678714caa7ad45b6a275364ea9be8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cutTimer: 0
+  cutOn: 0
 --- !u!1 &1269802613949308737
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,6 +302,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6957974168509995690}
   - component: {fileID: 5108052980721076501}
+  - component: {fileID: 4621040110015840427}
   m_Layer: 0
   m_Name: BottomCenterCollider
   m_TagString: Untagged
@@ -290,6 +351,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.04}
   m_EdgeRadius: 0
+--- !u!114 &4621040110015840427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269802613949308737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63678714caa7ad45b6a275364ea9be8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cutTimer: 0
+  cutOn: 0
 --- !u!1 &1297283416213842267
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,6 +375,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7831821625225604477}
   - component: {fileID: 7952707821278472577}
+  - component: {fileID: 8835695439244331253}
   m_Layer: 0
   m_Name: BottomLeftCollider
   m_TagString: Untagged
@@ -348,6 +424,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.04}
   m_EdgeRadius: 0
+--- !u!114 &8835695439244331253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297283416213842267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63678714caa7ad45b6a275364ea9be8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cutTimer: 0
+  cutOn: 0
 --- !u!1 &1595612427407756757
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,6 +448,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5734608848418365736}
   - component: {fileID: 1577107083368805084}
+  - component: {fileID: 7504049405453487273}
   m_Layer: 0
   m_Name: LeftSideCollider
   m_TagString: Untagged
@@ -406,6 +497,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.03, y: 0.9}
   m_EdgeRadius: 0
+--- !u!114 &7504049405453487273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1595612427407756757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63678714caa7ad45b6a275364ea9be8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cutTimer: 0
+  cutOn: 0
 --- !u!1 &4348596991880164255
 GameObject:
   m_ObjectHideFlags: 0
@@ -416,6 +521,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2236601290213861700}
   - component: {fileID: 666622309394685513}
+  - component: {fileID: 6335421392077885554}
   m_Layer: 0
   m_Name: BottomRightCollider
   m_TagString: Untagged
@@ -464,6 +570,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.04}
   m_EdgeRadius: 0
+--- !u!114 &6335421392077885554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4348596991880164255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63678714caa7ad45b6a275364ea9be8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cutTimer: 0
+  cutOn: 0
 --- !u!1 &8371798386696142857
 GameObject:
   m_ObjectHideFlags: 0
@@ -539,14 +659,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 642b8caa473e43540b4e8ef3b113de7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  topLeftCollider: {fileID: 1634648466}
-  topRightCollider: {fileID: 1535599022}
-  topCenterCollider: {fileID: 202819749}
-  bottomCenterCollider: {fileID: 5108052980721076501}
-  bottomLeftCollider: {fileID: 7952707821278472577}
-  bottomRightCollider: {fileID: 666622309394685513}
-  leftSideCollider: {fileID: 1577107083368805084}
-  rightSideCollider: {fileID: 4994019042950565311}
+  colliderList:
+  - {fileID: 6383212043741522287}
+  - {fileID: 6903768260724783897}
+  - {fileID: 1238329570650177384}
+  - {fileID: 8835695439244331253}
+  - {fileID: 4621040110015840427}
+  - {fileID: 6335421392077885554}
+  - {fileID: 7504049405453487273}
+  - {fileID: 5753807432776410632}
+  woodPartList:
+  - {fileID: 3519624461662536940, guid: 6a7edb1b14902154c8fadf449fa22cd4, type: 3}
+  - {fileID: 1139593788487122549, guid: efbdeeb1f86aaea4391a2948d1010622, type: 3}
+  - {fileID: 5562597212034411425, guid: f33169fef98a5a0468754a286cfa0750, type: 3}
+  - {fileID: 1962352758426409435, guid: 50d9579ae47b1b84196cdb9fbcb5c6cd, type: 3}
+  - {fileID: 2259165706150948117, guid: 568ddcd375a8fe649a4864a0fe635dab, type: 3}
+  - {fileID: 6365416360677528137, guid: 26b6c4bd8941c3b47bf5d25c01ed99bf, type: 3}
+  - {fileID: 1606734141516593246, guid: ae6abc2cc7501aa4e86c84137d031fc8, type: 3}
+  - {fileID: 6136455392185710795, guid: 40f137bd537dd1a47ab751e3b9fae21b, type: 3}
+  - {fileID: 2403739687877237954, guid: b999143cdfc1aad4b8ff2b31fcc7de1b, type: 3}
+  - {fileID: 6363734124760731940, guid: a7ed6fb5fc7999c4e8f42f4062154253, type: 3}
+  birchPartList:
+  - {fileID: 1468196690454309885, guid: bb109d3b4f50f2b43b0987dbbcd2b4ff, type: 3}
+  - {fileID: 829021621409263763, guid: bb5a8a7e8e32ee0438c576c49e67119a, type: 3}
+  - {fileID: 6925384904861883487, guid: 7417cf0bf1c055940b04fafccfbcea75, type: 3}
+  - {fileID: 3897706773317579494, guid: 8e9abd22904693d4499a61dc3b1ec34c, type: 3}
+  - {fileID: 7997353319786852765, guid: 9f4a4e8005009c8458f96f1d5b3f1fb0, type: 3}
+  - {fileID: 7426674836373452717, guid: 614e5058c691e1d4e8898dc869d47262, type: 3}
+  - {fileID: 1709634050282034394, guid: b053978873f3e4f44a3a741955581a2b, type: 3}
+  - {fileID: 1107612737417204184, guid: ee0c90ac572a27a43903e0b0501d6b57, type: 3}
+  - {fileID: 5405524721669527579, guid: ec0fd2031e063bf45aae331473f39926, type: 3}
+  - {fileID: 1070530540260555155, guid: 4930e60a37e9a7e4b8e3655052f2160c, type: 3}
+  woodType: 0
 --- !u!1 &8790735008281141791
 GameObject:
   m_ObjectHideFlags: 0
