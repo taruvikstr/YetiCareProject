@@ -8,8 +8,8 @@ public class Blade : MonoBehaviour
     private Collider2D bladeCollider;
     private TrailRenderer bladeTrail;
     private bool slicing;
-    public float minSliceVelocity = 0.01f;
-    public float sliceForce = 50f;
+    public float minSliceVelocity;
+    public float sliceForce;
 
     public Vector3 direction { get; private set; }
 
