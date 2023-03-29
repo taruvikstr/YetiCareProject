@@ -28,6 +28,7 @@ public class Blade : MonoBehaviour
         StopSlicing();
     }
 
+    // Checking if player is holding mouse down or touching the screen to move the blade
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
