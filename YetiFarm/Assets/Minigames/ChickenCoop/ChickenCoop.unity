@@ -436,7 +436,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ac8e462be672849b37c8bc79c40766, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonManager: {fileID: 0}
+  buttonManager: {fileID: 1628922500}
   eggSpawnerList:
   - {fileID: 388319258}
   - {fileID: 1738316876}
@@ -1033,7 +1033,6 @@ GameObject:
   m_Component:
   - component: {fileID: 386157816}
   - component: {fileID: 386157817}
-  - component: {fileID: 386157818}
   m_Layer: 5
   m_Name: CollectionAmountSlider
   m_TagString: Untagged
@@ -1130,27 +1129,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!223 &386157818
-Canvas:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 386157815}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 2
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 1
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: -1625320921
-  m_SortingOrder: 0
-  m_TargetDisplay: 0
 --- !u!1001 &388319257
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2362,7 +2340,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: -407521017
+  m_SortingLayerID: -1625320921
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &729866839
@@ -3157,7 +3135,6 @@ GameObject:
   m_Component:
   - component: {fileID: 962258129}
   - component: {fileID: 962258130}
-  - component: {fileID: 962258131}
   m_Layer: 5
   m_Name: DifficultySlider
   m_TagString: Untagged
@@ -3254,27 +3231,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!223 &962258131
-Canvas:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 962258128}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 2
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 1
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: -1625320921
-  m_SortingOrder: 0
-  m_TargetDisplay: 0
 --- !u!1001 &995086021
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3504,7 +3460,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1055653523}
   - component: {fileID: 1055653524}
-  - component: {fileID: 1055653525}
   m_Layer: 5
   m_Name: PlayerAmountSlider
   m_TagString: Untagged
@@ -3601,27 +3556,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!223 &1055653525
-Canvas:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1055653522}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 2
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 1
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: -1625320921
-  m_SortingOrder: 0
-  m_TargetDisplay: 0
 --- !u!1 &1057010703
 GameObject:
   m_ObjectHideFlags: 0
@@ -7336,7 +7270,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: -407521017
+  m_SortingLayerID: -1625320921
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &2112862253
@@ -7562,7 +7496,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2144433924}
   - component: {fileID: 2144433925}
-  - component: {fileID: 2144433926}
   m_Layer: 5
   m_Name: GameModeSlider
   m_TagString: Untagged
@@ -7659,27 +7592,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!223 &2144433926
-Canvas:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2144433923}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 2
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 1
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: -1625320921
-  m_SortingOrder: 0
-  m_TargetDisplay: 0
 --- !u!1001 &2035077526490332119
 PrefabInstance:
   m_ObjectHideFlags: 0
