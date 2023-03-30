@@ -20,7 +20,7 @@ public class StrawberryBucket : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
         while(i == 1)
         {
             if (counter == 0)
@@ -44,6 +44,8 @@ public class StrawberryBucket : MonoBehaviour
             BerryManager.strawberryCount--;
             counter--;
             txt.text = counter.ToString();
+            BerryManager.howManyStrawberries--; 
+
         }
     }
 }

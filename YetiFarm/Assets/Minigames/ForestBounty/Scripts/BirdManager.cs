@@ -20,7 +20,18 @@ public class BirdManager : MonoBehaviour
     void Start()
     {
         screenWidth = Screen.width;
-        randomIndex = Random.Range(0, berryPositions.Length);
+
+        while(true)
+        {
+            randomIndex = Random.Range(0, berryPositions.Length);
+
+            if (berryPositions[randomIndex].GetComponent<SpawnBerry>().hasBerry == true)
+            {
+                break;
+            }
+        }
+
+        
     }
 
     // Update is called once per frame
@@ -63,6 +74,7 @@ public class BirdManager : MonoBehaviour
     public void StealBerry()
     {
         berryGrabbed = true;
+        berryPositions[randomIndex].GetComponent<SpawnBerry>().hasBerry = false;
 
         // pistevähennyksiä? tai muita sanktioita? 
     }
