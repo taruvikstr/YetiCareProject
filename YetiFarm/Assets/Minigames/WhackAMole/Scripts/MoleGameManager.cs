@@ -112,7 +112,7 @@ public class MoleGameManager : MonoBehaviour
                 {
                     // Doesn't matter if its already doing something, we'll just try again next frame
                     currentMoles.Add(moles[index]);
-                    moles[index].Activate(score / 10);
+                    moles[index].Activate(score / 1);
                 }
 
             }

@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Mole : MonoBehaviour
 {
@@ -11,14 +10,13 @@ public class Mole : MonoBehaviour
     [SerializeField] private Sprite moleHatBroken;
     [SerializeField] private Sprite moleHit;
     [SerializeField] private Sprite moleHatHit;
-    [SerializeField] private Slider slider;
-
+    [SerializeField] public GameObject moleHands;
 
     [Header("GameManager")]
     [SerializeField] private MoleGameManager gameManager;
 
     //Sprite offset of the sprite to hide it
-    private Vector2 startPosition = new Vector2(0f, -4f); //Pixelsize / PixelsPerUnit
+    private Vector2 startPosition = new Vector2(0f, -2f); //Pixelsize / PixelsPerUnit
     private Vector2 endPosition = Vector2.zero;
     //How long it takes to show a mole
     private float showDuration = 0.5f;
@@ -35,11 +33,6 @@ public class Mole : MonoBehaviour
     private Vector2 boxOffsetHidden;
     private Vector2 boxSizeHidden;
 
-    //Set difficulty
-
-    public float difficulty;
-    public Slider mySlider;
-
     //Mole Parameters
 
     public enum MoleType {Standard,HardHat,Bomb };
@@ -49,28 +42,11 @@ public class Mole : MonoBehaviour
     private int lives;
     private int moleIndex;
 
-   /* public()
-    {
-        if(mySlider.GetComponent<Slider>().value == 1)
-        {
-            difficulty = 1;
-        }
-        else if (mySlider.GetComponent<Slider>().value == 2)
-        {
-            difficulty = 2;
-
-        }
-        else if (mySlider.GetComponent<Slider>().value == 3)
-        {
-            difficulty = 3;
-        }
-    }*/
-
-
 
     private IEnumerator ShowHide(Vector2 start, Vector2 end)
     {
         // Startposition
+       
         transform.localPosition = start;
         float elapsed = 0f;
         while (elapsed < showDuration)
@@ -86,9 +62,14 @@ public class Mole : MonoBehaviour
         transform.localPosition = end;
         boxCollider2D.offset = boxOffset;
         boxCollider2D.size = boxSize;
+        if (moleType != MoleType.Bomb)
+        {
+            moleHands.SetActive(true);
+        }
 
         //Wait for duration to pass
         yield return new WaitForSeconds(duration);
+        moleHands.SetActive(false);
 
         //Hide mole
         elapsed = 0f;
@@ -101,6 +82,7 @@ public class Mole : MonoBehaviour
             elapsed += Time.deltaTime;
             yield return null;
         }
+        moleHands.SetActive(false);
         transform.localPosition = start;
         boxCollider2D.offset = boxOffsetHidden;
         boxCollider2D.size = boxSizeHidden;
@@ -115,6 +97,8 @@ public class Mole : MonoBehaviour
     }
     public void Hide()
     {
+
+        moleHands.SetActive(false);
         transform.localPosition = startPosition;
         boxCollider2D.offset = boxOffsetHidden;
         boxCollider2D.size = boxSizeHidden;
@@ -135,6 +119,7 @@ public class Mole : MonoBehaviour
             switch (moleType)
             {
                 case MoleType.Standard:
+                    moleHands.SetActive(false);
                     Debug.Log("normal hit");
                     spriteRenderer.sprite = moleHit;
                     gameManager.AddScore(moleIndex);
@@ -163,6 +148,7 @@ public class Mole : MonoBehaviour
                     }
                     break;
                 case MoleType.Bomb:
+                    
                     //Game over, 1 for bomb.
                     Debug.Log("Bomb hit");
                     gameManager.GameOver(1);
@@ -208,7 +194,7 @@ public class Mole : MonoBehaviour
         hittable = true;
     }
     // As the level progresses the game gets harder.
-    public void SetLevel(int level)
+    private void SetLevel(int level)
     {
         //As level increases increase the bomb rate to 0.25 at level 10
         bombRate = Mathf.Min(level * 0.025f, 0.25f);
@@ -217,19 +203,6 @@ public class Mole : MonoBehaviour
         float durationMin = Mathf.Clamp(1 - level * 0.1f, 0.01f, 1f);
         float durationMax = Mathf.Clamp(2 - level * 0.1f, 0.01f, 2f);
         duration = Random.Range(durationMin, durationMax);
-
-        if(slider.value == 0)
-        {
-            difficulty = 0.025f;
-        }
-        if(slider.value == 1)
-        {
-            difficulty = 0.5f;
-        }
-        if(slider.value == 2)
-        {
-            difficulty = 0.1f;
-        }
     }
     private void Awake()
     {
@@ -243,8 +216,6 @@ public class Mole : MonoBehaviour
         boxSize = boxCollider2D.size;
         boxOffsetHidden = new Vector2(boxOffset.x, -startPosition.y / 2f);
         boxSizeHidden = new Vector2(boxSize.x, 0f);
-
-        slider = gameObject.GetComponent<Slider>();
 
     }
     

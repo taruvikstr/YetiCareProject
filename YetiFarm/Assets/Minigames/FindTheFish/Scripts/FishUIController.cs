@@ -2,40 +2,45 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class FishUIController : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> fishbowl = new List<GameObject>();
-    [SerializeField] private Image[] placementImage;
-
+    [SerializeField] private List<GameObject> fishBucket = new List<GameObject>();
     [SerializeField] private GameObject gamePanel, gameEnd;
+    [SerializeField] private Fish_GameManager fish_GameManager;
+    [SerializeField] private GameObject[] placements;
+    [SerializeField] private Image[] placementImage;
+    [SerializeField] private TMP_Text[] scoreTXT;
 
     [Range(5, 15)]
     public int fishToWin = 5;
     
     public void ActivatePlayer(int index)
     {
-        fishbowl[index].SetActive(true);
+        fishBucket[index].SetActive(true);
+        fish_GameManager.playerAmount++;
     }
 
-    public void SetPlacements()
+    public void SetPlacements(bool solo, int fishAmount)
     {
-        int fishAmount_0 = fishbowl[0].GetComponent<Fish_PlayerBowls>().fishAmount;
-        int fishAmount_1 = fishbowl[1].GetComponent<Fish_PlayerBowls>().fishAmount;
-        int fishAmount_2 = fishbowl[2].GetComponent<Fish_PlayerBowls>().fishAmount;
-        int fishAmount_3 = fishbowl[3].GetComponent<Fish_PlayerBowls>().fishAmount;
+        int index = 0;
+        foreach(GameObject bucket in fishBucket)
+        {
+            if (bucket.gameObject.activeSelf)
+            {
+                placementImage[index].sprite = bucket.GetComponent<SpriteRenderer>().sprite;
+                scoreTXT[index].text = "Score: " + bucket.GetComponent<Fish_PlayerBowls>().fishAmount.ToString();
+            }
+            else placements[index].SetActive(false);
 
-        //j‰rjest‰ fishbowl lista kalam‰‰rn mukaan, kirjasto (avain ja arvoparit?)
-
-        //placementImage[0].sprite = fishbowl[0].GetComponent<SpriteRenderer>().sprite;
-        //placementImage[1].sprite = fishbowl[1].GetComponent<SpriteRenderer>().sprite;
-        //placementImage[2].sprite = fishbowl[2].GetComponent<SpriteRenderer>().sprite;
-        //placementImage[3].sprite = fishbowl[3].GetComponent<SpriteRenderer>().sprite;
+            index++;
+        }
 
         gamePanel.SetActive(true);
         gameEnd.SetActive(true);
 
-        foreach(GameObject bowl in fishbowl)
+        foreach(GameObject bowl in fishBucket)
         {
             bowl.SetActive(false);
         }
