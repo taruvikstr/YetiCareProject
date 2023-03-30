@@ -19,7 +19,7 @@ public class BirdManager : MonoBehaviour
 
     private void Awake()
     {
-        berryPositions = new List<Transform> { null, null, null }; // Add more as the number of spawn points in scene increases.
+        berryPositions = new List<Transform> { null, null, null, null, null, null, null, null, null, null, null, null}; // Add more as the number of spawn points in scene increases.
         birdPositions = new List<Transform> { null, null }; // Add more as the number of spawn points in scene increases.
         GameObject berrySpawnPointObject = GameObject.Find("SpawnPoints");
         if (berrySpawnPointObject == null)
