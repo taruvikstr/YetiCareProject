@@ -30,6 +30,7 @@ public class Fish_GameManager : MonoBehaviour
             Collider2D targetObject = Physics2D.OverlapPoint(mousePosition);
             if (targetObject && targetObject.gameObject.CompareTag("Collectible"))
             {
+                StartCoroutine(ChangeFishSortingLayer("Dragged", targetObject.gameObject, 0f));
                 //Debug.Log("dragging " + targetObject.name);
                 selectedObject = targetObject.transform.gameObject;
                 selectedObject.GetComponent<FishController>().isDragged = true;
@@ -42,6 +43,7 @@ public class Fish_GameManager : MonoBehaviour
         }
         if (Input.GetMouseButtonUp(0) && selectedObject)
         {
+            StartCoroutine(ChangeFishSortingLayer(selectedObject.transform.parent.GetComponent<SpriteRenderer>().sortingLayerName, selectedObject.gameObject, 2f));
             selectedObject.GetComponent<FishController>().isDragged = false;
             selectedObject = null;
         }
@@ -55,6 +57,9 @@ public class Fish_GameManager : MonoBehaviour
         {
             GameObject fishInstance = Instantiate(fishPrefab[Random.Range(0, fishPrefab.Length)], spawn.transform);
             fishInstances.Add(fishInstance);
+
+            StartCoroutine(ChangeFishSortingLayer(spawn.GetComponent<SpriteRenderer>().sortingLayerName, fishInstance, 0f));
+      
         }
 
         dicePrimary.gameObject.SetActive(true);
@@ -62,6 +67,17 @@ public class Fish_GameManager : MonoBehaviour
         dicePattern.gameObject.SetActive(true);
 
         StartCoroutine("RollDice");
+    }
+
+    public IEnumerator ChangeFishSortingLayer(string layerName, GameObject fishInstance, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SpriteRenderer[] fishRenderers = fishInstance.transform.GetComponentsInChildren<SpriteRenderer>();
+
+        foreach (SpriteRenderer renderer in fishRenderers)
+        {
+            renderer.sortingLayerName = layerName;
+        }
     }
 
     public IEnumerator RollDice()
@@ -100,24 +116,27 @@ public class Fish_GameManager : MonoBehaviour
             FishController fishController = fish.GetComponent<FishController>();
             if (chosenFishController.primaryColor[0] == fishController.primaryColor[0]
                 && chosenFishController.secondaryColor[0] == fishController.secondaryColor[0]
-                && chosenFishController.pattern[0].name == fishController.pattern[0].name) // Is this causing the bug of not getting chosenfish tag for different type of fish with same features?
+                && chosenFishController.pattern[0].name == fishController.pattern[0].name) 
             {
                 fishController.chosenFish = true;
             }
             else fishController.chosenFish = false;
+
+            
         }
     }
 
     public IEnumerator AddNewFish()
     {
         //When previously found fish is destroyed, this function is called to fill out the spawnpoint slot
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.4f);
         foreach (GameObject spawn in spawnpoints)
         {
             if(spawn.transform.childCount == 0) //If spawnpoint has no child, it gets a new one
             {
                 GameObject fishInstance = Instantiate(fishPrefab[Random.Range(0, fishPrefab.Length)], spawn.transform);
                 fishInstances.Add(fishInstance);
+                StartCoroutine(ChangeFishSortingLayer(spawn.GetComponent<SpriteRenderer>().sortingLayerName, fishInstance, 0f));
                 break;
             }
 
