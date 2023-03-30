@@ -54,15 +54,15 @@ public class MoleGameManager : MonoBehaviour
         //Changin difficulty for molegame
         if (difficultyLevel == 1)
         {
-            difficultyLevel = 10;
+            difficultyLevel = 10 /2;
         }
         else if(difficultyLevel == 2)
         {
-            difficultyLevel = 50;
+            difficultyLevel = 50 /2;
         }
         else
         {
-            difficultyLevel = 90;
+            difficultyLevel = 90 /2;
         }
         //Setting startingcanvas to false and time and scoretextobjects to true.
         scoreHeader.SetActive(true);
