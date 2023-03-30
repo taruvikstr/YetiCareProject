@@ -6,6 +6,8 @@ public class MoleGameManager : MonoBehaviour
 {
     [SerializeField] private List<Mole> moles;
 
+    [SerializeField] private List<GameObject> holes;
+
     [Header("UI objects")]
     [SerializeField] private GameObject playButton;
     [SerializeField] private GameObject gameUI;
@@ -32,10 +34,10 @@ public class MoleGameManager : MonoBehaviour
     private bool playing = false;
 
     int difficultyLevel;
+    int molesInGame;
 
     private void Start()
     {
-        //Get MoleGameManager Script from button manager
         
         //Setting time and score text objects to false at startingCanvas.
         scoreHeader.SetActive(false);
@@ -50,7 +52,8 @@ public class MoleGameManager : MonoBehaviour
         
         // Getting difficultyvalue from MoleGameManager Script.
         difficultyLevel = buttonManager.GetComponent<ButtonManagerScriptMole>().difficultyValue;
-        Debug.Log(difficultyLevel);
+        // Getting moles in game value from buttonmanager script.
+        molesInGame = buttonManager.GetComponent<ButtonManagerScriptMole>().playerAmountValue;
         //Changin difficulty for molegame
         if (difficultyLevel == 1)
         {
@@ -64,6 +67,22 @@ public class MoleGameManager : MonoBehaviour
         {
             difficultyLevel = 90 /2;
         }
+        Debug.Log(molesInGame);
+        //Change amount of moles in game
+        if (molesInGame == 1)
+        {
+            for (int i = 0; i <= 4; i++)
+            {
+                moles[i].Hide();
+                currentMoles.Remove(moles[i]);
+                moles.Remove(moles[i]);
+             //   holes[i].SetActive(false);
+                Debug.Log(moles.Count + " " + i);
+            }
+            currentMoles.Clear();
+
+        }
+
         //Setting startingcanvas to false and time and scoretextobjects to true.
         scoreHeader.SetActive(true);
         timeheader.SetActive(true);
@@ -81,6 +100,7 @@ public class MoleGameManager : MonoBehaviour
             moles[i].Hide();
             moles[i].SetIndex(i);
         }
+        
         currentMoles.Clear();
         timeRemaining = startingTime;
         score = 0;
@@ -117,6 +137,7 @@ public class MoleGameManager : MonoBehaviour
         scoreText.text = $"{score}";
         // Increase time little bit.
        // timeRemaining += 1;
+
         //Remove from active moles.
         currentMoles.Remove(moles[moleIndex]);
     }

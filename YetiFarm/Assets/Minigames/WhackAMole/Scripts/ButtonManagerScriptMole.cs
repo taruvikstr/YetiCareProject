@@ -16,7 +16,7 @@ public class ButtonManagerScriptMole : MonoBehaviour
     //public TextMeshProUGUI feedbackText;
   //  public GameObject gameStarter; // The object that has the script and function for starting the game based on given parameters.
     public int difficultyValue;
-    private int playerAmountValue;
+    public int playerAmountValue;
     private int gameSpeedValue;
     private int gameModeValue;
     private int desiredScoreValue;
