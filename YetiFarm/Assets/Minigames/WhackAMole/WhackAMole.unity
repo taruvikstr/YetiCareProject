@@ -1392,7 +1392,7 @@ MonoBehaviour:
   scoreHeader: {fileID: 350030758}
   timeTextObject: {fileID: 2094548802}
   timeheader: {fileID: 660644842}
-  buttonManager: {fileID: 0}
+  buttonManager: {fileID: 929641237}
 --- !u!4 &614568869
 Transform:
   m_ObjectHideFlags: 0

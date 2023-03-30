@@ -31,20 +31,39 @@ public class MoleGameManager : MonoBehaviour
     int score;
     private bool playing = false;
 
+    int difficultyLevel;
 
     private void Start()
     {
         //Get MoleGameManager Script from button manager
-        buttonManager.GetComponent<MoleGameManager>();
+        
         //Setting time and score text objects to false at startingCanvas.
         scoreHeader.SetActive(false);
         scoreTextObject.SetActive(false);
         timeTextObject.SetActive(false);
         timeheader.SetActive(false);
+        
     }
     //This is public so the play button can see it.
     public void StartGame()
     {
+        
+        // Getting difficultyvalue from MoleGameManager Script.
+        difficultyLevel = buttonManager.GetComponent<ButtonManagerScriptMole>().difficultyValue;
+        Debug.Log(difficultyLevel);
+        //Changin difficulty for molegame
+        if (difficultyLevel == 1)
+        {
+            difficultyLevel = 10;
+        }
+        else if(difficultyLevel == 2)
+        {
+            difficultyLevel = 50;
+        }
+        else
+        {
+            difficultyLevel = 90;
+        }
         //Setting startingcanvas to false and time and scoretextobjects to true.
         scoreHeader.SetActive(true);
         timeheader.SetActive(true);
@@ -125,7 +144,7 @@ public class MoleGameManager : MonoBehaviour
             }
             timeText.text = $"{(int)timeRemaining / 60} : {(int)timeRemaining % 60:D2}";
             //Check if we need to start any more moles.
-            if(currentMoles.Count <= (score / 10))
+            if(currentMoles.Count <= (difficultyLevel / 10))
             {
                 //Choose a random mole.
                 int index = Random.Range(0, moles.Count);
@@ -133,7 +152,7 @@ public class MoleGameManager : MonoBehaviour
                 {
                     // Doesn't matter if its already doing something, we'll just try again next frame
                     currentMoles.Add(moles[index]);
-                    moles[index].Activate(score / 10);
+                    moles[index].Activate(difficultyLevel / 10);
                 }
 
             }
