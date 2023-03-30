@@ -82,7 +82,7 @@ public class EggSpawnManager : MonoBehaviour
             difficulty = 2;
             gameMode = 1;
             spawnRate = 2.0f;
-            basketAmount = 0;
+            basketAmount = 1;
 
             // Delete baskets.
             foreach (GameObject playerBasket in GameObject.FindGameObjectsWithTag("Player"))
@@ -97,11 +97,38 @@ public class EggSpawnManager : MonoBehaviour
             }
 
 
-            //buttonManager.GetCo
-            // TODO - Pass score and failed eggs to the end screen.
+            buttonManager.GetComponent<ButtonManagerScript>().ActivateGameOverScreen(score, failedEggs, gameMode);
 
             score = 0;
             failedEggs = 0;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape)) // If the back button of the device is pressed during game.
+        {
+            StopCoroutine(coroutine);
+            gameOn = false;
+            desiredScore = 0;
+            difficulty = 2;
+            gameMode = 1;
+            spawnRate = 2.0f;
+            basketAmount = 1;
+
+            // Delete baskets.
+            foreach (GameObject playerBasket in GameObject.FindGameObjectsWithTag("Player"))
+            {
+                Destroy(playerBasket);
+            }
+
+            // Delete falling eggs.
+            foreach (GameObject egg in GameObject.FindGameObjectsWithTag("ProjectileTag"))
+            {
+                Destroy(egg);
+            }
+
+            score = 0;
+            failedEggs = 0;
+
+            buttonManager.GetComponent<ButtonManagerScript>().ReturnToMainScreen(); // Return to main view.
         }
     }
 
