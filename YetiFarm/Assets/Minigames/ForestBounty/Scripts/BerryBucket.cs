@@ -5,7 +5,7 @@ using TMPro;
 
 public class BerryBucket : MonoBehaviour
 {
-    int counter;
+    int counter = 0;
     int i = 1;
     public TMP_Text txt;
     public string bucketType;
@@ -33,8 +33,6 @@ public class BerryBucket : MonoBehaviour
 
             break;
         }
-
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -46,6 +44,7 @@ public class BerryBucket : MonoBehaviour
             counter--;
             txt.text = counter.ToString();
             BerryManager.howManyStrawberries--;
+            Debug.Log("strawberryCount =" + BerryManager.strawberryCount);
 
         }
         if (collision.gameObject.name.StartsWith("Blueberry") && bucketType == "BlueberryBucket")
@@ -55,6 +54,7 @@ public class BerryBucket : MonoBehaviour
             counter--;
             txt.text = counter.ToString();
             BerryManager.howManyBlueberries--;
+            Debug.Log("blueberryCount =" + BerryManager.blueberryCount);
 
         }
         if (collision.gameObject.name.StartsWith("Raspberry") && bucketType == "RaspberryBucket")
@@ -64,6 +64,7 @@ public class BerryBucket : MonoBehaviour
             counter--;
             txt.text = counter.ToString();
             BerryManager.howManyRaspberries--;
+            Debug.Log("raspberryCount =" + BerryManager.raspberryCount);
 
         }
         if (collision.gameObject.name.StartsWith("Cowberry") && bucketType == "CowberryBucket")
@@ -73,6 +74,7 @@ public class BerryBucket : MonoBehaviour
             counter--;
             txt.text = counter.ToString();
             BerryManager.howManyCowberries--;
+            Debug.Log("cowberryCount =" + BerryManager.cowberryCount);
 
         }
     }
