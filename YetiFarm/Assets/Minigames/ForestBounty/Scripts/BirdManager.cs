@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BirdManager : MonoBehaviour
 {
-    public Transform[] berryPositions;
-    public Transform[] birdPositions;
+    private List<Transform> berryPositions;
+    private List<Transform> birdPositions;
 
     private Vector2 toBerry;
     private Vector2 awayFromBerry;
@@ -16,15 +16,42 @@ public class BirdManager : MonoBehaviour
     private float screenWidth;
     private int randomIndex;
 
-    // Start is called before the first frame update
+
+    private void Awake()
+    {
+        berryPositions = new List<Transform> { null, null, null }; // Add more as the number of spawn points in scene increases.
+        birdPositions = new List<Transform> { null, null }; // Add more as the number of spawn points in scene increases.
+        GameObject berrySpawnPointObject = GameObject.Find("SpawnPoints");
+        if (berrySpawnPointObject == null)
+        {
+            Debug.Log("BERRY NOT FOUND");
+        }
+
+        for (int i = 0; i < berrySpawnPointObject.transform.childCount; i++)
+        {
+            berryPositions[i] = berrySpawnPointObject.transform.GetChild(i).transform;
+        }
+
+
+        GameObject birdSpawnPointObject = GameObject.Find("BirdSpawn");
+        if (berrySpawnPointObject == null)
+        {
+            Debug.Log("BIRD NOT FOUND");
+        }
+
+        for (int i = 0; i < birdSpawnPointObject.transform.childCount; i++)
+        {
+            birdPositions[i] = birdSpawnPointObject.transform.GetChild(i).transform;
+        }
+    }
+
     void Start()
     {
         screenWidth = Screen.width;
 
         while(true)
         {
-            randomIndex = Random.Range(0, berryPositions.Length);
-
+            randomIndex = Random.Range(0, berryPositions.Count);
             if (berryPositions[randomIndex].GetComponent<SpawnBerry>().hasBerry == true)
             {
                 break;

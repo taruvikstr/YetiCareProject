@@ -20,6 +20,9 @@ public class BerryManager : MonoBehaviour
     public Dictionary<int, bool> isBerrySpawned;
 
     public static int howManyStrawberries;
+    public static int howManyBlueberries;
+    public static int howManyRaspberries;
+    public static int howManyCowberries;
 
 
     public TMP_Text endgame_txt;
@@ -31,7 +34,13 @@ public class BerryManager : MonoBehaviour
     public static int blueberryCount = 0;
     public int blueberryLimit = 2;
 
-  
+    public static int raspberryCount = 0;
+    public int raspberryLimit = 2;
+
+    public static int cowberryCount = 0;
+    public int cowberryLimit = 2;
+
+
     private void Start()
     {
         isBerrySpawned = new Dictionary<int, bool>();
