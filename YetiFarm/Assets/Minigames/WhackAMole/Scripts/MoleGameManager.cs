@@ -13,19 +13,63 @@ public class MoleGameManager : MonoBehaviour
     [SerializeField] private GameObject bombText;
     [SerializeField] private TMPro.TextMeshProUGUI timeText;
     [SerializeField] private TMPro.TextMeshProUGUI scoreText;
+    [SerializeField] private GameObject startingCanvas;
 
+    [SerializeField] private GameObject scoreTextObject;
+    [SerializeField] private GameObject scoreHeader;
+    [SerializeField] private GameObject timeTextObject;
+    [SerializeField] private GameObject timeheader;
+
+    public GameObject buttonManager;
 
 
     //Hardcoded variables you may want to tune.
-    private float startingTime = 30f;
+    private float startingTime = 60f;
     //Global variables
     private float timeRemaining;
     private HashSet<Mole> currentMoles = new HashSet<Mole>();
     int score;
     private bool playing = false;
+
+    int difficultyLevel;
+
+    private void Start()
+    {
+        //Get MoleGameManager Script from button manager
+        
+        //Setting time and score text objects to false at startingCanvas.
+        scoreHeader.SetActive(false);
+        scoreTextObject.SetActive(false);
+        timeTextObject.SetActive(false);
+        timeheader.SetActive(false);
+        
+    }
     //This is public so the play button can see it.
     public void StartGame()
     {
+        
+        // Getting difficultyvalue from MoleGameManager Script.
+        difficultyLevel = buttonManager.GetComponent<ButtonManagerScriptMole>().difficultyValue;
+        Debug.Log(difficultyLevel);
+        //Changin difficulty for molegame
+        if (difficultyLevel == 1)
+        {
+            difficultyLevel = 10;
+        }
+        else if(difficultyLevel == 2)
+        {
+            difficultyLevel = 50;
+        }
+        else
+        {
+            difficultyLevel = 90;
+        }
+        //Setting startingcanvas to false and time and scoretextobjects to true.
+        scoreHeader.SetActive(true);
+        timeheader.SetActive(true);
+        scoreTextObject.SetActive(true);
+        timeTextObject.SetActive(true);
+        startingCanvas.SetActive(false);
         //Hide/show the UI elements we dont / do want to see.
         playButton.SetActive(false);
         outOfTimeText.SetActive(false);
@@ -72,7 +116,7 @@ public class MoleGameManager : MonoBehaviour
         score += 1;
         scoreText.text = $"{score}";
         // Increase time little bit.
-        timeRemaining += 1;
+       // timeRemaining += 1;
         //Remove from active moles.
         currentMoles.Remove(moles[moleIndex]);
     }
@@ -81,7 +125,7 @@ public class MoleGameManager : MonoBehaviour
         if (isMole)
         {
             //Decrease time by a little bit.
-            timeRemaining -= 2;
+           // timeRemaining -= 2;
         }
         currentMoles.Remove(moles[moleIndex]);
     }
@@ -100,7 +144,7 @@ public class MoleGameManager : MonoBehaviour
             }
             timeText.text = $"{(int)timeRemaining / 60} : {(int)timeRemaining % 60:D2}";
             //Check if we need to start any more moles.
-            if(currentMoles.Count <= (score / 10))
+            if(currentMoles.Count <= (difficultyLevel / 10))
             {
                 //Choose a random mole.
                 int index = Random.Range(0, moles.Count);
@@ -108,7 +152,7 @@ public class MoleGameManager : MonoBehaviour
                 {
                     // Doesn't matter if its already doing something, we'll just try again next frame
                     currentMoles.Add(moles[index]);
-                    moles[index].Activate(score / 1);
+                    moles[index].Activate(difficultyLevel / 10);
                 }
 
             }
