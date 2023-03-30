@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2497295282031882737}
-  - component: {fileID: 3460996413937231067}
+  - component: {fileID: 7407656146592301010}
   m_Layer: 0
   m_Name: StrawberrySpawn
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3460996413937231067
+--- !u!114 &7407656146592301010
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,4 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9481d468a9f73448b96d897e1aaf698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  strawberry_prefab: {fileID: 3389419005248863815, guid: 9c59f3eb35cb65d4ea6868d75ad205a2, type: 3}
+  berryPrefab: {fileID: 3389419005248863815, guid: 9c59f3eb35cb65d4ea6868d75ad205a2, type: 3}
+  hasBerry: 0

@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3815548701685946618}
+  - component: {fileID: 7340331717343506630}
   m_Layer: 0
   m_Name: BlueberrySpawn
   m_TagString: Untagged
@@ -31,3 +32,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7340331717343506630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3815548701685946619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9481d468a9f73448b96d897e1aaf698, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  berryPrefab: {fileID: 7463643815155332548, guid: 51a5e26d1e2c3a746b2e03b83a65785d, type: 3}
+  hasBerry: 0

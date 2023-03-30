@@ -4,6 +4,8 @@ using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
 using System.Linq;
+using UnityEditor;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 public class BerryManager : MonoBehaviour
 {
@@ -13,8 +15,15 @@ public class BerryManager : MonoBehaviour
     private bool gameOn = true;
     public int difficulty; // 3 difficulties
 
-    public static bool[ ] isBerrySpawned = {false, false, false, false, false, false, false, false, false, false, false, false};   
-    
+    //public static bool[ ] isBerrySpawned = {false, false, false, false, false, false, false, false, false, false, false, false};   
+
+    public Dictionary<int, bool> isBerrySpawned;
+
+    public static int howManyStrawberries;
+    public static int howManyBlueberries;
+    public static int howManyRaspberries;
+    public static int howManyCowberries;
+
 
     public TMP_Text endgame_txt;
     public static int endGame = 0;
@@ -25,13 +34,22 @@ public class BerryManager : MonoBehaviour
     public static int blueberryCount = 0;
     public int blueberryLimit = 2;
 
-  
+    public static int raspberryCount = 0;
+    public int raspberryLimit = 2;
+
+    public static int cowberryCount = 0;
+    public int cowberryLimit = 2;
+
+
     private void Start()
     {
-        if (!isBerrySpawned.Contains(true))
+        isBerrySpawned = new Dictionary<int, bool>();
+
+        for (int i = 0; i < 12; i++)
         {
-            Debug.Log("TOTTA TOSIAAN");
+            isBerrySpawned.Add(i, false);
         }
+
         StartCoroutine(SpawnBerries());
 
     }
@@ -63,7 +81,7 @@ public class BerryManager : MonoBehaviour
 
     public IEnumerator SpawnBerries()
     {
-        // tähän tehään vaikeustason valinta
+        
         switch (difficulty)
         {
             case 1:
@@ -83,32 +101,28 @@ public class BerryManager : MonoBehaviour
         
         int random_blueberry = Random.Range(3, 6);
 
-        
+        int howManyStrawberries = Random.Range(1, 5);
 
-        int i = 0;
-        
-        while (i < 7)
+        for (int i = 0; i < howManyStrawberries; i++)
         {
             int random_strawberry = Random.Range(0, 3);
 
             if (strawberryCount < strawberryLimit && isBerrySpawned[random_strawberry] == false)
             {
-                berrySpawnerList[random_strawberry].GetComponent<SpawnStrawberry>().SpawnOneStrawberry();
+                berrySpawnerList[random_strawberry].GetComponent<SpawnBerry>().SpawnOneBerry();
                 isBerrySpawned[random_strawberry] = true;
+                //isBerrySpawned.Add(random_strawberry, true);
             }
 
-            i++;
+            yield return new WaitForSeconds(spawnRate);
         }
-        
-        if (blueberryCount >= blueberryLimit)
+
+        if (howManyStrawberries <= 0)
         {
-            
+
         }
-
-
-        yield return new WaitForSeconds(spawnRate);
-        
 
     }
+
 
 }
