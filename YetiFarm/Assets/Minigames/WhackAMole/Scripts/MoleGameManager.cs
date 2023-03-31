@@ -6,7 +6,7 @@ public class MoleGameManager : MonoBehaviour
 {
     [SerializeField] private List<Mole> moles;
 
-    [SerializeField] private List<GameObject> holes;
+   // [SerializeField] private List<GameObject> holes;
 
     [Header("UI objects")]
     [SerializeField] private GameObject playButton;
@@ -67,21 +67,25 @@ public class MoleGameManager : MonoBehaviour
         {
             difficultyLevel = 90 /2;
         }
-        Debug.Log(molesInGame);
+        //  Debug.Log(molesInGame);
         //Change amount of moles in game
         if (molesInGame == 1)
         {
-            for (int i = 0; i <= 4; i++)
+            for (int i = 0; i <= 5; i++)
             {
-                moles[i].Hide();
-                currentMoles.Remove(moles[i]);
-                moles.Remove(moles[i]);
-             //   holes[i].SetActive(false);
-                Debug.Log(moles.Count + " " + i);
+                moles[0].Hide();
+                moles.Remove(moles[0]);
             }
-            currentMoles.Clear();
-
         }
+        if (molesInGame == 2)
+        {
+            for (int i = 0; i <= 2; i++)
+            {
+                moles[0].Hide();
+                moles.Remove(moles[0]);
+            }
+        }
+        
 
         //Setting startingcanvas to false and time and scoretextobjects to true.
         scoreHeader.SetActive(true);
@@ -95,12 +99,14 @@ public class MoleGameManager : MonoBehaviour
         bombText.SetActive(false);
         gameUI.SetActive(true);
         //Hide all the visible moles.
+
         for(int i = 0; i < moles.Count; i++)
         {
             moles[i].Hide();
             moles[i].SetIndex(i);
         }
         
+
         currentMoles.Clear();
         timeRemaining = startingTime;
         score = 0;
