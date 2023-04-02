@@ -197,7 +197,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6756061735818782341}
   - {fileID: 6756061737855236724}
@@ -237,7 +237,9 @@ MonoBehaviour:
   primaryColorRenderer: {fileID: 6756061736084081674}
   patternRenderer: {fileID: 6756061737855236725}
   isDragged: 0
+  returned: 1
   chosenFish: 0
+  speed: 0.122
 --- !u!58 &3775051801287044438
 CircleCollider2D:
   m_ObjectHideFlags: 0

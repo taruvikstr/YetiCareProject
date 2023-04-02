@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class Fish_PlayerBowls : MonoBehaviour
+public class Fish_PlayerBuckets : MonoBehaviour
 {
     public int fishAmount = 0;
     public TMP_Text amountTxt;
@@ -52,6 +52,7 @@ public class Fish_PlayerBowls : MonoBehaviour
             {
                 IncreaseFishAmount();
                 fish_GameManager.fishInstances.Remove(fish);
+                fishController.enabled = false;
                 Destroy(collision.gameObject, 0.1f);
                 
             }

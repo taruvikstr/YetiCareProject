@@ -30,7 +30,7 @@ public class FishUIController : MonoBehaviour
             if (bucket.gameObject.activeSelf)
             {
                 placementImage[index].sprite = bucket.GetComponent<SpriteRenderer>().sprite;
-                scoreTXT[index].text = "Score: " + bucket.GetComponent<Fish_PlayerBowls>().fishAmount.ToString();
+                scoreTXT[index].text = "Score: " + bucket.GetComponent<Fish_PlayerBuckets>().fishAmount.ToString();
             }
             else placements[index].SetActive(false);
 
