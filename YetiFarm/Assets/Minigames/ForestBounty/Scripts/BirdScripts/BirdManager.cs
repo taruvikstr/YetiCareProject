@@ -74,7 +74,11 @@ public class BirdManager : MonoBehaviour
     public IEnumerator Move()
     {
         toBerry = berryPositions[randomIndex].position;
+        bool arrived = false;
+        float distance;
 
+        //while (!arrived)
+        //{
         if (berryGrabbed == true || transform.position.Equals(toBerry))
         {
             if (transform.position.x < screenWidth / 2)
@@ -91,14 +95,27 @@ public class BirdManager : MonoBehaviour
 
             transform.position = Vector2.MoveTowards(transform.position, awayFromBerry, movementSpeed * Time.deltaTime);
 
-            yield return new WaitForSeconds(4f);
+            //distance = Vector3.Distance(awayFromBerry, transform.position);
+            //if (distance == 0)
+            //{
+            //    arrived = true;
+            //}
 
+            //yield return null;
+            yield return new WaitForSeconds(4f);
             Destroy(gameObject);
         }
         else
         {
             transform.position = Vector2.MoveTowards(transform.position, toBerry, movementSpeed * Time.deltaTime);
         }
+
+            //if (arrived)
+            //{
+            //    Destroy(gameObject);
+            //}
+        //}
+        
 
     }
 
