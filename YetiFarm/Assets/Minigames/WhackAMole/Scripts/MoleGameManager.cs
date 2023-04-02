@@ -6,7 +6,7 @@ public class MoleGameManager : MonoBehaviour
 {
     [SerializeField] private List<Mole> moles;
 
-   // [SerializeField] private List<GameObject> holes;
+    [SerializeField] private List<GameObject> holes;
 
     [Header("UI objects")]
     [SerializeField] private GameObject playButton;
