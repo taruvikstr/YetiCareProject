@@ -8,9 +8,9 @@ public class SpawnBerry : MonoBehaviour
     public bool hasBerry = false;
 
     public void SpawnOneBerry()
-    {
-        Debug.Log("MANSIKKKAA");
-        Instantiate(berryPrefab, transform.position, transform.rotation);
+    {        
+        GameObject newberry = Instantiate(berryPrefab, transform.position, transform.rotation);
+        newberry.GetComponent<BerryCheck>().spawnOrigin = gameObject;
         hasBerry = true;
     }
 
