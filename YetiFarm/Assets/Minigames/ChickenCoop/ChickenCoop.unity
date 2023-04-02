@@ -876,6 +876,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chicken_White (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8187252534071727776, guid: a7c9fe677c0275f40a052b5318016532, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8187252534071727776, guid: a7c9fe677c0275f40a052b5318016532, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1625320921
+      objectReference: {fileID: 0}
+    - target: {fileID: 9162974319537182931, guid: a7c9fe677c0275f40a052b5318016532, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9162974319537182931, guid: a7c9fe677c0275f40a052b5318016532, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1625320921
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7c9fe677c0275f40a052b5318016532, type: 3}
 --- !u!1 &283059736 stripped
@@ -1184,6 +1200,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chicken_White
       objectReference: {fileID: 0}
+    - target: {fileID: 8187252534071727776, guid: a7c9fe677c0275f40a052b5318016532, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8187252534071727776, guid: a7c9fe677c0275f40a052b5318016532, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1625320921
+      objectReference: {fileID: 0}
+    - target: {fileID: 9162974319537182931, guid: a7c9fe677c0275f40a052b5318016532, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9162974319537182931, guid: a7c9fe677c0275f40a052b5318016532, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1625320921
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7c9fe677c0275f40a052b5318016532, type: 3}
 --- !u!1 &388319258 stripped
@@ -1491,6 +1523,22 @@ PrefabInstance:
     - target: {fileID: 4884938199894920591, guid: a7c9fe677c0275f40a052b5318016532, type: 3}
       propertyPath: m_Name
       value: Chicken_White (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8187252534071727776, guid: a7c9fe677c0275f40a052b5318016532, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8187252534071727776, guid: a7c9fe677c0275f40a052b5318016532, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1625320921
+      objectReference: {fileID: 0}
+    - target: {fileID: 9162974319537182931, guid: a7c9fe677c0275f40a052b5318016532, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9162974319537182931, guid: a7c9fe677c0275f40a052b5318016532, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1625320921
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7c9fe677c0275f40a052b5318016532, type: 3}
@@ -1813,8 +1861,8 @@ RectTransform:
   m_Father: {fileID: 1539141648}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1866,6 +1914,22 @@ PrefabInstance:
     - target: {fileID: 608022242423462004, guid: a79797c417fd13049bd8ad56c051b09b, type: 3}
       propertyPath: m_Name
       value: Chicken_DarkBrown (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1520043458873971106, guid: a79797c417fd13049bd8ad56c051b09b, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1520043458873971106, guid: a79797c417fd13049bd8ad56c051b09b, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1625320921
+      objectReference: {fileID: 0}
+    - target: {fileID: 5203811126616293219, guid: a79797c417fd13049bd8ad56c051b09b, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5203811126616293219, guid: a79797c417fd13049bd8ad56c051b09b, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1625320921
       objectReference: {fileID: 0}
     - target: {fileID: 8559471952602411869, guid: a79797c417fd13049bd8ad56c051b09b, type: 3}
       propertyPath: m_RootOrder
@@ -2468,8 +2532,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -753372367
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8a49ac32c69c3c544b21b331a7278c1e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2516,7 +2580,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2803,7 +2867,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2855,6 +2919,22 @@ PrefabInstance:
     - target: {fileID: 608022242423462004, guid: a79797c417fd13049bd8ad56c051b09b, type: 3}
       propertyPath: m_Name
       value: Chicken_DarkBrown (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1520043458873971106, guid: a79797c417fd13049bd8ad56c051b09b, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1520043458873971106, guid: a79797c417fd13049bd8ad56c051b09b, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1625320921
+      objectReference: {fileID: 0}
+    - target: {fileID: 5203811126616293219, guid: a79797c417fd13049bd8ad56c051b09b, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5203811126616293219, guid: a79797c417fd13049bd8ad56c051b09b, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1625320921
       objectReference: {fileID: 0}
     - target: {fileID: 8559471952602411869, guid: a79797c417fd13049bd8ad56c051b09b, type: 3}
       propertyPath: m_RootOrder
@@ -3962,7 +4042,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4336,8 +4416,8 @@ RectTransform:
   m_Father: {fileID: 1626156795}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4434,6 +4514,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chicken_White (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8187252534071727776, guid: a7c9fe677c0275f40a052b5318016532, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8187252534071727776, guid: a7c9fe677c0275f40a052b5318016532, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1625320921
+      objectReference: {fileID: 0}
+    - target: {fileID: 9162974319537182931, guid: a7c9fe677c0275f40a052b5318016532, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9162974319537182931, guid: a7c9fe677c0275f40a052b5318016532, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1625320921
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7c9fe677c0275f40a052b5318016532, type: 3}
 --- !u!1 &1370658644 stripped
@@ -4451,6 +4547,14 @@ PrefabInstance:
     - target: {fileID: 5331984573565982364, guid: 4457833d4bc101f458caeb510922222a, type: 3}
       propertyPath: m_Name
       value: Chicken_LightBrown
+      objectReference: {fileID: 0}
+    - target: {fileID: 5604848987799024727, guid: 4457833d4bc101f458caeb510922222a, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5604848987799024727, guid: 4457833d4bc101f458caeb510922222a, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1625320921
       objectReference: {fileID: 0}
     - target: {fileID: 7046148738153387510, guid: 4457833d4bc101f458caeb510922222a, type: 3}
       propertyPath: m_RootOrder
@@ -4496,6 +4600,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7984658549200028922, guid: 4457833d4bc101f458caeb510922222a, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7984658549200028922, guid: 4457833d4bc101f458caeb510922222a, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1625320921
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4457833d4bc101f458caeb510922222a, type: 3}
 --- !u!1 &1380919275 stripped
@@ -4537,7 +4649,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4748,7 +4860,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5230,6 +5342,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 665334947388530255, guid: dad6a29741a28424eb4a11cae6a71b59, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 665334947388530255, guid: dad6a29741a28424eb4a11cae6a71b59, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1625320921
+      objectReference: {fileID: 0}
     - target: {fileID: 3992663042567643000, guid: dad6a29741a28424eb4a11cae6a71b59, type: 3}
       propertyPath: m_Name
       value: Chicken_Black (1)
@@ -5277,6 +5397,14 @@ PrefabInstance:
     - target: {fileID: 3992663042567643006, guid: dad6a29741a28424eb4a11cae6a71b59, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8836495509107870259, guid: dad6a29741a28424eb4a11cae6a71b59, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8836495509107870259, guid: dad6a29741a28424eb4a11cae6a71b59, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1625320921
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dad6a29741a28424eb4a11cae6a71b59, type: 3}
@@ -5682,6 +5810,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chicken_LightBrown (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5604848987799024727, guid: 4457833d4bc101f458caeb510922222a, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5604848987799024727, guid: 4457833d4bc101f458caeb510922222a, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1625320921
+      objectReference: {fileID: 0}
     - target: {fileID: 7046148738153387510, guid: 4457833d4bc101f458caeb510922222a, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -5725,6 +5861,14 @@ PrefabInstance:
     - target: {fileID: 7046148738153387510, guid: 4457833d4bc101f458caeb510922222a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7984658549200028922, guid: 4457833d4bc101f458caeb510922222a, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7984658549200028922, guid: 4457833d4bc101f458caeb510922222a, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1625320921
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4457833d4bc101f458caeb510922222a, type: 3}
@@ -5875,6 +6019,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 665334947388530255, guid: dad6a29741a28424eb4a11cae6a71b59, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 665334947388530255, guid: dad6a29741a28424eb4a11cae6a71b59, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1625320921
+      objectReference: {fileID: 0}
     - target: {fileID: 3992663042567643000, guid: dad6a29741a28424eb4a11cae6a71b59, type: 3}
       propertyPath: m_Name
       value: Chicken_Black
@@ -5922,6 +6074,14 @@ PrefabInstance:
     - target: {fileID: 3992663042567643006, guid: dad6a29741a28424eb4a11cae6a71b59, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8836495509107870259, guid: dad6a29741a28424eb4a11cae6a71b59, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8836495509107870259, guid: dad6a29741a28424eb4a11cae6a71b59, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1625320921
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dad6a29741a28424eb4a11cae6a71b59, type: 3}
@@ -6367,6 +6527,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chicken_DarkBrown
       objectReference: {fileID: 0}
+    - target: {fileID: 1520043458873971106, guid: a79797c417fd13049bd8ad56c051b09b, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1520043458873971106, guid: a79797c417fd13049bd8ad56c051b09b, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1625320921
+      objectReference: {fileID: 0}
+    - target: {fileID: 5203811126616293219, guid: a79797c417fd13049bd8ad56c051b09b, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5203811126616293219, guid: a79797c417fd13049bd8ad56c051b09b, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1625320921
+      objectReference: {fileID: 0}
     - target: {fileID: 8559471952602411869, guid: a79797c417fd13049bd8ad56c051b09b, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -6601,7 +6777,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6878,6 +7054,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chicken_LightBrown (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5604848987799024727, guid: 4457833d4bc101f458caeb510922222a, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5604848987799024727, guid: 4457833d4bc101f458caeb510922222a, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1625320921
+      objectReference: {fileID: 0}
     - target: {fileID: 7046148738153387510, guid: 4457833d4bc101f458caeb510922222a, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -6921,6 +7105,14 @@ PrefabInstance:
     - target: {fileID: 7046148738153387510, guid: 4457833d4bc101f458caeb510922222a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7984658549200028922, guid: 4457833d4bc101f458caeb510922222a, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7984658549200028922, guid: 4457833d4bc101f458caeb510922222a, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1625320921
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4457833d4bc101f458caeb510922222a, type: 3}
@@ -7211,7 +7403,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2112862250
 MonoBehaviour:
   m_ObjectHideFlags: 0
