@@ -7,18 +7,27 @@ public class BirdSpawnBehavior : MonoBehaviour
     public GameObject bird;
     public List<GameObject> birdSpawnPoints;
     private IEnumerator coroutine;
+    private float birdSpawnRate = 5f;
+    private int spawnPoint;
 
     void Start()
     {
         coroutine = DelayedBirdSpawn();
         StartCoroutine(coroutine);
+
+        spawnPoint = Random.Range(0, 2);
     }
 
 
     // TODO - PLACEHOLDER, CHANGE LATER
     public IEnumerator DelayedBirdSpawn()
     {
-        yield return new WaitForSeconds(3.0f);
-        Instantiate(bird, birdSpawnPoints[0].transform.position, birdSpawnPoints[0].transform.rotation);
+        while (BerryManager.gameOn)
+        {
+            Debug.Log("Spawn Bird");
+            yield return new WaitForSeconds(birdSpawnRate);
+            Instantiate(bird, birdSpawnPoints[spawnPoint].transform.position, birdSpawnPoints[spawnPoint].transform.rotation);
+        }
+        
     }
 }

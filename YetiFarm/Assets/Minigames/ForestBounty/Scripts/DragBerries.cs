@@ -7,7 +7,8 @@ public class DragBerries : MonoBehaviour
     private Transform dragging = null;
     private Vector3 offset;
     [SerializeField] private LayerMask movableLayers;
-    
+
+    //private GameObject berry;
 
     // Update is called once per frame
     void Update()
@@ -25,6 +26,7 @@ public class DragBerries : MonoBehaviour
 
                     if (hit)
                     {
+                        //berry = hit.transform.gameObject;
                         dragging = hit.transform;
                         offset = dragging.position - Camera.main.ScreenToWorldPoint(touch.position);
                     }
@@ -34,13 +36,17 @@ public class DragBerries : MonoBehaviour
                 case TouchPhase.Moved:
                     if (dragging)
                     {
+                        //berry.GetComponent<SpawnBerry>().hasBerry = false;
                         dragging.position = Camera.main.ScreenToWorldPoint(touch.position) + offset;
+                        //berry.hasBerry = false;
                     }
                     break;
 
                 case TouchPhase.Ended:
                     dragging = null;
                     break;
+
+
             }
         }
     }

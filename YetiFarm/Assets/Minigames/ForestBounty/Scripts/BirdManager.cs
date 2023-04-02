@@ -66,17 +66,16 @@ public class BirdManager : MonoBehaviour
     {
         if (!isMoving)
         {
-            Move();
+            StartCoroutine(Move());
         }
 
     }
 
-    void Move()
+    public IEnumerator Move()
     {
-
         toBerry = berryPositions[randomIndex].position;
 
-        if (berryGrabbed == true)
+        if (berryGrabbed == true || transform.position.Equals(toBerry))
         {
             if (transform.position.x < screenWidth / 2)
             {
@@ -91,15 +90,21 @@ public class BirdManager : MonoBehaviour
             }
 
             transform.position = Vector2.MoveTowards(transform.position, awayFromBerry, movementSpeed * Time.deltaTime);
+
+            yield return new WaitForSeconds(4f);
+
+            Destroy(gameObject);
         }
         else
         {
             transform.position = Vector2.MoveTowards(transform.position, toBerry, movementSpeed * Time.deltaTime);
-        }     
+        }
+
     }
 
     public void StealBerry()
     {
+        // when berry collider has been triggered, this function is called
         berryGrabbed = true;
         berryPositions[randomIndex].GetComponent<SpawnBerry>().hasBerry = false;
 

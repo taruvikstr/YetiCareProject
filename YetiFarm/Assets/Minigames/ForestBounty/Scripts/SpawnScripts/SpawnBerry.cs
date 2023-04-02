@@ -7,10 +7,13 @@ public class SpawnBerry : MonoBehaviour
     public GameObject berryPrefab;
     public bool hasBerry = false;
 
+    private static int berryCount = 0;
+
     public void SpawnOneBerry()
-    {
-        Debug.Log("MANSIKKKAA");
-        Instantiate(berryPrefab, transform.position, transform.rotation);
+    {        
+        GameObject newberry = Instantiate(berryPrefab, transform.position, transform.rotation);
+        newberry.GetComponent<BerryCheck>().spawnOrigin = gameObject;
+        //newberry.GetComponent<DragBerries>().berryID = berryCount++;
         hasBerry = true;
     }
 
