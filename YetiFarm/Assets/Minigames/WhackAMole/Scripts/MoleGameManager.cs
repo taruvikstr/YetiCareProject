@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 public class MoleGameManager : MonoBehaviour
 {
     [SerializeField] private List<Mole> moles;
@@ -21,6 +22,7 @@ public class MoleGameManager : MonoBehaviour
     [SerializeField] private GameObject scoreHeader;
     [SerializeField] private GameObject timeTextObject;
     [SerializeField] private GameObject timeheader;
+    [SerializeField] private GameObject exitButton;
 
     public GameObject buttonManager;
 
@@ -44,7 +46,12 @@ public class MoleGameManager : MonoBehaviour
         scoreTextObject.SetActive(false);
         timeTextObject.SetActive(false);
         timeheader.SetActive(false);
+        exitButton.SetActive(false);
         
+    }
+    public void SetMainMenu()
+    {
+        SceneManager.LoadScene(0);
     }
     //This is public so the play button can see it.
     public void StartGame()
@@ -135,6 +142,7 @@ public class MoleGameManager : MonoBehaviour
         //Stop the game and show the start UI.
         playing = false;
         playButton.SetActive(true);
+        exitButton.SetActive(true);
     }
     public void AddScore(int moleIndex)
     {
