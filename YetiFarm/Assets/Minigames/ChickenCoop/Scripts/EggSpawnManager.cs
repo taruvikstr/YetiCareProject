@@ -177,7 +177,7 @@ public class EggSpawnManager : MonoBehaviour
         {
             if (gameMode == 2) // Increase the spawnrate of eggs in endless mode.
             {
-                spawnRate -= 0.05f;
+                spawnRate -= 0.01f;
             }
             timeDelay1 = ((float) Random.Range(1, 10)) / 10;
             timeDelay2 = ((float) Random.Range(1, 10)) / 10;
