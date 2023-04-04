@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BirdManager : MonoBehaviour
@@ -15,6 +16,7 @@ public class BirdManager : MonoBehaviour
     private bool berryGrabbed = false;
     private float screenWidth;
     private int randomIndex;
+    private bool berryNotVisited = true;
 
 
     private void Awake()
@@ -68,19 +70,16 @@ public class BirdManager : MonoBehaviour
         {
             StartCoroutine(Move());
         }
-
+        
     }
 
     public IEnumerator Move()
     {
         toBerry = berryPositions[randomIndex].position;
-        bool arrived = false;
-        float distance;
 
-        //while (!arrived)
-        //{
-        if (berryGrabbed == true || transform.position.Equals(toBerry))
+        if (berryGrabbed == true)
         {
+            // move bird away with the berry 
             if (transform.position.x < screenWidth / 2)
             {
                 // left side of the screen
@@ -95,27 +94,35 @@ public class BirdManager : MonoBehaviour
 
             transform.position = Vector2.MoveTowards(transform.position, awayFromBerry, movementSpeed * Time.deltaTime);
 
-            //distance = Vector3.Distance(awayFromBerry, transform.position);
-            //if (distance == 0)
-            //{
-            //    arrived = true;
-            //}
-
-            //yield return null;
-            yield return new WaitForSeconds(4f);
-            Destroy(gameObject);
+            if ((transform.position.Equals(birdPositions[0].position) || transform.position.Equals(birdPositions[1].position)))
+            {
+                Destroy(gameObject);
+            }
+            yield return null;
+            
         }
-        else
+        else if (berryNotVisited == false)
         {
-            transform.position = Vector2.MoveTowards(transform.position, toBerry, movementSpeed * Time.deltaTime);
-        }
+            // move away from berry when berry not found
+            transform.position = Vector2.MoveTowards(transform.position, birdPositions[1].position, movementSpeed * Time.deltaTime);
+            
+            if (transform.position.Equals(birdPositions[1].position))
+            {
+                Destroy(gameObject);
+            }
 
-            //if (arrived)
-            //{
-            //    Destroy(gameObject);
-            //}
-        //}
-        
+        }
+        else if (berryNotVisited)
+        {
+            // move bird to berry
+            transform.position = Vector2.MoveTowards(transform.position, toBerry, movementSpeed * Time.deltaTime);
+
+            if (transform.position.Equals(toBerry))
+            {
+                berryNotVisited = false;
+            }
+            
+        }
 
     }
 
