@@ -20,6 +20,7 @@ public class ButtonManagerScript : MonoBehaviour
     private int gameSpeedValue;
     private int gameModeValue;
     private int desiredScoreValue;
+    public TextMeshProUGUI amountSliderNumText;
 
     private void Awake() // Set values to defaults. Remember to set sliders to these values as well.
     {
@@ -54,6 +55,7 @@ public class ButtonManagerScript : MonoBehaviour
     public void UpdateDesiredScore(Slider slider)
     {
         desiredScoreValue = (int)slider.value * 10;
+        amountSliderNumText.text = desiredScoreValue.ToString();
     }
 
 
