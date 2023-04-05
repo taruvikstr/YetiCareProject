@@ -19,9 +19,9 @@ public class BerryBucket : MonoBehaviour
         counter = Random.Range(1, 5); 
         txt.text = counter.ToString();
 
+        // How many berries bird has to steal for winning
         birdScoreCounter = 5;
         birdScore.text = birdScoreCounter.ToString();
-        //berriesCollected = false;
 
     }
     private void Update()
@@ -119,16 +119,4 @@ public class BerryBucket : MonoBehaviour
 
         }
     }
-
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if ((collision.gameObject.name.StartsWith("Strawberry") || collision.gameObject.name.StartsWith("Blueberry") ||
-    //        collision.gameObject.name.StartsWith("Raspberry") || collision.gameObject.name.StartsWith("Cowberry")) &&
-    //        bucketType == "BirdNest")
-    //    {
-    //        //gameObject.GetComponent<BoxCollider2D>().enabled = false;
-    //        Debug.Log("Lintu toi marjan pes‰‰n");
-    //        birdScoreCounter--;
-    //    }
-    //}
 }

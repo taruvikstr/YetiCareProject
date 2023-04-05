@@ -24,7 +24,7 @@ public class BerryManager : MonoBehaviour
     public static int cowberryCount = 0;
     public int berryLimit = 2; 
 
-    public GameObject startBird;
+    public GameObject birdSpawn;
 
 
     private void Awake()
@@ -42,8 +42,7 @@ public class BerryManager : MonoBehaviour
     private void Start()
     {
         missingBerries = new List<int>();
-        //StartSpawn();
-        
+        //StartSpawn();      
     }
 
     private void Update()
@@ -57,8 +56,8 @@ public class BerryManager : MonoBehaviour
         if(BerryBucket.birdScoreCounter == 0)
         {
             endgame_txt.text = "hävisit linnulle";
-            StopAllCoroutines();
             gameOn = false;
+            StopAllCoroutines();        
         }
         if (endGame == 4 && endgame_txt != null)
         {
@@ -68,8 +67,6 @@ public class BerryManager : MonoBehaviour
             gameOn = false;
         }
     }
-
-    
 
     public IEnumerator SpawnBerries()
     {
@@ -89,8 +86,6 @@ public class BerryManager : MonoBehaviour
         //        // two birds ? or just a faster one ?
         //        break;
         //}
-
-
         int missingBerry;
         bool checkBerryMissing;
 
@@ -118,8 +113,6 @@ public class BerryManager : MonoBehaviour
             //    missingBerries.RemoveAt(index);
             //    yield return new WaitForSeconds(spawnRate);
             //}
-
-
         }
         
     }
@@ -163,13 +156,15 @@ public class BerryManager : MonoBehaviour
             blueberryCount = 3;
             raspberryCount = 3;
             cowberryCount = 3;
-
         }
 
         gameOn = true;
         StartCoroutine(SpawnBerries());
-        startBird = GameObject.Find("BirdSpawn");
-        startBird.GetComponent<BirdSpawnBehavior>().BirdSpawnStarter();
+
+        // Starts bird 
+        birdSpawn = GameObject.Find("BirdSpawn");
+        birdSpawn.GetComponent<BirdSpawnBehavior>().BirdSpawnStarter();
+
         //StartCoroutine(HandleMissingBerries());
     }
 }
