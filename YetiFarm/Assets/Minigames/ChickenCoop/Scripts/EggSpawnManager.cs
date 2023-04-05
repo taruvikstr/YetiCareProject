@@ -5,6 +5,9 @@ using UnityEngine;
 public class EggSpawnManager : MonoBehaviour
 {
     public GameObject buttonManager;
+    public GameObject middleBoundary;
+    public GameObject leftBoundary;
+    public GameObject rightBoundary;
     public List<GameObject> eggSpawnerList;
     public int score; // Counts how many eggs have been collected.
     public int difficulty; // Defines how difficult the game is.
@@ -15,6 +18,7 @@ public class EggSpawnManager : MonoBehaviour
     public int desiredScore; // The score that the player is trying to achieve.
     private int failedEggs; // The amount of eggs that missed the baskets and broke on the ground.
     private IEnumerator coroutine; // The coroutine that handles spawning egg waves.
+    
 
     public GameObject basketPrefab;
     public List<GameObject> basketSpawnerList;
@@ -37,6 +41,10 @@ public class EggSpawnManager : MonoBehaviour
         {
             GameObject basket = Instantiate(basketPrefab, basketSpawnerList[1].transform.position, basketSpawnerList[1].transform.rotation);
             basket.gameObject.name = "Basket1";
+
+            middleBoundary.SetActive(false);
+            leftBoundary.SetActive(false);
+            rightBoundary.SetActive(false);
         }
         if (basketAmount == 2)
         {
@@ -45,6 +53,10 @@ public class EggSpawnManager : MonoBehaviour
 
             GameObject basket2 = Instantiate(basketPrefab, basketSpawnerList[2].transform.position, basketSpawnerList[2].transform.rotation);
             basket2.gameObject.name = "Basket2Right";
+
+            middleBoundary.SetActive(true);
+            leftBoundary.SetActive(false);
+            rightBoundary.SetActive(false);
         }
         if (basketAmount == 3)
         {
@@ -56,6 +68,10 @@ public class EggSpawnManager : MonoBehaviour
 
             GameObject basket3 = Instantiate(basketPrefab, basketSpawnerList[2].transform.position, basketSpawnerList[2].transform.rotation);
             basket3.gameObject.name = "Basket3Right";
+
+            middleBoundary.SetActive(false);
+            leftBoundary.SetActive(true);
+            rightBoundary.SetActive(true);
         }
 
         if (game_mode == 1)
@@ -177,7 +193,7 @@ public class EggSpawnManager : MonoBehaviour
         {
             if (gameMode == 2) // Increase the spawnrate of eggs in endless mode.
             {
-                spawnRate -= 0.05f;
+                spawnRate -= 0.01f;
             }
             timeDelay1 = ((float) Random.Range(1, 10)) / 10;
             timeDelay2 = ((float) Random.Range(1, 10)) / 10;
@@ -189,9 +205,19 @@ public class EggSpawnManager : MonoBehaviour
             }
 
             // Randomize the laying order of chickens depending on the amount of baskets.
-            if (basketAmount == 1)
+            if (basketAmount == 1 && difficulty == 3)
             {
-                r1 = Random.Range(0, 12);
+                r1 = Random.Range(1, 11);
+                eggSpawnerList[r1].GetComponent<SpawnEgg>().SpawnSingleEgg();
+            }
+            else if (basketAmount == 1 && difficulty == 2)
+            {
+                r1 = Random.Range(2, 10);
+                eggSpawnerList[r1].GetComponent<SpawnEgg>().SpawnSingleEgg();
+            }
+            else if (basketAmount == 1 && difficulty == 1)
+            {
+                r1 = Random.Range(3, 9);
                 eggSpawnerList[r1].GetComponent<SpawnEgg>().SpawnSingleEgg();
             }
             else if (basketAmount == 2)

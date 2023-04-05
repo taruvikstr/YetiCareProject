@@ -31,7 +31,6 @@ public class BerryBucket : MonoBehaviour
                 Destroy(collision.gameObject);
                 BerryManager.strawberryCount--;
                 txt.text = counter.ToString();
-                //BerryManager.howManyStrawberries--;
                 Debug.Log("strawberryCount =" + BerryManager.strawberryCount);
             }
             else 
@@ -53,7 +52,6 @@ public class BerryBucket : MonoBehaviour
                 Destroy(collision.gameObject);
                 BerryManager.blueberryCount--;
                 txt.text = counter.ToString();
-                //BerryManager.howManyBlueberries--;
                 Debug.Log("blueberryCount =" + BerryManager.blueberryCount);
             }
             else
@@ -76,7 +74,6 @@ public class BerryBucket : MonoBehaviour
                 Destroy(collision.gameObject);
                 BerryManager.raspberryCount--;
                 txt.text = counter.ToString();
-                //BerryManager.howManyRaspberries--;
                 Debug.Log("raspberryCount =" + BerryManager.raspberryCount);
             }
             else
@@ -99,7 +96,6 @@ public class BerryBucket : MonoBehaviour
                 Destroy(collision.gameObject);
                 BerryManager.cowberryCount--;
                 txt.text = counter.ToString();
-                //BerryManager.howManyCowberries--;
                 Debug.Log("cowberryCount =" + BerryManager.cowberryCount);
             }
             else

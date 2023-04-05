@@ -28,9 +28,9 @@ public class SpawnEgg : MonoBehaviour
     {
         idle.enabled = false;
         laying.enabled = true;
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.5f);
         Instantiate(egg, transform.position, transform.rotation); // Spawn an egg.
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.5f);
         laying.enabled = false;
         idle.enabled = true;
     }

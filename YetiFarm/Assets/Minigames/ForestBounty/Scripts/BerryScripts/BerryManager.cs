@@ -9,26 +9,20 @@ using UnityEditor;
 public class BerryManager : MonoBehaviour
 {
 
-    public Transform[] berrySpawnerList;
-    private float spawnRate = 0.5f;
-    public static bool gameOn = false;
+    public Transform[] berrySpawnerList; // list of berry spawnpoints in scene
+    private float spawnRate = 0.5f; // berry spawn rate
+    public static bool gameOn = false; // while player is picking berries, the game is on 
     public int difficulty; // 3 difficulties
-
-    //public static int howManyStrawberries;
-    //public static int howManyBlueberries;
-    //public static int howManyRaspberries;
-    //public static int howManyCowberries;
-
     private List<int> missingBerries;
 
     public TMP_Text endgame_txt;
-    public static int endGame = 0;
+    public static int endGame = 0; // when endgame == 4, game ends
     
     public static int strawberryCount = 0;
     public static int blueberryCount = 0;
     public static int raspberryCount = 0;
     public static int cowberryCount = 0;
-    public int berryLimit = 2;
+    public int berryLimit = 2; 
 
 
     private void Awake()
@@ -146,7 +140,15 @@ public class BerryManager : MonoBehaviour
 
     void StartSpawn()
     {
-        for(int i = 0; i < 12; i++)
+        //switch (difficulty)
+        //{
+        //    case 0:
+                
+        //        break;
+            
+        //}
+
+        for (int i = 0; i < 12; i++)
         {
             berrySpawnerList[i].GetComponent<SpawnBerry>().SpawnOneBerry();
             strawberryCount = 3;
