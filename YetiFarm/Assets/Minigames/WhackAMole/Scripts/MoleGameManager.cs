@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+
 public class MoleGameManager : MonoBehaviour
 {
     [SerializeField] private List<Mole> moles;
@@ -51,7 +52,7 @@ public class MoleGameManager : MonoBehaviour
     }
     public void SetMainMenu()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(2);
     }
     //This is public so the play button can see it.
     public void StartGame()
@@ -64,15 +65,15 @@ public class MoleGameManager : MonoBehaviour
         //Changin difficulty for molegame
         if (difficultyLevel == 1)
         {
-            difficultyLevel = 10 /2;
+            difficultyLevel = 10;
         }
         else if(difficultyLevel == 2)
         {
-            difficultyLevel = 50 /2;
+            difficultyLevel = 20;
         }
         else
         {
-            difficultyLevel = 90 /2;
+            difficultyLevel = 30;
         }
         //  Debug.Log(molesInGame);
         //Change amount of moles in game
