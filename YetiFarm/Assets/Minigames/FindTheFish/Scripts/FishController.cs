@@ -61,7 +61,11 @@ public class FishController : MonoBehaviour
     {
         primaryColor = primaryColor.OrderBy(i => Guid.NewGuid()).ToList();
         secondaryColor = secondaryColor.OrderBy(i => Guid.NewGuid()).ToList();
-        pattern = pattern.OrderBy(i => Guid.NewGuid()).ToList();
+        int random = UnityEngine.Random.Range(0, gameManager.patternAmount);
+
+        Sprite randomPattern = pattern[random];
+        pattern.RemoveAt(random);
+        pattern.Insert(0, randomPattern);
     }
 
     private void RefreshFish()
