@@ -15,11 +15,13 @@ public class ButtonManagerForestBounty : MonoBehaviour
     public TextMeshProUGUI scoreText4;
     public TextMeshProUGUI feedbackText;
     public GameObject gameStarter; // The object that has the script and function for starting the game based on given parameters.
-    private int difficultyValue;
-    private int playerAmountValue;
-    private int gameSpeedValue;
-    private int gameModeValue;
-    private int desiredScoreValue;
+    //private int difficultyValue;
+    //private int playerAmountValue;
+    //private int gameSpeedValue;
+    //private int gameModeValue;
+    //private int desiredScoreValue;
+
+    public ToggleGroup berryAmountGroup;
 
     private void Awake() // Set values to defaults. Remember to set sliders to these values as well.
     {
@@ -33,12 +35,17 @@ public class ButtonManagerForestBounty : MonoBehaviour
 
     public void UpdateDifficulty(Slider slider)
     {
-        //difficultyValue = (int)slider.value;
+        
     }
 
-    public void UpdatePlayerAmount(Slider slider)
+    // Uses toggle group, where player decides the amount of berries
+    public void UpdateBerryAmount(int i)
     {
-        //playerAmountValue = (int)slider.value;
+        switch(berryAmountGroup)
+        {
+           
+
+        }
     }
 
     public void UpdateGameSpeed(Slider slider)
@@ -64,8 +71,9 @@ public class ButtonManagerForestBounty : MonoBehaviour
 
     public void ActivateGame()
     {
-        //startScreen.SetActive(false); // Disable and hide the starting screen.
-        //gameStarter.GetComponent<EggSpawnManager>().StartEggSpawns(difficultyValue, desiredScoreValue, gameModeValue, playerAmountValue);
+        startScreen.SetActive(false); // Disable and hide the starting screen.
+        gameStarter.GetComponent<BerryManager>().StartSpawn();
+            //(difficultyValue, desiredScoreValue, gameModeValue, playerAmountValue);
     }
 
     public void ActivateGameOverScreen(int score_points, int failed_things, int game_mode)

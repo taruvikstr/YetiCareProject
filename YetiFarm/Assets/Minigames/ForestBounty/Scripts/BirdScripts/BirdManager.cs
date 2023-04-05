@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using TMPro;
 
 public class BirdManager : MonoBehaviour
 {
@@ -17,6 +18,10 @@ public class BirdManager : MonoBehaviour
     private float screenWidth;
     private int randomIndex;
     private bool berryNotVisited = true;
+
+    //public TMP_Text birdScore;
+    //private int counter = 0;
+
 
 
     private void Awake()
@@ -51,6 +56,11 @@ public class BirdManager : MonoBehaviour
     {
         screenWidth = Screen.width;
 
+        // Set bird's goal
+        // TO DO: add for different difficulties
+        //counter = 10;
+        //birdScore.text = counter.ToString();
+
         while(true)
         {
             randomIndex = Random.Range(0, berryPositions.Count);
@@ -60,12 +70,15 @@ public class BirdManager : MonoBehaviour
             }
         }
 
+
+
         
     }
 
     // Update is called once per frame
     void Update()
     {
+       
         if (!isMoving)
         {
             StartCoroutine(Move());
@@ -131,8 +144,12 @@ public class BirdManager : MonoBehaviour
         // when berry collider has been triggered, this function is called
         berryGrabbed = true;
         berryPositions[randomIndex].GetComponent<SpawnBerry>().hasBerry = false;
+        BerryBucket.birdScoreCounter--;
+        
 
         // pistevähennyksiä? tai muita sanktioita? 
     }
+
+
 
 }

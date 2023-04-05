@@ -5,9 +5,11 @@ using TMPro;
 
 public class BerryBucket : MonoBehaviour
 {
-    int counter = 0; 
+    int counter = 0;
+    public static int birdScoreCounter = 0;
     public static bool berriesCollected;
     public TMP_Text txt;
+    public TMP_Text birdScore;
     public string bucketType;
 
 
@@ -16,8 +18,16 @@ public class BerryBucket : MonoBehaviour
     {
         counter = Random.Range(1, 5); 
         txt.text = counter.ToString();
+
+        birdScoreCounter = 5;
+        birdScore.text = birdScoreCounter.ToString();
         //berriesCollected = false;
 
+    }
+    private void Update()
+    {
+        // Update the counter everytime bird steals berry
+        birdScore.text = birdScoreCounter.ToString();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -109,4 +119,16 @@ public class BerryBucket : MonoBehaviour
 
         }
     }
+
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if ((collision.gameObject.name.StartsWith("Strawberry") || collision.gameObject.name.StartsWith("Blueberry") ||
+    //        collision.gameObject.name.StartsWith("Raspberry") || collision.gameObject.name.StartsWith("Cowberry")) &&
+    //        bucketType == "BirdNest")
+    //    {
+    //        //gameObject.GetComponent<BoxCollider2D>().enabled = false;
+    //        Debug.Log("Lintu toi marjan pes‰‰n");
+    //        birdScoreCounter--;
+    //    }
+    //}
 }

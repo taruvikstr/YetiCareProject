@@ -24,6 +24,8 @@ public class BerryManager : MonoBehaviour
     public static int cowberryCount = 0;
     public int berryLimit = 2; 
 
+    public GameObject startBird;
+
 
     private void Awake()
     {
@@ -40,8 +42,8 @@ public class BerryManager : MonoBehaviour
     private void Start()
     {
         missingBerries = new List<int>();
-        StartSpawn();
-
+        //StartSpawn();
+        
     }
 
     private void Update()
@@ -52,6 +54,12 @@ public class BerryManager : MonoBehaviour
     // End the game after gathering all needed berries
     void EndGame()
     {
+        if(BerryBucket.birdScoreCounter == 0)
+        {
+            endgame_txt.text = "hävisit linnulle";
+            StopAllCoroutines();
+            gameOn = false;
+        }
         if (endGame == 4 && endgame_txt != null)
         {
             endgame_txt.text = "voitit pelin";
@@ -138,7 +146,7 @@ public class BerryManager : MonoBehaviour
         
     //}
 
-    void StartSpawn()
+    public void StartSpawn()
     {
         //switch (difficulty)
         //{
@@ -160,6 +168,8 @@ public class BerryManager : MonoBehaviour
 
         gameOn = true;
         StartCoroutine(SpawnBerries());
+        startBird = GameObject.Find("BirdSpawn");
+        startBird.GetComponent<BirdSpawnBehavior>().BirdSpawnStarter();
         //StartCoroutine(HandleMissingBerries());
     }
 }
