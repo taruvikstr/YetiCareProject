@@ -38,9 +38,9 @@ public class Fish_GameManager : MonoBehaviour
             if (targetObject && targetObject.gameObject.CompareTag("Collectible"))
             {
                 StartCoroutine(ChangeFishSortingLayer("Dragged", targetObject.gameObject, 0f));
-                //Debug.Log("dragging " + targetObject.name);
                 selectedObject = targetObject.transform.gameObject;
                 selectedObject.GetComponent<FishController>().isDragged = true;
+                selectedObject.GetComponent<FishController>().StartBubbleParticles();
                 offset = selectedObject.transform.position - mousePosition;
             }
         }

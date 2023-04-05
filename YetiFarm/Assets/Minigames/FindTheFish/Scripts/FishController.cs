@@ -10,6 +10,8 @@ public class FishController : MonoBehaviour
     public List<Sprite> pattern = new List<Sprite>();
     public List<Color> primaryColor = new List<Color>();
     public List<Color> secondaryColor = new List<Color>();
+    
+    [SerializeField] private ParticleSystem bubbleParticle;
 
     [SerializeField] private SpriteRenderer primaryColorRenderer, patternRenderer;
 
@@ -47,9 +49,10 @@ public class FishController : MonoBehaviour
 
     private void Update()
     {
-        if (transform.position == spawnParent.transform.position)
+        if (transform.position == spawnParent.transform.position && !returned)
         {
             returned = true;
+            StopBubbleParticles();
         }
 
         if (!isDragged && returned) Movement();
@@ -109,5 +112,15 @@ public class FishController : MonoBehaviour
             flipped = false;
         }
 
+    }
+
+    public void StartBubbleParticles()
+    {
+        bubbleParticle.Play();
+    }
+
+    public void StopBubbleParticles()
+    {
+        bubbleParticle.Stop();
     }
 }
