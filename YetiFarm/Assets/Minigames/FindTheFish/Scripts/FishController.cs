@@ -18,9 +18,7 @@ public class FishController : MonoBehaviour
     private Fish_GameManager gameManager;
 
     public bool isDragged = false;
-
     public bool returned = true;
-
     public bool chosenFish = false;
 
     [SerializeField] private float speed;
