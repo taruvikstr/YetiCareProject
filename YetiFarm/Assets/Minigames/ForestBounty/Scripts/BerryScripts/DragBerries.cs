@@ -7,16 +7,42 @@ public class DragBerries : MonoBehaviour
     private Transform dragging = null;
     private Vector3 offset;
     [SerializeField] private LayerMask movableLayers;
+    //BerryCheck spawnBerry;
+    //BerryCheck[] berries;
+    //public List<bool> birdBerryCheck;
+
+    private void Awake()
+    {
+        //spawnBerry = GameObject.Find("BerryManager").GetComponent<SpawnBerry>();
+        //spawnBerry = GameObject.FindWithTag("Collectible").GetComponents<BerryCheck>();
+        //birdBerryCheck = new List<bool> { false, false, false, false, false, false, false, false, false, false, false, false};
+        //berries = spawnBerry.GetComponentsInChildren<BerryCheck>();
+
+    }
 
     // Update is called once per frame
     void Update()
     {
-        //if (dragging == null && BerryCheck.berryLayingAround)
+        // TO DO: katso mit‰ t‰ss‰ voisi tehd‰, kun pelaaja ottaa marjan ja linnulla on marja
+        // pelaajan marja j‰‰ paikalleen kunnes lintu ja linnun marja on tuhoutunut
+
+        // HUOM kun lintuu ottaa marjan, voiko marjan layerin/tagin muuttaa, jolloin pelaaja ei en‰‰ voi liikuttaa sit‰ tms.?
+
+
+        //for(int i = 0; i < berries.Length; i++ )
         //{
-        //    //  && BirdManager.berryGrabbed == false
-        //    // almost works, but the bird behaviour breaks if this is used like this. figure it out
-        //    MoveBerryBack();
+        //    if(berries[i].birdHasBerry == true)
+        //    {
+        //        birdBerryCheck[i] = true;
+        //    }
         //}
+
+        if (dragging == null && BerryCheck.berryLayingAround && BirdManager.berryCheck == false)
+        {
+                MoveBerryBack();
+            // almost works, but the bird behaviour breaks if this is used like this. figure it out
+            
+        }
 
         if (Input.touchCount > 0)
         {
@@ -47,6 +73,7 @@ public class DragBerries : MonoBehaviour
                 case TouchPhase.Ended:
                     dragging = null;
                     BerryCheck.berryLayingAround = true;
+                    
                     break;
 
             }
