@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 
+
 public class MoleGameManager : MonoBehaviour
 {
     [SerializeField] private List<Mole> moles;
@@ -24,6 +25,7 @@ public class MoleGameManager : MonoBehaviour
     [SerializeField] private GameObject timeTextObject;
     [SerializeField] private GameObject timeheader;
     [SerializeField] private GameObject exitButton;
+   // [SerializeField] private GameObject Explosion;
 
     public GameObject buttonManager;
 
@@ -35,7 +37,7 @@ public class MoleGameManager : MonoBehaviour
     private HashSet<Mole> currentMoles = new HashSet<Mole>();
     int score;
     private bool playing = false;
-
+    public ParticleSystem explosion; 
     int difficultyLevel;
     int molesInGame;
 
@@ -49,6 +51,8 @@ public class MoleGameManager : MonoBehaviour
         timeheader.SetActive(false);
         exitButton.SetActive(false);
         
+
+
     }
     public void SetMainMenu()
     {
@@ -122,6 +126,22 @@ public class MoleGameManager : MonoBehaviour
         playing = true;
 
     }
+    // If bomb is clicked explosion particle effect is triggered.
+    public void BombExplosion(Vector2 molepos)
+    {
+        
+        ParticleSystem newExplosion = Instantiate(explosion);
+        GameObject expGameObject = newExplosion.gameObject;
+        newExplosion.transform.position = molepos;
+        newExplosion.Play();
+        StartCoroutine(DeleteOldExplosion(expGameObject));
+    }
+    //Old particlesystem explosion gameobject is deleted from scene after 3 seconds.
+    IEnumerator DeleteOldExplosion(GameObject explosion)
+    {
+        yield return new WaitForSeconds(3);
+        Destroy(explosion);
+    }
     public void GameOver(int type)
     {
         //Show message
@@ -129,10 +149,10 @@ public class MoleGameManager : MonoBehaviour
         {
             outOfTimeText.SetActive(true);
         }
-        else
-        {
-            bombText.SetActive(true);
-        }
+        //else
+        //{
+        //    bombText.SetActive(true);
+        //}
 
         //Hide all moles
         foreach(Mole mole in moles)
@@ -163,6 +183,7 @@ public class MoleGameManager : MonoBehaviour
             //Decrease time by a little bit.
            // timeRemaining -= 2;
         }
+       
         currentMoles.Remove(moles[moleIndex]);
     }
 
