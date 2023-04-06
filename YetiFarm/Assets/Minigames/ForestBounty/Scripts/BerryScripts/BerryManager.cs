@@ -108,11 +108,11 @@ public class BerryManager : MonoBehaviour
                     Debug.Log("MARJA MISSING at " + missingBerry);
                     //missingBerries.Add(missingBerry); // add missing berry to list. not in use currently. 
                     berrySpawnerList[missingBerry].GetComponent<SpawnBerry>().SpawnOneBerry();
-                    //break;
+                    break;
                 }
 
-                yield return null;
-                //yield return new WaitForSeconds(spawnRate);
+                //yield return null;
+                yield return new WaitForSeconds(1f);
             }
 
             //foreach (int index in missingBerries)
@@ -125,20 +125,20 @@ public class BerryManager : MonoBehaviour
         
     }
 
-    public IEnumerator HandleMissingBerries()
-    {
-        while (gameOn && missingBerries != null)
-        {
-            yield return new WaitForSeconds(spawnRate);
-            // TÄSTÄ JATKA TOMORROW 
-        }
-    }
+    //public IEnumerator HandleMissingBerries()
+    //{
+    //    while (gameOn && missingBerries != null)
+    //    {
+    //        yield return new WaitForSeconds(spawnRate);
+    //        // TÄSTÄ JATKA TOMORROW 
+    //    }
+    //}
 
     //public IEnumerator HandleMissingBerries()
     //{
     //    while (gameOn && missingBerries != null)
     //    {
-    //        for(int i = 0; i < missingBerries.Count; i++)
+    //        for (int i = 0; i < missingBerries.Count; i++)
     //        {
     //            SpawnBerry spawnBerry = berrySpawnerList[missingBerries[i]].GetComponent<SpawnBerry>();
 
@@ -153,10 +153,10 @@ public class BerryManager : MonoBehaviour
     //        }
     //    }
 
-        
-    //}
 
-    public void StartSpawn(int difficulty)
+        //}
+
+        public void StartSpawn(int difficulty)
     {
         gameOn = true;
         switch (difficulty) // difficulty 1, 2 or 3. on default it's 2 

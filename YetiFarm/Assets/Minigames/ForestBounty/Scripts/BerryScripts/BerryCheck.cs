@@ -6,6 +6,7 @@ public class BerryCheck : MonoBehaviour
 {
     public GameObject spawnOrigin = null;
     public static bool berryLayingAround = false;
+    public bool birdHasBerry = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
