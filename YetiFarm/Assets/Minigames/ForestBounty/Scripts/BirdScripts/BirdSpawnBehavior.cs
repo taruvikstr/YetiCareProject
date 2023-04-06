@@ -7,7 +7,7 @@ public class BirdSpawnBehavior : MonoBehaviour
     public GameObject bird;
     public List<GameObject> birdSpawnPoints;
     private IEnumerator coroutine;
-    private float birdSpawnRate = 5f;
+    public float birdSpawnRate = 10f;
     private int spawnPoint;
 
     //void Start()
@@ -22,7 +22,6 @@ public class BirdSpawnBehavior : MonoBehaviour
     // TODO - PLACEHOLDER, CHANGE LATER
     public IEnumerator DelayedBirdSpawn()
     {
-
         while (BerryManager.gameOn == true)
         {
             Debug.Log("Spawn Bird");

@@ -13,14 +13,26 @@ public class BerryBucket : MonoBehaviour
     public string bucketType;
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        counter = Random.Range(1, 5); 
-        txt.text = counter.ToString();
+    //BerryManager berryManager;
 
-        // How many berries bird has to steal for winning
-        birdScoreCounter = 5;
+
+    // Start is called before the first frame update
+    public void StartBuckets()
+    {
+        switch (BerryManager.howManyberries) // aka difficulty
+        {
+            case 1:
+                counter = Random.Range(1, 5);
+                break;
+            case 2:
+                counter = Random.Range(4, 10);
+                break;
+            case 3:
+                counter = Random.Range(10, 20);
+                break;
+        }
+                
+        txt.text = counter.ToString();
         birdScore.text = birdScoreCounter.ToString();
 
     }

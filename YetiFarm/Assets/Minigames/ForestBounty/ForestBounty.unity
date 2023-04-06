@@ -970,7 +970,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 1, g: 0.30588236, b: 0.3137255, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 1, g: 0.30588233, b: 0.31234738, a: 1}
     m_SelectedColor: {r: 1, g: 0.4496979, b: 0.41176474, a: 1}
@@ -995,7 +995,19 @@ MonoBehaviour:
   m_Group: {fileID: 245492758}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 819114930}
+        m_TargetAssemblyTypeName: ButtonManagerForestBounty, Assembly-CSharp
+        m_MethodName: UpdateBerryAmount
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!1 &232968715
 GameObject:
@@ -1147,7 +1159,7 @@ RectTransform:
   - {fileID: 1687987193}
   - {fileID: 245492757}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1266,7 +1278,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 0.67058825, g: 1, b: 0.30588236, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 0.6692158, g: 1, b: 0.3066038, a: 1}
     m_SelectedColor: {r: 0.7738474, g: 1, b: 0.41037738, a: 1}
@@ -1291,7 +1303,19 @@ MonoBehaviour:
   m_Group: {fileID: 245492758}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 819114930}
+        m_TargetAssemblyTypeName: ButtonManagerForestBounty, Assembly-CSharp
+        m_MethodName: UpdateBerryAmount
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!1 &302714907
 GameObject:
@@ -2289,7 +2313,7 @@ RectTransform:
   m_Children:
   - {fileID: 1092786248}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3118,13 +3142,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startScreen: {fileID: 232968715}
   endScreen: {fileID: 1452095342}
-  scoreText1: {fileID: 0}
-  scoreText2: {fileID: 0}
-  scoreText3: {fileID: 0}
-  scoreText4: {fileID: 0}
-  feedbackText: {fileID: 0}
   gameStarter: {fileID: 1522777552}
   berryAmountGroup: {fileID: 245492758}
+  toggleLow: {fileID: 269358463}
+  toggleMedium: {fileID: 1508637957}
+  toggleHigh: {fileID: 223991086}
 --- !u!4 &819114931
 Transform:
   m_ObjectHideFlags: 0
@@ -3138,7 +3160,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &833737374
 GameObject:
@@ -4947,7 +4969,7 @@ Transform:
   - {fileID: 1693052696}
   - {fileID: 1246724092}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1406444116
 GameObject:
@@ -5533,7 +5555,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 1, g: 0.9882353, b: 0.30588236, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 1, g: 0.9870704, b: 0.30588233, a: 1}
     m_SelectedColor: {r: 1, g: 0.98264045, b: 0.41176474, a: 1}
@@ -5558,7 +5580,19 @@ MonoBehaviour:
   m_Group: {fileID: 245492758}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 819114930}
+        m_TargetAssemblyTypeName: ButtonManagerForestBounty, Assembly-CSharp
+        m_MethodName: UpdateBerryAmount
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!1 &1522777552
 GameObject:
@@ -5602,10 +5636,10 @@ MonoBehaviour:
   - {fileID: 549994247}
   - {fileID: 1693052696}
   - {fileID: 1246724092}
-  difficulty: 0
+  managerDifficulty: 0
   endgame_txt: {fileID: 863450206}
   berryLimit: 2
-  startBird: {fileID: 0}
+  birdSpawn: {fileID: 0}
 --- !u!4 &1522777554
 Transform:
   m_ObjectHideFlags: 0
@@ -5808,7 +5842,7 @@ Transform:
   - {fileID: 1489445204}
   - {fileID: 875788840}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1542130410
 MonoBehaviour:
@@ -5826,6 +5860,7 @@ MonoBehaviour:
   birdSpawnPoints:
   - {fileID: 1489445203}
   - {fileID: 875788839}
+  birdSpawnRate: 5
 --- !u!1001 &1608426477
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7185,7 +7220,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2003693886
 GameObject:

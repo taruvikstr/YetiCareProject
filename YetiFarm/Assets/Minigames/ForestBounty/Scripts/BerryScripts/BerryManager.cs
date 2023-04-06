@@ -12,11 +12,13 @@ public class BerryManager : MonoBehaviour
     public Transform[] berrySpawnerList; // list of berry spawnpoints in scene
     private float spawnRate = 0.5f; // berry spawn rate
     public static bool gameOn = false; // while player is picking berries, the game is on 
-    public int difficulty; // 3 difficulties
+    public int managerDifficulty; // 3 difficulties
     private List<int> missingBerries;
 
     public TMP_Text endgame_txt;
     public static int endGame = 0; // when endgame == 4, game ends
+
+    public static int howManyberries;
     
     public static int strawberryCount = 0;
     public static int blueberryCount = 0;
@@ -25,11 +27,15 @@ public class BerryManager : MonoBehaviour
     public int berryLimit = 2; 
 
     public GameObject birdSpawn;
+    public GameObject containers;
 
 
     private void Awake()
     {
         GameObject berrySpawnPointObject = GameObject.Find("SpawnPoints");
+        birdSpawn = GameObject.Find("BirdSpawn");
+        containers = GameObject.Find("Containers");
+
         if (berrySpawnPointObject == null)
         {
             Debug.Log("BERRY NOT FOUND");
@@ -53,7 +59,7 @@ public class BerryManager : MonoBehaviour
     // End the game after gathering all needed berries
     void EndGame()
     {
-        if(BerryBucket.birdScoreCounter == 0)
+        if(BerryBucket.birdScoreCounter == 0 && managerDifficulty != 1  && gameOn != false)
         {
             endgame_txt.text = "hävisit linnulle";
             gameOn = false;
@@ -91,7 +97,8 @@ public class BerryManager : MonoBehaviour
 
         while (gameOn)
         {
-            for (missingBerry = 0; missingBerry < berrySpawnerList.Length - 1; missingBerry++)
+            
+            for (missingBerry = 0; missingBerry < berrySpawnerList.Length ; missingBerry++)
             {
                 checkBerryMissing = berrySpawnerList[missingBerry].GetComponent<SpawnBerry>().hasBerry;
                 // true if berry is in the spawnpoint, else false
@@ -104,7 +111,8 @@ public class BerryManager : MonoBehaviour
                     //break;
                 }
 
-                yield return new WaitForSeconds(spawnRate);
+                yield return null;
+                //yield return new WaitForSeconds(spawnRate);
             }
 
             //foreach (int index in missingBerries)
@@ -115,6 +123,15 @@ public class BerryManager : MonoBehaviour
             //}
         }
         
+    }
+
+    public IEnumerator HandleMissingBerries()
+    {
+        while (gameOn && missingBerries != null)
+        {
+            yield return new WaitForSeconds(spawnRate);
+            // TÄSTÄ JATKA TOMORROW 
+        }
     }
 
     //public IEnumerator HandleMissingBerries()
@@ -139,31 +156,70 @@ public class BerryManager : MonoBehaviour
         
     //}
 
-    public void StartSpawn()
+    public void StartSpawn(int difficulty)
     {
-        //switch (difficulty)
-        //{
-        //    case 0:
-                
-        //        break;
-            
-        //}
+        gameOn = true;
+        switch (difficulty) // difficulty 1, 2 or 3. on default it's 2 
+        {
+            case 1:
+                // few berries to collect from player
+                // no bird
+                // easy peasy 
+                spawnRate = 1.5f;
+                howManyberries = 1;
+
+
+                Debug.Log("Easy Mode");
+
+                break;
+
+            case 2:
+                // medium difficulty
+                spawnRate = 4f;
+                Debug.Log("Medium mode");
+                howManyberries = 2;
+                BerryBucket.birdScoreCounter = 8;
+
+
+                birdSpawn.GetComponent<BirdSpawnBehavior>().BirdSpawnStarter(); // Starts bird 
+
+                break;
+
+            case 3:
+                // hardcore .... or as hardcore as it can be in a game like this. 
+                spawnRate = 6f;
+                Debug.Log("Hard mode");
+                howManyberries = 3;
+                BerryBucket.birdScoreCounter = 5;
+
+
+                birdSpawn.GetComponent<BirdSpawnBehavior>().birdSpawnRate = 5f;
+                birdSpawn.GetComponent<BirdSpawnBehavior>().BirdSpawnStarter(); // Starts bird 
+
+
+                break;
+        }
+
+        managerDifficulty = difficulty;
 
         for (int i = 0; i < 12; i++)
         {
-            berrySpawnerList[i].GetComponent<SpawnBerry>().SpawnOneBerry();
+            berrySpawnerList[i].GetComponent<SpawnBerry>().SpawnOneBerry(); // instansiate the first berries 
             strawberryCount = 3;
             blueberryCount = 3;
             raspberryCount = 3;
             cowberryCount = 3;
         }
 
-        gameOn = true;
+        
         StartCoroutine(SpawnBerries());
+        BerryBucket[] childContainers = containers.GetComponentsInChildren<BerryBucket>();
+        foreach (BerryBucket childContainer in childContainers)
+        {
+            childContainer.StartBuckets();
+        }
 
-        // Starts bird 
-        birdSpawn = GameObject.Find("BirdSpawn");
-        birdSpawn.GetComponent<BirdSpawnBehavior>().BirdSpawnStarter();
+        
 
         //StartCoroutine(HandleMissingBerries());
     }
