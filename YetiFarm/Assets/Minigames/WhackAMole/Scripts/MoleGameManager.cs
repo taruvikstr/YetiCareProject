@@ -40,6 +40,9 @@ public class MoleGameManager : MonoBehaviour
     public ParticleSystem explosion; 
     int difficultyLevel;
     int molesInGame;
+    public int vegetable1 = 0;
+    public bool collectedVeggies = false;
+    
 
     private void Start()
     {
@@ -54,6 +57,8 @@ public class MoleGameManager : MonoBehaviour
 
 
     }
+
+
     public void SetMainMenu()
     {
         SceneManager.LoadScene(2);
@@ -117,7 +122,6 @@ public class MoleGameManager : MonoBehaviour
             moles[i].Hide();
             moles[i].SetIndex(i);
         }
-        
 
         currentMoles.Clear();
         timeRemaining = startingTime;
@@ -213,6 +217,12 @@ public class MoleGameManager : MonoBehaviour
                 }
 
             }
+            if (vegetable1 <= 0)
+            {
+                collectedVeggies = true;
+            }
+            else
+                collectedVeggies = false;
         }
 
     }

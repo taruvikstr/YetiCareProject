@@ -8,6 +8,8 @@ TagManager:
   - Floor
   - Collectible
   - Water
+  - Vegetable1
+  - GameManager
   layers:
   - Default
   - TransparentFX

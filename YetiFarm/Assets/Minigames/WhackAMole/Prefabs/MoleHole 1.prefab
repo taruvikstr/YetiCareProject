@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4059859793660346025}
   m_Layer: 0
   m_Name: Vegetable1
-  m_TagString: Untagged
+  m_TagString: Vegetable1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -273,6 +273,7 @@ MonoBehaviour:
   moleHit: {fileID: 0}
   moleHatHit: {fileID: 0}
   moleHands: {fileID: 0}
+  vegetable: {fileID: 0}
   gameManager: {fileID: 0}
   duration: 1
 --- !u!61 &4071165849382617525
