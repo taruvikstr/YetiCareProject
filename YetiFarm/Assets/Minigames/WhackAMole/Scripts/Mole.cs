@@ -11,6 +11,7 @@ public class Mole : MonoBehaviour
     [SerializeField] private Sprite moleHit;
     [SerializeField] private Sprite moleHatHit;
     [SerializeField] public GameObject moleHands;
+    [SerializeField] public GameObject vegetable;
 
     [Header("GameManager")]
     [SerializeField] private MoleGameManager gameManager;
@@ -151,7 +152,10 @@ public class Mole : MonoBehaviour
                     
                     //Game over, 1 for bomb.
                     Debug.Log("Bomb hit");
-                    gameManager.GameOver(1);
+                    gameManager.BombExplosion(gameObject.transform.position);
+                    StartCoroutine(VegetableActiveFalseDelay());
+                    StartCoroutine(QuickHide());
+                   // StopAllCoroutines();
                     break;
                 default:
                     break;
@@ -160,6 +164,12 @@ public class Mole : MonoBehaviour
 
         }
 
+    }
+    //Hide vegetable delayed
+    IEnumerator VegetableActiveFalseDelay()
+    {
+        yield return new WaitForSeconds(0.5f);
+        vegetable.SetActive(false);
     }
     private void CreateNext()
     {

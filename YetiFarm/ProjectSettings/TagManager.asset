@@ -7,6 +7,7 @@ TagManager:
   - ProjectileTag
   - Floor
   - Collectible
+  - Water
   layers:
   - Default
   - TransparentFX
@@ -44,12 +45,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Sorting Layer 1
+  - name: Back
     uniqueID: 3541594929
     locked: 0
-  - name: Sorting Layer 2
+  - name: Middle
     uniqueID: 2667762819
     locked: 0
-  - name: Sorting Layer 3
+  - name: Front
     uniqueID: 2669646375
     locked: 0
