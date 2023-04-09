@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class MoleGameManager : MonoBehaviour
@@ -40,8 +41,11 @@ public class MoleGameManager : MonoBehaviour
     public ParticleSystem explosion; 
     int difficultyLevel;
     int molesInGame;
-    public int vegetable1 = 0;
-    public bool collectedVeggies = false;
+    public int vegetable1;
+    public GameObject vegetables;
+    public Text remainingVegetablesText;
+    private int remainingVegetables;
+    
     
 
     private void Start()
@@ -102,6 +106,12 @@ public class MoleGameManager : MonoBehaviour
                 moles.Remove(moles[0]);
             }
         }
+
+        //Etsi ruudun kasvit
+        GameObject[] vegetables = GameObject.FindGameObjectsWithTag("Vegetable1");
+        remainingVegetables = vegetables.Length;
+        //Aseta kasvilaskuri ruudulle
+        remainingVegetablesText.text = "Vegetables in field: " + remainingVegetables.ToString();
         
 
         //Setting startingcanvas to false and time and scoretextobjects to true.
@@ -130,6 +140,18 @@ public class MoleGameManager : MonoBehaviour
         playing = true;
 
     }
+
+    public void DestroyVegetable(GameObject veg)
+    {
+        foreach(GameObject vegetable in vegetables)
+        {
+            if(vegetable == veg)
+            {
+                Destroy(vegetable);
+            }
+
+        }
+    }
     // If bomb is clicked explosion particle effect is triggered.
     public void BombExplosion(Vector2 molepos)
     {
@@ -139,6 +161,10 @@ public class MoleGameManager : MonoBehaviour
         newExplosion.transform.position = molepos;
         newExplosion.Play();
         StartCoroutine(DeleteOldExplosion(expGameObject));
+        if(CompareTag("Vegetable1"))
+        {
+            Destroy(Collision.gameObject);
+        }
     }
     //Old particlesystem explosion gameobject is deleted from scene after 3 seconds.
     IEnumerator DeleteOldExplosion(GameObject explosion)
@@ -217,12 +243,7 @@ public class MoleGameManager : MonoBehaviour
                 }
 
             }
-            if (vegetable1 <= 0)
-            {
-                collectedVeggies = true;
-            }
-            else
-                collectedVeggies = false;
+          
         }
 
     }

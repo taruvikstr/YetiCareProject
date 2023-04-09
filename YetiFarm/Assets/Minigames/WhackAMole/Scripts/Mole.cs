@@ -11,7 +11,8 @@ public class Mole : MonoBehaviour
     [SerializeField] private Sprite moleHit;
     [SerializeField] private Sprite moleHatHit;
     [SerializeField] public GameObject moleHands;
-    [SerializeField] public GameObject vegetable;
+    [SerializeField] private TextEditor vegetableCount;
+    
 
     [Header("GameManager")]
     [SerializeField] private MoleGameManager gameManager;
@@ -42,6 +43,9 @@ public class Mole : MonoBehaviour
     private float bombRate = 0f;
     private int lives;
     private int moleIndex;
+
+    public GameObject vegetable;
+    
 
 
     private IEnumerator ShowHide(Vector2 start, Vector2 end)
@@ -161,7 +165,12 @@ public class Mole : MonoBehaviour
                     break;
 
             }
-
+            if(vegetable != null)
+            {
+                gameManager.DestroyVegetable(vegetable);
+                vegetable = null;
+            }
+            
         }
 
     }
