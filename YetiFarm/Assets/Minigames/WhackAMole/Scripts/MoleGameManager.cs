@@ -28,8 +28,6 @@ public class MoleGameManager : MonoBehaviour
     [SerializeField] private GameObject timeheader;
     [SerializeField] private GameObject exitButton;
     [SerializeField] private GameObject Explosion;
-    [SerializeField] private GameObject veggieCountTextObject;
-    [SerializeField] private GameObject veggieCountheader;
 
     public GameObject buttonManager;
 
@@ -44,10 +42,8 @@ public class MoleGameManager : MonoBehaviour
     public ParticleSystem explosion;
     int difficultyLevel;
     int molesInGame;
-    public int vegetables;
+    public int vegetablesCount;
     public GameObject vegetable;
-    public Text remainingVegetablesText;
-    private int remainingVegetables;
 
 
 
@@ -106,11 +102,11 @@ public class MoleGameManager : MonoBehaviour
             }
         }
 
-        //Etsi ruudun kasvit
+        /*//Etsi ruudun kasvit
         GameObject[] vegetables = GameObject.FindGameObjectsWithTag("Vegetable");
         remainingVegetables = vegetables.Length;
         //Aseta kasvilaskuri ruudulle
-        remainingVegetablesText.text = "Vegetables in field: " + remainingVegetables.ToString();
+        remainingVegetablesText.text = "Vegetables in field: " + remainingVegetables.ToString();*/
 
 
         //Setting startingcanvas to false and time and scoretextobjects to true.
@@ -198,6 +194,13 @@ public class MoleGameManager : MonoBehaviour
             playButton.SetActive(true);
             exitButton.SetActive(true);
         }
+        /*public void CountVegetables()
+        {
+        //count vegetables on screen
+            vegetables = +1;
+        veggieCounterText.text = ;
+
+        }*/
         public void AddScore(int moleIndex)
         {
             //Add and update score.

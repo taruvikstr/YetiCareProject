@@ -11,7 +11,7 @@ public class Mole : MonoBehaviour
     [SerializeField] private Sprite moleHit;
     [SerializeField] private Sprite moleHatHit;
     [SerializeField] public GameObject moleHands;
-    //[SerializeField] private TextEditor vegetableCount;
+    [SerializeField] private TextEditor vegetableCount;
     
 
     [Header("GameManager")]
@@ -156,6 +156,7 @@ public class Mole : MonoBehaviour
                     
                     //Game over, 1 for bomb.
                     Debug.Log("Bomb hit");
+                    gameManager.vegetablesCount -= 1;
                     gameManager.BombExplosion(gameObject.transform.position);
                     StartCoroutine(VegetableActiveFalseDelay());
                     StartCoroutine(QuickHide());
@@ -235,6 +236,8 @@ public class Mole : MonoBehaviour
         boxSize = boxCollider2D.size;
         boxOffsetHidden = new Vector2(boxOffset.x, -startPosition.y / 2f);
         boxSizeHidden = new Vector2(boxSize.x, 0f);
+
+        gameManager.vegetables = +1;
 
     }
     
