@@ -20,13 +20,16 @@ public class MoleGameManager : MonoBehaviour
     [SerializeField] private TMPro.TextMeshProUGUI timeText;
     [SerializeField] private TMPro.TextMeshProUGUI scoreText;
     [SerializeField] private GameObject startingCanvas;
+    [SerializeField] private TMPro.TextMeshProUGUI veggieCounterText;
 
     [SerializeField] private GameObject scoreTextObject;
     [SerializeField] private GameObject scoreHeader;
     [SerializeField] private GameObject timeTextObject;
     [SerializeField] private GameObject timeheader;
     [SerializeField] private GameObject exitButton;
-   // [SerializeField] private GameObject Explosion;
+    [SerializeField] private GameObject Explosion;
+    [SerializeField] private GameObject veggieCountTextObject;
+    [SerializeField] private GameObject veggieCountheader;
 
     public GameObject buttonManager;
 
@@ -38,28 +41,24 @@ public class MoleGameManager : MonoBehaviour
     private HashSet<Mole> currentMoles = new HashSet<Mole>();
     int score;
     private bool playing = false;
-    public ParticleSystem explosion; 
+    public ParticleSystem explosion;
     int difficultyLevel;
     int molesInGame;
-    public int vegetable1;
-    public GameObject vegetables;
+    public int vegetables;
+    public GameObject vegetable;
     public Text remainingVegetablesText;
     private int remainingVegetables;
-    
-    
+
+
 
     private void Start()
     {
-        
         //Setting time and score text objects to false at startingCanvas.
         scoreHeader.SetActive(false);
         scoreTextObject.SetActive(false);
         timeTextObject.SetActive(false);
         timeheader.SetActive(false);
         exitButton.SetActive(false);
-        
-
-
     }
 
 
@@ -70,7 +69,7 @@ public class MoleGameManager : MonoBehaviour
     //This is public so the play button can see it.
     public void StartGame()
     {
-        
+
         // Getting difficultyvalue from MoleGameManager Script.
         difficultyLevel = buttonManager.GetComponent<ButtonManagerScriptMole>().difficultyValue;
         // Getting moles in game value from buttonmanager script.
@@ -80,7 +79,7 @@ public class MoleGameManager : MonoBehaviour
         {
             difficultyLevel = 10;
         }
-        else if(difficultyLevel == 2)
+        else if (difficultyLevel == 2)
         {
             difficultyLevel = 20;
         }
@@ -108,11 +107,11 @@ public class MoleGameManager : MonoBehaviour
         }
 
         //Etsi ruudun kasvit
-        GameObject[] vegetables = GameObject.FindGameObjectsWithTag("Vegetable1");
+        GameObject[] vegetables = GameObject.FindGameObjectsWithTag("Vegetable");
         remainingVegetables = vegetables.Length;
         //Aseta kasvilaskuri ruudulle
         remainingVegetablesText.text = "Vegetables in field: " + remainingVegetables.ToString();
-        
+
 
         //Setting startingcanvas to false and time and scoretextobjects to true.
         scoreHeader.SetActive(true);
@@ -127,7 +126,7 @@ public class MoleGameManager : MonoBehaviour
         gameUI.SetActive(true);
         //Hide all the visible moles.
 
-        for(int i = 0; i < moles.Count; i++)
+        for (int i = 0; i < moles.Count; i++)
         {
             moles[i].Hide();
             moles[i].SetIndex(i);
@@ -141,7 +140,7 @@ public class MoleGameManager : MonoBehaviour
 
     }
 
-    public void DestroyVegetable(GameObject veg)
+    /*(public void DestroyVegetable(GameObject veg)
     {
         foreach(GameObject vegetable in vegetables)
         {
@@ -151,100 +150,108 @@ public class MoleGameManager : MonoBehaviour
             }
 
         }
-    }
+    }*/
     // If bomb is clicked explosion particle effect is triggered.
     public void BombExplosion(Vector2 molepos)
     {
-        
+
         ParticleSystem newExplosion = Instantiate(explosion);
         GameObject expGameObject = newExplosion.gameObject;
         newExplosion.transform.position = molepos;
         newExplosion.Play();
         StartCoroutine(DeleteOldExplosion(expGameObject));
-        if(CompareTag("Vegetable1"))
+        /*if(CompareTag("Vegetable"))
+        {
+            Destroy(vegetable);
+        }
+        if(CompareTag("Vegetable"))
         {
             Destroy(Collision.gameObject);
-        }
+        }*/
     }
-    //Old particlesystem explosion gameobject is deleted from scene after 3 seconds.
-    IEnumerator DeleteOldExplosion(GameObject explosion)
-    {
-        yield return new WaitForSeconds(3);
-        Destroy(explosion);
-    }
-    public void GameOver(int type)
-    {
-        //Show message
-        if(type == 0)
+        //Old particlesystem explosion gameobject is deleted from scene after 3 seconds.
+        IEnumerator DeleteOldExplosion(GameObject explosion)
         {
-            outOfTimeText.SetActive(true);
+            yield return new WaitForSeconds(3);
+            Destroy(explosion);
         }
-        //else
-        //{
-        //    bombText.SetActive(true);
-        //}
-
-        //Hide all moles
-        foreach(Mole mole in moles)
+        public void GameOver(int type)
         {
-            mole.StopGame();
-        }
-
-        //Stop the game and show the start UI.
-        playing = false;
-        playButton.SetActive(true);
-        exitButton.SetActive(true);
-    }
-    public void AddScore(int moleIndex)
-    {
-        //Add and update score.
-        score += 1;
-        scoreText.text = $"{score}";
-        // Increase time little bit.
-       // timeRemaining += 1;
-
-        //Remove from active moles.
-        currentMoles.Remove(moles[moleIndex]);
-    }
-    public void Missed(int moleIndex, bool isMole)
-    {
-        if (isMole)
-        {
-            //Decrease time by a little bit.
-           // timeRemaining -= 2;
-        }
-       
-        currentMoles.Remove(moles[moleIndex]);
-    }
-
-    
-    void Update()
-    {
-        if (playing)
-        {
-            //Update time
-            timeRemaining -= Time.deltaTime;
-            if(timeRemaining <= 0)
+            //Show message
+            if (type == 0)
             {
-                timeRemaining = 0;
-                GameOver(0);
+                outOfTimeText.SetActive(true);
             }
-            timeText.text = $"{(int)timeRemaining / 60} : {(int)timeRemaining % 60:D2}";
-            //Check if we need to start any more moles.
-            if(currentMoles.Count <= (difficultyLevel / 10))
+            //else
+            //{
+            //    bombText.SetActive(true);
+            //}
+
+            //Hide all moles
+            foreach (Mole mole in moles)
             {
-                //Choose a random mole.
-                int index = Random.Range(0, moles.Count);
-                if (!currentMoles.Contains(moles[index]))
+                mole.StopGame();
+            }
+
+            //Stop the game and show the start UI.
+            playing = false;
+            playButton.SetActive(true);
+            exitButton.SetActive(true);
+        }
+        public void AddScore(int moleIndex)
+        {
+            //Add and update score.
+            score += 1;
+            scoreText.text = $"{score}";
+            // Increase time little bit.
+            // timeRemaining += 1;
+
+            //Remove from active moles.
+            currentMoles.Remove(moles[moleIndex]);
+        }
+
+
+        public void Missed(int moleIndex, bool isMole)
+        {
+            if (isMole)
+            {
+                //Decrease time by a little bit.
+                // timeRemaining -= 2;
+            }
+
+            currentMoles.Remove(moles[moleIndex]);
+        }
+
+
+
+        void Update()
+        {
+            if (playing)
+            {
+                //Update time
+                timeRemaining -= Time.deltaTime;
+                if (timeRemaining <= 0)
                 {
-                    // Doesn't matter if its already doing something, we'll just try again next frame
-                    currentMoles.Add(moles[index]);
-                    moles[index].Activate(difficultyLevel / 10);
+                    timeRemaining = 0;
+                    GameOver(0);
+                }
+                timeText.text = $"{(int)timeRemaining / 60} : {(int)timeRemaining % 60:D2}";
+                //Check if we need to start any more moles.
+                if (currentMoles.Count <= (difficultyLevel / 10))
+                {
+                    //Choose a random mole.
+                    int index = Random.Range(0, moles.Count);
+                    if (!currentMoles.Contains(moles[index]))
+                    {
+                        // Doesn't matter if its already doing something, we'll just try again next frame
+                        currentMoles.Add(moles[index]);
+                        moles[index].Activate(difficultyLevel / 10);
+                    }
+
                 }
 
             }
-          
-        }
 
+        }
     }
-}
+

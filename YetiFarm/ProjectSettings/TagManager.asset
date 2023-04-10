@@ -10,6 +10,7 @@ TagManager:
   - Water
   - Vegetable1
   - GameManager
+  - Vegetable
   layers:
   - Default
   - TransparentFX

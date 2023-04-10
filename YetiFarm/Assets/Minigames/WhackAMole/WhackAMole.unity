@@ -512,6 +512,86 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
+--- !u!1 &192064039
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 192064040}
+  - component: {fileID: 192064042}
+  - component: {fileID: 192064041}
+  m_Layer: 5
+  m_Name: VeggieCount
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &192064040
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192064039}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1929204579}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -432.5359, y: -61.82599}
+  m_SizeDelta: {x: 834.2039, y: 123.65}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &192064041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192064039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.9622642, g: 0.9477394, b: 0.9477394, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 80
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 150
+    m_Alignment: 3
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Vegetables in field:'
+--- !u!222 &192064042
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192064039}
+  m_CullTransparentMesh: 1
 --- !u!1 &300569552 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 594868494847872573, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
@@ -941,6 +1021,10 @@ PrefabInstance:
       propertyPath: moleHatBroken
       value: 
       objectReference: {fileID: 21300000, guid: 29d5973033bbfe44b9d806b4f621d284, type: 3}
+    - target: {fileID: 594868494847872573, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
+      propertyPath: m_TagString
+      value: Vegetable
+      objectReference: {fileID: 0}
     - target: {fileID: 1228769106611115200, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -1314,6 +1398,7 @@ MonoBehaviour:
   exitButton: {fileID: 14155923}
   buttonManager: {fileID: 929641237}
   explosion: {fileID: 5108086251381335303, guid: ee772aa453322994183a5245c85e9808, type: 3}
+  vegetable: {fileID: 0}
 --- !u!4 &614568869
 Transform:
   m_ObjectHideFlags: 0
@@ -3646,6 +3731,7 @@ RectTransform:
   - {fileID: 67685433}
   - {fileID: 660644843}
   - {fileID: 2094548803}
+  - {fileID: 192064040}
   m_Father: {fileID: 1524235300}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
