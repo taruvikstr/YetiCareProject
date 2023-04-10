@@ -19,12 +19,15 @@ public class MoleGameManager : MonoBehaviour
     [SerializeField] private TMPro.TextMeshProUGUI timeText;
     [SerializeField] private TMPro.TextMeshProUGUI scoreText;
     [SerializeField] private GameObject startingCanvas;
+    [SerializeField] private TMPro.TextMeshProUGUI vegetableCount;
 
     [SerializeField] private GameObject scoreTextObject;
     [SerializeField] private GameObject scoreHeader;
     [SerializeField] private GameObject timeTextObject;
     [SerializeField] private GameObject timeheader;
     [SerializeField] private GameObject exitButton;
+    [SerializeField] private GameObject vegeCount;
+    [SerializeField] private GameObject vegeCountHeader;
    // [SerializeField] private GameObject Explosion;
 
     public GameObject buttonManager;
@@ -40,6 +43,7 @@ public class MoleGameManager : MonoBehaviour
     public ParticleSystem explosion; 
     int difficultyLevel;
     int molesInGame;
+    public int vegetables;
 
     private void Start()
     {
@@ -50,6 +54,9 @@ public class MoleGameManager : MonoBehaviour
         timeTextObject.SetActive(false);
         timeheader.SetActive(false);
         exitButton.SetActive(false);
+        vegeCount.SetActive(false);
+        vegeCountHeader.SetActive(false);
+        
         
 
 
@@ -110,6 +117,8 @@ public class MoleGameManager : MonoBehaviour
         outOfTimeText.SetActive(false);
         bombText.SetActive(false);
         gameUI.SetActive(true);
+        vegeCount.SetActive(true);
+        vegeCountHeader.SetActive(true);
         //Hide all the visible moles.
 
         for(int i = 0; i < moles.Count; i++)
@@ -193,6 +202,7 @@ public class MoleGameManager : MonoBehaviour
         if (playing)
         {
             //Update time
+            vegetableCount.text = vegetables.ToString();
             timeRemaining -= Time.deltaTime;
             if(timeRemaining <= 0)
             {
