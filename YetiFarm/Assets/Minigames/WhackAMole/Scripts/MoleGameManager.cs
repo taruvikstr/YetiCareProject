@@ -42,7 +42,7 @@ public class MoleGameManager : MonoBehaviour
     public ParticleSystem explosion;
     int difficultyLevel;
     int molesInGame;
-    public int vegetablesCount;
+    public int veggieCounter;
     public GameObject vegetable;
 
 
@@ -55,6 +55,23 @@ public class MoleGameManager : MonoBehaviour
         timeTextObject.SetActive(false);
         timeheader.SetActive(false);
         exitButton.SetActive(false);
+
+        veggieCounter = GameObject.FindGameObjectsWithTag("Vegetable").Length;
+        UpdateVeggieCounterText();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.CompareTag("Vegetable"))
+        {
+            Destroy(collision.gameObject);
+            veggieCounter--;
+            UpdateVeggieCounterText();
+        }
+    }
+    void UpdateVeggieCounterText()
+    {
+        veggieCounterText.text = "Vegetables in field: " + veggieCounter.ToString();
     }
 
 
