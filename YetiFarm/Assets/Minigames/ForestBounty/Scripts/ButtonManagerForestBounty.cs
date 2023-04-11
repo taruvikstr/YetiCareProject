@@ -3,42 +3,66 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Linq;
 using TMPro;
 
 public class ButtonManagerForestBounty : MonoBehaviour
 {
     public GameObject startScreen;
     public GameObject endScreen;
-    public TextMeshProUGUI scoreText1;
-    public TextMeshProUGUI scoreText2;
-    public TextMeshProUGUI scoreText3;
-    public TextMeshProUGUI scoreText4;
-    public TextMeshProUGUI feedbackText;
+    //public TextMeshProUGUI scoreText1;
+    //public TextMeshProUGUI scoreText2;
+    //public TextMeshProUGUI scoreText3;
+    //public TextMeshProUGUI scoreText4;
+    //public TextMeshProUGUI feedbackText;
     public GameObject gameStarter; // The object that has the script and function for starting the game based on given parameters.
     private int difficultyValue;
-    private int playerAmountValue;
-    private int gameSpeedValue;
-    private int gameModeValue;
-    private int desiredScoreValue;
+    //private int playerAmountValue;
+    //private int gameSpeedValue;
+    //private int gameModeValue;
+    //private int desiredScoreValue;
+
+    public ToggleGroup berryAmountGroup;
+    public Toggle toggleLow;
+    public Toggle toggleMedium;
+    public Toggle toggleHigh;
+
 
     private void Awake() // Set values to defaults. Remember to set sliders to these values as well.
     {
-        //difficultyValue = 2;
+        difficultyValue = 2;
         //playerAmountValue = 1;
         //gameSpeedValue = 0;
         //gameModeValue = 1;
         //desiredScoreValue = 60;
     }
 
+    //public Toggle difficultySelection
+    //{
+    //    get { return berryAmountGroup.ActiveToggles().FirstOrDefault (); }
+    //}
+
 
     public void UpdateDifficulty(Slider slider)
     {
-        //difficultyValue = (int)slider.value;
+        
     }
 
-    public void UpdatePlayerAmount(Slider slider)
+    // Uses toggle group, where player decides the amount of berries
+    public void UpdateBerryAmount()
     {
-        //playerAmountValue = (int)slider.value;
+        if (toggleLow.isOn)
+        {
+            difficultyValue = 1;
+        }
+        else if (toggleMedium.isOn)
+        {
+            difficultyValue = 2;
+        }
+        else if (toggleHigh.isOn)
+        {
+            difficultyValue = 3;
+        }
     }
 
     public void UpdateGameSpeed(Slider slider)
@@ -64,8 +88,9 @@ public class ButtonManagerForestBounty : MonoBehaviour
 
     public void ActivateGame()
     {
-        //startScreen.SetActive(false); // Disable and hide the starting screen.
-        //gameStarter.GetComponent<EggSpawnManager>().StartEggSpawns(difficultyValue, desiredScoreValue, gameModeValue, playerAmountValue);
+        startScreen.SetActive(false); // Disable and hide the starting screen.
+        gameStarter.GetComponent<BerryManager>().StartSpawn(difficultyValue);
+            //(difficultyValue, desiredScoreValue, gameModeValue, playerAmountValue);
     }
 
     public void ActivateGameOverScreen(int score_points, int failed_things, int game_mode)

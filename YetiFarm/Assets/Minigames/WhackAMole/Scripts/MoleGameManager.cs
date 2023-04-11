@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+
+
 public class MoleGameManager : MonoBehaviour
 {
     [SerializeField] private List<Mole> moles;
@@ -17,12 +19,16 @@ public class MoleGameManager : MonoBehaviour
     [SerializeField] private TMPro.TextMeshProUGUI timeText;
     [SerializeField] private TMPro.TextMeshProUGUI scoreText;
     [SerializeField] private GameObject startingCanvas;
+    [SerializeField] private TMPro.TextMeshProUGUI vegetableCount;
 
     [SerializeField] private GameObject scoreTextObject;
     [SerializeField] private GameObject scoreHeader;
     [SerializeField] private GameObject timeTextObject;
     [SerializeField] private GameObject timeheader;
     [SerializeField] private GameObject exitButton;
+    [SerializeField] private GameObject vegeCount;
+    [SerializeField] private GameObject vegeCountHeader;
+   // [SerializeField] private GameObject Explosion;
 
     public GameObject buttonManager;
 
@@ -34,9 +40,10 @@ public class MoleGameManager : MonoBehaviour
     private HashSet<Mole> currentMoles = new HashSet<Mole>();
     int score;
     private bool playing = false;
-
+    public ParticleSystem explosion; 
     int difficultyLevel;
     int molesInGame;
+    public int vegetables;
 
     private void Start()
     {
@@ -47,11 +54,16 @@ public class MoleGameManager : MonoBehaviour
         timeTextObject.SetActive(false);
         timeheader.SetActive(false);
         exitButton.SetActive(false);
+        vegeCount.SetActive(false);
+        vegeCountHeader.SetActive(false);
         
+        
+
+
     }
     public void SetMainMenu()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(2);
     }
     //This is public so the play button can see it.
     public void StartGame()
@@ -64,15 +76,15 @@ public class MoleGameManager : MonoBehaviour
         //Changin difficulty for molegame
         if (difficultyLevel == 1)
         {
-            difficultyLevel = 10 /2;
+            difficultyLevel = 10;
         }
         else if(difficultyLevel == 2)
         {
-            difficultyLevel = 50 /2;
+            difficultyLevel = 20;
         }
         else
         {
-            difficultyLevel = 90 /2;
+            difficultyLevel = 30;
         }
         //  Debug.Log(molesInGame);
         //Change amount of moles in game
@@ -105,6 +117,8 @@ public class MoleGameManager : MonoBehaviour
         outOfTimeText.SetActive(false);
         bombText.SetActive(false);
         gameUI.SetActive(true);
+        vegeCount.SetActive(true);
+        vegeCountHeader.SetActive(true);
         //Hide all the visible moles.
 
         for(int i = 0; i < moles.Count; i++)
@@ -121,6 +135,22 @@ public class MoleGameManager : MonoBehaviour
         playing = true;
 
     }
+    // If bomb is clicked explosion particle effect is triggered.
+    public void BombExplosion(Vector2 molepos)
+    {
+        
+        ParticleSystem newExplosion = Instantiate(explosion);
+        GameObject expGameObject = newExplosion.gameObject;
+        newExplosion.transform.position = molepos;
+        newExplosion.Play();
+        StartCoroutine(DeleteOldExplosion(expGameObject));
+    }
+    //Old particlesystem explosion gameobject is deleted from scene after 3 seconds.
+    IEnumerator DeleteOldExplosion(GameObject explosion)
+    {
+        yield return new WaitForSeconds(3);
+        Destroy(explosion);
+    }
     public void GameOver(int type)
     {
         //Show message
@@ -128,10 +158,10 @@ public class MoleGameManager : MonoBehaviour
         {
             outOfTimeText.SetActive(true);
         }
-        else
-        {
-            bombText.SetActive(true);
-        }
+        //else
+        //{
+        //    bombText.SetActive(true);
+        //}
 
         //Hide all moles
         foreach(Mole mole in moles)
@@ -162,6 +192,7 @@ public class MoleGameManager : MonoBehaviour
             //Decrease time by a little bit.
            // timeRemaining -= 2;
         }
+       
         currentMoles.Remove(moles[moleIndex]);
     }
 
@@ -171,6 +202,7 @@ public class MoleGameManager : MonoBehaviour
         if (playing)
         {
             //Update time
+            vegetableCount.text = vegetables.ToString();
             timeRemaining -= Time.deltaTime;
             if(timeRemaining <= 0)
             {

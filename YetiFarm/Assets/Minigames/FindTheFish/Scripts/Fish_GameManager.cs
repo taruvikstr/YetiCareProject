@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Fish_GameManager : MonoBehaviour
 {
@@ -13,12 +14,15 @@ public class Fish_GameManager : MonoBehaviour
     public float timer = 30f; //Public because the time can be set in settings
     public int playerAmount = 0;
     public int fishAmount = 15;
-    public int patternAmount;
+    public int patternAmount = 8;
 
     private GameObject selectedObject;
     private Vector3 offset;
-    [HideInInspector]
-    public bool gameON = false;
+
+    private bool gameON = false;
+    private float time;
+
+    [SerializeField] private Image timerImage;
 
     [SerializeField] private FishUIController fish_UIController;
 
@@ -34,9 +38,9 @@ public class Fish_GameManager : MonoBehaviour
             if (targetObject && targetObject.gameObject.CompareTag("Collectible"))
             {
                 StartCoroutine(ChangeFishSortingLayer("Dragged", targetObject.gameObject, 0f));
-                //Debug.Log("dragging " + targetObject.name);
                 selectedObject = targetObject.transform.gameObject;
                 selectedObject.GetComponent<FishController>().isDragged = true;
+                selectedObject.GetComponent<FishController>().StartBubbleParticles();
                 offset = selectedObject.transform.position - mousePosition;
             }
         }
@@ -52,10 +56,30 @@ public class Fish_GameManager : MonoBehaviour
 
             selectedObject = null;
         }
+
+        if (gameON && timer > 0)
+        {
+            timerImage.fillAmount = timer / time;
+            timer -= Time.deltaTime;
+        }
+        else if (gameON && timer <= 0)
+        {
+            fish_UIController.SetPlacements();
+            ResetGame();
+
+        }
     }
 
-    public void StartGame()
+    public void StartGame(int _timer, int _playerAmount, int _fishAmount, int _patternAmount)
     {
+        timer = _timer;
+        time = timer;
+        playerAmount = _playerAmount;
+        fishAmount = _fishAmount;
+        patternAmount = _patternAmount;
+
+        fish_UIController.ActivatePlayer(playerAmount);
+
         //Spawning of the fishes
         for (int i = fishAmount; i > 0; i--)
         {
@@ -65,7 +89,7 @@ public class Fish_GameManager : MonoBehaviour
             StartCoroutine(ChangeFishSortingLayer(spawnpoints[i].GetComponent<SpriteRenderer>().sortingLayerName, fishInstance, 0f));
         }
 
-        if (playerAmount == 1) gameON = true;
+        gameON = true;
 
         dicePrimary.gameObject.SetActive(true);
         diceSecondary.gameObject.SetActive(true);
@@ -172,5 +196,4 @@ public class Fish_GameManager : MonoBehaviour
         playerAmount = 0;
         gameON = false;
     }
-
 }

@@ -10,6 +10,8 @@ public class FishController : MonoBehaviour
     public List<Sprite> pattern = new List<Sprite>();
     public List<Color> primaryColor = new List<Color>();
     public List<Color> secondaryColor = new List<Color>();
+    
+    [SerializeField] private ParticleSystem bubbleParticle;
 
     [SerializeField] private SpriteRenderer primaryColorRenderer, patternRenderer;
 
@@ -18,9 +20,7 @@ public class FishController : MonoBehaviour
     private Fish_GameManager gameManager;
 
     public bool isDragged = false;
-
     public bool returned = true;
-
     public bool chosenFish = false;
 
     [SerializeField] private float speed;
@@ -49,9 +49,10 @@ public class FishController : MonoBehaviour
 
     private void Update()
     {
-        if (transform.position == spawnParent.transform.position)
+        if (transform.position == spawnParent.transform.position && !returned)
         {
             returned = true;
+            StopBubbleParticles();
         }
 
         if (!isDragged && returned) Movement();
@@ -63,7 +64,11 @@ public class FishController : MonoBehaviour
     {
         primaryColor = primaryColor.OrderBy(i => Guid.NewGuid()).ToList();
         secondaryColor = secondaryColor.OrderBy(i => Guid.NewGuid()).ToList();
-        pattern = pattern.OrderBy(i => Guid.NewGuid()).ToList();
+        int random = UnityEngine.Random.Range(0, gameManager.patternAmount);
+
+        Sprite randomPattern = pattern[random];
+        pattern.RemoveAt(random);
+        pattern.Insert(0, randomPattern);
     }
 
     private void RefreshFish()
@@ -107,5 +112,15 @@ public class FishController : MonoBehaviour
             flipped = false;
         }
 
+    }
+
+    public void StartBubbleParticles()
+    {
+        bubbleParticle.Play();
+    }
+
+    public void StopBubbleParticles()
+    {
+        bubbleParticle.Stop();
     }
 }

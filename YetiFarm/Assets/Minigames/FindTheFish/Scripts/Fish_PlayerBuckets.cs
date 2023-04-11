@@ -6,34 +6,11 @@ using UnityEngine.UI;
 
 public class Fish_PlayerBuckets : MonoBehaviour
 {
-    public int fishAmount = 0;
+    public int collectedAmount = 0;
     public TMP_Text amountTxt;
     [SerializeField] private Fish_GameManager fish_GameManager;
     [SerializeField] private FishUIController fish_UIController;
 
-    [SerializeField] private float timer;
-    [SerializeField] private Image timerBackground, timerImage;
-
-    private void Start()
-    {
-        timer = fish_GameManager.timer;
-    }
-
-    private void Update()
-    {
-        if (fish_GameManager.gameON && timer > 0)
-        {
-            timerBackground.gameObject.SetActive(true);
-            timerImage.fillAmount = timer / fish_GameManager.timer;
-            timer -= Time.deltaTime;
-        }
-        else if (fish_GameManager.gameON && timer <= 0)
-        {
-            fish_UIController.SetPlacements(true, fishAmount);
-            fish_GameManager.ResetGame();
-
-        }
-    }
     private void OnEnable()
     {
         ResetFishBucket();
@@ -66,20 +43,15 @@ public class Fish_PlayerBuckets : MonoBehaviour
 
     private void IncreaseFishAmount()
     {
-        fishAmount++;
-        amountTxt.text = fishAmount.ToString();
-        if(fishAmount == fish_UIController.fishToWin && fish_GameManager.playerAmount > 1)
-        {
-            fish_UIController.SetPlacements(false, fishAmount);
-            fish_GameManager.ResetGame();
-        }
-        else fish_GameManager.StartCoroutine("AddNewFish");
+        collectedAmount++;
+        amountTxt.text = collectedAmount.ToString();
+        fish_GameManager.StartCoroutine("AddNewFish");
     }
 
     public void ResetFishBucket()
     {
-        fishAmount = 0;
-        amountTxt.text = fishAmount.ToString();
+        collectedAmount = 0;
+        amountTxt.text = collectedAmount.ToString();
     }
 
     private IEnumerator FishBucketCooldown() //If wrong fish is dragged to the bucket, the bucket has a cooldown,

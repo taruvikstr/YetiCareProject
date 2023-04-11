@@ -11,6 +11,7 @@ public class Mole : MonoBehaviour
     [SerializeField] private Sprite moleHit;
     [SerializeField] private Sprite moleHatHit;
     [SerializeField] public GameObject moleHands;
+    [SerializeField] public GameObject vegetable;
 
     [Header("GameManager")]
     [SerializeField] private MoleGameManager gameManager;
@@ -41,6 +42,7 @@ public class Mole : MonoBehaviour
     private float bombRate = 0f;
     private int lives;
     private int moleIndex;
+
 
 
     private IEnumerator ShowHide(Vector2 start, Vector2 end)
@@ -151,7 +153,11 @@ public class Mole : MonoBehaviour
                     
                     //Game over, 1 for bomb.
                     Debug.Log("Bomb hit");
-                    gameManager.GameOver(1);
+                    gameManager.vegetables -= 1;
+                    gameManager.BombExplosion(gameObject.transform.position);
+                    StartCoroutine(VegetableActiveFalseDelay());
+                    StartCoroutine(QuickHide());
+                   // StopAllCoroutines();
                     break;
                 default:
                     break;
@@ -160,6 +166,12 @@ public class Mole : MonoBehaviour
 
         }
 
+    }
+    //Hide vegetable delayed
+    IEnumerator VegetableActiveFalseDelay()
+    {
+        yield return new WaitForSeconds(0.5f);
+        vegetable.SetActive(false);
     }
     private void CreateNext()
     {
@@ -206,6 +218,7 @@ public class Mole : MonoBehaviour
     }
     private void Awake()
     {
+        gameManager.vegetables += 1;
         //Get references to the components we'll need.
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
