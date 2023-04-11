@@ -1311,20 +1311,17 @@ MonoBehaviour:
   timeText: {fileID: 2094548804}
   scoreText: {fileID: 67685434}
   startingCanvas: {fileID: 345591524}
-  veggieCounterText: {fileID: 0}
+  veggieCounterText: {fileID: 937477019}
   scoreTextObject: {fileID: 67685432}
   scoreHeader: {fileID: 350030758}
   timeTextObject: {fileID: 2094548802}
   timeheader: {fileID: 660644842}
   exitButton: {fileID: 14155923}
   Explosion: {fileID: 0}
-  veggieCountTextObject: {fileID: 0}
-  veggieCountheader: {fileID: 0}
   buttonManager: {fileID: 929641237}
   explosion: {fileID: 5108086251381335303, guid: ee772aa453322994183a5245c85e9808, type: 3}
-  vegetables: 0
-  vegetable: {fileID: 0}
-  remainingVegetablesText: {fileID: 0}
+  veggieCounter: 0
+  vegetable: {fileID: 1142127147}
 --- !u!4 &614568869
 Transform:
   m_ObjectHideFlags: 0
