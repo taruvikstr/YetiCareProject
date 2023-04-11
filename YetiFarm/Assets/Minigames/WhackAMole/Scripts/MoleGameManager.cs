@@ -174,11 +174,15 @@ public class MoleGameManager : MonoBehaviour
         playButton.SetActive(true);
         exitButton.SetActive(true);
     }
-    public void AddScore(int moleIndex)
+    public void AddScore(int moleIndex, bool isMole)
     {
-        //Add and update score.
-        score += 1;
-        scoreText.text = $"{score}";
+        //Add and update score if it is a mole.
+        if (isMole)
+        {
+            score += 1;
+            scoreText.text = $"{score}";
+        }
+        
         // Increase time little bit.
        // timeRemaining += 1;
 

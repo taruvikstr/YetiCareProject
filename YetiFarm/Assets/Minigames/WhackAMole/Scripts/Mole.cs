@@ -124,7 +124,7 @@ public class Mole : MonoBehaviour
                     moleHands.SetActive(false);
                     Debug.Log("normal hit");
                     spriteRenderer.sprite = moleHit;
-                    gameManager.AddScore(moleIndex);
+                    gameManager.AddScore(moleIndex, moleType != MoleType.Bomb);
                     //Stop Coroutines
                     StopAllCoroutines();
                     StartCoroutine(QuickHide());
@@ -141,7 +141,7 @@ public class Mole : MonoBehaviour
                     {
                         Debug.Log("hatHit");
                         spriteRenderer.sprite = moleHatHit;
-                        gameManager.AddScore(moleIndex);
+                        gameManager.AddScore(moleIndex, moleType != MoleType.Bomb);
                         //Stop the animation
                         StopAllCoroutines();
                         StartCoroutine(QuickHide());
@@ -155,9 +155,13 @@ public class Mole : MonoBehaviour
                     Debug.Log("Bomb hit");
                     gameManager.vegetables -= 1;
                     gameManager.BombExplosion(gameObject.transform.position);
-                    StartCoroutine(VegetableActiveFalseDelay());
+                    gameManager.AddScore(moleIndex, moleType != MoleType.Bomb);
+                    StopAllCoroutines();
                     StartCoroutine(QuickHide());
-                   // StopAllCoroutines();
+                    StartCoroutine(VegetableActiveFalseDelay());
+                    animator.enabled = false;
+                    hittable = false;
+                    
                     break;
                 default:
                     break;
