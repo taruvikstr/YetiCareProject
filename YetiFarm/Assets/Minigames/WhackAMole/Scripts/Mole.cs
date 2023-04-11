@@ -139,6 +139,7 @@ public class Mole : MonoBehaviour
                     }
                     else
                     {
+                        moleHands.SetActive(false);
                         Debug.Log("hatHit");
                         spriteRenderer.sprite = moleHatHit;
                         gameManager.AddScore(moleIndex, moleType != MoleType.Bomb);
@@ -153,7 +154,10 @@ public class Mole : MonoBehaviour
                     
                     //Game over, 1 for bomb.
                     Debug.Log("Bomb hit");
-                    gameManager.vegetables -= 1;
+                    if (vegetable.activeInHierarchy)
+                    {
+                        gameManager.vegetables -= 1;
+                    }
                     gameManager.BombExplosion(gameObject.transform.position);
                     gameManager.AddScore(moleIndex, moleType != MoleType.Bomb);
                     StopAllCoroutines();
