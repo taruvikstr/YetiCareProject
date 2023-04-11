@@ -11,6 +11,8 @@ public class Fish_GameManager : MonoBehaviour
     [SerializeField] public SpriteRenderer dicePrimary, diceSecondary, dicePattern;
     [SerializeField] private Sprite[] dicePatternSprites;
 
+    [SerializeField] private ParticleSystem bubbleParticles;
+
     public float timer = 30f; //Public because the time can be set in settings
     public int playerAmount = 0;
     public int fishAmount = 15;
@@ -57,6 +59,7 @@ public class Fish_GameManager : MonoBehaviour
             selectedObject = null;
         }
 
+        //Timer
         if (gameON && timer > 0)
         {
             timerImage.fillAmount = timer / time;
@@ -90,12 +93,8 @@ public class Fish_GameManager : MonoBehaviour
         }
 
         gameON = true;
-
-        dicePrimary.gameObject.SetActive(true);
-        diceSecondary.gameObject.SetActive(true);
-        dicePattern.gameObject.SetActive(true);
-
-        StartCoroutine("RollDice");
+        bubbleParticles.Play();
+        StartCoroutine(RollDice(1f));
     }
 
     public IEnumerator ChangeFishSortingLayer(string layerName, GameObject fishInstance, float delay)
@@ -109,8 +108,14 @@ public class Fish_GameManager : MonoBehaviour
         }
     }
 
-    public IEnumerator RollDice()
+    public IEnumerator RollDice(float delay)
     {
+        yield return new WaitForSeconds(delay); //This is for the bubble particle delay
+
+        dicePrimary.gameObject.SetActive(true);
+        diceSecondary.gameObject.SetActive(true);
+        dicePattern.gameObject.SetActive(true);
+
         yield return new WaitForSeconds(0.5f);
         //Randomly choosing one of the fishes of the instantiated fish
         GameObject chosenFish = fishInstances[Random.Range(0, fishInstances.Count)];
@@ -153,15 +158,19 @@ public class Fish_GameManager : MonoBehaviour
         //Going through all the instantiated fish and comparing which have the chosen fish features and tagging them as chosen fish
         foreach (GameObject fish in fishInstances)
         {
+
             FishController fishController = fish.GetComponent<FishController>();
+
             if (chosenFishController.primaryColor[0] == fishController.primaryColor[0]
                 && chosenFishController.secondaryColor[0] == fishController.secondaryColor[0]
                 && chosenFishController.pattern[0].name == fishController.pattern[0].name) 
             {
                 fishController.chosenFish = true;
             }
-            else fishController.chosenFish = false;   
+            else fishController.chosenFish = false;
+
         }
+
     }
 
     public IEnumerator AddNewFish()
@@ -180,7 +189,7 @@ public class Fish_GameManager : MonoBehaviour
 
         }
 
-        StartCoroutine("RollDice");
+        StartCoroutine(RollDice(0f));
     }
 
     public void ResetGame()

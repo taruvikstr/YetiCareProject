@@ -18,7 +18,7 @@ public class ButtonManagerScriptMole : MonoBehaviour
     public int difficultyValue;
     public int playerAmountValue;
     private int gameSpeedValue;
-    private int gameModeValue;
+    public int gameModeValue;
     private int desiredScoreValue;
 
     private void Awake() // Set values to defaults. Remember to set sliders to these values as well.
