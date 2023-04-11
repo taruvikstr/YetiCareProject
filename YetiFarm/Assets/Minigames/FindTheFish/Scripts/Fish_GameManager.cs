@@ -11,6 +11,8 @@ public class Fish_GameManager : MonoBehaviour
     [SerializeField] public SpriteRenderer dicePrimary, diceSecondary, dicePattern;
     [SerializeField] private Sprite[] dicePatternSprites;
 
+    [SerializeField] private ParticleSystem bubbleParticles;
+
     public float timer = 30f; //Public because the time can be set in settings
     public int playerAmount = 0;
     public int fishAmount = 15;
@@ -91,8 +93,8 @@ public class Fish_GameManager : MonoBehaviour
         }
 
         gameON = true;
-
-        StartCoroutine("RollDice");
+        bubbleParticles.Play();
+        StartCoroutine(RollDice(1f));
     }
 
     public IEnumerator ChangeFishSortingLayer(string layerName, GameObject fishInstance, float delay)
@@ -106,8 +108,10 @@ public class Fish_GameManager : MonoBehaviour
         }
     }
 
-    public IEnumerator RollDice()
+    public IEnumerator RollDice(float delay)
     {
+        yield return new WaitForSeconds(delay); //This is for the bubble particle delay
+
         dicePrimary.gameObject.SetActive(true);
         diceSecondary.gameObject.SetActive(true);
         dicePattern.gameObject.SetActive(true);
@@ -185,7 +189,7 @@ public class Fish_GameManager : MonoBehaviour
 
         }
 
-        StartCoroutine("RollDice");
+        StartCoroutine(RollDice(0f));
     }
 
     public void ResetGame()

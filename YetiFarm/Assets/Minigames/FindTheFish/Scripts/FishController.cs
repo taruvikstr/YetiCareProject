@@ -31,11 +31,6 @@ public class FishController : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManager").GetComponent<Fish_GameManager>();
 
-        //while(gameManager.patternAmount < pattern.Count)
-        //{
-        //    tähän patternien poisto loppupäästä
-        //}
-
         spawnParent = transform.parent.gameObject;
 
         if (transform.localScale.x == -1) flipped = true;
