@@ -82,52 +82,58 @@ public class MoleGameManager : MonoBehaviour
         // Getting moles in game value from buttonmanager script.
         molesInGame = buttonManager.GetComponent<ButtonManagerScriptMole>().playerAmountValue;
         //Changin difficulty for molegame
-        if (difficultyLevel == 1)
-        {
-            difficultyLevel = 10;
-        }
-        else if(difficultyLevel == 2)
-        {
-            difficultyLevel = 20;
-        }
-        else
-        {
-            difficultyLevel = 30;
-        }
-        //  Debug.Log(molesInGame);
-        //Change amount of moles in game
-        if (molesInGame == 1)
-        {
-            
-            for (int i = 0; i <= 5; i++)
-            {
-                int random = Random.Range(0, moles.Count);
-               
-                while(samenumbercheck.Contains(random))
-                {
-                    random = Random.Range(0, moles.Count);
-                }
-                moles[random].Hide();
-                moles.Remove(moles[random]);
-                samenumbercheck.Add(random);
 
+        if(endlessGame == 1)
+        {
+            if (difficultyLevel == 1)
+            {
+                difficultyLevel = 10;
+            }
+            else if (difficultyLevel == 2)
+            {
+                difficultyLevel = 20;
+            }
+            else
+            {
+                difficultyLevel = 30;
+            }
+            //  Debug.Log(molesInGame);
+            //Change amount of moles in game
+            if (molesInGame == 1)
+            {
+
+                for (int i = 0; i <= 5; i++)
+                {
+                    int random = Random.Range(0, moles.Count);
+
+                    while (samenumbercheck.Contains(random))
+                    {
+                        random = Random.Range(0, moles.Count);
+                    }
+                    moles[random].Hide();
+                    moles.Remove(moles[random]);
+                    samenumbercheck.Add(random);
+
+                }
+            }
+            if (molesInGame == 2)
+            {
+                for (int i = 0; i <= 2; i++)
+                {
+                    int random = Random.Range(0, moles.Count);
+
+                    while (samenumbercheck.Contains(random))
+                    {
+                        random = Random.Range(0, moles.Count);
+                    }
+                    moles[random].Hide();
+                    moles.Remove(moles[random]);
+                    samenumbercheck.Add(random);
+                }
             }
         }
-        if (molesInGame == 2)
-        {
-            for (int i = 0; i <= 2; i++)
-            {
-                int random = Random.Range(0, moles.Count);
-
-                while (samenumbercheck.Contains(random))
-                {
-                    random = Random.Range(0, moles.Count);
-                }
-                moles[random].Hide();
-                moles.Remove(moles[random]);
-                samenumbercheck.Add(random);
-            }
-        }
+        
+        
         
         
 
@@ -228,6 +234,7 @@ public class MoleGameManager : MonoBehaviour
     
     void Update()
     {
+        //If a veggie is destroyed it's game over.
         if(endlessGame == 2)
         {
             difficultyLevel = score;

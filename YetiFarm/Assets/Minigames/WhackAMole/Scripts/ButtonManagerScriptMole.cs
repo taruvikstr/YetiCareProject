@@ -14,6 +14,9 @@ public class ButtonManagerScriptMole : MonoBehaviour
     //public TextMeshProUGUI scoreText3;
     //public TextMeshProUGUI scoreText4;
     //public TextMeshProUGUI feedbackText;
+
+    public Slider moleCountSlider;
+    public Slider moleDifficultySlider;
   //  public GameObject gameStarter; // The object that has the script and function for starting the game based on given parameters.
     public int difficultyValue;
     public int playerAmountValue;
@@ -49,6 +52,16 @@ public class ButtonManagerScriptMole : MonoBehaviour
     public void UpdateGameMode(Slider slider)
     {
         gameModeValue = (int)slider.value;
+        if(gameModeValue == 2)
+        {
+            moleCountSlider.interactable = false;
+            moleDifficultySlider.interactable = false;
+        }
+        else
+        {
+            moleCountSlider.interactable = true;
+            moleDifficultySlider.interactable = true;
+        }
     }
 
     public void UpdateDesiredScore(Slider slider)
