@@ -17,10 +17,10 @@ public class Fish_ButtonManager : MonoBehaviour
 
     private void Awake() // Set values to defaults. Remember to set sliders to these values as well.
     {
-        fishAmountValue = 5;
+        fishAmountValue = 10;
         playerAmountValue = 1;
         timerValue = 60;
-        patternAmountValue = 8;
+        patternAmountValue = 4;
     }
 
 
