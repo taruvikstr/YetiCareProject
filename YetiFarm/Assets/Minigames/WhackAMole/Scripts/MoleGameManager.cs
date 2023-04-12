@@ -44,6 +44,10 @@ public class MoleGameManager : MonoBehaviour
     int difficultyLevel;
     int molesInGame;
     public int vegetables;
+    private int endlessGame;
+    private int vegetablesStart;
+
+    private List<int> samenumbercheck = new List<int>();
 
     private void Start()
     {
@@ -56,6 +60,8 @@ public class MoleGameManager : MonoBehaviour
         exitButton.SetActive(false);
         vegeCount.SetActive(false);
         vegeCountHeader.SetActive(false);
+        // Getting number of vegetables in the start of the game
+        vegetablesStart = moles.Count;
         
         
 
@@ -68,6 +74,8 @@ public class MoleGameManager : MonoBehaviour
     //This is public so the play button can see it.
     public void StartGame()
     {
+        //Set endlessGamemode from buttonmanagerscript.
+        endlessGame = buttonManager.GetComponent<ButtonManagerScriptMole>().gameModeValue;
         
         // Getting difficultyvalue from MoleGameManager Script.
         difficultyLevel = buttonManager.GetComponent<ButtonManagerScriptMole>().difficultyValue;
@@ -90,20 +98,37 @@ public class MoleGameManager : MonoBehaviour
         //Change amount of moles in game
         if (molesInGame == 1)
         {
+            
             for (int i = 0; i <= 5; i++)
             {
-                moles[0].Hide();
-                moles.Remove(moles[0]);
+                int random = Random.Range(0, moles.Count);
+               
+                while(samenumbercheck.Contains(random))
+                {
+                    random = Random.Range(0, moles.Count);
+                }
+                moles[random].Hide();
+                moles.Remove(moles[random]);
+                samenumbercheck.Add(random);
+
             }
         }
         if (molesInGame == 2)
         {
             for (int i = 0; i <= 2; i++)
             {
-                moles[0].Hide();
-                moles.Remove(moles[0]);
+                int random = Random.Range(0, moles.Count);
+
+                while (samenumbercheck.Contains(random))
+                {
+                    random = Random.Range(0, moles.Count);
+                }
+                moles[random].Hide();
+                moles.Remove(moles[random]);
+                samenumbercheck.Add(random);
             }
         }
+        
         
 
         //Setting startingcanvas to false and time and scoretextobjects to true.
@@ -174,11 +199,15 @@ public class MoleGameManager : MonoBehaviour
         playButton.SetActive(true);
         exitButton.SetActive(true);
     }
-    public void AddScore(int moleIndex)
+    public void AddScore(int moleIndex, bool isMole)
     {
-        //Add and update score.
-        score += 1;
-        scoreText.text = $"{score}";
+        //Add and update score if it is a mole.
+        if (isMole)
+        {
+            score += 1;
+            scoreText.text = $"{score}";
+        }
+        
         // Increase time little bit.
        // timeRemaining += 1;
 
@@ -199,6 +228,14 @@ public class MoleGameManager : MonoBehaviour
     
     void Update()
     {
+        if(endlessGame == 2)
+        {
+            difficultyLevel = score;
+            if(vegetablesStart != vegetables)
+            {
+                GameOver(0);
+            }
+        }
         if (playing)
         {
             //Update time

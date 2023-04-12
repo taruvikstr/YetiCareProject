@@ -37,6 +37,9 @@ public class DragBerries : MonoBehaviour
         //    }
         //}
 
+
+
+
         if (dragging == null && BerryCheck.berryLayingAround && BirdManager.berryCheck == false)
         {
                 MoveBerryBack();

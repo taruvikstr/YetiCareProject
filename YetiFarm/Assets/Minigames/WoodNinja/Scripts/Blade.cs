@@ -59,6 +59,7 @@ public class Blade : MonoBehaviour
         bladeTrail.Clear();
     }
 
+    // Disabling blade collider,trail when not touching the screen
     private void StopSlicing()
     {
         slicing = false;
@@ -66,6 +67,8 @@ public class Blade : MonoBehaviour
         bladeTrail.enabled = false;
 
     }
+
+    // when continuously slicing with the blade object updating position to worldspace.
     private void ContinueSlicing()
     {
         Vector3 newPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
