@@ -8,7 +8,6 @@ public class FishUIController : MonoBehaviour
 {
     [SerializeField] private List<GameObject> fishBucket = new List<GameObject>();
     [SerializeField] private GameObject gameCanvas, gameEnd;
-    [SerializeField] private Fish_GameManager fish_GameManager;
     [SerializeField] private GameObject[] placements;
     [SerializeField] private Image[] placementImage;
     [SerializeField] private TMP_Text[] scoreTXT;
@@ -23,8 +22,10 @@ public class FishUIController : MonoBehaviour
         int index = 0;
         foreach(GameObject bucket in fishBucket)
         {
+
             if (bucket.gameObject.activeSelf)
             {
+                placements[index].SetActive(true);
                 placementImage[index].sprite = bucket.GetComponent<SpriteRenderer>().sprite;
                 scoreTXT[index].text = bucket.GetComponent<Fish_PlayerBuckets>().collectedAmount.ToString();
             }
@@ -36,9 +37,11 @@ public class FishUIController : MonoBehaviour
         gameCanvas.SetActive(false);
         gameEnd.SetActive(true);
 
-        foreach(GameObject bowl in fishBucket)
+        foreach (GameObject bowl in fishBucket)
         {
             bowl.SetActive(false);
         }
+
+        index = 0;
     }
 }
