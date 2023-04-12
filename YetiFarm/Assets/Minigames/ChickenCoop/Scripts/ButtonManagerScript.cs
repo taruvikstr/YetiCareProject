@@ -31,7 +31,7 @@ public class ButtonManagerScript : MonoBehaviour
         playerAmountValue = 1;
         gameSpeedValue = 0;
         gameModeValue = 1;
-        desiredScoreValue = 60;
+        desiredScoreValue = 50;
     }
 
 
