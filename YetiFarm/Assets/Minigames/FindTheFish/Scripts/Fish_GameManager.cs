@@ -13,10 +13,10 @@ public class Fish_GameManager : MonoBehaviour
 
     [SerializeField] private ParticleSystem bubbleParticles;
 
-    public float timer = 30f; //Public because the time can be set in settings
+    public float timer = 60f; //Public because the time can be set in settings
     public int playerAmount = 0;
-    public int fishAmount = 15;
-    public int patternAmount = 8;
+    public int fishAmount = 10;
+    public int patternAmount = 4;
 
     private GameObject selectedObject;
     private Vector3 offset;
