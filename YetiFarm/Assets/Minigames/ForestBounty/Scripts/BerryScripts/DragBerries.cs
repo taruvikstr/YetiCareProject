@@ -7,6 +7,7 @@ public class DragBerries : MonoBehaviour
     private Transform dragging = null;
     private Vector3 offset;
     [SerializeField] private LayerMask movableLayers;
+    public bool birdHasBerry = false;
     //BerryCheck spawnBerry;
     //BerryCheck[] berries;
     //public List<bool> birdBerryCheck;
@@ -40,7 +41,7 @@ public class DragBerries : MonoBehaviour
 
 
 
-        if (dragging == null && BerryCheck.berryLayingAround && BirdManager.berryCheck == false)
+        if (dragging == null && gameObject.GetComponent<BerryCheck>().berryLayingAround == true && birdHasBerry == false)
         {
                 MoveBerryBack();
             // almost works, but the bird behaviour breaks if this is used like this. figure it out
@@ -70,12 +71,13 @@ public class DragBerries : MonoBehaviour
                     if (dragging)
                     {
                         dragging.position = Camera.main.ScreenToWorldPoint(touch.position) + offset;
+                        dragging.transform.parent = null;
                     }
                     break;
 
                 case TouchPhase.Ended:
                     dragging = null;
-                    BerryCheck.berryLayingAround = true;
+                    gameObject.GetComponent<BerryCheck>().berryLayingAround = true;
                     
                     break;
 

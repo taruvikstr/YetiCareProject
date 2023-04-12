@@ -6,7 +6,8 @@ public class SpawnBerry : MonoBehaviour
 {
     public GameObject berryPrefab;
     public bool hasBerry = false;
-    
+    public int diff;
+    public bool berrySpawning = false;
 
     public void SpawnOneBerry()
     {        
@@ -14,6 +15,35 @@ public class SpawnBerry : MonoBehaviour
         newberry.GetComponent<BerryCheck>().spawnOrigin = gameObject;
         hasBerry = true;
         
-}
+    }
+
+    public IEnumerator RespawnDelay()
+    {
+        berrySpawning = true;
+        float delay = 0;
+
+        if (diff == 1)
+        {
+            delay = 1.0f;
+        }
+        if (diff == 2)
+        {
+            delay = 2.0f;
+        }
+        if (diff == 3)
+        {
+            delay = 3.0f;
+        }
+
+        yield return new WaitForSeconds(delay);
+        hasBerry = false;
+        berrySpawning = false;
+    }
+
+    public void BerryToFalse()
+    {
+        StartCoroutine(RespawnDelay());
+    }
+
 
 }

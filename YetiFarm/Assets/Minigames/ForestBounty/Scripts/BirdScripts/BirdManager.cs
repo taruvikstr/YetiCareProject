@@ -15,7 +15,7 @@ public class BirdManager : MonoBehaviour
     private float movementSpeed = 5f;
     private bool isMoving = false;
     private bool berryGrabbed = false;
-    public static bool berryCheck = false;
+    public bool berryCheck = false;
     private float screenWidth;
     private int randomIndex;
     private bool berryNotVisited = true;
@@ -61,115 +61,116 @@ public class BirdManager : MonoBehaviour
         // Set bird's goal
         // TO DO: add for different difficulties
         //counter = 10;
-        //birdScore.text = counter.ToString();
-
-        while(true)
+        //birdScore.text = counter.ToString();     
+        while (true)
         {
             randomIndex = Random.Range(0, berryPositions.Count);
-            if (berryPositions[randomIndex].GetComponent<SpawnBerry>().hasBerry == true)
+            if (berryPositions[randomIndex].GetComponent<SpawnBerry>().hasBerry == true && berryPositions[randomIndex].GetComponent<SpawnBerry>().berrySpawning == false)
             {
+
+                isMoving = true;
                 break;
             }
-        }   
+        }
+
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-       
-        if (!isMoving)
+        if (isMoving)
         {
-            StartCoroutine(Move());
+            toBerry = berryPositions[randomIndex].position;
+
+            if (berryGrabbed == true)
+            {
+                // move bird away with the berry 
+                if (transform.position.x < screenWidth / 2)
+                {
+                    // left side of the screen
+                    awayFromBerry = birdPositions[0].position;
+
+                }
+                else
+                {
+                    // right side of the screen
+                    awayFromBerry = birdPositions[1].position;
+                }
+
+                transform.position = Vector2.MoveTowards(transform.position, awayFromBerry, movementSpeed * Time.deltaTime);
+
+                if ((transform.position.Equals(birdPositions[0].position) || transform.position.Equals(birdPositions[1].position)))
+                {
+                    berryCheck = false;
+
+                    // drag berry koodiin liittyvä
+                    //foreach (DragBerries berry in dragBerries)
+                    //{
+                    //    for (int i = 0; i < berry.birdBerryCheck.Count; i++)
+                    //    {
+                    //        berry.birdBerryCheck[i] = false;
+                    //    }
+
+                    //}
+                    Destroy(gameObject);
+
+
+                }
+                
+
+            }
+            else if (berryNotVisited == false)
+            {
+                // move away from berry when berry not found
+                transform.position = Vector2.MoveTowards(transform.position, birdPositions[1].position, movementSpeed * Time.deltaTime);
+
+                if (transform.position.Equals(birdPositions[1].position))
+                {
+                    berryCheck = false;
+
+                    // liittyy drag berry koodiin
+                    //foreach (DragBerries berry in dragBerries)
+                    //{
+                    //    for (int i = 0; i < berry.birdBerryCheck.Count; i++)
+                    //    {
+                    //        berry.birdBerryCheck[i] = false;
+                    //    }
+
+                    //}
+                    Destroy(gameObject);
+
+
+                }
+
+            }
+            else if (berryNotVisited)
+            {
+                // move bird to berry
+                gameObject.transform.position = Vector2.MoveTowards(transform.position, toBerry, movementSpeed * Time.deltaTime);
+
+                if (transform.position.Equals(toBerry))
+                {
+                    berryNotVisited = false;
+                }
+
+            }
+
         }
-        
     }
 
-    public IEnumerator Move()
-    {
-        toBerry = berryPositions[randomIndex].position;
-
-        if (berryGrabbed == true)
-        {
-            // move bird away with the berry 
-            if (transform.position.x < screenWidth / 2)
-            {
-                // left side of the screen
-                awayFromBerry = birdPositions[0].position;
-
-            }
-            else
-            {
-                // right side of the screen
-                awayFromBerry = birdPositions[1].position;
-            }
-
-            transform.position = Vector2.MoveTowards(transform.position, awayFromBerry, movementSpeed * Time.deltaTime);
-
-            if ((transform.position.Equals(birdPositions[0].position) || transform.position.Equals(birdPositions[1].position)))
-            {
-                berryCheck = false;
-
-                // drag berry koodiin liittyvä
-                //foreach (DragBerries berry in dragBerries)
-                //{
-                //    for (int i = 0; i < berry.birdBerryCheck.Count; i++)
-                //    {
-                //        berry.birdBerryCheck[i] = false;
-                //    }
-
-                //}
-                Destroy(gameObject);
-                
-                
-            }
-            yield return null;
-            
-        }
-        else if (berryNotVisited == false)
-        {
-            // move away from berry when berry not found
-            transform.position = Vector2.MoveTowards(transform.position, birdPositions[1].position, movementSpeed * Time.deltaTime);
-            
-            if (transform.position.Equals(birdPositions[1].position))
-            {
-                berryCheck = false;
-
-                // liittyy drag berry koodiin
-                //foreach (DragBerries berry in dragBerries)
-                //{
-                //    for (int i = 0; i < berry.birdBerryCheck.Count; i++)
-                //    {
-                //        berry.birdBerryCheck[i] = false;
-                //    }
-
-                //}
-                Destroy(gameObject);
-                
-
-            }
-
-        }
-        else if (berryNotVisited)
-        {
-            // move bird to berry
-            transform.position = Vector2.MoveTowards(transform.position, toBerry, movementSpeed * Time.deltaTime);
-
-            if (transform.position.Equals(toBerry))
-            {
-                berryNotVisited = false;
-            }
-            
-        }
-
-    }
     public void StealBerry()
     {
         //berryPositions[randomIndex].GetComponent<BerryCheck>().birdHasBerry = true;
         // when berry collider has been triggered, this function is called
-        berryGrabbed = true;
-        berryCheck = true;
-        berryPositions[randomIndex].GetComponent<SpawnBerry>().hasBerry = false;
-        BerryBucket.birdScoreCounter--;
+        //berryCheck = true;
+        if (gameObject.transform.childCount >= 1)
+        {
+            berryGrabbed = true;
+            gameObject.transform.GetChild(0).GetComponent<DragBerries>().birdHasBerry = true;
+            berryPositions[randomIndex].GetComponent<SpawnBerry>().BerryToFalse();
+
+            // TO DO: bird gets score when it takes berry to nest
+            BerryBucket.birdScoreCounter--;
+        }
         // pistevähennyksiä? tai muita sanktioita? 
     }
 }

@@ -49,7 +49,7 @@ public class BerryBucket : MonoBehaviour
             counter--;
             if (counter > 0)
             {
-                collision.gameObject.GetComponent<BerryCheck>().spawnOrigin.GetComponent<SpawnBerry>().hasBerry = false;
+                collision.gameObject.GetComponent<BerryCheck>().spawnOrigin.GetComponent<SpawnBerry>().BerryToFalse();
                 Destroy(collision.gameObject);
                 BerryManager.strawberryCount--;
                 txt.text = counter.ToString();
@@ -57,7 +57,7 @@ public class BerryBucket : MonoBehaviour
             }
             else 
             {
-                collision.gameObject.GetComponent<BerryCheck>().spawnOrigin.GetComponent<SpawnBerry>().hasBerry = false;
+                collision.gameObject.GetComponent<BerryCheck>().spawnOrigin.GetComponent<SpawnBerry>().BerryToFalse();
                 Destroy(collision.gameObject);
                 txt.text = "Kaikki marjat kerätty!";
                 BerryManager.endGame++;
@@ -70,7 +70,7 @@ public class BerryBucket : MonoBehaviour
             counter--;
             if (counter > 0)
             {
-                collision.gameObject.GetComponent<BerryCheck>().spawnOrigin.GetComponent<SpawnBerry>().hasBerry = false;
+                collision.gameObject.GetComponent<BerryCheck>().spawnOrigin.GetComponent<SpawnBerry>().BerryToFalse();
                 Destroy(collision.gameObject);
                 BerryManager.blueberryCount--;
                 txt.text = counter.ToString();
@@ -78,7 +78,7 @@ public class BerryBucket : MonoBehaviour
             }
             else
             {
-                collision.gameObject.GetComponent<BerryCheck>().spawnOrigin.GetComponent<SpawnBerry>().hasBerry = false;
+                collision.gameObject.GetComponent<BerryCheck>().spawnOrigin.GetComponent<SpawnBerry>().BerryToFalse();
                 Destroy(collision.gameObject);
                 txt.text = "Kaikki marjat kerätty!";
                 BerryManager.endGame++;
@@ -92,7 +92,7 @@ public class BerryBucket : MonoBehaviour
 
             if (counter > 0)
             {
-                collision.gameObject.GetComponent<BerryCheck>().spawnOrigin.GetComponent<SpawnBerry>().hasBerry = false;
+                collision.gameObject.GetComponent<BerryCheck>().spawnOrigin.GetComponent<SpawnBerry>().BerryToFalse();
                 Destroy(collision.gameObject);
                 BerryManager.raspberryCount--;
                 txt.text = counter.ToString();
@@ -100,7 +100,7 @@ public class BerryBucket : MonoBehaviour
             }
             else
             {
-                collision.gameObject.GetComponent<BerryCheck>().spawnOrigin.GetComponent<SpawnBerry>().hasBerry = false;
+                collision.gameObject.GetComponent<BerryCheck>().spawnOrigin.GetComponent<SpawnBerry>().BerryToFalse();
                 Destroy(collision.gameObject);
                 txt.text = "Kaikki marjat kerätty!";
                 BerryManager.endGame++;
@@ -114,7 +114,7 @@ public class BerryBucket : MonoBehaviour
 
             if (counter > 0)
             {
-                collision.gameObject.GetComponent<BerryCheck>().spawnOrigin.GetComponent<SpawnBerry>().hasBerry = false;
+                collision.gameObject.GetComponent<BerryCheck>().spawnOrigin.GetComponent<SpawnBerry>().BerryToFalse();
                 Destroy(collision.gameObject);
                 BerryManager.cowberryCount--;
                 txt.text = counter.ToString();
@@ -122,7 +122,7 @@ public class BerryBucket : MonoBehaviour
             }
             else
             {
-                collision.gameObject.GetComponent<BerryCheck>().spawnOrigin.GetComponent<SpawnBerry>().hasBerry = false;
+                collision.gameObject.GetComponent<BerryCheck>().spawnOrigin.GetComponent<SpawnBerry>().BerryToFalse();
                 Destroy(collision.gameObject);
                 txt.text = "Kaikki marjat kerätty!";
                 BerryManager.endGame++;

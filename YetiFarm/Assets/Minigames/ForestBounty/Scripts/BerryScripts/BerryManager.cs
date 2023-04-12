@@ -76,6 +76,7 @@ public class BerryManager : MonoBehaviour
 
     public IEnumerator SpawnBerries()
     {
+        // TO DO: berries spawn on top of each other, fix 
         Debug.Log("SPAWN BERRIES ON");
         //switch (difficulty)
         //{
@@ -105,15 +106,15 @@ public class BerryManager : MonoBehaviour
 
                 if (checkBerryMissing == false)
                 {
-                    Debug.Log("MARJA MISSING at " + missingBerry);
+                    Debug.Log("MARJA MISSING at " + checkBerryMissing);
                     //missingBerries.Add(missingBerry); // add missing berry to list. not in use currently. 
                     berrySpawnerList[missingBerry].GetComponent<SpawnBerry>().SpawnOneBerry();
                     break;
                 }
 
                 //yield return null;
-                yield return new WaitForSeconds(1f);
             }
+            yield return new WaitForSeconds(1f);
 
             //foreach (int index in missingBerries)
             //{
@@ -156,9 +157,17 @@ public class BerryManager : MonoBehaviour
 
         //}
 
-        public void StartSpawn(int difficulty)
+    public void StartSpawn(int difficulty)
     {
+
         gameOn = true;
+
+        // Sets berry spawn points's difficulty values and spawn delay
+        foreach (Transform spawn in berrySpawnerList)
+        {
+            spawn.GetComponent<SpawnBerry>().diff = difficulty;
+        }
+
         switch (difficulty) // difficulty 1, 2 or 3. on default it's 2 
         {
             case 1:
@@ -190,7 +199,7 @@ public class BerryManager : MonoBehaviour
                 spawnRate = 6f;
                 Debug.Log("Hard mode");
                 howManyberries = 3;
-                BerryBucket.birdScoreCounter = 5;
+                BerryBucket.birdScoreCounter = 10;
 
 
                 birdSpawn.GetComponent<BirdSpawnBehavior>().birdSpawnRate = 5f;
