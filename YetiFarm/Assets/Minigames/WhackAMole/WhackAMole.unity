@@ -5948,9 +5948,9 @@ MonoBehaviour:
   m_RefResolutionY: 540
   m_UpscaleRT: 0
   m_PixelSnapping: 0
-  m_CropFrameX: 0
-  m_CropFrameY: 0
-  m_StretchFill: 0
+  m_CropFrameX: 1
+  m_CropFrameY: 1
+  m_StretchFill: 1
 --- !u!114 &2001015928 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 349789217551634661, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}

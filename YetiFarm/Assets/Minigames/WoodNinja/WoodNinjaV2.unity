@@ -158,9 +158,9 @@ MonoBehaviour:
   m_RefResolutionY: 540
   m_UpscaleRT: 0
   m_PixelSnapping: 0
-  m_CropFrameX: 0
-  m_CropFrameY: 0
-  m_StretchFill: 0
+  m_CropFrameX: 1
+  m_CropFrameY: 1
+  m_StretchFill: 1
 --- !u!20 &413546674
 Camera:
   m_ObjectHideFlags: 0
@@ -350,7 +350,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 823564227}
-  fadeImage: {fileID: 0}
   score: 0
 --- !u!4 &520386644
 Transform:
