@@ -13,7 +13,6 @@ public class BerryManager : MonoBehaviour
     public Transform[] berrySpawnerList; // list of berry spawnpoints in scene
     public static bool gameOn = false; // while player is picking berries, the game is on 
     public int managerDifficulty; // 3 difficulties
-    private List<int> missingBerries;
 
     public TMP_Text endgame_txt;
     public static int endGame = 0; // when endgame == 4, game ends
@@ -45,25 +44,15 @@ public class BerryManager : MonoBehaviour
             Debug.Log("Marja löytyi");
         }
     }
-    private void Start()
-    {
-        missingBerries = new List<int>();
-        //StartSpawn();      
-    }
 
     private void Update()
     {
-        EndGame();
-    }
-
-    // End the game after gathering all needed berries
-    void EndGame()
-    {
-        if(BerryBucket.birdScoreCounter == 0 && managerDifficulty != 1  && gameOn != false)
+        // End the game after gathering all needed berries
+        if (BerryBucket.birdScoreCounter == 0 && managerDifficulty != 1 && gameOn != false)
         {
             endgame_txt.text = "hävisit linnulle";
             gameOn = false;
-            StopAllCoroutines();        
+            StopAllCoroutines();
         }
         if (endGame == 4 && endgame_txt != null)
         {
@@ -73,6 +62,7 @@ public class BerryManager : MonoBehaviour
             gameOn = false;
         }
     }
+
 
     public IEnumerator SpawnBerries()
     {
