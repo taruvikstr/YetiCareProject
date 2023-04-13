@@ -44,7 +44,7 @@ public class ButtonManagerScript : MonoBehaviour
         }
         if (difficultyValue == 2)
         {
-            difficultySliderNumText.text = ":/";
+            difficultySliderNumText.text = ":|";
         }
         if (difficultyValue == 3)
         {
