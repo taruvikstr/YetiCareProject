@@ -4,6 +4,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using TMPro;
 
+// HUOM HUOM kun tehd‰‰n animaatiota linnulle, ei voi k‰yttt‰‰ childobjecteja. tee animaatio
+
 public class BirdManager : MonoBehaviour
 {
     private List<Transform> berryPositions;
@@ -74,11 +76,17 @@ public class BirdManager : MonoBehaviour
 
             if (berryGrabbed == true)
             {
+                // bird has grabbed berry
                 transform.position = Vector2.MoveTowards(transform.position, awayFromBerry, movementSpeed * Time.deltaTime);
 
                 if ((transform.position.Equals(birdPositions[0].position) || transform.position.Equals(birdPositions[1].position)))
                 {
+                    if (gameObject.transform.childCount >= 1)
+                    {
+                        BerryBucket.birdScoreCounter--;
+                    }
                     Destroy(gameObject);
+                    
                 }
                 
 
@@ -86,6 +94,7 @@ public class BirdManager : MonoBehaviour
             else if (berryNotVisited == false)
             {
                 // move away from berry when berry not found
+                gameObject.GetComponent<BoxCollider2D>().enabled = false;
                 transform.position = Vector2.MoveTowards(transform.position, birdPositions[1].position, movementSpeed * Time.deltaTime);
 
                 if (transform.position.Equals(birdPositions[1].position))
@@ -99,9 +108,13 @@ public class BirdManager : MonoBehaviour
                 // move bird to berry
                 gameObject.transform.position = Vector2.MoveTowards(transform.position, toBerry, movementSpeed * Time.deltaTime);
 
-                if (transform.position.Equals(toBerry))
+                if (transform.position.Equals(toBerry) && berryPositions[randomIndex].GetComponent<SpawnBerry>().hasBerry == true && berryPositions[randomIndex].GetComponent<SpawnBerry>().berrySpawning == false)
                 {
-                    gameObject.GetComponent<BoxCollider2D>().enabled = true;
+                    StealBerry();
+                    berryNotVisited = false;
+                }
+                else if (transform.position.Equals(toBerry) && berryPositions[randomIndex].GetComponent<SpawnBerry>().hasBerry == true && berryPositions[randomIndex].GetComponent<SpawnBerry>().berrySpawning == true)
+                {
                     berryNotVisited = false;
                 }
 
@@ -112,15 +125,11 @@ public class BirdManager : MonoBehaviour
 
     public void StealBerry()
     {
-        // when berry collider has been triggered, this function is called
-        if (gameObject.transform.childCount >= 1)
-        {
-            berryGrabbed = true;
-            gameObject.transform.GetChild(0).GetComponent<BerryCheck>().birdHasBerry = true;
-            berryPositions[randomIndex].GetComponent<SpawnBerry>().BerryToFalse();
+        berryPositions[randomIndex].GetComponent<SpawnBerry>().currentBerry.GetComponent<BerryCheck>().OnSteal(gameObject);
+        berryGrabbed = true;
+        gameObject.transform.GetChild(0).GetComponent<BerryCheck>().birdHasBerry = true;
 
-            // TO DO: bird gets score when it takes berry to nest
-            BerryBucket.birdScoreCounter--;
-        }
+        // TO DO: bird gets score when it takes berry to nest
+           
     }
 }

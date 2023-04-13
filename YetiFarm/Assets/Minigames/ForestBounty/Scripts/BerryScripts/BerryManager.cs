@@ -57,35 +57,6 @@ public class BerryManager : MonoBehaviour
         }
     }
 
-
-    public IEnumerator SpawnBerries()
-    {
-        // TO DO: berries spawn on top of each other, fix 
-
-        int missingBerry;
-        bool checkBerryMissing;
-
-        while (gameOn)
-        {
-            
-            for (missingBerry = 0; missingBerry < berrySpawnerList.Length ; missingBerry++)
-            {
-                checkBerryMissing = berrySpawnerList[missingBerry].GetComponent<SpawnBerry>().hasBerry;
-                // true if berry is in the spawnpoint, else false
-
-                if (checkBerryMissing == false)
-                {
-                    Debug.Log("MARJA MISSING at " + missingBerry);
-                    berrySpawnerList[missingBerry].GetComponent<SpawnBerry>().SpawnOneBerry();
-                    break;
-                }
-
-            }
-            yield return new WaitForSeconds(1f);
-
-        }
-    }
-
     public void StartSpawn(int difficulty)
     {
         gameOn = true;
@@ -125,15 +96,11 @@ public class BerryManager : MonoBehaviour
                 break;
         }
 
-       
-
         for (int i = 0; i < 12; i++)
         {
             berrySpawnerList[i].GetComponent<SpawnBerry>().SpawnOneBerry(); // instansiate the first berries 
         }
 
-        
-        StartCoroutine(SpawnBerries());
 
         BerryBucket[] childContainers = containers.GetComponentsInChildren<BerryBucket>();
         foreach (BerryBucket childContainer in childContainers)

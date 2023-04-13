@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BerryCheck : MonoBehaviour
@@ -22,6 +23,7 @@ public class BerryCheck : MonoBehaviour
         if (dragging == null && berryLayingAround == true && birdHasBerry == false)
         {
             MoveBerryBack();
+
         }
 
         if (Input.touchCount > 0)
@@ -37,7 +39,17 @@ public class BerryCheck : MonoBehaviour
 
                     if (hit)
                     {
+                        birdHasBerry = false;
                         dragging = hit.transform;
+                        if (dragging.transform.childCount >= 1)
+                        {
+                            GameObject grabbed = dragging.transform.GetChild(0).gameObject;
+                            grabbed.transform.parent = null;
+                            dragging = grabbed.transform;
+                            grabbed = null;
+                            dragging.parent = null;
+                        }
+                        dragging.transform.parent = null;
                         offset = dragging.position - Camera.main.ScreenToWorldPoint(touch.position);
                     }
 
@@ -63,17 +75,11 @@ public class BerryCheck : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void OnSteal(GameObject collision)
     {
         // bird is stealing the berry
-        if (collision.CompareTag("ProjectileTag")) // collision with bird object
-        {
-            gameObject.transform.parent = collision.gameObject.transform;
-            collision.gameObject.GetComponent<BirdManager>().StealBerry();
-            collision.gameObject.GetComponent<BoxCollider2D>().enabled = false;
-            gameObject.GetComponent<BoxCollider2D>().enabled = false;
-            berryLayingAround = false;
-        }
+        gameObject.transform.parent = collision.gameObject.transform;
+        berryLayingAround = false;   
         
     }
 
@@ -81,9 +87,16 @@ public class BerryCheck : MonoBehaviour
     {
         // when you drag berry away from its spawnpoint and release it before the right bucket, it moves back to spawnpoint (or in this case, spawnOrigin)
 
+        gameObject.GetComponent<BoxCollider2D>().enabled = false;
         Vector3 parentPos = spawnOrigin.transform.position;
 
         transform.position = Vector3.MoveTowards(transform.position, parentPos, 10f * Time.deltaTime);
 
+        if (transform.position.Equals(parentPos))
+        {
+            berryLayingAround = false;
+            gameObject.GetComponent<BoxCollider2D>().enabled = true;
+        }
+            
     }
 }
