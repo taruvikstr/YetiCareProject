@@ -47,9 +47,7 @@ public class BerryBucket : MonoBehaviour
 
             if (counter > 0) 
             {
-                BerryManager.strawberryCount--;
                 txt.text = counter.ToString();
-                Debug.Log("strawberryCount =" + BerryManager.strawberryCount);
             }
             else  // all berries collected in this berrybucket
             {
@@ -67,9 +65,7 @@ public class BerryBucket : MonoBehaviour
 
             if (counter > 0)
             {
-                BerryManager.blueberryCount--;
                 txt.text = counter.ToString();
-                Debug.Log("blueberryCount =" + BerryManager.blueberryCount);
             }
             else  // all berries collected in this berrybucket
             {
@@ -87,9 +83,7 @@ public class BerryBucket : MonoBehaviour
 
             if (counter > 0)
             {
-                BerryManager.raspberryCount--;
                 txt.text = counter.ToString();
-                Debug.Log("raspberryCount =" + BerryManager.raspberryCount);
             }
             else  // all berries collected in this berrybucket
             {
@@ -107,9 +101,7 @@ public class BerryBucket : MonoBehaviour
 
             if (counter > 0)
             {     
-                BerryManager.cowberryCount--;
                 txt.text = counter.ToString();
-                Debug.Log("cowberryCount =" + BerryManager.cowberryCount);
             }
             else  // all berries collected in this berrybucket
             {

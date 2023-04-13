@@ -12,12 +12,11 @@ public class BirdManager : MonoBehaviour
     private Vector2 toBerry; // vector from bird spawnpoint to berryPositions[randomIndex] 
     private Vector2 awayFromBerry; // vector from berry back to birdspawnpoint
 
-    private float movementSpeed = 5f;
+    private float movementSpeed = 5f; // bird movement speed
     private bool isMoving = false; // is bird moving
     private bool berryGrabbed = false; // did bird grab berry
-    private float screenWidth;
-    private int randomIndex;
-    private bool berryNotVisited = true;
+    private int randomIndex; // random index for berryPositions list
+    private bool berryNotVisited = true;  // when bird has reached berryPositions[randomIndex], berryNotVisited = false;
 
     private void Awake()
     {
@@ -50,8 +49,6 @@ public class BirdManager : MonoBehaviour
 
     void Start()
     {
-        screenWidth = Screen.width;
-
         // Set bird's goal
         // TO DO: add for different difficulties
         //counter = 10;
@@ -65,7 +62,6 @@ public class BirdManager : MonoBehaviour
                 break;
             }
         }
-
     }
 
     private void Update()
@@ -74,21 +70,10 @@ public class BirdManager : MonoBehaviour
         {
             toBerry = berryPositions[randomIndex].position;
 
+            awayFromBerry = birdPositions[1].position;
+
             if (berryGrabbed == true)
             {
-                // move bird away with the berry 
-                if (transform.position.x < screenWidth / 2)
-                {
-                    // left side of the screen
-                    awayFromBerry = birdPositions[0].position;
-
-                }
-                else
-                {
-                    // right side of the screen
-                    awayFromBerry = birdPositions[1].position;
-                }
-
                 transform.position = Vector2.MoveTowards(transform.position, awayFromBerry, movementSpeed * Time.deltaTime);
 
                 if ((transform.position.Equals(birdPositions[0].position) || transform.position.Equals(birdPositions[1].position)))
@@ -116,6 +101,7 @@ public class BirdManager : MonoBehaviour
 
                 if (transform.position.Equals(toBerry))
                 {
+                    gameObject.GetComponent<BoxCollider2D>().enabled = true;
                     berryNotVisited = false;
                 }
 
@@ -130,7 +116,7 @@ public class BirdManager : MonoBehaviour
         if (gameObject.transform.childCount >= 1)
         {
             berryGrabbed = true;
-            gameObject.transform.GetChild(0).GetComponent<DragBerries>().birdHasBerry = true;
+            gameObject.transform.GetChild(0).GetComponent<BerryCheck>().birdHasBerry = true;
             berryPositions[randomIndex].GetComponent<SpawnBerry>().BerryToFalse();
 
             // TO DO: bird gets score when it takes berry to nest
