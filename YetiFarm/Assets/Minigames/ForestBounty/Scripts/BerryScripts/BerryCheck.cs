@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class BerryCheck : MonoBehaviour
 {
-    public GameObject spawnOrigin = null;
+    public GameObject spawnOrigin = null; // berry knows its spawnpoint
     public bool berryLayingAround = false;
-    //public bool birdHasBerry = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // bird is stealing the berry
-        if (collision.CompareTag("ProjectileTag"))
+        if (collision.CompareTag("ProjectileTag")) // collision with bird object
         {
             gameObject.transform.parent = collision.gameObject.transform;
             collision.gameObject.GetComponent<BirdManager>().StealBerry();
@@ -21,10 +20,4 @@ public class BerryCheck : MonoBehaviour
         }
         
     }
-
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    berryLayingAround = false;
-    //}
-
 }

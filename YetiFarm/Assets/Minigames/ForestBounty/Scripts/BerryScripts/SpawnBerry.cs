@@ -14,11 +14,12 @@ public class SpawnBerry : MonoBehaviour
         GameObject newberry = Instantiate(berryPrefab, transform.position, transform.rotation);
         newberry.GetComponent<BerryCheck>().spawnOrigin = gameObject;
         hasBerry = true;
-        
     }
 
     public IEnumerator RespawnDelay()
     {
+        // berries spanw back with delay, and depending on difficulty the timedelay varies
+
         berrySpawning = true;
         float delay = 0;
 
@@ -36,7 +37,7 @@ public class SpawnBerry : MonoBehaviour
         }
 
         yield return new WaitForSeconds(delay);
-        hasBerry = false;
+        hasBerry = false; 
         berrySpawning = false;
     }
 
@@ -44,6 +45,5 @@ public class SpawnBerry : MonoBehaviour
     {
         StartCoroutine(RespawnDelay());
     }
-
 
 }

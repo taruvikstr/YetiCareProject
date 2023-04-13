@@ -8,28 +8,22 @@ public class BirdManager : MonoBehaviour
 {
     private List<Transform> berryPositions;
     private List<Transform> birdPositions;
-
-    private Vector2 toBerry;
-    private Vector2 awayFromBerry;
+     
+    private Vector2 toBerry; // vector from bird spawnpoint to berryPositions[randomIndex] 
+    private Vector2 awayFromBerry; // vector from berry back to birdspawnpoint
 
     private float movementSpeed = 5f;
-    private bool isMoving = false;
-    private bool berryGrabbed = false;
-    public bool berryCheck = false;
+    private bool isMoving = false; // is bird moving
+    private bool berryGrabbed = false; // did bird grab berry
     private float screenWidth;
     private int randomIndex;
     private bool berryNotVisited = true;
-    DragBerries[] dragBerries;
-
-    //public TMP_Text birdScore;
-    //private int counter = 0;
 
     private void Awake()
     {
-        dragBerries = GameObject.FindWithTag("Collectible").GetComponents<DragBerries>();
-
         berryPositions = new List<Transform> { null, null, null, null, null, null, null, null, null, null, null, null}; // Add more as the number of spawn points in scene increases.
         birdPositions = new List<Transform> { null, null }; // Add more as the number of spawn points in scene increases.
+
         GameObject berrySpawnPointObject = GameObject.Find("SpawnPoints");
         if (berrySpawnPointObject == null)
         {
@@ -67,7 +61,6 @@ public class BirdManager : MonoBehaviour
             randomIndex = Random.Range(0, berryPositions.Count);
             if (berryPositions[randomIndex].GetComponent<SpawnBerry>().hasBerry == true && berryPositions[randomIndex].GetComponent<SpawnBerry>().berrySpawning == false)
             {
-
                 isMoving = true;
                 break;
             }
@@ -100,20 +93,7 @@ public class BirdManager : MonoBehaviour
 
                 if ((transform.position.Equals(birdPositions[0].position) || transform.position.Equals(birdPositions[1].position)))
                 {
-                    berryCheck = false;
-
-                    // drag berry koodiin liittyvä
-                    //foreach (DragBerries berry in dragBerries)
-                    //{
-                    //    for (int i = 0; i < berry.birdBerryCheck.Count; i++)
-                    //    {
-                    //        berry.birdBerryCheck[i] = false;
-                    //    }
-
-                    //}
                     Destroy(gameObject);
-
-
                 }
                 
 
@@ -125,20 +105,7 @@ public class BirdManager : MonoBehaviour
 
                 if (transform.position.Equals(birdPositions[1].position))
                 {
-                    berryCheck = false;
-
-                    // liittyy drag berry koodiin
-                    //foreach (DragBerries berry in dragBerries)
-                    //{
-                    //    for (int i = 0; i < berry.birdBerryCheck.Count; i++)
-                    //    {
-                    //        berry.birdBerryCheck[i] = false;
-                    //    }
-
-                    //}
                     Destroy(gameObject);
-
-
                 }
 
             }
@@ -159,9 +126,7 @@ public class BirdManager : MonoBehaviour
 
     public void StealBerry()
     {
-        //berryPositions[randomIndex].GetComponent<BerryCheck>().birdHasBerry = true;
         // when berry collider has been triggered, this function is called
-        //berryCheck = true;
         if (gameObject.transform.childCount >= 1)
         {
             berryGrabbed = true;
@@ -171,6 +136,5 @@ public class BirdManager : MonoBehaviour
             // TO DO: bird gets score when it takes berry to nest
             BerryBucket.birdScoreCounter--;
         }
-        // pistevähennyksiä? tai muita sanktioita? 
     }
 }

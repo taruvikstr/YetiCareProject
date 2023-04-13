@@ -8,18 +8,6 @@ public class DragBerries : MonoBehaviour
     private Vector3 offset;
     [SerializeField] private LayerMask movableLayers;
     public bool birdHasBerry = false;
-    //BerryCheck spawnBerry;
-    //BerryCheck[] berries;
-    //public List<bool> birdBerryCheck;
-
-    private void Awake()
-    {
-        //spawnBerry = GameObject.Find("BerryManager").GetComponent<SpawnBerry>();
-        //spawnBerry = GameObject.FindWithTag("Collectible").GetComponents<BerryCheck>();
-        //birdBerryCheck = new List<bool> { false, false, false, false, false, false, false, false, false, false, false, false};
-        //berries = spawnBerry.GetComponentsInChildren<BerryCheck>();
-
-    }
 
     // Update is called once per frame
     void Update()
@@ -27,35 +15,19 @@ public class DragBerries : MonoBehaviour
         // TO DO: katso mit‰ t‰ss‰ voisi tehd‰, kun pelaaja ottaa marjan ja linnulla on marja
         // pelaajan marja j‰‰ paikalleen kunnes lintu ja linnun marja on tuhoutunut
 
-        // HUOM kun lintuu ottaa marjan, voiko marjan layerin/tagin muuttaa, jolloin pelaaja ei en‰‰ voi liikuttaa sit‰ tms.?
-
-
-        //for(int i = 0; i < berries.Length; i++ )
-        //{
-        //    if(berries[i].birdHasBerry == true)
-        //    {
-        //        birdBerryCheck[i] = true;
-        //    }
-        //}
-
-
-
-
         if (dragging == null && gameObject.GetComponent<BerryCheck>().berryLayingAround == true && birdHasBerry == false)
         {
-                MoveBerryBack();
-            // almost works, but the bird behaviour breaks if this is used like this. figure it out
-            
+            MoveBerryBack();
         }
 
         if (Input.touchCount > 0)
         {
-            Touch touch = Input.GetTouch(0);
+            Touch touch = Input.GetTouch(0); // store detected touch. only the first one, id there is multiple touch actions at once. 
 
             switch (touch.phase)
             {
                 case TouchPhase.Began:
-
+                    // touch is being detected on screen
                     // cast ray, restrict the functionality to objects on "Movable" -layer 
                     RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touch.position), Vector2.zero, float.PositiveInfinity, movableLayers);
 
@@ -68,6 +40,7 @@ public class DragBerries : MonoBehaviour
                     break;
 
                 case TouchPhase.Moved:
+                    // touch is moving across screen
                     if (dragging)
                     {
                         dragging.position = Camera.main.ScreenToWorldPoint(touch.position) + offset;
@@ -76,6 +49,7 @@ public class DragBerries : MonoBehaviour
                     break;
 
                 case TouchPhase.Ended:
+                    // screen is not detecting touch
                     dragging = null;
                     gameObject.GetComponent<BerryCheck>().berryLayingAround = true;
                     
@@ -87,7 +61,7 @@ public class DragBerries : MonoBehaviour
 
     public void MoveBerryBack()
     {
-        // when you drag berry away from its spawnpoint and release it before the right bucket, it moves back to spawnpoint
+        // when you drag berry away from its spawnpoint and release it before the right bucket, it moves back to spawnpoint (or in this case, spawnOrigin)
 
         Vector3 parentPos = GetComponent<BerryCheck>().spawnOrigin.transform.position;
 
