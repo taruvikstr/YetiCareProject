@@ -208,17 +208,17 @@ public class EggSpawnManager : MonoBehaviour
             if (basketAmount == 1 && difficulty == 3)
             {
                 r1 = Random.Range(1, 11);
-                eggSpawnerList[r1].GetComponent<SpawnEgg>().SpawnSingleEgg();
+                eggSpawnerList[r1].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
             }
             else if (basketAmount == 1 && difficulty == 2)
             {
                 r1 = Random.Range(2, 10);
-                eggSpawnerList[r1].GetComponent<SpawnEgg>().SpawnSingleEgg();
+                eggSpawnerList[r1].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
             }
             else if (basketAmount == 1 && difficulty == 1)
             {
                 r1 = Random.Range(3, 9);
-                eggSpawnerList[r1].GetComponent<SpawnEgg>().SpawnSingleEgg();
+                eggSpawnerList[r1].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
             }
             else if (basketAmount == 2)
             {
@@ -227,15 +227,15 @@ public class EggSpawnManager : MonoBehaviour
                 playerRandomizer1 = Random.Range(0, 2);
                 if (playerRandomizer1 == 1)
                 {
-                    eggSpawnerList[r1].GetComponent<SpawnEgg>().SpawnSingleEgg();
+                    eggSpawnerList[r1].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
                     yield return new WaitForSeconds(timeDelay1);
-                    eggSpawnerList[r2].GetComponent<SpawnEgg>().SpawnSingleEgg();
+                    eggSpawnerList[r2].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
                 }
                 else
                 {
-                    eggSpawnerList[r2].GetComponent<SpawnEgg>().SpawnSingleEgg();
+                    eggSpawnerList[r2].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
                     yield return new WaitForSeconds(timeDelay1);
-                    eggSpawnerList[r1].GetComponent<SpawnEgg>().SpawnSingleEgg();
+                    eggSpawnerList[r1].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
                 }
             }
             else
@@ -249,54 +249,54 @@ public class EggSpawnManager : MonoBehaviour
                 {
                     if (playerRandomizer1 == 1)
                     {
-                        eggSpawnerList[r1].GetComponent<SpawnEgg>().SpawnSingleEgg();
+                        eggSpawnerList[r1].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
                         yield return new WaitForSeconds(timeDelay1);
-                        eggSpawnerList[r2].GetComponent<SpawnEgg>().SpawnSingleEgg();
+                        eggSpawnerList[r2].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
                         yield return new WaitForSeconds(timeDelay2);
-                        eggSpawnerList[r3].GetComponent<SpawnEgg>().SpawnSingleEgg();
+                        eggSpawnerList[r3].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
                     }
                     else if (playerRandomizer1 == 2)
                     {
-                        eggSpawnerList[r1].GetComponent<SpawnEgg>().SpawnSingleEgg();
+                        eggSpawnerList[r1].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
                         yield return new WaitForSeconds(timeDelay1);
-                        eggSpawnerList[r3].GetComponent<SpawnEgg>().SpawnSingleEgg();
+                        eggSpawnerList[r3].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
                         yield return new WaitForSeconds(timeDelay2);
-                        eggSpawnerList[r2].GetComponent<SpawnEgg>().SpawnSingleEgg();
+                        eggSpawnerList[r2].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
                     }
                     else
                     {
-                        eggSpawnerList[r2].GetComponent<SpawnEgg>().SpawnSingleEgg();
+                        eggSpawnerList[r2].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
                         yield return new WaitForSeconds(timeDelay1);
-                        eggSpawnerList[r1].GetComponent<SpawnEgg>().SpawnSingleEgg();
+                        eggSpawnerList[r1].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
                         yield return new WaitForSeconds(timeDelay2);
-                        eggSpawnerList[r3].GetComponent<SpawnEgg>().SpawnSingleEgg();
+                        eggSpawnerList[r3].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
                     }
                 }
                 else
                 {
                     if (playerRandomizer1 == 1)
                     {
-                        eggSpawnerList[r2].GetComponent<SpawnEgg>().SpawnSingleEgg();
+                        eggSpawnerList[r2].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
                         yield return new WaitForSeconds(timeDelay1);
-                        eggSpawnerList[r3].GetComponent<SpawnEgg>().SpawnSingleEgg();
+                        eggSpawnerList[r3].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
                         yield return new WaitForSeconds(timeDelay2);
-                        eggSpawnerList[r1].GetComponent<SpawnEgg>().SpawnSingleEgg();
+                        eggSpawnerList[r1].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
                     }
                     else if (playerRandomizer1 == 2)
                     {
-                        eggSpawnerList[r3].GetComponent<SpawnEgg>().SpawnSingleEgg();
+                        eggSpawnerList[r3].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
                         yield return new WaitForSeconds(timeDelay1);
-                        eggSpawnerList[r2].GetComponent<SpawnEgg>().SpawnSingleEgg();
+                        eggSpawnerList[r2].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
                         yield return new WaitForSeconds(timeDelay2);
-                        eggSpawnerList[r1].GetComponent<SpawnEgg>().SpawnSingleEgg();
+                        eggSpawnerList[r1].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
                     }
                     else
                     {
-                        eggSpawnerList[r3].GetComponent<SpawnEgg>().SpawnSingleEgg();
+                        eggSpawnerList[r3].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
                         yield return new WaitForSeconds(timeDelay1);
-                        eggSpawnerList[r1].GetComponent<SpawnEgg>().SpawnSingleEgg();
+                        eggSpawnerList[r1].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
                         yield return new WaitForSeconds(timeDelay2);
-                        eggSpawnerList[r2].GetComponent<SpawnEgg>().SpawnSingleEgg();
+                        eggSpawnerList[r2].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
                     }
                 }
             }

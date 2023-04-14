@@ -128,7 +128,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 893044d216887e0448b8ce3c2771dd98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  egg: {fileID: 683789432511109704, guid: ee4d47b12da718a4a97ce3af4d25df22, type: 3}
+  easyEgg: {fileID: 683789432511109704, guid: ee4d47b12da718a4a97ce3af4d25df22, type: 3}
+  mediumEgg: {fileID: 683789432511109704, guid: fa8315f471e77a04089d5e4355b1b61f, type: 3}
+  hardEgg: {fileID: 683789432511109704, guid: c7dae1988d97f3040b5eac4e48523157, type: 3}
   idle: {fileID: 7984658549200028922}
   laying: {fileID: 5604848987799024727}
 --- !u!1 &5331984573565982364
