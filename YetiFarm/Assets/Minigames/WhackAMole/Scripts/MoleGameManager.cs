@@ -49,6 +49,8 @@ public class MoleGameManager : MonoBehaviour
 
     private List<int> samenumbercheck = new List<int>();
 
+    private int random;
+
     private void Start()
     {
         
@@ -75,12 +77,12 @@ public class MoleGameManager : MonoBehaviour
     public void StartGame()
     {
         //Set endlessGamemode from buttonmanagerscript.
-        endlessGame = buttonManager.GetComponent<ButtonManagerScriptMole>().gameModeValue;
+        endlessGame = buttonManager.GetComponent<ButtonManagerScriptMole>().gameModeValueMole;
         
         // Getting difficultyvalue from MoleGameManager Script.
-        difficultyLevel = buttonManager.GetComponent<ButtonManagerScriptMole>().difficultyValue;
+        difficultyLevel = buttonManager.GetComponent<ButtonManagerScriptMole>().difficultyValueMole;
         // Getting moles in game value from buttonmanager script.
-        molesInGame = buttonManager.GetComponent<ButtonManagerScriptMole>().playerAmountValue;
+        molesInGame = buttonManager.GetComponent<ButtonManagerScriptMole>().playerAmountValueMole;
         //Changin difficulty for molegame
 
         if(endlessGame == 1)
@@ -99,16 +101,19 @@ public class MoleGameManager : MonoBehaviour
             }
             //  Debug.Log(molesInGame);
             //Change amount of moles in game
+
             if (molesInGame == 1)
             {
-
+                Debug.Log("Check");
                 for (int i = 0; i <= 5; i++)
                 {
-                    int random = Random.Range(0, moles.Count);
+                    Debug.Log("Check");
+                    random = Random.Range(0, moles.Count);
 
                     while (samenumbercheck.Contains(random))
                     {
                         random = Random.Range(0, moles.Count);
+                        Debug.Log("Sama numero " + random);
                     }
                     moles[random].Hide();
                     moles.Remove(moles[random]);
@@ -120,15 +125,17 @@ public class MoleGameManager : MonoBehaviour
             {
                 for (int i = 0; i <= 2; i++)
                 {
-                    int random = Random.Range(0, moles.Count);
+                    random = Random.Range(0, moles.Count);
 
                     while (samenumbercheck.Contains(random))
                     {
                         random = Random.Range(0, moles.Count);
+                        Debug.Log("Sama numero " + random);
                     }
                     moles[random].Hide();
                     moles.Remove(moles[random]);
                     samenumbercheck.Add(random);
+                    Debug.Log(samenumbercheck[i]);
                 }
             }
         }
@@ -167,7 +174,7 @@ public class MoleGameManager : MonoBehaviour
 
     }
     // If bomb is clicked explosion particle effect is triggered.
-    public void BombExplosion(Vector2 molepos)
+    public void BombExplosion(Vector2 molepos,int moleindex)
     {
         
         ParticleSystem newExplosion = Instantiate(explosion);
@@ -179,7 +186,7 @@ public class MoleGameManager : MonoBehaviour
     //Old particlesystem explosion gameobject is deleted from scene after 3 seconds.
     IEnumerator DeleteOldExplosion(GameObject explosion)
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         Destroy(explosion);
     }
     public void GameOver(int type)
@@ -235,19 +242,27 @@ public class MoleGameManager : MonoBehaviour
     void Update()
     {
         //If a veggie is destroyed it's game over.
-        if(endlessGame == 2)
-        {
-            difficultyLevel = score;
-            if(vegetablesStart != vegetables)
-            {
-                GameOver(0);
-            }
-        }
         if (playing)
         {
-            //Update time
+            //if endless game mode time is set to 1 for the whole duration. And difficultylevel increases as score increases, and if vegetable is destroyed game is over.
             vegetableCount.text = vegetables.ToString();
-            timeRemaining -= Time.deltaTime;
+            if(endlessGame == 2)
+            {
+                difficultyLevel = score;
+                if (vegetablesStart != vegetables)
+                {
+                    GameOver(0);
+                }
+                // Set timer text objects to false during endless mode
+                timeRemaining = 1;
+                timeheader.SetActive(false);
+                timeTextObject.SetActive(false);
+            }
+            else
+            {
+                timeRemaining -= Time.deltaTime;
+            }
+            
             if(timeRemaining <= 0)
             {
                 timeRemaining = 0;

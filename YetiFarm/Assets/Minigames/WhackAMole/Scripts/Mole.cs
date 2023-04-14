@@ -158,7 +158,7 @@ public class Mole : MonoBehaviour
                     {
                         gameManager.vegetables -= 1;
                     }
-                    gameManager.BombExplosion(gameObject.transform.position);
+                    gameManager.BombExplosion(gameObject.transform.position,moleIndex);
                     gameManager.AddScore(moleIndex, moleType != MoleType.Bomb);
                     StopAllCoroutines();
                     StartCoroutine(QuickHide());

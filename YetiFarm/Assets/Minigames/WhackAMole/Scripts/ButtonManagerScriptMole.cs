@@ -18,30 +18,30 @@ public class ButtonManagerScriptMole : MonoBehaviour
     public Slider moleCountSlider;
     public Slider moleDifficultySlider;
   //  public GameObject gameStarter; // The object that has the script and function for starting the game based on given parameters.
-    public int difficultyValue;
-    public int playerAmountValue;
+    public int difficultyValueMole;
+    public int playerAmountValueMole;
     private int gameSpeedValue;
-    public int gameModeValue;
+    public int gameModeValueMole;
     private int desiredScoreValue;
 
     private void Awake() // Set values to defaults. Remember to set sliders to these values as well.
     {
-        difficultyValue = 2;
-        playerAmountValue = 1;
+        difficultyValueMole = 2;
+        playerAmountValueMole = 1;
         gameSpeedValue = 0;
-        gameModeValue = 1;
+        gameModeValueMole = 1;
         desiredScoreValue = 60;
     }
 
 
     public void UpdateDifficulty(Slider slider)
     {
-        difficultyValue = (int)slider.value;
+        difficultyValueMole = (int)slider.value;
     }
 
     public void UpdatePlayerAmount(Slider slider)
     {
-        playerAmountValue = (int)slider.value;
+        playerAmountValueMole = (int)slider.value;
     }
 
     public void UpdateGameSpeed(Slider slider)
@@ -51,8 +51,8 @@ public class ButtonManagerScriptMole : MonoBehaviour
 
     public void UpdateGameMode(Slider slider)
     {
-        gameModeValue = (int)slider.value;
-        if(gameModeValue == 2)
+        gameModeValueMole = (int)slider.value;
+        if(gameModeValueMole == 2)
         {
             moleCountSlider.interactable = false;
             moleDifficultySlider.interactable = false;
