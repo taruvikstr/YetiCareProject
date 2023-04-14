@@ -17,13 +17,9 @@ public class BerryCheck : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // TO DO: katso mitä tässä voisi tehdä, kun pelaaja ottaa marjan ja linnulla on marja
-        // pelaajan marja jää paikalleen kunnes lintu ja linnun marja on tuhoutunut
-
-        if (dragging == null && berryLayingAround == true && birdHasBerry == false)
+        if (dragging == null && berryLayingAround == true && birdHasBerry == false && gameObject.transform.parent == null)
         {
             MoveBerryBack();
-
         }
 
         if (Input.touchCount > 0)
@@ -33,6 +29,7 @@ public class BerryCheck : MonoBehaviour
             switch (touch.phase)
             {
                 case TouchPhase.Began:
+
                     // touch is being detected on screen
                     // cast ray, restrict the functionality to objects on "Movable" -layer 
                     RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touch.position), Vector2.zero, float.PositiveInfinity, movableLayers);
@@ -56,21 +53,22 @@ public class BerryCheck : MonoBehaviour
                     break;
 
                 case TouchPhase.Moved:
+
                     // touch is moving across screen
                     if (dragging)
                     {
                         dragging.position = Camera.main.ScreenToWorldPoint(touch.position) + offset;
                         dragging.transform.parent = null;
+                        berryLayingAround = true;
                     }
                     break;
 
                 case TouchPhase.Ended:
+
                     // screen is not detecting touch
-                    dragging = null;
-                    berryLayingAround = true;
+                    dragging = null;   
 
                     break;
-
             }
         }
     }
@@ -79,24 +77,20 @@ public class BerryCheck : MonoBehaviour
     {
         // bird is stealing the berry
         gameObject.transform.parent = collision.gameObject.transform;
-        berryLayingAround = false;   
-        
+        berryLayingAround = false;           
     }
 
     public void MoveBerryBack()
     {
         // when you drag berry away from its spawnpoint and release it before the right bucket, it moves back to spawnpoint (or in this case, spawnOrigin)
-
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
         Vector3 parentPos = spawnOrigin.transform.position;
-
         transform.position = Vector3.MoveTowards(transform.position, parentPos, 10f * Time.deltaTime);
 
         if (transform.position.Equals(parentPos))
         {
             berryLayingAround = false;
             gameObject.GetComponent<BoxCollider2D>().enabled = true;
-        }
-            
+        }           
     }
 }

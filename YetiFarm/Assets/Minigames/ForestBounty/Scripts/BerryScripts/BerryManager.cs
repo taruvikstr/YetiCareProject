@@ -16,11 +16,11 @@ public class BerryManager : MonoBehaviour
 
     public TMP_Text endgame_txt;
     public static int endGame = 0; // when endgame == 4, game ends
-
     public static int howManyberries;
 
     public GameObject birdSpawn;
     public GameObject containers; // aka buckets
+    public GameObject buttonManager;
 
 
     private void Awake()
@@ -41,19 +41,20 @@ public class BerryManager : MonoBehaviour
 
     private void Update()
     {
-        // End the game after gathering all needed berries
+        // This happens when bird gathers all berries
         if (BerryBucket.birdScoreCounter == 0 && bManagerDifficulty != 1 && gameOn != false)
         {
-            endgame_txt.text = "hävisit linnulle";
+            buttonManager.GetComponent<ButtonManagerForestBounty>().ActivateGameOverScreen(0, bManagerDifficulty);
             gameOn = false;
             StopAllCoroutines();
         }
+
+        // This happens when player gathers all berries
         if (endGame == 4 && endgame_txt != null)
         {
-            endgame_txt.text = "voitit pelin";
-            //StopCoroutine(SpawnBerries());
-            StopAllCoroutines();
+            buttonManager.GetComponent<ButtonManagerForestBounty>().ActivateGameOverScreen(1, bManagerDifficulty);
             gameOn = false;
+            StopAllCoroutines();
         }
     }
 

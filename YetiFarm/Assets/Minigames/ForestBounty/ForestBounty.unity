@@ -207,8 +207,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ButtonManagerScript, Assembly-CSharp
+      - m_Target: {fileID: 819114930}
+        m_TargetAssemblyTypeName: ButtonManagerForestBounty, Assembly-CSharp
         m_MethodName: ReturnToSettingScreen
         m_Mode: 1
         m_Arguments:
@@ -2963,8 +2963,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ButtonManagerScript, Assembly-CSharp
+      - m_Target: {fileID: 819114930}
+        m_TargetAssemblyTypeName: ButtonManagerForestBounty, Assembly-CSharp
         m_MethodName: ReturnToMainScreen
         m_Mode: 1
         m_Arguments:
@@ -3142,6 +3142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startScreen: {fileID: 232968715}
   endScreen: {fileID: 1452095342}
+  scoreText1: {fileID: 2001038402}
   gameStarter: {fileID: 1522777552}
   berryAmountGroup: {fileID: 245492758}
   toggleLow: {fileID: 269358463}
@@ -3600,7 +3601,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Rikki meni 0 kananmunaa.
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5816,6 +5817,7 @@ MonoBehaviour:
   endgame_txt: {fileID: 863450206}
   birdSpawn: {fileID: 0}
   containers: {fileID: 0}
+  buttonManager: {fileID: 819114929}
 --- !u!4 &1522777554
 Transform:
   m_ObjectHideFlags: 0
@@ -6019,10 +6021,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Pisteet:'
+  m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7fbdf7fb665dc8d43ac1ac6bb0e789ab, type: 2}
+  m_sharedMaterial: {fileID: 4453648058832637171, guid: 7fbdf7fb665dc8d43ac1ac6bb0e789ab, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7233,7 +7235,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Ker\xE4sit 0 kananmunaa."
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

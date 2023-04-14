@@ -14,7 +14,7 @@ public class BirdManager : MonoBehaviour
     private Vector2 toBerry; // vector from bird spawnpoint to berryPositions[randomIndex] 
     private Vector2 awayFromBerry; // vector from berry back to birdspawnpoint
 
-    private float movementSpeed = 5f; // bird movement speed
+    private float movementSpeed = 2f; // bird movement speed
     private bool isMoving = false; // is bird moving
     private bool berryGrabbed = false; // did bird grab berry
     private int randomIndex; // random index for berryPositions list
@@ -24,8 +24,8 @@ public class BirdManager : MonoBehaviour
     {
         berryPositions = new List<Transform> { null, null, null, null, null, null, null, null, null, null, null, null}; // Add more as the number of spawn points in scene increases.
         birdPositions = new List<Transform> { null, null }; // Add more as the number of spawn points in scene increases.
-
         GameObject berrySpawnPointObject = GameObject.Find("SpawnPoints");
+
         if (berrySpawnPointObject == null)
         {
             Debug.Log("BERRY NOT FOUND");
@@ -35,7 +35,6 @@ public class BirdManager : MonoBehaviour
         {
             berryPositions[i] = berrySpawnPointObject.transform.GetChild(i).transform;
         }
-
 
         GameObject birdSpawnPointObject = GameObject.Find("BirdSpawn");
         if (berrySpawnPointObject == null)
@@ -50,11 +49,7 @@ public class BirdManager : MonoBehaviour
     }
 
     void Start()
-    {
-        // Set bird's goal
-        // TO DO: add for different difficulties
-        //counter = 10;
-        //birdScore.text = counter.ToString();     
+    {  
         while (true)
         {
             randomIndex = Random.Range(0, berryPositions.Count);
@@ -71,7 +66,6 @@ public class BirdManager : MonoBehaviour
         if (isMoving)
         {
             toBerry = berryPositions[randomIndex].position;
-
             awayFromBerry = birdPositions[1].position;
 
             if (berryGrabbed == true)
@@ -85,11 +79,8 @@ public class BirdManager : MonoBehaviour
                     {
                         BerryBucket.birdScoreCounter--;
                     }
-                    Destroy(gameObject);
-                    
+                    Destroy(gameObject);              
                 }
-                
-
             }
             else if (berryNotVisited == false)
             {
@@ -101,7 +92,6 @@ public class BirdManager : MonoBehaviour
                 {
                     Destroy(gameObject);
                 }
-
             }
             else if (berryNotVisited)
             {
@@ -117,9 +107,7 @@ public class BirdManager : MonoBehaviour
                 {
                     berryNotVisited = false;
                 }
-
             }
-
         }
     }
 
@@ -127,9 +115,6 @@ public class BirdManager : MonoBehaviour
     {
         berryPositions[randomIndex].GetComponent<SpawnBerry>().currentBerry.GetComponent<BerryCheck>().OnSteal(gameObject);
         berryGrabbed = true;
-        gameObject.transform.GetChild(0).GetComponent<BerryCheck>().birdHasBerry = true;
-
-        // TO DO: bird gets score when it takes berry to nest
-           
+        gameObject.transform.GetChild(0).GetComponent<BerryCheck>().birdHasBerry = true;           
     }
 }
