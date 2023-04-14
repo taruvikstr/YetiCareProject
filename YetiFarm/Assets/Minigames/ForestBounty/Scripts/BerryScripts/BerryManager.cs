@@ -12,11 +12,10 @@ public class BerryManager : MonoBehaviour
 {
     public Transform[] berrySpawnerList; // list of berry spawnpoints in scene
     public static bool gameOn = false; // while player is picking berries, the game is on 
-    private int bManagerDifficulty; // 3 difficulties
+    public static int bManagerDifficulty; // 3 difficulties
 
     public TMP_Text endgame_txt;
     public static int endGame = 0; // when endgame == 4, game ends
-    public static int howManyberries;
 
     public GameObject birdSpawn;
     public GameObject containers; // aka buckets
@@ -44,23 +43,22 @@ public class BerryManager : MonoBehaviour
         // This happens when bird gathers all berries
         if (BerryBucket.birdScoreCounter == 0 && bManagerDifficulty != 1 && gameOn != false)
         {
-            buttonManager.GetComponent<ButtonManagerForestBounty>().ActivateGameOverScreen(0, bManagerDifficulty);
             gameOn = false;
-            StopAllCoroutines();
+            buttonManager.GetComponent<ButtonManagerForestBounty>().ActivateGameOverScreen(0, bManagerDifficulty);
         }
 
         // This happens when player gathers all berries
-        if (endGame == 4 && endgame_txt != null)
-        {
-            buttonManager.GetComponent<ButtonManagerForestBounty>().ActivateGameOverScreen(1, bManagerDifficulty);
+        if (endGame == 4 && gameOn != false)
+        {     
             gameOn = false;
-            StopAllCoroutines();
+            buttonManager.GetComponent<ButtonManagerForestBounty>().ActivateGameOverScreen(1, bManagerDifficulty);
         }
     }
 
     public void StartSpawn(int difficulty)
     {
         gameOn = true;
+        endGame = 0;
         bManagerDifficulty = difficulty;
 
         // Sets berry spawn points's difficulty values and spawn delay
@@ -73,14 +71,13 @@ public class BerryManager : MonoBehaviour
         {
             case 1:     
                 // easy
-                howManyberries = 1;
+                //BerryBucket.birdScoreCounter
 
                 break;
 
             case 2:  
                 // medium difficulty
-                howManyberries = 2;
-                BerryBucket.birdScoreCounter = 15;
+                BerryBucket.birdScoreCounter = 1;
 
                 birdSpawn.GetComponent<BirdSpawnBehavior>().BirdSpawnStarter(); // Starts bird 
 
@@ -88,7 +85,6 @@ public class BerryManager : MonoBehaviour
 
             case 3:
                 // hard
-                howManyberries = 3;
                 BerryBucket.birdScoreCounter = 10;
 
                 birdSpawn.GetComponent<BirdSpawnBehavior>().birdSpawnRate = 5f; // set bird to spawn a bit faster
@@ -101,7 +97,6 @@ public class BerryManager : MonoBehaviour
         {
             berrySpawnerList[i].GetComponent<SpawnBerry>().SpawnOneBerry(); // instansiate the first berries 
         }
-
 
         BerryBucket[] childContainers = containers.GetComponentsInChildren<BerryBucket>();
         foreach (BerryBucket childContainer in childContainers)

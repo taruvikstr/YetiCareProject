@@ -68,6 +68,11 @@ public class BirdManager : MonoBehaviour
             toBerry = berryPositions[randomIndex].position;
             awayFromBerry = birdPositions[1].position;
 
+            if(BerryBucket.birdScoreCounter == 0)
+            {
+                Destroy(gameObject);
+            }
+
             if (berryGrabbed == true)
             {
                 // bird has grabbed berry
