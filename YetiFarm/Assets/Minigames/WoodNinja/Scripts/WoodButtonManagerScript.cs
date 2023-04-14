@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
-public class ButtonManagerScript : MonoBehaviour
+public class WoodButtonManagerScript : MonoBehaviour
 {
     public GameObject startScreen;
     public GameObject endScreen;
@@ -44,7 +44,7 @@ public class ButtonManagerScript : MonoBehaviour
         }
         if (difficultyValue == 2)
         {
-            difficultySliderNumText.text = ":|";
+            difficultySliderNumText.text = ":/";
         }
         if (difficultyValue == 3)
         {
@@ -91,7 +91,7 @@ public class ButtonManagerScript : MonoBehaviour
     public void ActivateGame()
     {
         startScreen.SetActive(false); // Disable and hide the starting screen.
-        gameStarter.GetComponent<EggSpawnManager>().StartEggSpawns(difficultyValue, desiredScoreValue, gameModeValue, playerAmountValue);
+        gameStarter.GetComponent<GameManager>().StartWoodSpawns(difficultyValue, desiredScoreValue, gameModeValue, playerAmountValue);
     }
 
     public void ActivateGameOverScreen(int score_points, int failed_things, int game_mode)

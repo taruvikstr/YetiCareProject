@@ -5,8 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 
 public class GameManager : MonoBehaviour
-{
-
+{ 
     public TextMeshProUGUI scoreText;
    
     private Blade blade;
@@ -19,6 +18,11 @@ public class GameManager : MonoBehaviour
         spawner = FindObjectOfType<SpawnerV2>();
     }
     // Start is called before the first frame update
+
+    public void StartWoodSpawns(int difficultyValue, int desiredScoreValue, int gameModeValue, int playerAmountValue)
+    {
+        // Start the game with the settings given in the parameters.
+    }
 
     public void IncreaseScore(int amount)
     {
@@ -33,6 +37,7 @@ public class GameManager : MonoBehaviour
         spawner.enabled = false;
 
        // StartCoroutine(endGameSequence());
+       // Pass values to end screen in order to give player feedback and display score values, then reset all values to default.
     }
 
    /* private IEnumerator endGameSequence()
