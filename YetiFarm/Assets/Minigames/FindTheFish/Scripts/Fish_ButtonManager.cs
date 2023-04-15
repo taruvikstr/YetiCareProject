@@ -6,10 +6,9 @@ using UnityEngine.UI;
 using TMPro;
 
 public class Fish_ButtonManager : MonoBehaviour
-{
-    public GameObject startScreen;
-    public GameObject endScreen;
-    public GameObject gameStarter; // The object that has the script and function for starting the game based on given parameters.
+{   
+    [SerializeField] private GameObject startScreen, endScreen, gameStarter;
+    [SerializeField] private TMP_Text playersSlider, fishSlider, patternSlider, timeSlider;
     private int fishAmountValue;
     private int playerAmountValue;
     private int timerValue;
@@ -21,27 +20,42 @@ public class Fish_ButtonManager : MonoBehaviour
         playerAmountValue = 1;
         timerValue = 60;
         patternAmountValue = 4;
+
+        UpdateSliderHandleValues();
+    }
+
+    private void UpdateSliderHandleValues()
+    {
+        playersSlider.text = playerAmountValue.ToString();
+        fishSlider.text = fishAmountValue.ToString();
+        patternSlider.text = patternAmountValue.ToString();
+        timeSlider.text = timerValue.ToString();
     }
 
 
     public void UpdateDifficulty(Slider slider)
     {
         fishAmountValue = (int)slider.value;
+        fishSlider.text = fishAmountValue.ToString();
+        
     }
 
     public void UpdatePlayerAmount(Slider slider)
     {
         playerAmountValue = (int)slider.value;
+        playersSlider.text = playerAmountValue.ToString();
     }
 
     public void UpdateGameSpeed(Slider slider)
     {
         timerValue = (int)slider.value;
+        timeSlider.text = timerValue.ToString();
     }
 
     public void UpdatePatternAmount(Slider slider)
     {
         patternAmountValue = (int)slider.value;
+        patternSlider.text = patternAmountValue.ToString();
     }
 
 
