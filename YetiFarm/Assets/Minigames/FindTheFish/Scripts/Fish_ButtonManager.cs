@@ -48,7 +48,7 @@ public class Fish_ButtonManager : MonoBehaviour
 
     public void UpdateGameSpeed(Slider slider)
     {
-        timerValue = (int)slider.value;
+        timerValue = (int)slider.value * 10;
         timeSlider.text = timerValue.ToString();
     }
 
