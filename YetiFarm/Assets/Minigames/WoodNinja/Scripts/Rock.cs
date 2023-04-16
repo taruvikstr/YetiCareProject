@@ -12,7 +12,7 @@ public class Rock : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            FindObjectOfType<GameManager>().endGame();
+            FindObjectOfType<GameManager>().EndGame();
         }
     }
 }

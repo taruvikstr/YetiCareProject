@@ -10,11 +10,7 @@ public class WoodButtonManagerScript : MonoBehaviour
     public GameObject startScreen;
     public GameObject endScreen;
     public TextMeshProUGUI scoreText1;
-    public TextMeshProUGUI scoreText2;
-    public TextMeshProUGUI scoreText3;
-    public TextMeshProUGUI scoreText4;
     public TextMeshProUGUI feedbackText;
-    public GameObject gameStarter; // The object that has the script and function for starting the game based on given parameters.
     private int difficultyValue;
     private int playerAmountValue;
     private int gameSpeedValue;
@@ -24,6 +20,7 @@ public class WoodButtonManagerScript : MonoBehaviour
     public TextMeshProUGUI difficultySliderNumText;
     public TextMeshProUGUI gameModeSliderNumText;
     public TextMeshProUGUI amountSliderNumText;
+    [SerializeField] private GameManager gameManager;
 
     private void Awake() // Set values to defaults. Remember to set sliders to these values as well.
     {
@@ -32,6 +29,8 @@ public class WoodButtonManagerScript : MonoBehaviour
         gameSpeedValue = 0;
         gameModeValue = 1;
         desiredScoreValue = 50;
+        FindObjectOfType<Blade>().enabled = false;
+        gameManager.PauseGame();
     }
 
 
@@ -81,7 +80,7 @@ public class WoodButtonManagerScript : MonoBehaviour
         desiredScoreValue = (int)slider.value * 10;
         amountSliderNumText.text = desiredScoreValue.ToString();
     }
-
+   
 
     public void ReturnToMainScreen()
     {
@@ -90,15 +89,19 @@ public class WoodButtonManagerScript : MonoBehaviour
 
     public void ActivateGame()
     {
+        
         startScreen.SetActive(false); // Disable and hide the starting screen.
-        gameStarter.GetComponent<GameManager>().StartWoodSpawns(difficultyValue, desiredScoreValue, gameModeValue, playerAmountValue);
+        gameManager.StartWoodSpawns(difficultyValue, desiredScoreValue, gameModeValue, playerAmountValue);
+        FindObjectOfType<Blade>().enabled = true;
+        
+
     }
 
-    public void ActivateGameOverScreen(int score_points, int failed_things, int game_mode)
+    public void ActivateGameOverScreen(int score)
     {
         endScreen.SetActive(true); // Enable and display the game over screen.
-        scoreText1.text = "Ker‰sit " + score_points.ToString() + " kananmunaa.";
-        scoreText2.text = "Rikki meni " + failed_things.ToString() + " kananmunaa.";
+        scoreText1.text = "Pilkoit " + score.ToString() + " puuta.";
+       /* scoreText2.text = "Rikki meni " + failed_things.ToString() + " kananmunaa.";
 
         if (failed_things == 1)
         {
@@ -136,7 +139,7 @@ public class WoodButtonManagerScript : MonoBehaviour
         else if (game_mode == 2 && score_points > 80)
         {
             feedbackText.text = "Onneksi olkoon! Olet mestariker‰‰j‰!";
-        }
+        }*/
     }
 
     public void ReturnToSettingScreen()
