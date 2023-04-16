@@ -47,6 +47,8 @@ public class MoleGameManager : MonoBehaviour
     private int endlessGame;
     private int vegetablesStart;
 
+    public GameOverView GetGameOverView;
+
     private List<int> samenumbercheck = new List<int>();
 
     private int random;
@@ -211,6 +213,8 @@ public class MoleGameManager : MonoBehaviour
         playing = false;
         playButton.SetActive(true);
         exitButton.SetActive(true);
+
+        GameOverView.Setup(score);
     }
     public void AddScore(int moleIndex, bool isMole)
     {
