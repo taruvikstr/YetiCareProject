@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Fish_GameManager : MonoBehaviour
 {
@@ -68,6 +69,11 @@ public class Fish_GameManager : MonoBehaviour
         {
             fish_UIController.SetPlacements();
             ResetGame();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("Main_Farm");
         }
     }
 
