@@ -10,11 +10,8 @@ public class ButtonManagerForestBounty : MonoBehaviour
 {
     public GameObject startScreen;
     public GameObject endScreen;
-    //public TextMeshProUGUI scoreText1;
-    //public TextMeshProUGUI scoreText2;
-    //public TextMeshProUGUI scoreText3;
-    //public TextMeshProUGUI scoreText4;
-    //public TextMeshProUGUI feedbackText;
+    public TextMeshProUGUI scoreText1;
+
     public GameObject gameStarter; // The object that has the script and function for starting the game based on given parameters.
     private int difficultyValue;
     //private int playerAmountValue;
@@ -93,54 +90,37 @@ public class ButtonManagerForestBounty : MonoBehaviour
             //(difficultyValue, desiredScoreValue, gameModeValue, playerAmountValue);
     }
 
-    public void ActivateGameOverScreen(int score_points, int failed_things, int game_mode)
+    public void ActivateGameOverScreen(int result, int game_mode)
     {
-        //endScreen.SetActive(true); // Enable and display the game over screen.
-        //scoreText1.text = "Ker‰sit " + score_points.ToString() + " kananmunaa.";
-        //scoreText2.text = "Rikki meni " + failed_things.ToString() + " kananmunaa.";
+        // result = 0 lintu voitti, result = 1 pelaaja voitti
 
-        //if (failed_things == 1)
-        //{
-        //    scoreText2.text = "Rikki meni " + failed_things.ToString() + " kananmuna.";
-        //}
+        endScreen.SetActive(true); // Enable and display the game over screen.
 
-        //if (game_mode == 1 && failed_things < score_points / 4)
-        //{
-        //    feedbackText.text = "Hienoa tyˆt‰!";
-        //}
-        //else if (game_mode == 1 && failed_things > score_points / 4)
-        //{
-        //    feedbackText.text = "Ole ensi kerralla varovaisempi!";
-        //}
-        //else if (game_mode == 2 && score_points <= 10)
-        //{
-        //    feedbackText.text = "Parempi onni ensi kerralla!";
-        //}
-        //else if (game_mode == 2 && score_points <= 20 && score_points > 10)
-        //{
-        //    feedbackText.text = "P‰‰sit hyvin alkuun!";
-        //}
-        //else if (game_mode == 2 && score_points <= 40 && score_points > 20)
-        //{
-        //    feedbackText.text = "Seh‰n meni hienosti!";
-        //}
-        //else if (game_mode == 2 && score_points <= 60 && score_points > 40)
-        //{
-        //    feedbackText.text = "Hienoa! Olet oikea kanalan kauhu!";
-        //}
-        //else if (game_mode == 2 && score_points <= 80 && score_points > 60)
-        //{
-        //    feedbackText.text = "Upeaa! Kadehdittava tulos!";
-        //}
-        //else if (game_mode == 2 && score_points > 80)
-        //{
-        //    feedbackText.text = "Onneksi olkoon! Olet mestariker‰‰j‰!";
-        //}
+        if (game_mode == 0 && result == 1)
+        {
+            scoreText1.text = "Hienoa, ker‰sit kaikki marjat!";
+        }
+        else if (game_mode == 1 && result == 1)
+        {
+            scoreText1.text = "Hienoa, ker‰sit kaikki marjat ennen lintua!";
+        }
+        else if (game_mode == 1 && result == 0)
+        {
+            scoreText1.text = "Lintu oli t‰ll‰ kertaa nopeampi!";
+        }
+        else if (game_mode == 2 && result == 1)
+        {
+            scoreText1.text = "Mahtavaa, ker‰sit kaikki marjat ennen lintua!";
+        }
+        else if (game_mode == 2 && result == 0)
+        {
+            scoreText1.text = "Lintu oli t‰ll‰ kertaa nopeampi!";
+        }
     }
 
     public void ReturnToSettingScreen()
     {
-        //endScreen.SetActive(false);
-        //startScreen.SetActive(true);
+        endScreen.SetActive(false);
+        startScreen.SetActive(true);
     }
 }

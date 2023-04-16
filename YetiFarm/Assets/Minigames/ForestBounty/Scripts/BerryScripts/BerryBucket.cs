@@ -5,41 +5,51 @@ using TMPro;
 
 public class BerryBucket : MonoBehaviour
 {
-    int counter = 0;
-    public static int birdScoreCounter = 0;
-    public static bool berriesCollected;
-    public TMP_Text txt;
-    public TMP_Text birdScore;
-    public string bucketType;
-
-
-    //BerryManager berryManager;
-
+    int counter = 0; // berrycounter
+    public static int birdScoreCounter; // = how many berries the bird has to collect before it beats you
+    public TMP_Text txt; // berrycounter text
+    public TMP_Text birdScore; 
+    public string bucketType; // cowberry, blueberry, strawberry or raspberry
 
     // Start is called before the first frame update
+    private void Awake()
+    {
+        birdScore.enabled = false;
+    }
     public void StartBuckets()
     {
-        switch (BerryManager.howManyberries) // aka difficulty
+        gameObject.GetComponent<BoxCollider2D>().enabled = true;
+        switch (BerryManager.bManagerDifficulty) // aka difficulty
         {
             case 1:
                 counter = Random.Range(1, 5);
                 break;
             case 2:
                 counter = Random.Range(4, 10);
+                birdScore.enabled = true;
+                birdScore.text = birdScoreCounter.ToString();
                 break;
             case 3:
                 counter = Random.Range(10, 20);
+                birdScore.enabled = true;
+                birdScore.text = birdScoreCounter.ToString();
                 break;
         }
-                
+
+        txt.enabled = true;
         txt.text = counter.ToString();
-        birdScore.text = birdScoreCounter.ToString();
 
     }
     private void Update()
     {
         // Update the counter everytime bird steals berry
         birdScore.text = birdScoreCounter.ToString();
+
+        if (BerryManager.endGame == 4 || (birdScoreCounter == 0 && BerryManager.bManagerDifficulty != 1))
+        {
+            birdScore.enabled = false;
+            txt.enabled = false;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -47,18 +57,15 @@ public class BerryBucket : MonoBehaviour
         if (collision.gameObject.name.StartsWith("Strawberry") && bucketType == "StrawberryBucket")
         {            
             counter--;
-            if (counter > 0)
+            collision.gameObject.GetComponent<BerryCheck>().spawnOrigin.GetComponent<SpawnBerry>().BerryToFalse();
+            Destroy(collision.gameObject);
+
+            if (counter > 0) 
             {
-                collision.gameObject.GetComponent<BerryCheck>().spawnOrigin.GetComponent<SpawnBerry>().hasBerry = false;
-                Destroy(collision.gameObject);
-                BerryManager.strawberryCount--;
                 txt.text = counter.ToString();
-                Debug.Log("strawberryCount =" + BerryManager.strawberryCount);
             }
-            else 
+            else  // all berries collected in this berrybucket
             {
-                collision.gameObject.GetComponent<BerryCheck>().spawnOrigin.GetComponent<SpawnBerry>().hasBerry = false;
-                Destroy(collision.gameObject);
                 txt.text = "Kaikki marjat kerätty!";
                 BerryManager.endGame++;
                 gameObject.GetComponent<BoxCollider2D>().enabled = false;
@@ -68,18 +75,15 @@ public class BerryBucket : MonoBehaviour
         if (collision.gameObject.name.StartsWith("Blueberry") && bucketType == "BlueberryBucket")
         {
             counter--;
+            collision.gameObject.GetComponent<BerryCheck>().spawnOrigin.GetComponent<SpawnBerry>().BerryToFalse();
+            Destroy(collision.gameObject);
+
             if (counter > 0)
             {
-                collision.gameObject.GetComponent<BerryCheck>().spawnOrigin.GetComponent<SpawnBerry>().hasBerry = false;
-                Destroy(collision.gameObject);
-                BerryManager.blueberryCount--;
                 txt.text = counter.ToString();
-                Debug.Log("blueberryCount =" + BerryManager.blueberryCount);
             }
-            else
+            else  // all berries collected in this berrybucket
             {
-                collision.gameObject.GetComponent<BerryCheck>().spawnOrigin.GetComponent<SpawnBerry>().hasBerry = false;
-                Destroy(collision.gameObject);
                 txt.text = "Kaikki marjat kerätty!";
                 BerryManager.endGame++;
                 gameObject.GetComponent<BoxCollider2D>().enabled = false;
@@ -89,19 +93,15 @@ public class BerryBucket : MonoBehaviour
         if (collision.gameObject.name.StartsWith("Raspberry") && bucketType == "RaspberryBucket")
         {
             counter--;
+            collision.gameObject.GetComponent<BerryCheck>().spawnOrigin.GetComponent<SpawnBerry>().BerryToFalse();
+            Destroy(collision.gameObject);
 
             if (counter > 0)
             {
-                collision.gameObject.GetComponent<BerryCheck>().spawnOrigin.GetComponent<SpawnBerry>().hasBerry = false;
-                Destroy(collision.gameObject);
-                BerryManager.raspberryCount--;
                 txt.text = counter.ToString();
-                Debug.Log("raspberryCount =" + BerryManager.raspberryCount);
             }
-            else
+            else  // all berries collected in this berrybucket
             {
-                collision.gameObject.GetComponent<BerryCheck>().spawnOrigin.GetComponent<SpawnBerry>().hasBerry = false;
-                Destroy(collision.gameObject);
                 txt.text = "Kaikki marjat kerätty!";
                 BerryManager.endGame++;
                 gameObject.GetComponent<BoxCollider2D>().enabled = false;
@@ -111,19 +111,15 @@ public class BerryBucket : MonoBehaviour
         if (collision.gameObject.name.StartsWith("Cowberry") && bucketType == "CowberryBucket")
         {
             counter--;
+            collision.gameObject.GetComponent<BerryCheck>().spawnOrigin.GetComponent<SpawnBerry>().BerryToFalse();
+            Destroy(collision.gameObject);
 
             if (counter > 0)
-            {
-                collision.gameObject.GetComponent<BerryCheck>().spawnOrigin.GetComponent<SpawnBerry>().hasBerry = false;
-                Destroy(collision.gameObject);
-                BerryManager.cowberryCount--;
+            {     
                 txt.text = counter.ToString();
-                Debug.Log("cowberryCount =" + BerryManager.cowberryCount);
             }
-            else
+            else  // all berries collected in this berrybucket
             {
-                collision.gameObject.GetComponent<BerryCheck>().spawnOrigin.GetComponent<SpawnBerry>().hasBerry = false;
-                Destroy(collision.gameObject);
                 txt.text = "Kaikki marjat kerätty!";
                 BerryManager.endGame++;
                 gameObject.GetComponent<BoxCollider2D>().enabled = false;

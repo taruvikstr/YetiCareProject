@@ -20,6 +20,10 @@ public class ButtonManagerScript : MonoBehaviour
     private int gameSpeedValue;
     private int gameModeValue;
     private int desiredScoreValue;
+    public TextMeshProUGUI playerAmountSliderNumText;
+    public TextMeshProUGUI difficultySliderNumText;
+    public TextMeshProUGUI gameModeSliderNumText;
+    public TextMeshProUGUI amountSliderNumText;
 
     private void Awake() // Set values to defaults. Remember to set sliders to these values as well.
     {
@@ -27,18 +31,31 @@ public class ButtonManagerScript : MonoBehaviour
         playerAmountValue = 1;
         gameSpeedValue = 0;
         gameModeValue = 1;
-        desiredScoreValue = 60;
+        desiredScoreValue = 50;
     }
 
 
     public void UpdateDifficulty(Slider slider)
     {
         difficultyValue = (int)slider.value;
+        if (difficultyValue == 1)
+        {
+            difficultySliderNumText.text = ":)";
+        }
+        if (difficultyValue == 2)
+        {
+            difficultySliderNumText.text = ":|";
+        }
+        if (difficultyValue == 3)
+        {
+            difficultySliderNumText.text = ":(";
+        }
     }
 
     public void UpdatePlayerAmount(Slider slider)
     {
         playerAmountValue = (int)slider.value;
+        playerAmountSliderNumText.text = playerAmountValue.ToString();
     }
 
     public void UpdateGameSpeed(Slider slider)
@@ -49,11 +66,20 @@ public class ButtonManagerScript : MonoBehaviour
     public void UpdateGameMode(Slider slider)
     {
         gameModeValue = (int)slider.value;
+        if (gameModeValue == 1)
+        {
+            gameModeSliderNumText.text = "#";
+        }
+        if (gameModeValue == 2)
+        {
+            gameModeSliderNumText.text = ">";
+        }
     }
 
     public void UpdateDesiredScore(Slider slider)
     {
         desiredScoreValue = (int)slider.value * 10;
+        amountSliderNumText.text = desiredScoreValue.ToString();
     }
 
 

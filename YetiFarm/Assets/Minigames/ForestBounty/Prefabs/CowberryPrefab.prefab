@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5427434160933444626}
   - component: {fileID: 8519861171568986846}
-  - component: {fileID: 3494256567515623236}
   - component: {fileID: -2496585320232757416}
   - component: {fileID: -8837580055386775854}
   m_Layer: 8
@@ -87,21 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3494256567515623236
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3389419005248863815}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb7f322cdb6749c4bba1bc48f0c1e803, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movableLayers:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!61 &-2496585320232757416
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -140,3 +124,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f45403fce436b6848985a25d84b7b53c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnOrigin: {fileID: 8969974947508468109, guid: 0ebb896b69aac2344bfc8475748cfe60, type: 3}
+  berryLayingAround: 0
+  movableLayers:
+    serializedVersion: 2
+    m_Bits: 256
+  birdHasBerry: 0

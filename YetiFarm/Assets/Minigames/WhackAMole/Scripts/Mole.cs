@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 public class Mole : MonoBehaviour
 {
     [Header("Graphics")]
@@ -10,8 +11,7 @@ public class Mole : MonoBehaviour
     [SerializeField] private Sprite moleHit;
     [SerializeField] private Sprite moleHatHit;
     [SerializeField] public GameObject moleHands;
-    [SerializeField] private TextEditor vegetableCount;
-
+    [SerializeField] public GameObject vegetable;
 
     [Header("GameManager")]
     [SerializeField] private MoleGameManager gameManager;
@@ -36,21 +36,19 @@ public class Mole : MonoBehaviour
 
     //Mole Parameters
 
-    public enum MoleType { Standard, HardHat, Bomb };
+    public enum MoleType {Standard,HardHat,Bomb };
     private MoleType moleType;
     private float hardRate = 0.25f;
     private float bombRate = 0f;
     private int lives;
     private int moleIndex;
 
-    public GameObject vegetable;
-
 
 
     private IEnumerator ShowHide(Vector2 start, Vector2 end)
     {
         // Startposition
-
+       
         transform.localPosition = start;
         float elapsed = 0f;
         while (elapsed < showDuration)
@@ -126,7 +124,7 @@ public class Mole : MonoBehaviour
                     moleHands.SetActive(false);
                     Debug.Log("normal hit");
                     spriteRenderer.sprite = moleHit;
-                    //gameManager.AddScore(moleIndex, moleType != MoleType.Bomb);
+                    gameManager.AddScore(moleIndex, moleType != MoleType.Bomb);
                     //Stop Coroutines
                     StopAllCoroutines();
                     StartCoroutine(QuickHide());
@@ -144,7 +142,7 @@ public class Mole : MonoBehaviour
                         moleHands.SetActive(false);
                         Debug.Log("hatHit");
                         spriteRenderer.sprite = moleHatHit;
-                        //gameManager.AddScore(moleIndex, moleType != MoleType.Bomb);
+                        gameManager.AddScore(moleIndex, moleType != MoleType.Bomb);
                         //Stop the animation
                         StopAllCoroutines();
                         StartCoroutine(QuickHide());
@@ -153,30 +151,26 @@ public class Mole : MonoBehaviour
                     }
                     break;
                 case MoleType.Bomb:
-
+                    
                     //Game over, 1 for bomb.
                     Debug.Log("Bomb hit");
-                    /*if (Vegetable.activeInHierarchy)
+                    if (vegetable.activeInHierarchy)
                     {
-                        gameManager.veggies -= 1;
-                    }*/
-                    gameManager.BombExplosion(gameObject.transform.position);
-                    //gameManager.AddScore(moleIndex, moleType != MoleType.Bomb);
-                    StartCoroutine(VegetableActiveFalseDelay());
+                        gameManager.vegetables -= 1;
+                    }
+                    gameManager.BombExplosion(gameObject.transform.position,moleIndex);
+                    gameManager.AddScore(moleIndex, moleType != MoleType.Bomb);
+                    StopAllCoroutines();
                     StartCoroutine(QuickHide());
+                    StartCoroutine(VegetableActiveFalseDelay());
                     animator.enabled = false;
                     hittable = false;
-                    // StopAllCoroutines();
+                    
                     break;
                 default:
                     break;
 
             }
-            /*if(vegetable != null)
-            {
-                gameManager.DestroyVegetable(vegetable);
-                vegetable = null;
-            }*/
 
         }
 
@@ -232,7 +226,7 @@ public class Mole : MonoBehaviour
     }
     private void Awake()
     {
-        //gameManager.veggies += 1;
+        gameManager.vegetables += 1;
         //Get references to the components we'll need.
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
@@ -244,10 +238,8 @@ public class Mole : MonoBehaviour
         boxOffsetHidden = new Vector2(boxOffset.x, -startPosition.y / 2f);
         boxSizeHidden = new Vector2(boxSize.x, 0f);
 
-        //gameManager.vegetable = +1;
-
     }
-
+    
     public void Activate(int level)
     {
         SetLevel(level);
