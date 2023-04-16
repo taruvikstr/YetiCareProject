@@ -30,34 +30,33 @@ public class Fish_GameManager : MonoBehaviour
 
     void Update()
     {
-
         //This if for dragging 
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        if (Input.GetMouseButtonDown(0))
-        {
-            
-            Collider2D targetObject = Physics2D.OverlapPoint(mousePosition);
-            if (targetObject && targetObject.gameObject.CompareTag("Collectible"))
-            {
-                StartCoroutine(ChangeFishSortingLayer("Dragged", targetObject.gameObject, 0f));
-                selectedObject = targetObject.transform.gameObject;
-                selectedObject.GetComponent<FishController>().isDragged = true;
-                selectedObject.GetComponent<FishController>().StartBubbleParticles();
-                offset = selectedObject.transform.position - mousePosition;
-            }
-        }
-        if (selectedObject)
-        {
-            selectedObject.transform.position = mousePosition + offset;
-        }
-        if (Input.GetMouseButtonUp(0) && selectedObject)
-        {
-            StartCoroutine(ChangeFishSortingLayer(selectedObject.transform.parent.GetComponent<SpriteRenderer>().sortingLayerName, selectedObject.gameObject, 2f));
-            selectedObject.GetComponent<FishController>().isDragged = false;
-            selectedObject.GetComponent<FishController>().returned = false;
+        //    Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //if (Input.GetMouseButtonDown(0))
+        //{
 
-            selectedObject = null;
-        }
+        //    Collider2D targetObject = Physics2D.OverlapPoint(mousePosition);
+        //    if (targetObject && targetObject.gameObject.CompareTag("Collectible"))
+        //    {
+        //        StartCoroutine(ChangeFishSortingLayer("Dragged", targetObject.gameObject, 0f));
+        //        selectedObject = targetObject.transform.gameObject;
+        //        selectedObject.GetComponent<FishController>().isDragged = true;
+        //        selectedObject.GetComponent<FishController>().StartBubbleParticles();
+        //        offset = selectedObject.transform.position - mousePosition;
+        //    }
+        //}
+        //if (selectedObject)
+        //{
+        //    selectedObject.transform.position = mousePosition + offset;
+        //}
+        //if (Input.GetMouseButtonUp(0) && selectedObject)
+        //{
+        //    StartCoroutine(ChangeFishSortingLayer(selectedObject.transform.parent.GetComponent<SpriteRenderer>().sortingLayerName, selectedObject.gameObject, 2f));
+        //    selectedObject.GetComponent<FishController>().isDragged = false;
+        //    selectedObject.GetComponent<FishController>().returned = false;
+
+        //    selectedObject = null;
+        //}
 
         //Timer
         if (gameON && timer > 0)
@@ -69,7 +68,6 @@ public class Fish_GameManager : MonoBehaviour
         {
             fish_UIController.SetPlacements();
             ResetGame();
-
         }
     }
 
@@ -87,29 +85,13 @@ public class Fish_GameManager : MonoBehaviour
         for (int i = fishAmount; i > 0; i--)
         {
             GameObject fishInstance = Instantiate(fishPrefab[Random.Range(0, fishPrefab.Length)], spawnpoints[i].transform);
+            fishInstance.name = fishInstance.name + spawnpoints[i].name;
             fishInstances.Add(fishInstance);
-
-            StartCoroutine(ChangeFishSortingLayer(spawnpoints[i].GetComponent<SpriteRenderer>().sortingLayerName, fishInstance, 0f));
         }
 
         gameON = true;
         bubbleParticles.Play();
         StartCoroutine(RollDice(1f));
-    }
-
-    public IEnumerator ChangeFishSortingLayer(string layerName, GameObject fishInstance, float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        if(fishInstance != null)
-        {
-            SpriteRenderer[] fishRenderers = fishInstance.transform.GetComponentsInChildren<SpriteRenderer>();
-
-            foreach (SpriteRenderer renderer in fishRenderers)
-            {
-                renderer.sortingLayerName = layerName;
-            }
-        }
-
     }
 
     public IEnumerator RollDice(float delay)
@@ -186,8 +168,8 @@ public class Fish_GameManager : MonoBehaviour
             if(spawn.transform.childCount == 0) //If spawnpoint has no child, it gets a new one
             {
                 GameObject fishInstance = Instantiate(fishPrefab[Random.Range(0, fishPrefab.Length)], spawn.transform);
+                fishInstance.name = fishInstance.name + spawn.name;
                 fishInstances.Add(fishInstance);
-                StartCoroutine(ChangeFishSortingLayer(spawn.GetComponent<SpriteRenderer>().sortingLayerName, fishInstance, 0f));
                 break;
             }
 
