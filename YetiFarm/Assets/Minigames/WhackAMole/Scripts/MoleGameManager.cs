@@ -59,7 +59,7 @@ public class MoleGameManager : MonoBehaviour
         scoreTextObject.SetActive(false);
         timeTextObject.SetActive(false);
         timeheader.SetActive(false);
-        exitButton.SetActive(false);
+        //exitButton.SetActive(false);
         vegeCount.SetActive(false);
         vegeCountHeader.SetActive(false);
         // Getting number of vegetables in the start of the game
@@ -73,16 +73,17 @@ public class MoleGameManager : MonoBehaviour
     {
         SceneManager.LoadScene(2);
     }
+
     //This is public so the play button can see it.
-    public void StartGame()
+    public void StartGame(int player_amount, int diff, int game_mode)
     {
         //Set endlessGamemode from buttonmanagerscript.
-        endlessGame = buttonManager.GetComponent<ButtonManagerScriptMole>().gameModeValueMole;
+        endlessGame = game_mode;
         
         // Getting difficultyvalue from MoleGameManager Script.
-        difficultyLevel = buttonManager.GetComponent<ButtonManagerScriptMole>().difficultyValueMole;
+        difficultyLevel = diff;
         // Getting moles in game value from buttonmanager script.
-        molesInGame = buttonManager.GetComponent<ButtonManagerScriptMole>().playerAmountValueMole;
+        molesInGame = player_amount;
         //Changin difficulty for molegame
 
         if(endlessGame == 1)
@@ -149,7 +150,6 @@ public class MoleGameManager : MonoBehaviour
         timeheader.SetActive(true);
         scoreTextObject.SetActive(true);
         timeTextObject.SetActive(true);
-        startingCanvas.SetActive(false);
         //Hide/show the UI elements we dont / do want to see.
         playButton.SetActive(false);
         outOfTimeText.SetActive(false);
@@ -209,8 +209,9 @@ public class MoleGameManager : MonoBehaviour
 
         //Stop the game and show the start UI.
         playing = false;
-        playButton.SetActive(true);
-        exitButton.SetActive(true);
+        buttonManager.GetComponent<ButtonManagerScriptMole>().ActivateGameOverScreen(score, (9 - vegetables), endlessGame);
+        //playButton.SetActive(true);
+        //exitButton.SetActive(true);
     }
     public void AddScore(int moleIndex, bool isMole)
     {
@@ -268,7 +269,20 @@ public class MoleGameManager : MonoBehaviour
                 timeRemaining = 0;
                 GameOver(0);
             }
-            timeText.text = $"{(int)timeRemaining / 60} : {(int)timeRemaining % 60:D2}";
+
+            // Stop the game and return to the starting screen if the back button is pressed.
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                foreach (Mole mole in moles)
+                {
+                    mole.StopGame();
+                }
+
+                //Stop the game and show the start UI.
+                playing = false;
+                buttonManager.GetComponent<ButtonManagerScriptMole>().ReturnToSettingScreen();
+            }
+                    timeText.text = $"{(int)timeRemaining / 60} : {(int)timeRemaining % 60:D2}";
             //Check if we need to start any more moles.
             if(currentMoles.Count <= (difficultyLevel / 10))
             {
