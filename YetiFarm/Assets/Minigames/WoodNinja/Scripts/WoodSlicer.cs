@@ -31,7 +31,7 @@ public class WoodSlicer : MonoBehaviour
         woodCollider.enabled = false;
         splashParticleEffect.Play();
 
-        //float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        
         sliced.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
 
         Rigidbody2D[] slices = sliced.GetComponentsInChildren<Rigidbody2D>();

@@ -6542,6 +6542,7 @@ MonoBehaviour:
   woodPrefabs:
   - {fileID: 7315655797971021721, guid: 3ac3aeb22bd55cd4ea269742d0793139, type: 3}
   - {fileID: 8026665793103326733, guid: 88028efec63cae04583f72639e38f6d3, type: 3}
+  - {fileID: 8494229665930641426, guid: bc55457bf60cda64d9eae0945c6c53a1, type: 3}
   rockPrefab: {fileID: 2569313849382781560, guid: 5b5823285d7e82a4c92b5709092ee358, type: 3}
   bombChance: 0.1
   minSpawnDelay: 0.25

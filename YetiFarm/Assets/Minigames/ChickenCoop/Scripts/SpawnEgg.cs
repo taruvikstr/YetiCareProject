@@ -8,7 +8,9 @@ public class SpawnEgg : MonoBehaviour
     public GameObject mediumEgg;
     public GameObject hardEgg;
     public SpriteRenderer idle;
-    public SpriteRenderer laying;
+    public List<SpriteRenderer> laying;
+
+
     public void SpawnSingleEgg(int diff)
     {
         StartCoroutine(PlayLayingAnimation(diff));
@@ -28,27 +30,39 @@ public class SpawnEgg : MonoBehaviour
 
     public IEnumerator PlayLayingAnimation(int diff)
     {
+        float animationTime = 0;
         idle.enabled = false;
-        laying.enabled = true;
+        laying[0].enabled = true;
+
         if (diff == 1)
         {
-            yield return new WaitForSeconds(0.6f);
-            Instantiate(easyEgg, transform.position, transform.rotation); // Spawn an egg.
-            yield return new WaitForSeconds(0.6f);
+            animationTime = 1.2f / 14;
         }
         if (diff == 2)
         {
-            yield return new WaitForSeconds(0.5f);
-            Instantiate(mediumEgg, transform.position, transform.rotation); // Spawn an egg.
-            yield return new WaitForSeconds(0.5f);
+            animationTime = 1.0f / 14;
         }
         if (diff == 3)
         {
-            yield return new WaitForSeconds(0.4f);
-            Instantiate(mediumEgg, transform.position, transform.rotation); // Spawn an egg.
-            yield return new WaitForSeconds(0.4f);
+            animationTime = 0.8f / 14;
         }
-        laying.enabled = false;
+
+        for (int i = 1; i < laying.Count; i++)
+        {
+            laying[i].enabled = true;
+            laying[i - 1].enabled = false;
+            yield return new WaitForSeconds(animationTime);
+        }
+        yield return new WaitForSeconds(animationTime * 2);
+        Instantiate(easyEgg, transform.position, transform.rotation); // Spawn an egg.
+        for (int i = laying.Count - 1; i > 0; i--)
+        {
+            laying[i].enabled = false;
+            laying[i - 1].enabled = true;
+            yield return new WaitForSeconds(animationTime);
+        }
+
+        laying[0].enabled = false;
         idle.enabled = true;
     }
 }
