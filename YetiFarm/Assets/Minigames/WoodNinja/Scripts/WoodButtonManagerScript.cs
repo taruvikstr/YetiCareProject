@@ -11,24 +11,22 @@ public class WoodButtonManagerScript : MonoBehaviour
     public GameObject endScreen;
     public TextMeshProUGUI scoreText1;
     public TextMeshProUGUI feedbackText;
+
     private int difficultyValue;
-    private int playerAmountValue;
-    private int gameSpeedValue;
+    
     private int gameModeValue;
-    private int desiredScoreValue;
-    public TextMeshProUGUI playerAmountSliderNumText;
+
+    
     public TextMeshProUGUI difficultySliderNumText;
     public TextMeshProUGUI gameModeSliderNumText;
-    public TextMeshProUGUI amountSliderNumText;
+    
     [SerializeField] private GameManager gameManager;
 
     private void Awake() // Set values to defaults. Remember to set sliders to these values as well.
     {
         difficultyValue = 2;
-        playerAmountValue = 1;
-        gameSpeedValue = 0;
+        
         gameModeValue = 1;
-        desiredScoreValue = 50;
         FindObjectOfType<Blade>().enabled = false;
         gameManager.PauseGame();
     }
@@ -43,24 +41,10 @@ public class WoodButtonManagerScript : MonoBehaviour
         }
         if (difficultyValue == 2)
         {
-            difficultySliderNumText.text = ":/";
-        }
-        if (difficultyValue == 3)
-        {
             difficultySliderNumText.text = ":(";
         }
     }
 
-    public void UpdatePlayerAmount(Slider slider)
-    {
-        playerAmountValue = (int)slider.value;
-        playerAmountSliderNumText.text = playerAmountValue.ToString();
-    }
-
-    public void UpdateGameSpeed(Slider slider)
-    {
-        gameSpeedValue = (int)slider.value;
-    }
 
     public void UpdateGameMode(Slider slider)
     {
@@ -75,12 +59,6 @@ public class WoodButtonManagerScript : MonoBehaviour
         }
     }
 
-    public void UpdateDesiredScore(Slider slider)
-    {
-        desiredScoreValue = (int)slider.value * 10;
-        amountSliderNumText.text = desiredScoreValue.ToString();
-    }
-   
 
     public void ReturnToMainScreen()
     {
@@ -91,7 +69,7 @@ public class WoodButtonManagerScript : MonoBehaviour
     {
         
         startScreen.SetActive(false); // Disable and hide the starting screen.
-        gameManager.StartWoodSpawns(difficultyValue, desiredScoreValue, gameModeValue, playerAmountValue);
+        gameManager.StartWoodSpawns(difficultyValue, gameModeValue);
         FindObjectOfType<Blade>().enabled = true;
         
 

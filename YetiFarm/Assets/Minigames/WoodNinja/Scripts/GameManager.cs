@@ -7,9 +7,12 @@ using TMPro;
 public class GameManager : MonoBehaviour
 { 
     public TextMeshProUGUI scoreText;
-   
+    public TextMeshProUGUI timerText;
+
+
     private Blade blade;
     private SpawnerV2 spawner;
+    
     public int score;
     private WoodButtonManagerScript WbManager;
 
@@ -21,11 +24,12 @@ public class GameManager : MonoBehaviour
     }
     // Start is called before the first frame update
 
-    public void StartWoodSpawns(int difficultyValue, int desiredScoreValue, int gameModeValue, int playerAmountValue)
+    public void StartWoodSpawns(int difficultyValue, int gameModeValue)
     {
         // Start the game with the settings given in the parameters.
         Time.timeScale = 1;
         GameStart();
+        
     }
 
     public void IncreaseScore(int amount)
@@ -70,6 +74,10 @@ public class GameManager : MonoBehaviour
 
         Time.timeScale = 0;       
         
+    }
+    public void Timer()
+    {
+      
     }
 
 }
