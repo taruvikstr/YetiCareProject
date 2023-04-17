@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class BirdSpawnBehavior : MonoBehaviour
@@ -9,6 +10,20 @@ public class BirdSpawnBehavior : MonoBehaviour
     private IEnumerator coroutine;
     public float birdSpawnRate = 10f;
     private int spawnPoint;
+
+    public static int birdScoreCounter; // = how many berries the bird has to collect before it beats you
+    public TMP_Text birdScoreText;
+
+    private void Awake()
+    {
+        birdScoreText.enabled = false;
+    }
+
+    private void Update()
+    {
+        // Update the counter everytime bird steals berry
+        birdScoreText.text = birdScoreCounter.ToString();
+    }
 
     public IEnumerator DelayedBirdSpawn()
     {
@@ -25,5 +40,22 @@ public class BirdSpawnBehavior : MonoBehaviour
         coroutine = DelayedBirdSpawn();
         StartCoroutine(coroutine);
         spawnPoint = Random.Range(0, 2);
+
+        switch (BerryManager.bManagerDifficulty) // aka difficulty
+        {
+            case 1:
+                birdScoreText.enabled = false;
+                break;
+
+            case 2:
+                birdScoreText.enabled = true;
+                birdScoreText.text = birdScoreCounter.ToString();
+                break;
+
+            case 3:
+                birdScoreText.enabled = true;
+                birdScoreText.text = birdScoreCounter.ToString();
+                break;
+        }
     }
 }

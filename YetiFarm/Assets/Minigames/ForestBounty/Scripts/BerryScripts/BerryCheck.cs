@@ -66,12 +66,12 @@ public class BerryCheck : MonoBehaviour
                 case TouchPhase.Ended:
 
                     // screen is not detecting touch
-                    dragging = null;   
+                    dragging = null;
 
                     break;
             }
         }
-    }
+}
 
     public void OnSteal(GameObject collision)
     {
