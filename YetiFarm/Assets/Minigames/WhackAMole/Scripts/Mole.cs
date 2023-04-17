@@ -73,6 +73,15 @@ public class Mole : MonoBehaviour
         yield return new WaitForSeconds(duration);
         moleHands.SetActive(false);
 
+
+        /*
+         * TODO - instead of hiding the mole after the duration, start a new (needs to be created) coroutine that
+         * starts the destruction timer of the vegetable next to the mole IF the mole isn't a bomb and plays the animation.
+         * Timer and animation speed should be dependent on difficulty value.
+         * 
+         * This should be implemented in the hide mole section below.
+         */
+
         //Hide mole
         elapsed = 0f;
         while (elapsed < showDuration)
@@ -114,6 +123,8 @@ public class Mole : MonoBehaviour
         }
 
     }
+
+    // Check if the mole is touched/clicked
     private void OnMouseDown()
     {
         if (hittable)

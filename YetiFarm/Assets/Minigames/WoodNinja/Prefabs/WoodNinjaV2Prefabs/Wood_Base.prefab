@@ -82,7 +82,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.25}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &-7287805942408880437
 MonoBehaviour:
@@ -98,6 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whole: {fileID: 8152139696835482121}
   sliced: {fileID: 6625070020662749935}
+  points: 1
 --- !u!1 &6539126169222909210
 GameObject:
   m_ObjectHideFlags: 0
@@ -5025,11 +5026,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1736233324499342307, guid: dc9aa09559e3f5140b4ad72b06884b8e, type: 3}
       propertyPath: m_Size.y
-      value: 1.25
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5078783920805513432, guid: dc9aa09559e3f5140b4ad72b06884b8e, type: 3}
       propertyPath: m_Size.x
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5078783920805513432, guid: dc9aa09559e3f5140b4ad72b06884b8e, type: 3}
+      propertyPath: m_Size.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6240328660601647026, guid: dc9aa09559e3f5140b4ad72b06884b8e, type: 3}
       propertyPath: m_Name

@@ -19,6 +19,9 @@ public class FishController : MonoBehaviour
 
     private Fish_GameManager gameManager;
 
+    private GameObject selectedObject;
+    private Vector3 offset;
+
     public bool isDragged = false;
     public bool returned = true;
     public bool chosenFish = false;
@@ -26,15 +29,18 @@ public class FishController : MonoBehaviour
     [SerializeField] private float speed;
 
     private bool flipped;
+    private string fishName;
 
     private void Start()
     {
+        fishName = gameObject.name;
         gameManager = GameObject.Find("GameManager").GetComponent<Fish_GameManager>();
-
         spawnParent = transform.parent.gameObject;
 
         if (transform.localScale.x == -1) flipped = true;
         else flipped = false;
+
+        StartCoroutine(ChangeFishSortingLayer(transform.parent.GetComponent<SpriteRenderer>().sortingLayerName, gameObject, 0f));
 
         speed = UnityEngine.Random.Range(0.05f, 1f);
 
@@ -44,6 +50,39 @@ public class FishController : MonoBehaviour
 
     private void Update()
     {
+        foreach (Touch touch in Input.touches)
+        {
+            Vector3 touchPos = Camera.main.ScreenToWorldPoint(touch.position);
+            if(Physics2D.OverlapPoint(touchPos).name == fishName)
+            {
+                Collider2D targetObject = GetComponent<CircleCollider2D>();
+                if (targetObject && targetObject.gameObject.CompareTag("Collectible") && touch.phase == TouchPhase.Began)
+                {
+                    StartCoroutine(ChangeFishSortingLayer("Dragged", gameObject, 0f));
+                    selectedObject = targetObject.transform.gameObject;
+                    isDragged = true;
+                    StartBubbleParticles();
+                    offset = selectedObject.transform.position - touchPos;
+                }
+
+                if (selectedObject)
+                {
+                    selectedObject.transform.position = touchPos + offset;
+                }
+
+
+                if (selectedObject && touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
+                {
+                    StartCoroutine(ChangeFishSortingLayer(transform.parent.GetComponent<SpriteRenderer>().sortingLayerName, selectedObject.gameObject, 2f));
+                    isDragged = false;
+                    returned = false;
+                    selectedObject = null;
+                }
+
+            }
+ 
+        }
+
         if (transform.position == spawnParent.transform.position && !returned)
         {
             returned = true;
@@ -53,6 +92,21 @@ public class FishController : MonoBehaviour
         if (!isDragged && returned) Movement();
         else if (!isDragged && !returned) MoveFishBackToSea();
  
+    }
+
+    public IEnumerator ChangeFishSortingLayer(string layerName, GameObject fishInstance, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        if (fishInstance != null)
+        {
+            SpriteRenderer[] fishRenderers = fishInstance.transform.GetComponentsInChildren<SpriteRenderer>();
+
+            foreach (SpriteRenderer renderer in fishRenderers)
+            {
+                renderer.sortingLayerName = layerName;
+            }
+        }
+
     }
 
     private void ShuffleFeatures()
