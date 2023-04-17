@@ -49,12 +49,24 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator GameStart()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
     }
     
     private IEnumerator EndGameSequence()
     {
-        yield return new WaitForSeconds(2f);
+
+        yield return new WaitForSeconds(4f);
+
+        WoodSlicer[] woods = FindObjectsOfType<WoodSlicer>();
+        foreach (WoodSlicer wood in woods)
+        {
+            Destroy(wood.gameObject);
+        }
+        Rock[] rocks = FindObjectsOfType<Rock>();
+        foreach (Rock rock in rocks)
+        {
+            Destroy(rock.gameObject);
+        }
 
         Time.timeScale = 0;       
         
