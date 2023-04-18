@@ -59,7 +59,7 @@ public class Fish_PlayerBuckets : MonoBehaviour
     {
         Color colorNormal = GetComponent<SpriteRenderer>().color;
         GetComponent<Collider2D>().enabled = false;
-        GetComponent<SpriteRenderer>().color = Color.red;
+        GetComponent<SpriteRenderer>().color = new Color(colorNormal.r, colorNormal.g, colorNormal.b, 0.6f);
         yield return new WaitForSeconds(2f);
         GetComponent<Collider2D>().enabled = true;
         GetComponent<SpriteRenderer>().color = colorNormal;
