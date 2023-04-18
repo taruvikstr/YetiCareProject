@@ -178,7 +178,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0e5dfb0e609c3254a9fca6ab13c08251, type: 3}
+  m_Sprite: {fileID: 21300000, guid: be4c84243293c6b40bb1944a55a9f838, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -249,13 +249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   txt: {fileID: 8621718667602287520}
-  birdScore: {fileID: 0}
   bucketType: StrawberryBucket
-  spawnPoint:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &8621718667602287522
 GameObject:
   m_ObjectHideFlags: 0

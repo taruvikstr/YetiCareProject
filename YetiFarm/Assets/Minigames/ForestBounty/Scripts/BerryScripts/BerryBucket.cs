@@ -51,7 +51,7 @@ public class BerryBucket : MonoBehaviour
             }
             else  // all berries collected in this berrybucket
             {
-                txt.text = "Kaikki marjat kerätty!";
+                txt.text = "Ämpäri täynnä!";
                 BerryManager.endGame++;
                 gameObject.GetComponent<BoxCollider2D>().enabled = false;
             }
@@ -69,7 +69,7 @@ public class BerryBucket : MonoBehaviour
             }
             else  // all berries collected in this berrybucket
             {
-                txt.text = "Kaikki marjat kerätty!";
+                txt.text = "Ämpäri täynnä!!";
                 BerryManager.endGame++;
                 gameObject.GetComponent<BoxCollider2D>().enabled = false;
             }
@@ -87,7 +87,7 @@ public class BerryBucket : MonoBehaviour
             }
             else  // all berries collected in this berrybucket
             {
-                txt.text = "Kaikki marjat kerätty!";
+                txt.text = "Ämpäri täynnä!!";
                 BerryManager.endGame++;
                 gameObject.GetComponent<BoxCollider2D>().enabled = false;
             }
@@ -105,7 +105,7 @@ public class BerryBucket : MonoBehaviour
             }
             else  // all berries collected in this berrybucket
             {
-                txt.text = "Kaikki marjat kerätty!";
+                txt.text = "Ämpäri täynnä!!";
                 BerryManager.endGame++;
                 gameObject.GetComponent<BoxCollider2D>().enabled = false;
             }
