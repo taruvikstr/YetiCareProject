@@ -2874,7 +2874,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minSliceVelocity: 0.01
-  sliceForce: 25
+  sliceForce: 10
 --- !u!50 &1506089388
 Rigidbody2D:
   serializedVersion: 4

@@ -68,7 +68,7 @@ public class BirdManager : MonoBehaviour
             toBerry = berryPositions[randomIndex].position;
             awayFromBerry = birdPositions[1].position;
 
-            if(BirdSpawnBehavior.birdScoreCounter == 0)
+            if(BirdSpawnBehavior.birdScoreCounter == 0 || BerryManager.gameOn == false)
             {
                 Destroy(gameObject);
             }

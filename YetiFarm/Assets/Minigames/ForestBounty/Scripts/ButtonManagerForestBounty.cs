@@ -96,23 +96,15 @@ public class ButtonManagerForestBounty : MonoBehaviour
 
         endScreen.SetActive(true); // Enable and display the game over screen.
 
-        if (game_mode == 0 && result == 1)
+        if (game_mode == 1 && result == 1)
         {
             scoreText1.text = "Hienoa, keräsit kaikki marjat!";
         }
-        else if (game_mode == 1 && result == 1)
+        else if ((game_mode == 2 || game_mode == 3) && result == 1)
         {
             scoreText1.text = "Hienoa, keräsit kaikki marjat ennen lintua!";
         }
-        else if (game_mode == 1 && result == 0)
-        {
-            scoreText1.text = "Lintu oli tällä kertaa nopeampi!";
-        }
-        else if (game_mode == 2 && result == 1)
-        {
-            scoreText1.text = "Mahtavaa, keräsit kaikki marjat ennen lintua!";
-        }
-        else if (game_mode == 2 && result == 0)
+        else if ((game_mode == 2 || game_mode == 3) && result == 0)
         {
             scoreText1.text = "Lintu oli tällä kertaa nopeampi!";
         }

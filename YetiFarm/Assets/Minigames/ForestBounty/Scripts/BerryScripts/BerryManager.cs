@@ -80,7 +80,7 @@ public class BerryManager : MonoBehaviour
 
             case 2:  
                 // medium difficulty
-                BirdSpawnBehavior.birdScoreCounter = 1;
+                BirdSpawnBehavior.birdScoreCounter = 5;
 
                 birdSpawn.GetComponent<BirdSpawnBehavior>().BirdSpawnStarter(); // Starts bird 
 
