@@ -141,7 +141,8 @@ public class ButtonManagerScript : MonoBehaviour
 
     public void ReturnToSettingScreen()
     {
-        endScreen.SetActive(false);
-        startScreen.SetActive(true);
+        SceneManager.LoadScene("ChickenCoop");
+        // endScreen.SetActive(false);
+        // startScreen.SetActive(true);
     }
 }

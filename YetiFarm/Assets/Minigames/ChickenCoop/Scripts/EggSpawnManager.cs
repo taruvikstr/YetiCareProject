@@ -43,7 +43,7 @@ public class EggSpawnManager : MonoBehaviour
         basketAmount = basket_amount;
         gameMode = game_mode;
         difficulty = difficulty_value;
-        // Collection basket instantiation based on the amount of baskets.
+        // Collection basket instantiation, board color config and barrier setup based on the amount of baskets.
         // Basket names: Basket1, Basket2Left & Basket2Right, Basket3Left & Basket3Middle & Basket3Right
         if (basketAmount == 1)
         {
@@ -131,7 +131,6 @@ public class EggSpawnManager : MonoBehaviour
             desiredScore = int.MaxValue;
         }
         score = 0;
-        gameOn = true;
         StartCoroutine(coroutine);
     }
 
@@ -140,14 +139,7 @@ public class EggSpawnManager : MonoBehaviour
         // Stops egg spawning if three eggs fall on the ground in endless mode or if desired score is reached in goal mode.
         if ((((failedEggs >= 1) && gameMode == 2) || ((score >= desiredScore) && gameMode == 1)) && gameOn == true)
         {
-            StopCoroutine(coroutine);
-            gameOn = false;
-            desiredScore = 0;
-            difficulty = 2;
-            gameMode = 1;
-            spawnRate = 2.0f;
-            basketAmount = 1;
-
+            
             // Delete baskets.
             foreach (GameObject playerBasket in GameObject.FindGameObjectsWithTag("Player"))
             {
@@ -160,16 +152,24 @@ public class EggSpawnManager : MonoBehaviour
                 Destroy(egg);
             }
 
-
             buttonManager.GetComponent<ButtonManagerScript>().ActivateGameOverScreen(score, failedEggs, gameMode);
+
+            // Reset boards
+            for (int i = 0; i < 9; i++)
+            {
+                boardList2p[i].SetActive(true);
+                boardList3p[i].SetActive(true);
+                boardList1p[i].SetActive(true);
+            }
+
 
             score = 0;
             failedEggs = 0;
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape)) // If the back button of the device is pressed during game.
+        if (Input.GetKeyDown(KeyCode.Escape) && gameOn == true) // If the back button of the device is pressed during game.
         {
-            StopCoroutine(coroutine);
+            StopAllCoroutines();
             gameOn = false;
             desiredScore = 0;
             difficulty = 2;
@@ -194,16 +194,27 @@ public class EggSpawnManager : MonoBehaviour
 
             buttonManager.GetComponent<ButtonManagerScript>().ReturnToMainScreen(); // Return to main view.
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            buttonManager.GetComponent<ButtonManagerScript>().ReturnToSettingScreen();
+        }
     }
 
     public void EggFail()
     {
-        failedEggs++;
+        if (gameOn == true)
+        {
+            failedEggs++;
+        }
     }
 
     public void IncreaseScore()
     {
-        score++;
+        if (gameOn == true)
+        {
+            score++;
+        }
     }
 
     public IEnumerator DoSpawns()
@@ -237,7 +248,8 @@ public class EggSpawnManager : MonoBehaviour
         int r3;
         float timeDelay1;
         float timeDelay2;
-        while (!((((failedEggs >= 1) && gameMode == 2) || ((score >= desiredScore) && gameMode == 1)) && gameOn == false))
+        gameOn = true;
+        while (!((((failedEggs >= 1) && gameMode == 2) || ((score >= desiredScore) && gameMode == 1)) && gameOn == true))
         {
             if (gameMode == 2) // Increase the spawnrate of eggs in endless mode.
             {
@@ -245,12 +257,6 @@ public class EggSpawnManager : MonoBehaviour
             }
             timeDelay1 = ((float) Random.Range(1, 10)) / 10;
             timeDelay2 = ((float) Random.Range(1, 10)) / 10;
-            // Stop the game if three eggs are broken in endless mode or if the player has collected the desired amount of eggs.
-            if ((((failedEggs >= 1) && gameMode == 2) || ((score >= desiredScore) && gameMode == 1)) && gameOn == true)
-            {
-                gameOn = false;
-                break;
-            }
 
             // Randomize the laying order of chickens depending on the amount of baskets.
             if (basketAmount == 1 && difficulty == 3)

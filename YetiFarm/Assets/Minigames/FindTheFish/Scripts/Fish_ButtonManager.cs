@@ -72,7 +72,8 @@ public class Fish_ButtonManager : MonoBehaviour
 
     public void ReturnToSettingScreen()
     {
-        endScreen.SetActive(false);
-        startScreen.SetActive(true);
+        SceneManager.LoadScene("FindTheFish");
+        // endScreen.SetActive(false);
+        // startScreen.SetActive(true);
     }
 }

@@ -148,7 +148,8 @@ public class ButtonManagerScriptMole : MonoBehaviour
 
     public void ReturnToSettingScreen()
     {
-        endScreen.SetActive(false);
-        startScreen.SetActive(true);
+        SceneManager.LoadScene("WhackAMole");
+        // endScreen.SetActive(false);
+        // startScreen.SetActive(true);
     }
 }
