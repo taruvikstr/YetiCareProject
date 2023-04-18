@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3154594410658960108}
   - component: {fileID: 8793619441996812166}
   - component: {fileID: 3103277293360495677}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bubble_Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4822,7 +4822,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6756061735818782341}
   - component: {fileID: 6756061735818782338}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: fish_placeholder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4906,7 +4906,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6756061736084081677}
   - component: {fileID: 6756061736084081674}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PrimaryColour
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4992,7 +4992,7 @@ GameObject:
   - component: {fileID: 6756061736347720213}
   - component: {fileID: 3775051801287044438}
   - component: {fileID: 8291577959016647432}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Fish1
   m_TagString: Collectible
   m_Icon: {fileID: 0}
@@ -5049,6 +5049,9 @@ MonoBehaviour:
   bubbleParticle: {fileID: 8793619441996812166}
   primaryColorRenderer: {fileID: 6756061736084081674}
   patternRenderer: {fileID: 6756061737855236725}
+  movableLayers:
+    serializedVersion: 2
+    m_Bits: 256
   isDragged: 0
   returned: 1
   chosenFish: 0
@@ -5100,7 +5103,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6756061737855236724}
   - component: {fileID: 6756061737855236725}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pattern
   m_TagString: Untagged
   m_Icon: {fileID: 0}
