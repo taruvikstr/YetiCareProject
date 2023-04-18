@@ -8,7 +8,15 @@ public class EggSpawnManager : MonoBehaviour
     public GameObject middleBoundary;
     public GameObject leftBoundary;
     public GameObject rightBoundary;
+    public GameObject leftBackground3;
+    public GameObject middleBackground3;
+    public GameObject rightBackground3;
+    public GameObject leftBackground2;
+    public GameObject rightBackground2;
     public List<GameObject> eggSpawnerList;
+    public List<GameObject> boardList1p;
+    public List<GameObject> boardList2p;
+    public List<GameObject> boardList3p;
     public int score; // Counts how many eggs have been collected.
     public int difficulty; // Defines how difficult the game is.
     public int gameMode; // The game mode. 1 = collect defined number of eggs and try to avoid breaking any. 2 = endless, survive until three eggs are broken.
@@ -45,6 +53,20 @@ public class EggSpawnManager : MonoBehaviour
             middleBoundary.SetActive(false);
             leftBoundary.SetActive(false);
             rightBoundary.SetActive(false);
+
+            leftBackground3.SetActive(false);
+            middleBackground3.SetActive(false);
+            rightBackground3.SetActive(false);
+            leftBackground2.SetActive(false);
+            rightBackground2.SetActive(false);
+
+            for (int i = 0; i < 9; i++)
+            {
+                boardList2p[i].SetActive(false);
+                boardList3p[i].SetActive(false);
+                boardList1p[i].SetActive(true);
+            }
+
         }
         if (basketAmount == 2)
         {
@@ -57,6 +79,19 @@ public class EggSpawnManager : MonoBehaviour
             middleBoundary.SetActive(true);
             leftBoundary.SetActive(false);
             rightBoundary.SetActive(false);
+
+            leftBackground3.SetActive(false);
+            middleBackground3.SetActive(false);
+            rightBackground3.SetActive(false);
+            leftBackground2.SetActive(true);
+            rightBackground2.SetActive(true);
+
+            for (int i = 0; i < 9; i++)
+            {
+                boardList1p[i].SetActive(false);
+                boardList3p[i].SetActive(false);
+                boardList2p[i].SetActive(true);
+            }
         }
         if (basketAmount == 3)
         {
@@ -72,6 +107,19 @@ public class EggSpawnManager : MonoBehaviour
             middleBoundary.SetActive(false);
             leftBoundary.SetActive(true);
             rightBoundary.SetActive(true);
+
+            leftBackground3.SetActive(true);
+            middleBackground3.SetActive(true);
+            rightBackground3.SetActive(true);
+            leftBackground2.SetActive(false);
+            rightBackground2.SetActive(false);
+
+            for (int i = 0; i < 9; i++)
+            {
+                boardList1p[i].SetActive(false);
+                boardList2p[i].SetActive(false);
+                boardList3p[i].SetActive(true);
+            }
         }
 
         if (game_mode == 1)
