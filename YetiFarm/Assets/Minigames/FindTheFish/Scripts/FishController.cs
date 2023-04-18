@@ -12,7 +12,6 @@ public class FishController : MonoBehaviour
     public List<Color> secondaryColor = new List<Color>();
     
     [SerializeField] private ParticleSystem bubbleParticle;
-
     [SerializeField] private SpriteRenderer primaryColorRenderer, patternRenderer;
 
     GameObject spawnParent;
