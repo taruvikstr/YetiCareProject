@@ -129,23 +129,20 @@ public class FishController : MonoBehaviour
 
         if(!returned && isDragged)
         {
-            if (previousXpos - transform.position.x < 0)
+            if (previousXpos - transform.position.x < 0) // Dragging right flip sprite
             {
-                Debug.Log("previous: " + previousXpos + " ja nykyinen sijainti: " + transform.position.x);
-                Debug.Log("raahataan oikealle");
                 transform.localScale = new Vector3(-1, 1, 1);
                 flipped = true;
             }
-            else if (previousXpos - transform.position.x > 0)
+            else if (previousXpos - transform.position.x > 0) // Dragging left flip srite
             {
-                Debug.Log("raahataan vasemmalle");
                 transform.localScale = new Vector3(1, 1, 1);
                 flipped = false;
             }
 
             previousXpos = transform.position.x;
         }
-        else if(!returned && !isDragged)
+        else if(!returned && !isDragged) // Returning back to water after drag
         {
             if (spawnParent.transform.position.x - transform.position.x < 0)
             {
