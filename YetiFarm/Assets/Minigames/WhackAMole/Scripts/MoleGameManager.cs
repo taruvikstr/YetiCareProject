@@ -14,7 +14,7 @@ public class MoleGameManager : MonoBehaviour
     [Header("UI objects")]
     [SerializeField] private GameObject playButton;
     [SerializeField] private GameObject gameUI;
-    [SerializeField] private GameObject outOfTimeText;
+   // [SerializeField] private GameObject outOfTimeText;
     [SerializeField] private GameObject bombText;
     [SerializeField] private TMPro.TextMeshProUGUI timeText;
     [SerializeField] private TMPro.TextMeshProUGUI scoreText;
@@ -151,8 +151,8 @@ public class MoleGameManager : MonoBehaviour
         scoreTextObject.SetActive(true);
         timeTextObject.SetActive(true);
         //Hide/show the UI elements we dont / do want to see.
-        playButton.SetActive(false);
-        outOfTimeText.SetActive(false);
+       // playButton.SetActive(false);
+       // outOfTimeText.SetActive(false);
         bombText.SetActive(false);
         gameUI.SetActive(true);
         vegeCount.SetActive(true);
@@ -192,14 +192,15 @@ public class MoleGameManager : MonoBehaviour
     public void GameOver(int type)
     {
         //Show message
-        if(type == 0)
-        {
-            outOfTimeText.SetActive(true);
-        }
+        //if(type == 0)
+        //{
+        //    outOfTimeText.SetActive(true);
+        //}
         //else
         //{
         //    bombText.SetActive(true);
         //}
+        
 
         //Hide all moles
         foreach(Mole mole in moles)
