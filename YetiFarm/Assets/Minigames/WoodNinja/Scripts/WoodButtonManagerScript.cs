@@ -25,10 +25,9 @@ public class WoodButtonManagerScript : MonoBehaviour
     private void Awake() // Set values to defaults. Remember to set sliders to these values as well.
     {
         difficultyValue = 1;
-        
         gameModeValue = 1;
+
         FindObjectOfType<Blade>().enabled = false;
-        
         gameManager.PauseGame();
     }
 
@@ -80,9 +79,9 @@ public class WoodButtonManagerScript : MonoBehaviour
     public void ActivateGameOverScreen(int score)
     {
         endScreen.SetActive(true); // Enable and display the game over screen.
-        scoreText1.text = "Pilkoit " + score.ToString() + " puuta.";
-
         
+
+
        /* if (game_mode == 1 && failed_thingsscore <  4)
         {
             feedbackText.text = "Hienoa tyˆt‰!";
@@ -91,32 +90,46 @@ public class WoodButtonManagerScript : MonoBehaviour
         {
             feedbackText.text = "Ole ensi kerralla varovaisempi!";
         }*/
-        if (/*game_mode == 2 &&*/ score <= 10)
+        if (/*game_mode == 2 &&*/ score == 1)
         {
+            scoreText1.text = "Pilkoit " + score.ToString() + " puun.";
+            feedbackText.text = "Parempi onni ensi kerralla!";
+        }
+        else if (/*game_mode == 2 &&*/ score <= 10)
+        {
+            scoreText1.text = "Pilkoit " + score.ToString() + " puuta.";
             feedbackText.text = "Parempi onni ensi kerralla!";
         }
         else if (/*game_mode == 2 &&*/ score <= 20 && score > 10)
         {
+            scoreText1.text = "Pilkoit " + score.ToString() + " puuta.";
             feedbackText.text = "P‰‰sit hyvin alkuun!";
         }
         else if (/*game_mode == 2 &&*/ score <= 40 && score > 20)
         {
+            scoreText1.text = "Pilkoit " + score.ToString() + " puuta.";
             feedbackText.text = "Seh‰n meni hienosti!";
         }
         else if (/*game_mode == 2 &&*/score <= 60 && score > 40)
         {
+            scoreText1.text = "Pilkoit " + score.ToString() + " puuta.";
             feedbackText.text =  "Olet oikea metsien kuningas!";
         }
         else if (/*game_mode == 2 &&*/ score <= 80 && score > 60)
         {
+            scoreText1.text = "Pilkoit " + score.ToString() + " puuta.";
             feedbackText.text = "Upeaa! Kadehdittava tulos!";
         }
         else if (/*game_mode == 2 && */score > 80)
         {
+            scoreText1.text = "Pilkoit " + score.ToString() + " puuta.";
             feedbackText.text = "Onneksi olkoon! Olet mestaripuunhakkaaja!";
         }
     }
-
+    public void ResetGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
     public void ReturnToSettingScreen()
     {
         endScreen.SetActive(false);
