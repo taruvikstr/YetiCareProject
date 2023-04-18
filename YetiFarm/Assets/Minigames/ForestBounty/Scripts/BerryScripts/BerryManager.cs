@@ -41,6 +41,17 @@ public class BerryManager : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape)) // If the back button of the device is pressed during game.
+        {
+            gameOn = false;
+
+            // Delete birds
+            foreach (GameObject bird in GameObject.FindGameObjectsWithTag("ProjectileTag"))
+            {
+                Destroy(bird);
+            }
+            buttonManager.GetComponent<ButtonManagerForestBounty>().ReturnToMainScreen(); // Return to main view.
+        }
         // This happens when bird gathers all berries
         if (BirdSpawnBehavior.birdScoreCounter == 0 && bManagerDifficulty != 1 && gameOn != false)
         {
