@@ -20,6 +20,7 @@ public class FishController : MonoBehaviour
 
     private Dictionary<int, Transform> draggingFish = new Dictionary<int, Transform>();
     private Vector3 offset;
+    private float previousXpos;
     [SerializeField] private LayerMask movableLayers;
 
     public bool isDragged = false;
@@ -50,6 +51,11 @@ public class FishController : MonoBehaviour
 
     private void Update()
     {
+        //Basic movements, when not being dragged
+        if (!isDragged && returned) Movement();
+        else if (!isDragged && !returned) MoveFishBackToSea();
+
+        //Touch dragging of the fish
         int touchCount = Input.touchCount;
         for (int i = 0; i < touchCount; i++)
         {
@@ -77,7 +83,7 @@ public class FishController : MonoBehaviour
                                 isDragged = true;
                                 returned = false;
                                 bubbleParticle.Play();
-                                StartCoroutine(ChangeFishSortingLayer("Dragged", grabbed.gameObject, 0f));
+                                StartCoroutine(ChangeFishSortingLayer("Dragged", grabbed.gameObject, 0f)); //Puts the fish on top layer
                                 offset = dragging.position - Camera.main.ScreenToWorldPoint(touch.position);
                                 draggingFish.Add(touchID, dragging);
                             }
@@ -114,16 +120,44 @@ public class FishController : MonoBehaviour
             }
         }
 
-        if (transform.position == spawnParent.transform.position && !returned)
+        //When fish get's back to it's original position, bubbles stop and get's flagged as returned
+        if (transform.position == spawnParent.transform.position && !returned) 
         {
             returned = true;
             StopBubbleParticles();
         }
 
-        if (!isDragged && returned) Movement();
-        else if (!isDragged && !returned) MoveFishBackToSea();
+        if(!returned && isDragged)
+        {
+            if (previousXpos - transform.position.x < 0) // Dragging right flip sprite
+            {
+                transform.localScale = new Vector3(-1, 1, 1);
+                flipped = true;
+            }
+            else if (previousXpos - transform.position.x > 0) // Dragging left flip srite
+            {
+                transform.localScale = new Vector3(1, 1, 1);
+                flipped = false;
+            }
+
+            previousXpos = transform.position.x;
+        }
+        else if(!returned && !isDragged) // Returning back to water after drag
+        {
+            if (spawnParent.transform.position.x - transform.position.x < 0)
+            {
+                transform.localScale = new Vector3(1, 1, 1);
+                flipped = false;
+            }
+            else
+            {
+                transform.localScale = new Vector3(-1, 1, 1);
+                flipped = true;
+            }
+        }
  
     }
+
 
     public IEnumerator ChangeFishSortingLayer(string layerName, GameObject fishInstance, float delay)
     {
