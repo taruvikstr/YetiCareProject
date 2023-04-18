@@ -6,10 +6,18 @@ using UnityEngine.UI;
 
 public class Fish_PlayerBuckets : MonoBehaviour
 {
+    private Color colorNormal;
+    private SpriteRenderer spriteRenderer;
     public int collectedAmount = 0;
     public TMP_Text amountTxt;
     [SerializeField] private Fish_GameManager fish_GameManager;
     [SerializeField] private FishUIController fish_UIController;
+
+    private void Start()
+    {
+        colorNormal = GetComponent<SpriteRenderer>().color;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
 
     private void OnEnable()
     {
@@ -52,17 +60,23 @@ public class Fish_PlayerBuckets : MonoBehaviour
     {
         collectedAmount = 0;
         amountTxt.text = collectedAmount.ToString();
+        GetComponent<Collider2D>().enabled = true;
     }
 
     private IEnumerator FishBucketCooldown() //If wrong fish is dragged to the bucket, the bucket has a cooldown,
                                              //so that the player can't drag multiple fish at the same time
     {
-        Color colorNormal = GetComponent<SpriteRenderer>().color;
         GetComponent<Collider2D>().enabled = false;
-        GetComponent<SpriteRenderer>().color = new Color(colorNormal.r, colorNormal.g, colorNormal.b, 0.6f);
+        spriteRenderer.color = new Color(colorNormal.r, colorNormal.g, colorNormal.b, 0.6f);
         yield return new WaitForSeconds(2f);
         GetComponent<Collider2D>().enabled = true;
-        GetComponent<SpriteRenderer>().color = colorNormal;
+        spriteRenderer.color = colorNormal;
 
+    }
+
+    private void OnDisable()
+    {
+        //In case game ended whilst FishBucketCooldown was active, the color needs to be reset.
+        spriteRenderer.color = new Color(colorNormal.r, colorNormal.g, colorNormal.b, 1f); 
     }
 }
