@@ -24,10 +24,11 @@ public class WoodButtonManagerScript : MonoBehaviour
 
     private void Awake() // Set values to defaults. Remember to set sliders to these values as well.
     {
-        difficultyValue = 2;
+        difficultyValue = 1;
         
         gameModeValue = 1;
         FindObjectOfType<Blade>().enabled = false;
+        
         gameManager.PauseGame();
     }
 
@@ -55,7 +56,7 @@ public class WoodButtonManagerScript : MonoBehaviour
         }
         if (gameModeValue == 2)
         {
-            gameModeSliderNumText.text = ">";
+            gameModeSliderNumText.text = "~";
         }
     }
 
@@ -70,6 +71,7 @@ public class WoodButtonManagerScript : MonoBehaviour
         
         startScreen.SetActive(false); // Disable and hide the starting screen.
         gameManager.StartWoodSpawns(difficultyValue, gameModeValue);
+        
         FindObjectOfType<Blade>().enabled = true;
         
 
@@ -79,45 +81,40 @@ public class WoodButtonManagerScript : MonoBehaviour
     {
         endScreen.SetActive(true); // Enable and display the game over screen.
         scoreText1.text = "Pilkoit " + score.ToString() + " puuta.";
-       /* scoreText2.text = "Rikki meni " + failed_things.ToString() + " kananmunaa.";
 
-        if (failed_things == 1)
-        {
-            scoreText2.text = "Rikki meni " + failed_things.ToString() + " kananmuna.";
-        }
-
-        if (game_mode == 1 && failed_things < score_points / 4)
+        
+       /* if (game_mode == 1 && failed_thingsscore <  4)
         {
             feedbackText.text = "Hienoa tyˆt‰!";
         }
-        else if (game_mode == 1 && failed_things > score_points / 4)
+        else if (/*game_mode == 1 && failed_thingsscore > 4)
         {
             feedbackText.text = "Ole ensi kerralla varovaisempi!";
-        }
-        else if (game_mode == 2 && score_points <= 10)
+        }*/
+        if (/*game_mode == 2 &&*/ score <= 10)
         {
             feedbackText.text = "Parempi onni ensi kerralla!";
         }
-        else if (game_mode == 2 && score_points <= 20 && score_points > 10)
+        else if (/*game_mode == 2 &&*/ score <= 20 && score > 10)
         {
             feedbackText.text = "P‰‰sit hyvin alkuun!";
         }
-        else if (game_mode == 2 && score_points <= 40 && score_points > 20)
+        else if (/*game_mode == 2 &&*/ score <= 40 && score > 20)
         {
             feedbackText.text = "Seh‰n meni hienosti!";
         }
-        else if (game_mode == 2 && score_points <= 60 && score_points > 40)
+        else if (/*game_mode == 2 &&*/score <= 60 && score > 40)
         {
-            feedbackText.text = "Hienoa! Olet oikea kanalan kauhu!";
+            feedbackText.text =  "Olet oikea metsien kuningas!";
         }
-        else if (game_mode == 2 && score_points <= 80 && score_points > 60)
+        else if (/*game_mode == 2 &&*/ score <= 80 && score > 60)
         {
             feedbackText.text = "Upeaa! Kadehdittava tulos!";
         }
-        else if (game_mode == 2 && score_points > 80)
+        else if (/*game_mode == 2 && */score > 80)
         {
-            feedbackText.text = "Onneksi olkoon! Olet mestariker‰‰j‰!";
-        }*/
+            feedbackText.text = "Onneksi olkoon! Olet mestaripuunhakkaaja!";
+        }
     }
 
     public void ReturnToSettingScreen()

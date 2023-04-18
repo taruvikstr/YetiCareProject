@@ -897,9 +897,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1487230957}
   m_Direction: 0
   m_MinValue: 1
-  m_MaxValue: 3
+  m_MaxValue: 2
   m_WholeNumbers: 1
-  m_Value: 2
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -1046,9 +1046,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9fdeb83df8275b4b9da960571ff05f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 765812988}
+  scoreText: {fileID: 1653540542}
+  scoreText1: {fileID: 765812988}
   timerText: {fileID: 1632123209}
   score: 0
+  WbManager: {fileID: 1777497855}
 --- !u!4 &520386644
 Transform:
   m_ObjectHideFlags: 0
@@ -1458,7 +1460,7 @@ GameObject:
   - component: {fileID: 765812987}
   - component: {fileID: 765812988}
   m_Layer: 5
-  m_Name: ScoreText
+  m_Name: ScoreText1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1850,7 +1852,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Leikkaa m\xE4\xE4r\xE4"
+  m_text: Ajallinen
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7fbdf7fb665dc8d43ac1ac6bb0e789ab, type: 2}
   m_sharedMaterial: {fileID: 4453648058832637171, guid: 7fbdf7fb665dc8d43ac1ac6bb0e789ab, type: 2}
@@ -2616,7 +2618,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Pisteet:'
+  m_text: "Hyv\xE4\xE4 Ty\xF6t\xE4!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2909,7 +2911,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 0.3
 --- !u!212 &1506089390
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4190,7 +4192,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: :/
+  m_text: :)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7fbdf7fb665dc8d43ac1ac6bb0e789ab, type: 2}
   m_sharedMaterial: {fileID: 4453648058832637171, guid: 7fbdf7fb665dc8d43ac1ac6bb0e789ab, type: 2}

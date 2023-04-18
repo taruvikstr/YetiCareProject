@@ -87,6 +87,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: BirchWood
       objectReference: {fileID: 0}
+    - target: {fileID: 5072116482787017754, guid: 890f2bee0f956c24f9641d6ee005cbe6, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.7122642
+      objectReference: {fileID: 0}
+    - target: {fileID: 5072116482787017754, guid: 890f2bee0f956c24f9641d6ee005cbe6, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.85925967
+      objectReference: {fileID: 0}
+    - target: {fileID: 5072116482787017754, guid: 890f2bee0f956c24f9641d6ee005cbe6, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5247623041431421575, guid: 890f2bee0f956c24f9641d6ee005cbe6, type: 3}
       propertyPath: m_Size.x
       value: 2

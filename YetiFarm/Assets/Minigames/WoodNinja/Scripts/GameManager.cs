@@ -7,6 +7,9 @@ using TMPro;
 public class GameManager : MonoBehaviour
 { 
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI scoreText1;
+
+
     public TextMeshProUGUI timerText;
 
 
@@ -14,7 +17,7 @@ public class GameManager : MonoBehaviour
     private SpawnerV2 spawner;
     
     public int score;
-    private WoodButtonManagerScript WbManager;
+    [SerializeField]private WoodButtonManagerScript WbManager;
 
     private void Awake()
     {
@@ -29,17 +32,22 @@ public class GameManager : MonoBehaviour
         // Start the game with the settings given in the parameters.
         Time.timeScale = 1;
         GameStart();
-        
+        scoreText.enabled = true;
+        scoreText1.enabled = true;
+
+
     }
 
     public void IncreaseScore(int amount)
     {
         score += amount;
-        scoreText.text = score.ToString();
+        scoreText1.text = score.ToString();
 
     }
     public void PauseGame()
     {
+        scoreText.enabled = false;
+        scoreText1.enabled = false;
         Time.timeScale = 0;
     }
     public void EndGame()
@@ -72,8 +80,8 @@ public class GameManager : MonoBehaviour
             Destroy(rock.gameObject);
         }
 
-        Time.timeScale = 0;       
-        
+        Time.timeScale = 0;
+        WbManager.ActivateGameOverScreen(score);
     }
     public void Timer()
     {
