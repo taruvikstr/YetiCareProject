@@ -19,9 +19,6 @@ public class Fish_GameManager : MonoBehaviour
     public int fishAmount;
     public int patternAmount;
 
-    private GameObject selectedObject;
-    private Vector3 offset;
-
     private bool gameON = false;
     private float time;
 
@@ -31,34 +28,6 @@ public class Fish_GameManager : MonoBehaviour
 
     void Update()
     {
-        //This if for dragging 
-        //    Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //if (Input.GetMouseButtonDown(0))
-        //{
-
-        //    Collider2D targetObject = Physics2D.OverlapPoint(mousePosition);
-        //    if (targetObject && targetObject.gameObject.CompareTag("Collectible"))
-        //    {
-        //        StartCoroutine(ChangeFishSortingLayer("Dragged", targetObject.gameObject, 0f));
-        //        selectedObject = targetObject.transform.gameObject;
-        //        selectedObject.GetComponent<FishController>().isDragged = true;
-        //        selectedObject.GetComponent<FishController>().StartBubbleParticles();
-        //        offset = selectedObject.transform.position - mousePosition;
-        //    }
-        //}
-        //if (selectedObject)
-        //{
-        //    selectedObject.transform.position = mousePosition + offset;
-        //}
-        //if (Input.GetMouseButtonUp(0) && selectedObject)
-        //{
-        //    StartCoroutine(ChangeFishSortingLayer(selectedObject.transform.parent.GetComponent<SpriteRenderer>().sortingLayerName, selectedObject.gameObject, 2f));
-        //    selectedObject.GetComponent<FishController>().isDragged = false;
-        //    selectedObject.GetComponent<FishController>().returned = false;
-
-        //    selectedObject = null;
-        //}
-
         //Timer
         if (gameON && timer > 0)
         {

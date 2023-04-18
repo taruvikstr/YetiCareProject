@@ -12,15 +12,15 @@ public class FishController : MonoBehaviour
     public List<Color> secondaryColor = new List<Color>();
     
     [SerializeField] private ParticleSystem bubbleParticle;
-
     [SerializeField] private SpriteRenderer primaryColorRenderer, patternRenderer;
 
     GameObject spawnParent;
 
     private Fish_GameManager gameManager;
 
-    private GameObject selectedObject;
+    private Dictionary<int, Transform> draggingFish = new Dictionary<int, Transform>();
     private Vector3 offset;
+    [SerializeField] private LayerMask movableLayers;
 
     public bool isDragged = false;
     public bool returned = true;
@@ -50,37 +50,68 @@ public class FishController : MonoBehaviour
 
     private void Update()
     {
-        foreach (Touch touch in Input.touches)
+        int touchCount = Input.touchCount;
+        for (int i = 0; i < touchCount; i++)
         {
-            Vector3 touchPos = Camera.main.ScreenToWorldPoint(touch.position);
-            if(Physics2D.OverlapPoint(touchPos).name == fishName)
+            Touch touch = Input.GetTouch(i);
+            switch (touch.phase)
             {
-                Collider2D targetObject = GetComponent<CircleCollider2D>();
-                if (targetObject && targetObject.gameObject.CompareTag("Collectible") && touch.phase == TouchPhase.Began)
-                {
-                    StartCoroutine(ChangeFishSortingLayer("Dragged", gameObject, 0f));
-                    selectedObject = targetObject.transform.gameObject;
-                    isDragged = true;
-                    StartBubbleParticles();
-                    offset = selectedObject.transform.position - touchPos;
-                }
+                case TouchPhase.Began:
 
-                if (selectedObject)
-                {
-                    selectedObject.transform.position = touchPos + offset;
-                }
+                    // touch is being detected on screen
+                    // cast ray, restrict the functionality to objects on "Movable" -layer 
+                    RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touch.position),
+                        Vector2.zero, float.PositiveInfinity, movableLayers);
 
+                    if (hit)
+                    {
+                        GameObject grabbed;
+                        int touchID = touch.fingerId;
+                        if (!draggingFish.ContainsKey(touchID))
+                        {
+                            Transform dragging = hit.transform;
+                            grabbed = dragging.transform.gameObject;
+                            dragging = grabbed.transform;
+                            if(grabbed.name == fishName)
+                            {
+                                isDragged = true;
+                                returned = false;
+                                bubbleParticle.Play();
+                                StartCoroutine(ChangeFishSortingLayer("Dragged", grabbed.gameObject, 0f));
+                                offset = dragging.position - Camera.main.ScreenToWorldPoint(touch.position);
+                                draggingFish.Add(touchID, dragging);
+                            }
+                        }
+                    }
 
-                if (selectedObject && touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
-                {
-                    StartCoroutine(ChangeFishSortingLayer(transform.parent.GetComponent<SpriteRenderer>().sortingLayerName, selectedObject.gameObject, 2f));
-                    isDragged = false;
-                    returned = false;
-                    selectedObject = null;
-                }
+                    break;
 
+                case TouchPhase.Moved:
+
+                    // touch is moving across screen
+                    if (draggingFish.ContainsKey(touch.fingerId))
+                    {
+                        Transform dragging = draggingFish[touch.fingerId];
+
+                        if (dragging)
+                        {
+                            dragging.position = Camera.main.ScreenToWorldPoint(touch.position) + offset;
+                            returned = false;
+                        }
+
+                    }
+                    break;
+
+                case TouchPhase.Ended:
+                    if (draggingFish.ContainsKey(touch.fingerId))
+                    {
+                        StartCoroutine(ChangeFishSortingLayer(spawnParent.GetComponent<SpriteRenderer>().sortingLayerName, gameObject, 2f));
+                        draggingFish.Remove(touch.fingerId);
+                        isDragged = false;
+                        
+                    }
+                    break;
             }
- 
         }
 
         if (transform.position == spawnParent.transform.position && !returned)

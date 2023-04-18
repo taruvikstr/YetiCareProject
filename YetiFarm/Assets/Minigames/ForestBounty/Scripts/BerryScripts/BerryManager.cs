@@ -24,9 +24,10 @@ public class BerryManager : MonoBehaviour
 
     private void Awake()
     {
+        containers = GameObject.Find("Containers");
+
         GameObject berrySpawnPointObject = GameObject.Find("SpawnPoints");
         birdSpawn = GameObject.Find("BirdSpawn");
-        containers = GameObject.Find("Containers");
 
         if (berrySpawnPointObject == null)
         {
@@ -41,7 +42,7 @@ public class BerryManager : MonoBehaviour
     private void Update()
     {
         // This happens when bird gathers all berries
-        if (BerryBucket.birdScoreCounter == 0 && bManagerDifficulty != 1 && gameOn != false)
+        if (BirdSpawnBehavior.birdScoreCounter == 0 && bManagerDifficulty != 1 && gameOn != false)
         {
             gameOn = false;
             buttonManager.GetComponent<ButtonManagerForestBounty>().ActivateGameOverScreen(0, bManagerDifficulty);
@@ -61,6 +62,8 @@ public class BerryManager : MonoBehaviour
         endGame = 0;
         bManagerDifficulty = difficulty;
 
+        containers.GetComponent<BucketSpawn>().SpawnBuckets();
+
         // Sets berry spawn points's difficulty values and spawn delay
         foreach (Transform spawn in berrySpawnerList)
         {
@@ -77,7 +80,7 @@ public class BerryManager : MonoBehaviour
 
             case 2:  
                 // medium difficulty
-                BerryBucket.birdScoreCounter = 1;
+                BirdSpawnBehavior.birdScoreCounter = 1;
 
                 birdSpawn.GetComponent<BirdSpawnBehavior>().BirdSpawnStarter(); // Starts bird 
 
@@ -85,7 +88,7 @@ public class BerryManager : MonoBehaviour
 
             case 3:
                 // hard
-                BerryBucket.birdScoreCounter = 10;
+                BirdSpawnBehavior.birdScoreCounter = 10;
 
                 birdSpawn.GetComponent<BirdSpawnBehavior>().birdSpawnRate = 5f; // set bird to spawn a bit faster
                 birdSpawn.GetComponent<BirdSpawnBehavior>().BirdSpawnStarter(); // Starts bird 

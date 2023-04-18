@@ -7,11 +7,17 @@ using TMPro;
 public class GameManager : MonoBehaviour
 { 
     public TextMeshProUGUI scoreText;
-   
+    public TextMeshProUGUI scoreText1;
+
+
+    public TextMeshProUGUI timerText;
+
+
     private Blade blade;
     private SpawnerV2 spawner;
+    
     public int score;
-    private WoodButtonManagerScript WbManager;
+    [SerializeField]private WoodButtonManagerScript WbManager;
 
     private void Awake()
     {
@@ -21,21 +27,27 @@ public class GameManager : MonoBehaviour
     }
     // Start is called before the first frame update
 
-    public void StartWoodSpawns(int difficultyValue, int desiredScoreValue, int gameModeValue, int playerAmountValue)
+    public void StartWoodSpawns(int difficultyValue, int gameModeValue)
     {
         // Start the game with the settings given in the parameters.
         Time.timeScale = 1;
         GameStart();
+        scoreText.enabled = true;
+        scoreText1.enabled = true;
+
+
     }
 
     public void IncreaseScore(int amount)
     {
         score += amount;
-        scoreText.text = score.ToString();
+        scoreText1.text = score.ToString();
 
     }
     public void PauseGame()
     {
+        scoreText.enabled = false;
+        scoreText1.enabled = false;
         Time.timeScale = 0;
     }
     public void EndGame()
@@ -49,15 +61,31 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator GameStart()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
     }
     
     private IEnumerator EndGameSequence()
     {
-        yield return new WaitForSeconds(2f);
 
-        Time.timeScale = 0;       
-        
+        yield return new WaitForSeconds(4f);
+
+        WoodSlicer[] woods = FindObjectsOfType<WoodSlicer>();
+        foreach (WoodSlicer wood in woods)
+        {
+            Destroy(wood.gameObject);
+        }
+        Rock[] rocks = FindObjectsOfType<Rock>();
+        foreach (Rock rock in rocks)
+        {
+            Destroy(rock.gameObject);
+        }
+
+        Time.timeScale = 0;
+        WbManager.ActivateGameOverScreen(score);
+    }
+    public void Timer()
+    {
+      
     }
 
 }

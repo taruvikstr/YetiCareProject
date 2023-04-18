@@ -21,7 +21,7 @@ public class BirdManager : MonoBehaviour
     private bool berryNotVisited = true;  // when bird has reached berryPositions[randomIndex], berryNotVisited = false;
 
     private void Awake()
-    {
+    { 
         berryPositions = new List<Transform> { null, null, null, null, null, null, null, null, null, null, null, null}; // Add more as the number of spawn points in scene increases.
         birdPositions = new List<Transform> { null, null }; // Add more as the number of spawn points in scene increases.
         GameObject berrySpawnPointObject = GameObject.Find("SpawnPoints");
@@ -42,7 +42,7 @@ public class BirdManager : MonoBehaviour
             Debug.Log("BIRD NOT FOUND");
         }
 
-        for (int i = 0; i < birdSpawnPointObject.transform.childCount; i++)
+        for (int i = 0; i < birdSpawnPointObject.transform.childCount - 1; i++) // -1 because the last childobject is canvas/text for birdscore
         {
             birdPositions[i] = birdSpawnPointObject.transform.GetChild(i).transform;
         }
@@ -68,7 +68,7 @@ public class BirdManager : MonoBehaviour
             toBerry = berryPositions[randomIndex].position;
             awayFromBerry = birdPositions[1].position;
 
-            if(BerryBucket.birdScoreCounter == 0)
+            if(BirdSpawnBehavior.birdScoreCounter == 0)
             {
                 Destroy(gameObject);
             }
@@ -82,7 +82,7 @@ public class BirdManager : MonoBehaviour
                 {
                     if (gameObject.transform.childCount >= 1)
                     {
-                        BerryBucket.birdScoreCounter--;
+                        BirdSpawnBehavior.birdScoreCounter--;
                     }
                     Destroy(gameObject);              
                 }

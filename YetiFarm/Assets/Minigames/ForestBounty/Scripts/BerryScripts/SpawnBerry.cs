@@ -18,8 +18,7 @@ public class SpawnBerry : MonoBehaviour
     {        
         if (currentBerry == null && berrySpawning == false)
         {
-            StartCoroutine(RespawnDelay());
-            
+            StartCoroutine(RespawnDelay());            
         }
     }
 
