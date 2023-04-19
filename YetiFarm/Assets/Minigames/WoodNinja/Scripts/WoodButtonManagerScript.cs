@@ -132,8 +132,8 @@ public class WoodButtonManagerScript : MonoBehaviour
     }
     public void ReturnToSettingScreen()
     {
-        SceneManager.LoadScene("WoodNinja");
-        // endScreen.SetActive(false);
-        // startScreen.SetActive(true);
+        
+        endScreen.SetActive(false);
+        startScreen.SetActive(true);
     }
 }

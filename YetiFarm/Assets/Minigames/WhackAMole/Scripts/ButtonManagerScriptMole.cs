@@ -30,6 +30,7 @@ public class ButtonManagerScriptMole : MonoBehaviour
 
     private void Awake() // Set values to defaults. Remember to set sliders to these values as well.
     {
+        Time.timeScale = 1;
         difficultyValueMole = 2;
         playerAmountValueMole = 1;
         gameSpeedValue = 0;

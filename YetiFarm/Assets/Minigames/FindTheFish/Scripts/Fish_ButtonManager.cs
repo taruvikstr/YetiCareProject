@@ -16,6 +16,7 @@ public class Fish_ButtonManager : MonoBehaviour
 
     private void Awake() // Set values to defaults. Remember to set sliders to these values as well.
     {
+        Time.timeScale = 1;
         fishAmountValue = 10;
         playerAmountValue = 1;
         timerValue = 60;
@@ -72,8 +73,7 @@ public class Fish_ButtonManager : MonoBehaviour
 
     public void ReturnToSettingScreen()
     {
-        SceneManager.LoadScene("FindTheFish");
-        // endScreen.SetActive(false);
-        // startScreen.SetActive(true);
+        endScreen.SetActive(false);
+        startScreen.SetActive(true);
     }
 }

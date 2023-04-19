@@ -27,6 +27,7 @@ public class ButtonManagerForestBounty : MonoBehaviour
 
     private void Awake() // Set values to defaults. Remember to set sliders to these values as well.
     {
+        Time.timeScale = 1;
         difficultyValue = 2;
         //playerAmountValue = 1;
         //gameSpeedValue = 0;
