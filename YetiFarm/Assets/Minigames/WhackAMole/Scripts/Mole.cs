@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Mole : MonoBehaviour
 {
@@ -16,14 +17,15 @@ public class Mole : MonoBehaviour
     [Header("GameManager")]
     [SerializeField] private MoleGameManager gameManager;
 
+    [SerializeField] private TMPro.TextMeshPro grabTimerText;
     //Sprite offset of the sprite to hide it
     private Vector2 startPosition = new Vector2(0f, -2f); //Pixelsize / PixelsPerUnit
     private Vector2 endPosition = Vector2.zero;
     //How long it takes to show a mole
     private float showDuration = 0.5f;
     public float duration = 1f;
-
     private bool hittable = true;
+    private float grabAnimationDuration = 0f;
 
     private SpriteRenderer spriteRenderer;
     private Animator animator;
@@ -81,6 +83,42 @@ public class Mole : MonoBehaviour
          * 
          * This should be implemented in the hide mole section below.
          */
+        if(moleType != MoleType.Bomb)
+        {
+            switch (grabAnimationDuration)
+            {
+                case 1:
+                    grabAnimationDuration = 3;
+                    break;
+                case 2:
+                    grabAnimationDuration = 2;
+                    break;
+                case 3:
+                    grabAnimationDuration = 1;
+                    break;
+                default:
+                    break;
+            }
+                
+            grabTimerText.enabled = true;
+            Debug.Log(grabAnimationDuration);
+            while (grabAnimationDuration > 0f)
+            {
+
+                grabTimerText.text = Mathf.Round(grabAnimationDuration).ToString();
+                grabAnimationDuration -= Time.deltaTime;
+                yield return null;
+            }
+            
+            if (vegetable.activeInHierarchy)
+            {
+                gameManager.vegetables -= 1;
+            }
+            vegetable.SetActive(false);
+            grabTimerText.enabled = false;
+        }
+      
+       
 
         //Hide mole
         elapsed = 0f;
@@ -106,9 +144,10 @@ public class Mole : MonoBehaviour
         }
 
     }
+   
     public void Hide()
     {
-
+        grabTimerText.enabled = false;
         moleHands.SetActive(false);
         transform.localPosition = startPosition;
         boxCollider2D.offset = boxOffsetHidden;
@@ -116,6 +155,7 @@ public class Mole : MonoBehaviour
     }
     private IEnumerator QuickHide()
     {
+
         yield return new WaitForSeconds(0.25f);
         if (!hittable)
         {
@@ -132,6 +172,7 @@ public class Mole : MonoBehaviour
             switch (moleType)
             {
                 case MoleType.Standard:
+                 
                     moleHands.SetActive(false);
                     Debug.Log("normal hit");
                     spriteRenderer.sprite = moleHit;
@@ -253,6 +294,7 @@ public class Mole : MonoBehaviour
     
     public void Activate(int level)
     {
+        grabAnimationDuration = gameManager.grabTimer;
         SetLevel(level);
         CreateNext();
         StartCoroutine(ShowHide(startPosition, endPosition));

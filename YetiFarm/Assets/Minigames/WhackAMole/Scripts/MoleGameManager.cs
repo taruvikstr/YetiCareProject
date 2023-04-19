@@ -41,11 +41,12 @@ public class MoleGameManager : MonoBehaviour
     int score;
     private bool playing = false;
     public ParticleSystem explosion; 
-    int difficultyLevel;
-    int molesInGame;
+    public int difficultyLevel;
+    private int molesInGame;
     public int vegetables;
     private int endlessGame;
     private int vegetablesStart;
+    public int grabTimer;
 
     private List<int> samenumbercheck = new List<int>();
 
@@ -82,6 +83,7 @@ public class MoleGameManager : MonoBehaviour
         
         // Getting difficultyvalue from MoleGameManager Script.
         difficultyLevel = diff;
+        grabTimer = diff;
         // Getting moles in game value from buttonmanager script.
         molesInGame = player_amount;
         //Changin difficulty for molegame
@@ -117,7 +119,7 @@ public class MoleGameManager : MonoBehaviour
                         Debug.Log("Sama numero " + random);
                     }
                     moles[random].Hide();
-                    moles.Remove(moles[random]);
+                    moles[random].enabled = false;
                     samenumbercheck.Add(random);
 
                 }
@@ -134,7 +136,7 @@ public class MoleGameManager : MonoBehaviour
                         Debug.Log("Sama numero " + random);
                     }
                     moles[random].Hide();
-                    moles.Remove(moles[random]);
+                    moles[random].enabled = false;
                     samenumbercheck.Add(random);
                     Debug.Log(samenumbercheck[i]);
                 }
@@ -163,6 +165,7 @@ public class MoleGameManager : MonoBehaviour
         {
             moles[i].Hide();
             moles[i].SetIndex(i);
+            moles[i].enabled = true;
         }
         
 
