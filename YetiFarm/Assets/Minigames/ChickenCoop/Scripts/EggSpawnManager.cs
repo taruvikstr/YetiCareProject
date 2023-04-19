@@ -136,10 +136,10 @@ public class EggSpawnManager : MonoBehaviour
 
     private void Update()
     {
-        // Stops egg spawning if three eggs fall on the ground in endless mode or if desired score is reached in goal mode.
+        // Stops egg spawning if an egg eggs fall on the ground in endless mode or if desired score is reached in goal mode.
         if ((((failedEggs >= 1) && gameMode == 2) || ((score >= desiredScore) && gameMode == 1)) && gameOn == true)
         {
-            
+            gameOn = false;
             // Delete baskets.
             foreach (GameObject playerBasket in GameObject.FindGameObjectsWithTag("Player"))
             {
@@ -161,40 +161,9 @@ public class EggSpawnManager : MonoBehaviour
                 boardList3p[i].SetActive(true);
                 boardList1p[i].SetActive(true);
             }
-
-
-            score = 0;
-            failedEggs = 0;
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape) && gameOn == true) // If the back button of the device is pressed during game.
-        {
-            StopAllCoroutines();
-            gameOn = false;
-            desiredScore = 0;
-            difficulty = 2;
-            gameMode = 1;
-            spawnRate = 2.0f;
-            basketAmount = 1;
-
-            // Delete baskets.
-            foreach (GameObject playerBasket in GameObject.FindGameObjectsWithTag("Player"))
-            {
-                Destroy(playerBasket);
-            }
-
-            // Delete falling eggs.
-            foreach (GameObject egg in GameObject.FindGameObjectsWithTag("ProjectileTag"))
-            {
-                Destroy(egg);
-            }
-
-            score = 0;
-            failedEggs = 0;
-
-            buttonManager.GetComponent<ButtonManagerScript>().ReturnToMainScreen(); // Return to main view.
-        }
-
+        // If the back button of the device is pressed during game.
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             buttonManager.GetComponent<ButtonManagerScript>().ReturnToSettingScreen();
