@@ -13,6 +13,8 @@ public class Mole : MonoBehaviour
     [SerializeField] private Sprite moleHatHit;
     [SerializeField] public GameObject moleHands;
     [SerializeField] public GameObject vegetable;
+    [SerializeField] public GameObject hat;
+    [SerializeField] public GameObject brokenHat;
 
     [Header("GameManager")]
     [SerializeField] private MoleGameManager gameManager;
@@ -50,7 +52,7 @@ public class Mole : MonoBehaviour
     private IEnumerator ShowHide(Vector2 start, Vector2 end)
     {
         // Startposition
-       
+        
         transform.localPosition = start;
         float elapsed = 0f;
         while (elapsed < showDuration)
@@ -186,14 +188,15 @@ public class Mole : MonoBehaviour
                 case MoleType.HardHat:
                     if (lives == 2)
                     {
-                        spriteRenderer.sprite = moleHatBroken;
+                        brokenHat.SetActive(true);
+                        hat.SetActive(false);
                         lives--;
                     }
                     else
                     {
                         moleHands.SetActive(false);
                         Debug.Log("hatHit");
-                        spriteRenderer.sprite = moleHatHit;
+                        spriteRenderer.sprite = moleHit;
                         gameManager.AddScore(moleIndex, moleType != MoleType.Bomb);
                         //Stop the animation
                         StopAllCoroutines();
@@ -251,7 +254,8 @@ public class Mole : MonoBehaviour
             {
                 // Create a hard one.
                 moleType = MoleType.HardHat;
-                spriteRenderer.sprite = moleHardHat;
+                hat.SetActive(true);
+                brokenHat.SetActive(false);
                 lives = 2;
             }
             else
@@ -259,6 +263,8 @@ public class Mole : MonoBehaviour
                 // Create a standard one.
                 moleType = MoleType.Standard;
                 spriteRenderer.sprite = mole;
+                hat.SetActive(false);
+                brokenHat.SetActive(false);
                 lives = 1;
             }
         }
