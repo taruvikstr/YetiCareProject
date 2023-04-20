@@ -61,7 +61,7 @@ public class Fish_GameManager : MonoBehaviour
         //Spawning of the fishes
         for (int i = fishAmount; i > 0; i--)
         {
-            GameObject fishInstance = Instantiate(fishPrefab[Random.Range(0, fishPrefab.Length)], spawnpoints[i].transform);
+            GameObject fishInstance = Instantiate(fishPrefab[Random.Range(0, fishPrefab.Length)], spawnpoints[i-1].transform);
             fishInstance.name = fishInstance.name + spawnpoints[i].name;
             fishInstances.Add(fishInstance);
         }
