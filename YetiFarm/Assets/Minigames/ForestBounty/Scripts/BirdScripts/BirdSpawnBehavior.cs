@@ -30,6 +30,17 @@ public class BirdSpawnBehavior : MonoBehaviour
         while (BerryManager.gameOn == true)
         {
             Debug.Log("Spawn Bird");
+            spawnPoint = Random.Range(0, 2);
+            Debug.Log(spawnPoint);
+            if (spawnPoint == 0)
+            {
+                bird.gameObject.GetComponentInChildren<SpriteRenderer>().flipX = true;
+            }
+            else
+            {
+                bird.gameObject.GetComponentInChildren<SpriteRenderer>().flipY = false;
+            }
+
             yield return new WaitForSeconds(birdSpawnRate);
             Instantiate(bird, birdSpawnPoints[spawnPoint].transform.position, birdSpawnPoints[spawnPoint].transform.rotation);
         }      
@@ -39,8 +50,7 @@ public class BirdSpawnBehavior : MonoBehaviour
     {
         coroutine = DelayedBirdSpawn();
         StartCoroutine(coroutine);
-        spawnPoint = Random.Range(0, 2);
-
+        
         switch (BerryManager.bManagerDifficulty) // aka difficulty
         {
             case 1:

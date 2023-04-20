@@ -82,7 +82,7 @@ public class BirdManager : MonoBehaviour
 
                 if ((transform.position.Equals(birdPositions[0].position) || transform.position.Equals(birdPositions[1].position)))
                 {
-                    if (gameObject.transform.childCount >= 1)
+                    if (gameObject.transform.childCount >= 2)
                     {
                         BirdSpawnBehavior.birdScoreCounter--;
                     }
@@ -105,6 +105,11 @@ public class BirdManager : MonoBehaviour
             {
                 // move bird to berry
                 gameObject.transform.position = Vector2.MoveTowards(transform.position, toBerry, movementSpeed * Time.deltaTime);
+
+                if (transform.position.Equals(birdPositions[0]))
+                {
+                    gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().flipX = true;
+                }
 
                 if (transform.position.Equals(toBerry) && berryPositions[randomIndex].GetComponent<SpawnBerry>().hasBerry == true && berryPositions[randomIndex].GetComponent<SpawnBerry>().berrySpawning == false)
                 {
