@@ -25,6 +25,7 @@ public class Fish_GameManager : MonoBehaviour
     [SerializeField] private Image timerImage;
 
     [SerializeField] private FishUIController fish_UIController;
+    [SerializeField] private Fish_ButtonManager fish_ButtonManager;
 
     void Update()
     {
@@ -42,7 +43,8 @@ public class Fish_GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            SceneManager.LoadScene("Main_Farm");
+            ResetGame();
+            fish_ButtonManager.ReturnToSettingScreen();
         }
     }
 
@@ -159,6 +161,7 @@ public class Fish_GameManager : MonoBehaviour
 
         foreach (GameObject fish in fishInstances) Destroy(fish);
 
+        timer = 0;
         fishInstances.Clear();
         dicePrimary.gameObject.SetActive(false);
         diceSecondary.gameObject.SetActive(false);
