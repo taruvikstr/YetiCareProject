@@ -419,6 +419,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3226915253435931892, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
   m_PrefabInstance: {fileID: 474307966}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &122992562 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7660690730935374102, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
+  m_PrefabInstance: {fileID: 177803955}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &170445014 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3226915253435931892, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
@@ -447,6 +452,10 @@ PrefabInstance:
       propertyPath: brokenHat
       value: 
       objectReference: {fileID: 538272120}
+    - target: {fileID: 349789217551634661, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
+      propertyPath: hatSparks
+      value: 
+      objectReference: {fileID: 122992562}
     - target: {fileID: 349789217551634661, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
       propertyPath: moleHands
       value: 
@@ -529,6 +538,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
+--- !u!198 &195643156 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7660690730935374102, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
+  m_PrefabInstance: {fileID: 1216325332}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &196042083 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6085479711541244806, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
@@ -682,6 +696,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!198 &231775290 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7660690730935374102, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
+  m_PrefabInstance: {fileID: 461319967}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &300569552 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 594868494847872573, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
@@ -711,7 +730,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &345591525
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1231,6 +1250,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 196042083}
     - target: {fileID: 349789217551634661, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
+      propertyPath: hatSparks
+      value: 
+      objectReference: {fileID: 1548918880}
+    - target: {fileID: 349789217551634661, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
       propertyPath: moleHands
       value: 
       objectReference: {fileID: 1581420213}
@@ -1463,6 +1486,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 476795883}
     - target: {fileID: 349789217551634661, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
+      propertyPath: hatSparks
+      value: 
+      objectReference: {fileID: 231775290}
+    - target: {fileID: 349789217551634661, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 614568868}
@@ -1543,6 +1570,10 @@ PrefabInstance:
       propertyPath: brokenHat
       value: 
       objectReference: {fileID: 1209280026}
+    - target: {fileID: 349789217551634661, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
+      propertyPath: hatSparks
+      value: 
+      objectReference: {fileID: 1519895005}
     - target: {fileID: 349789217551634661, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
       propertyPath: moleHands
       value: 
@@ -2930,6 +2961,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6085479711541244806, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
   m_PrefabInstance: {fileID: 864495624}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &793773510 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7660690730935374102, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
+  m_PrefabInstance: {fileID: 939425674}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &795366792 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6085479711541244806, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
@@ -2980,6 +3016,10 @@ PrefabInstance:
       propertyPath: brokenHat
       value: 
       objectReference: {fileID: 788213009}
+    - target: {fileID: 349789217551634661, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
+      propertyPath: hatSparks
+      value: 
+      objectReference: {fileID: 1035142439}
     - target: {fileID: 349789217551634661, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
       propertyPath: moleHands
       value: 
@@ -3750,6 +3790,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1809797939}
     - target: {fileID: 349789217551634661, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
+      propertyPath: hatSparks
+      value: 
+      objectReference: {fileID: 793773510}
+    - target: {fileID: 349789217551634661, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
       propertyPath: moleHands
       value: 
       objectReference: {fileID: 319014727}
@@ -3878,8 +3922,8 @@ RectTransform:
   m_Father: {fileID: 884277469}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: -0.000011444092}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4166,6 +4210,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 594868494847872573, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
   m_PrefabInstance: {fileID: 864495624}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &1035142439 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7660690730935374102, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
+  m_PrefabInstance: {fileID: 864495624}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1036559600
 GameObject:
   m_ObjectHideFlags: 0
@@ -4200,7 +4249,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4276,7 +4325,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4318,6 +4367,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1058817527}
   m_CullTransparentMesh: 1
+--- !u!198 &1061846122 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7660690730935374102, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
+  m_PrefabInstance: {fileID: 1118965947}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1085935304
 GameObject:
   m_ObjectHideFlags: 0
@@ -4518,6 +4572,10 @@ PrefabInstance:
       propertyPath: brokenHat
       value: 
       objectReference: {fileID: 2033121125}
+    - target: {fileID: 349789217551634661, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
+      propertyPath: hatSparks
+      value: 
+      objectReference: {fileID: 1061846122}
     - target: {fileID: 349789217551634661, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
       propertyPath: moleHands
       value: 
@@ -4722,6 +4780,10 @@ PrefabInstance:
       propertyPath: brokenHat
       value: 
       objectReference: {fileID: 795366792}
+    - target: {fileID: 349789217551634661, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
+      propertyPath: hatSparks
+      value: 
+      objectReference: {fileID: 195643156}
     - target: {fileID: 349789217551634661, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
       propertyPath: moleHands
       value: 
@@ -6150,6 +6212,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!198 &1519895005 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7660690730935374102, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
+  m_PrefabInstance: {fileID: 474307966}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1524235296
 GameObject:
   m_ObjectHideFlags: 0
@@ -6452,6 +6519,11 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!198 &1548918880 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7660690730935374102, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
+  m_PrefabInstance: {fileID: 443171111}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1557339550 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9004085113777636755, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
@@ -6476,6 +6548,11 @@ GameObject:
 --- !u!1 &1583173477 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3175408830194658014, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
+  m_PrefabInstance: {fileID: 2137540172}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1586826884 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7660690730935374102, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
   m_PrefabInstance: {fileID: 2137540172}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1619035177
@@ -6660,7 +6737,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6743,7 +6820,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -7410,7 +7487,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -8439,6 +8516,10 @@ PrefabInstance:
       propertyPath: brokenHat
       value: 
       objectReference: {fileID: 918607353}
+    - target: {fileID: 349789217551634661, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
+      propertyPath: hatSparks
+      value: 
+      objectReference: {fileID: 1586826884}
     - target: {fileID: 349789217551634661, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
       propertyPath: moleHands
       value: 
