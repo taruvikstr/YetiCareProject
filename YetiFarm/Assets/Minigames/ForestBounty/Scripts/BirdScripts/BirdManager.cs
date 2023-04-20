@@ -77,6 +77,8 @@ public class BirdManager : MonoBehaviour
             {
                 // bird has grabbed berry
                 transform.position = Vector2.MoveTowards(transform.position, awayFromBerry, movementSpeed * Time.deltaTime);
+                gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().flipX = true;
+                //gameObject.transform.GetChild(0).position = new Vector3(-0.5f, 0,0);
 
                 if ((transform.position.Equals(birdPositions[0].position) || transform.position.Equals(birdPositions[1].position)))
                 {
@@ -92,6 +94,7 @@ public class BirdManager : MonoBehaviour
                 // move away from berry when berry not found
                 gameObject.GetComponent<BoxCollider2D>().enabled = false;
                 transform.position = Vector2.MoveTowards(transform.position, birdPositions[1].position, movementSpeed * Time.deltaTime);
+                
 
                 if (transform.position.Equals(birdPositions[1].position))
                 {
@@ -120,6 +123,6 @@ public class BirdManager : MonoBehaviour
     {
         berryPositions[randomIndex].GetComponent<SpawnBerry>().currentBerry.GetComponent<BerryCheck>().OnSteal(gameObject);
         berryGrabbed = true;
-        gameObject.transform.GetChild(0).GetComponent<BerryCheck>().birdHasBerry = true;           
+        gameObject.transform.GetChild(1).GetComponent<BerryCheck>().birdHasBerry = true;           
     }
 }
