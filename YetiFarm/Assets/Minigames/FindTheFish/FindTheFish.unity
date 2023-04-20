@@ -7309,8 +7309,8 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1625320921
+  m_SortingOrder: 7
   m_TargetDisplay: 0
 --- !u!1 &513048441
 GameObject:
@@ -9142,8 +9142,8 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1625320921
+  m_SortingOrder: 7
   m_TargetDisplay: 0
 --- !u!1 &793468708
 GameObject:
@@ -10936,8 +10936,8 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1625320921
+  m_SortingOrder: 7
   m_TargetDisplay: 0
 --- !u!1 &1299352336
 GameObject:
@@ -11820,8 +11820,8 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1625320921
+  m_SortingOrder: 7
   m_TargetDisplay: 0
 --- !u!1 &1553662225
 GameObject:
@@ -13873,7 +13873,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: -1625320921
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!114 &1889810820
 MonoBehaviour:
@@ -14660,6 +14660,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startScreen: {fileID: 1101456007}
   endScreen: {fileID: 697384781}
+  gameCanvas: {fileID: 1878562441}
   gameStarter: {fileID: 457072055}
   playersSlider: {fileID: 1500750407}
   fishSlider: {fileID: 1730509753}
