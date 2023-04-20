@@ -11,10 +11,12 @@ public class Mole : MonoBehaviour
     [SerializeField] private Sprite moleHatBroken;
     [SerializeField] private Sprite moleHit;
     [SerializeField] private Sprite moleHatHit;
+    [SerializeField] private ParticleSystem hatSparks;
     [SerializeField] public GameObject moleHands;
     [SerializeField] public GameObject vegetable;
     [SerializeField] public GameObject hat;
     [SerializeField] public GameObject brokenHat;
+
 
     [Header("GameManager")]
     [SerializeField] private MoleGameManager gameManager;
@@ -194,6 +196,7 @@ public class Mole : MonoBehaviour
                     }
                     else
                     {
+                        hatSparks.Play();
                         moleHands.SetActive(false);
                         Debug.Log("hatHit");
                         spriteRenderer.sprite = moleHit;
@@ -241,8 +244,11 @@ public class Mole : MonoBehaviour
         float random = Random.Range(0f, 1f);
         if (random < bombRate)
         {
+
             // Make a bomb.
             moleType = MoleType.Bomb;
+            hat.SetActive(false);
+            brokenHat.SetActive(false);
             // The animator handles setting the sprite.
             animator.enabled = true;
         }
@@ -254,6 +260,7 @@ public class Mole : MonoBehaviour
             {
                 // Create a hard one.
                 moleType = MoleType.HardHat;
+                spriteRenderer.sprite = mole; 
                 hat.SetActive(true);
                 brokenHat.SetActive(false);
                 lives = 2;
