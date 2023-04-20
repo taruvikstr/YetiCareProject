@@ -19,7 +19,7 @@ public class Fish_ButtonManager : MonoBehaviour
         Time.timeScale = 1;
         fishAmountValue = 10;
         playerAmountValue = 1;
-        timerValue = 60;
+        timerValue = 2;
         patternAmountValue = 4;
 
         UpdateSliderHandleValues();
@@ -49,7 +49,7 @@ public class Fish_ButtonManager : MonoBehaviour
 
     public void UpdateGameSpeed(Slider slider)
     {
-        timerValue = (int)slider.value * 10;
+        timerValue = (int)slider.value ;
         timeSlider.text = timerValue.ToString();
     }
 
@@ -68,7 +68,7 @@ public class Fish_ButtonManager : MonoBehaviour
     public void ActivateGame()
     {
         startScreen.SetActive(false); // Disable and hide the starting screen.
-        gameStarter.GetComponent<Fish_GameManager>().StartGame(timerValue, playerAmountValue, fishAmountValue, patternAmountValue);
+        gameStarter.GetComponent<Fish_GameManager>().StartGame(timerValue * 60, playerAmountValue, fishAmountValue, patternAmountValue);
     }
 
     public void ReturnToSettingScreen()
