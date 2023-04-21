@@ -51,6 +51,7 @@ public class Fish_GameManager : MonoBehaviour
 
     public void StartGame(int _timer, int _playerAmount, int _fishAmount, int _patternAmount)
     {
+        FindObjectOfType<AudioManager>().PlaySound("FishAmbience");
         timer = _timer;
         time = timer;
         playerAmount = _playerAmount;

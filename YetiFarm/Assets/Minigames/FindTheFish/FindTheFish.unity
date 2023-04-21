@@ -15124,6 +15124,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6590340131193783054, guid: 1666de98055b8e1419236a59b2826b64, type: 3}
+      propertyPath: sounds.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590340131193783054, guid: 1666de98055b8e1419236a59b2826b64, type: 3}
+      propertyPath: sounds.Array.data[2].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6b2ae5b4a5dc9b14cae432ec197f6085, type: 3}
+    - target: {fileID: 6590340131193783054, guid: 1666de98055b8e1419236a59b2826b64, type: 3}
+      propertyPath: sounds.Array.data[2].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590340131193783054, guid: 1666de98055b8e1419236a59b2826b64, type: 3}
+      propertyPath: sounds.Array.data[2].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590340131193783054, guid: 1666de98055b8e1419236a59b2826b64, type: 3}
+      propertyPath: sounds.Array.data[0].volume
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590340131193783054, guid: 1666de98055b8e1419236a59b2826b64, type: 3}
+      propertyPath: sounds.Array.data[2].volume
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590340131193783054, guid: 1666de98055b8e1419236a59b2826b64, type: 3}
+      propertyPath: sounds.Array.data[2].clipName
+      value: FishAmbience
+      objectReference: {fileID: 0}
     - target: {fileID: 6590340131193783055, guid: 1666de98055b8e1419236a59b2826b64, type: 3}
       propertyPath: m_RootOrder
       value: 2
