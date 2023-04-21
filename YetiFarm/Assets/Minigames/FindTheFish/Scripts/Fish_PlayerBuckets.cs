@@ -38,6 +38,7 @@ public class Fish_PlayerBuckets : MonoBehaviour
             {
                 IncreaseFishAmount();
                 fish_GameManager.fishInstances.Remove(fish);
+                fish_GameManager.AnimateDice(false);
                 fishController.enabled = false;
                 Destroy(collision.gameObject, 0.1f);
                 
