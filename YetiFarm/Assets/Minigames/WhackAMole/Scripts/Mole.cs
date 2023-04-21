@@ -11,7 +11,7 @@ public class Mole : MonoBehaviour
     [SerializeField] private Sprite moleHatBroken;
     [SerializeField] private Sprite moleHit;
     [SerializeField] private Sprite moleHatHit;
-    [SerializeField] private ParticleSystem hatSparks;
+   // [SerializeField] private ParticleSystem hatSparks;
     [SerializeField] public GameObject moleHands;
     [SerializeField] public GameObject vegetable;
     [SerializeField] public GameObject hat;
@@ -196,7 +196,7 @@ public class Mole : MonoBehaviour
                     }
                     else
                     {
-                        hatSparks.Play();
+                       // hatSparks.Play();
                         moleHands.SetActive(false);
                         Debug.Log("hatHit");
                         spriteRenderer.sprite = moleHit;

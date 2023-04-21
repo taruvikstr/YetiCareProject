@@ -104,7 +104,7 @@ public class MoleGameManager : MonoBehaviour
             }
             //  Debug.Log(molesInGame);
             //Change amount of moles in game
-
+            //Choose 3 random holes for moles
             if (molesInGame == 1)
             {
                 Debug.Log("Check");
@@ -124,6 +124,7 @@ public class MoleGameManager : MonoBehaviour
 
                 }
             }
+            // If moles in game is 2 choose 6 random moles in game and else all holes are available.
             if (molesInGame == 2)
             {
                 for (int i = 0; i <= 2; i++)
