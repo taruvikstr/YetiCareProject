@@ -335,6 +335,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 29164480}
   m_CullTransparentMesh: 1
+--- !u!114 &52947072 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6590340131193783054, guid: 1666de98055b8e1419236a59b2826b64, type: 3}
+  m_PrefabInstance: {fileID: 6590340131245878158}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 611a4b6f2e5aa574d8b263eaf1d77d70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &86396403
 GameObject:
   m_ObjectHideFlags: 0
@@ -1324,6 +1335,7 @@ MonoBehaviour:
   amountTxt: {fileID: 29164482}
   fish_GameManager: {fileID: 457072057}
   fish_UIController: {fileID: 1878562446}
+  audioManager: {fileID: 52947072}
 --- !u!58 &283908845
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -6150,7 +6162,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: -90, y: 90, z: 0}
 --- !u!1 &319109135
 GameObject:
@@ -6417,6 +6429,7 @@ MonoBehaviour:
   amountTxt: {fileID: 922741156}
   fish_GameManager: {fileID: 457072057}
   fish_UIController: {fileID: 1878562446}
+  audioManager: {fileID: 52947072}
 --- !u!58 &339367039
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -6843,7 +6856,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &457072057
 MonoBehaviour:
@@ -6878,6 +6891,7 @@ MonoBehaviour:
   - {fileID: 410492683}
   - {fileID: 1853415276}
   - {fileID: 581778282}
+  diceAnimator: {fileID: 1675613992}
   dicePrimary: {fileID: 1879324114}
   diceSecondary: {fileID: 1236832159}
   dicePattern: {fileID: 210531265}
@@ -7309,8 +7323,8 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1625320921
+  m_SortingOrder: 7
   m_TargetDisplay: 0
 --- !u!1 &513048441
 GameObject:
@@ -7958,7 +7972,7 @@ Transform:
   - {fileID: 121484206}
   - {fileID: 1299352337}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &575242773
 GameObject:
@@ -8770,7 +8784,7 @@ RectTransform:
   - {fileID: 1889810818}
   - {fileID: 513306438}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -9142,8 +9156,8 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1625320921
+  m_SortingOrder: 7
   m_TargetDisplay: 0
 --- !u!1 &793468708
 GameObject:
@@ -10187,7 +10201,7 @@ RectTransform:
   - {fileID: 1973061128}
   - {fileID: 595371863}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -10535,6 +10549,7 @@ MonoBehaviour:
   amountTxt: {fileID: 585908178}
   fish_GameManager: {fileID: 457072057}
   fish_UIController: {fileID: 1878562446}
+  audioManager: {fileID: 52947072}
 --- !u!58 &1186280200
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -10936,8 +10951,8 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1625320921
+  m_SortingOrder: 7
   m_TargetDisplay: 0
 --- !u!1 &1299352336
 GameObject:
@@ -11820,8 +11835,8 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1625320921
+  m_SortingOrder: 7
   m_TargetDisplay: 0
 --- !u!1 &1553662225
 GameObject:
@@ -12691,6 +12706,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1675613991}
+  - component: {fileID: 1675613992}
   m_Layer: 0
   m_Name: Dices
   m_TagString: Untagged
@@ -12706,7 +12722,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1675613990}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.699, z: 0}
+  m_LocalPosition: {x: 0, y: 5, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -12714,8 +12730,29 @@ Transform:
   - {fileID: 1236832158}
   - {fileID: 210531264}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1675613992
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675613990}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9efe8a3e6d64e444884b5b5c5c2840eb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1708519848
 GameObject:
   m_ObjectHideFlags: 0
@@ -12921,7 +12958,7 @@ Transform:
   - {fileID: 339367035}
   - {fileID: 283908841}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1744591716
 GameObject:
@@ -13690,7 +13727,7 @@ RectTransform:
   m_Children:
   - {fileID: 3546315}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -13873,7 +13910,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: -1625320921
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!114 &1889810820
 MonoBehaviour:
@@ -14418,7 +14455,7 @@ Transform:
   - {fileID: 336060234}
   - {fileID: 581778283}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2014771793
 GameObject:
@@ -14507,6 +14544,7 @@ GameObject:
   - component: {fileID: 2028047891}
   - component: {fileID: 2028047890}
   - component: {fileID: 2028047889}
+  - component: {fileID: 2028047892}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -14592,6 +14630,14 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &2028047892
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2028047888}
+  m_Enabled: 1
 --- !u!1 &2044398499
 GameObject:
   m_ObjectHideFlags: 0
@@ -14660,6 +14706,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startScreen: {fileID: 1101456007}
   endScreen: {fileID: 697384781}
+  gameCanvas: {fileID: 1878562441}
   gameStarter: {fileID: 457072055}
   playersSlider: {fileID: 1500750407}
   fishSlider: {fileID: 1730509753}
@@ -14678,7 +14725,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2102813900
 GameObject:
@@ -14918,6 +14965,7 @@ MonoBehaviour:
   amountTxt: {fileID: 245088920}
   fish_GameManager: {fileID: 457072057}
   fish_UIController: {fileID: 1878562446}
+  audioManager: {fileID: 52947072}
 --- !u!58 &2104402378
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -15069,3 +15117,88 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2117527588}
   m_CullTransparentMesh: 1
+--- !u!1001 &6590340131245878158
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6590340131193783054, guid: 1666de98055b8e1419236a59b2826b64, type: 3}
+      propertyPath: sounds.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590340131193783054, guid: 1666de98055b8e1419236a59b2826b64, type: 3}
+      propertyPath: sounds.Array.data[2].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6b2ae5b4a5dc9b14cae432ec197f6085, type: 3}
+    - target: {fileID: 6590340131193783054, guid: 1666de98055b8e1419236a59b2826b64, type: 3}
+      propertyPath: sounds.Array.data[2].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590340131193783054, guid: 1666de98055b8e1419236a59b2826b64, type: 3}
+      propertyPath: sounds.Array.data[2].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590340131193783054, guid: 1666de98055b8e1419236a59b2826b64, type: 3}
+      propertyPath: sounds.Array.data[0].volume
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590340131193783054, guid: 1666de98055b8e1419236a59b2826b64, type: 3}
+      propertyPath: sounds.Array.data[2].volume
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590340131193783054, guid: 1666de98055b8e1419236a59b2826b64, type: 3}
+      propertyPath: sounds.Array.data[2].clipName
+      value: FishAmbience
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590340131193783055, guid: 1666de98055b8e1419236a59b2826b64, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590340131193783055, guid: 1666de98055b8e1419236a59b2826b64, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590340131193783055, guid: 1666de98055b8e1419236a59b2826b64, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590340131193783055, guid: 1666de98055b8e1419236a59b2826b64, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590340131193783055, guid: 1666de98055b8e1419236a59b2826b64, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590340131193783055, guid: 1666de98055b8e1419236a59b2826b64, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590340131193783055, guid: 1666de98055b8e1419236a59b2826b64, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590340131193783055, guid: 1666de98055b8e1419236a59b2826b64, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590340131193783055, guid: 1666de98055b8e1419236a59b2826b64, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590340131193783055, guid: 1666de98055b8e1419236a59b2826b64, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590340131193783055, guid: 1666de98055b8e1419236a59b2826b64, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590340131193783281, guid: 1666de98055b8e1419236a59b2826b64, type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1666de98055b8e1419236a59b2826b64, type: 3}

@@ -16,14 +16,14 @@ public class EggBreak : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Floor"))
         {
-            Instantiate(brokenEgg, transform.position, transform.rotation);
             eggSpawnParent.GetComponent<EggSpawnManager>().EggFail();
+            Instantiate(brokenEgg, transform.position, transform.rotation);
             Destroy(gameObject);
         }
         if (collision.gameObject.CompareTag("Player"))
         {
-            eggSpawnParent.GetComponent<EggSpawnManager>().IncreaseScore();
             collision.gameObject.GetComponent<PlayerBasket>().BasketPointIncrease();
+            eggSpawnParent.GetComponent<EggSpawnManager>().IncreaseScore();
             Destroy(gameObject);
         }
     }

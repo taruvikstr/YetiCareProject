@@ -5,6 +5,7 @@ using TMPro;
 
 public class PlayerBasket : MonoBehaviour
 {
+    private AudioManager audio;
     private int baskets;
     public float leftBasketConstraintLeft;
     public float leftBasketConstraintRight;

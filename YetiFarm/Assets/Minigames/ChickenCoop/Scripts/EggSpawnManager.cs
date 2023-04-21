@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EggSpawnManager : MonoBehaviour
 {
+    public AudioManager audio;
     public GameObject buttonManager;
     public GameObject middleBoundary;
     public GameObject leftBoundary;
@@ -26,6 +27,7 @@ public class EggSpawnManager : MonoBehaviour
     public int desiredScore; // The score that the player is trying to achieve.
     private int failedEggs; // The amount of eggs that missed the baskets and broke on the ground.
     private IEnumerator coroutine; // The coroutine that handles spawning egg waves.
+    private bool gameLost = false;
     
 
     public GameObject basketPrefab;
@@ -140,6 +142,11 @@ public class EggSpawnManager : MonoBehaviour
         if ((((failedEggs >= 1) && gameMode == 2) || ((score >= desiredScore) && gameMode == 1)) && gameOn == true)
         {
             gameOn = false;
+        }
+
+        if (gameLost)
+        {
+            gameOn = false;
             // Delete baskets.
             foreach (GameObject playerBasket in GameObject.FindGameObjectsWithTag("Player"))
             {
@@ -175,6 +182,7 @@ public class EggSpawnManager : MonoBehaviour
         if (gameOn == true)
         {
             failedEggs++;
+            audio.PlaySound("EggBreak");
         }
     }
 
@@ -183,6 +191,7 @@ public class EggSpawnManager : MonoBehaviour
         if (gameOn == true)
         {
             score++;
+            audio.PlaySound("Collect");
         }
     }
 
@@ -218,7 +227,7 @@ public class EggSpawnManager : MonoBehaviour
         float timeDelay1;
         float timeDelay2;
         gameOn = true;
-        while (!((((failedEggs >= 1) && gameMode == 2) || ((score >= desiredScore) && gameMode == 1)) && gameOn == true))
+        while (!((((failedEggs >= 1) && gameMode == 2) || ((score >= desiredScore) && gameMode == 1)) && gameOn == false))
         {
             if (gameMode == 2) // Increase the spawnrate of eggs in endless mode.
             {
@@ -232,16 +241,22 @@ public class EggSpawnManager : MonoBehaviour
             {
                 r1 = Random.Range(1, 11);
                 eggSpawnerList[r1].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
+                audio.PlaySound("EggSpawn");
+                yield return new WaitForSeconds(timeDelay1);
             }
             else if (basketAmount == 1 && difficulty == 2)
             {
                 r1 = Random.Range(2, 10);
                 eggSpawnerList[r1].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
+                audio.PlaySound("EggSpawn");
+                yield return new WaitForSeconds(timeDelay1);
             }
             else if (basketAmount == 1 && difficulty == 1)
             {
                 r1 = Random.Range(3, 9);
                 eggSpawnerList[r1].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
+                audio.PlaySound("EggSpawn");
+                yield return new WaitForSeconds(timeDelay1);
             }
             else if (basketAmount == 2)
             {
@@ -251,14 +266,18 @@ public class EggSpawnManager : MonoBehaviour
                 if (playerRandomizer1 == 1)
                 {
                     eggSpawnerList[r1].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
+                    audio.PlaySound("EggSpawn");
                     yield return new WaitForSeconds(timeDelay1);
                     eggSpawnerList[r2].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
+                    audio.PlaySound("EggSpawn");
                 }
                 else
                 {
                     eggSpawnerList[r2].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
+                    audio.PlaySound("EggSpawn");
                     yield return new WaitForSeconds(timeDelay1);
                     eggSpawnerList[r1].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
+                    audio.PlaySound("EggSpawn");
                 }
             }
             else
@@ -273,26 +292,35 @@ public class EggSpawnManager : MonoBehaviour
                     if (playerRandomizer1 == 1)
                     {
                         eggSpawnerList[r1].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
+                        audio.PlaySound("EggSpawn");
                         yield return new WaitForSeconds(timeDelay1);
                         eggSpawnerList[r2].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
+                        audio.PlaySound("EggSpawn");
                         yield return new WaitForSeconds(timeDelay2);
                         eggSpawnerList[r3].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
+                        audio.PlaySound("EggSpawn");
                     }
                     else if (playerRandomizer1 == 2)
                     {
                         eggSpawnerList[r1].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
+                        audio.PlaySound("EggSpawn");
                         yield return new WaitForSeconds(timeDelay1);
                         eggSpawnerList[r3].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
+                        audio.PlaySound("EggSpawn");
                         yield return new WaitForSeconds(timeDelay2);
                         eggSpawnerList[r2].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
+                        audio.PlaySound("EggSpawn");
                     }
                     else
                     {
                         eggSpawnerList[r2].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
+                        audio.PlaySound("EggSpawn");
                         yield return new WaitForSeconds(timeDelay1);
                         eggSpawnerList[r1].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
+                        audio.PlaySound("EggSpawn");
                         yield return new WaitForSeconds(timeDelay2);
                         eggSpawnerList[r3].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
+                        audio.PlaySound("EggSpawn");
                     }
                 }
                 else
@@ -300,30 +328,44 @@ public class EggSpawnManager : MonoBehaviour
                     if (playerRandomizer1 == 1)
                     {
                         eggSpawnerList[r2].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
+                        audio.PlaySound("EggSpawn");
                         yield return new WaitForSeconds(timeDelay1);
                         eggSpawnerList[r3].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
+                        audio.PlaySound("EggSpawn");
                         yield return new WaitForSeconds(timeDelay2);
                         eggSpawnerList[r1].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
+                        audio.PlaySound("EggSpawn");
                     }
                     else if (playerRandomizer1 == 2)
                     {
                         eggSpawnerList[r3].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
+                        audio.PlaySound("EggSpawn");
                         yield return new WaitForSeconds(timeDelay1);
                         eggSpawnerList[r2].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
+                        audio.PlaySound("EggSpawn");
                         yield return new WaitForSeconds(timeDelay2);
                         eggSpawnerList[r1].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
+                        audio.PlaySound("EggSpawn");
                     }
                     else
                     {
                         eggSpawnerList[r3].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
+                        audio.PlaySound("EggSpawn");
                         yield return new WaitForSeconds(timeDelay1);
                         eggSpawnerList[r1].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
+                        audio.PlaySound("EggSpawn");
                         yield return new WaitForSeconds(timeDelay2);
                         eggSpawnerList[r2].GetComponent<SpawnEgg>().SpawnSingleEgg(difficulty);
+                        audio.PlaySound("EggSpawn");
                     }
                 }
             }
             yield return new WaitForSeconds(spawnRate); // The time window between waves.
         }
+        if (gameMode == 2)
+        {
+            yield return new WaitForSeconds(0.5f);
+        }
+        gameLost = true;
     }
 }
