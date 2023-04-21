@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Fish_GameManager : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class Fish_GameManager : MonoBehaviour
     private float time;
 
     [SerializeField] private Image timerImage;
+    [SerializeField] private TMP_Text timeText;
 
     [SerializeField] private FishUIController fish_UIController;
     [SerializeField] private Fish_ButtonManager fish_ButtonManager;
@@ -35,6 +37,12 @@ public class Fish_GameManager : MonoBehaviour
         {
             timerImage.fillAmount = timer / time;
             timer -= Time.deltaTime;
+
+            if (timer / 60 > 1)
+            {
+                timeText.text = ((int)timer/60).ToString() + " min.";
+            }
+            else timeText.text = ((int)timer).ToString();
         }
         else if (gameON && timer <= 0)
         {

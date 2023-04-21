@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
+// This script is attached to each bucket gameobject
 public class Fish_PlayerBuckets : MonoBehaviour
 {
     private Color colorNormal;
@@ -34,7 +35,7 @@ public class Fish_PlayerBuckets : MonoBehaviour
             
             FishController fishController = fish.GetComponent<FishController>();
 
-            if (fishController.chosenFish)
+            if (fishController.chosenFish) // If the fish that was dragged to the bucket has a chosenFish tag set as true
             {
                 IncreaseFishAmount();
                 fish_GameManager.fishInstances.Remove(fish);
@@ -45,7 +46,7 @@ public class Fish_PlayerBuckets : MonoBehaviour
             }
             else
             {
-                StartCoroutine("FishBucketCooldown");
+                StartCoroutine("FishBucketCooldown"); // Punishment for dragging the wrong fish to the bucket
             }
    
         }

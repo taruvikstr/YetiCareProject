@@ -45,7 +45,7 @@ public class FishController : MonoBehaviour
 
         StartCoroutine(ChangeFishSortingLayer(transform.parent.GetComponent<SpriteRenderer>().sortingLayerName, gameObject, 0f));
 
-        speed = UnityEngine.Random.Range(0.05f, 1f);
+        speed = UnityEngine.Random.Range(0.05f, 1f); // Fishes swim at random speed
 
         ShuffleFeatures();
         RefreshFish();
@@ -132,12 +132,12 @@ public class FishController : MonoBehaviour
 
         if(!returned && isDragged)
         {
-            if (previousXpos - transform.position.x < 0) // Dragging right flip sprite
+            if (previousXpos - transform.position.x < 0) // Dragging right, flip sprite
             {
                 transform.localScale = new Vector3(-1, 1, 1);
                 flipped = true;
             }
-            else if (previousXpos - transform.position.x > 0) // Dragging left flip srite
+            else if (previousXpos - transform.position.x > 0) // Dragging left, flip srite
             {
                 transform.localScale = new Vector3(1, 1, 1);
                 flipped = false;
@@ -145,7 +145,7 @@ public class FishController : MonoBehaviour
 
             previousXpos = transform.position.x;
         }
-        else if(!returned && !isDragged) // Returning back to water after drag
+        else if(!returned && !isDragged) // Returning back to water after drag and flipping the sprite depending on the direction
         {
             if (spawnParent.transform.position.x - transform.position.x < 0)
             {
@@ -195,22 +195,22 @@ public class FishController : MonoBehaviour
         patternRenderer.sprite = pattern[0];
     }
 
-    private void MoveFishBackToSea() //Found item is moved to it's original position if released
+    private void MoveFishBackToSea() // Fish moves to it's original position if released
     {
         Vector3 parentPos = spawnParent.transform.position;
 
         transform.position = Vector3.MoveTowards(transform.position, parentPos, 10f * Time.deltaTime);
     }
 
-    private void Movement()
+    private void Movement() // Swimming back and forth
     {
         if (!flipped) transform.Translate(Vector3.left * (speed * Time.deltaTime));
         else transform.Translate(Vector3.right * (speed * Time.deltaTime));
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision) // Turning around when enters one of the water triggers on the sides
     {
-        if (collision.gameObject.CompareTag("Water")) //Colliders on the edges of water area have this tag
+        if (collision.gameObject.CompareTag("Water")) // Colliders on the edges of water area have this tag
         {
             FlipSprite();
         }

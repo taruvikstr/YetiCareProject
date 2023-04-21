@@ -12,17 +12,16 @@ public class FishUIController : MonoBehaviour
     [SerializeField] private Image[] placementImage;
     [SerializeField] private TMP_Text[] scoreTXT;
     
-    public void ActivatePlayer(int amount)
+    public void ActivatePlayer(int amount) // Activating buckets according to the player amount
     {
         for(int i = 0; i < amount; i++) fishBucket[i].SetActive(true);
     }
 
-    public void SetPlacements()
+    public void SetPlacements() // Game time ended and the score is being set and displayed
     {
         int index = 0;
         foreach(GameObject bucket in fishBucket)
         {
-
             if (bucket.gameObject.activeSelf)
             {
                 placements[index].SetActive(true);
@@ -37,9 +36,9 @@ public class FishUIController : MonoBehaviour
         gameCanvas.SetActive(false);
         gameEnd.SetActive(true);
 
-        foreach (GameObject bowl in fishBucket)
+        foreach (GameObject bucket in fishBucket) // deactivating the buckets
         {
-            bowl.SetActive(false);
+            bucket.SetActive(false);
         }
 
         index = 0;
