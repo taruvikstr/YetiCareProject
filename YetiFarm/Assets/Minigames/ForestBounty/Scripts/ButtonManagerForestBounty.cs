@@ -28,6 +28,7 @@ public class ButtonManagerForestBounty : MonoBehaviour
     public TextMeshProUGUI gameModeSliderNumText;
     public TextMeshProUGUI amountSliderNumText;
 
+    public Slider gameDifficultySlider;
     //public ToggleGroup berryAmountGroup;
     //public Toggle toggleLow;
     //public Toggle toggleMedium;
@@ -37,7 +38,9 @@ public class ButtonManagerForestBounty : MonoBehaviour
     private void Awake() // Set values to defaults. Remember to set sliders to these values as well.
     {
         Time.timeScale = 1;
-        difficultyValue = 2;
+        difficultyValue = 1;
+        gameDifficultySlider.interactable = false;
+        gameModeValue = 1;
         //playerAmountValue = 1;
         //gameSpeedValue = 0;
         //gameModeValue = 1;
@@ -53,9 +56,11 @@ public class ButtonManagerForestBounty : MonoBehaviour
     public void UpdateDifficulty(Slider slider)
     {
         difficultyValue = (int)slider.value;
+
         if (difficultyValue == 1)
         {
             difficultySliderNumText.text = ":)";
+            
         }
         if (difficultyValue == 2)
         {
@@ -94,10 +99,13 @@ public class ButtonManagerForestBounty : MonoBehaviour
         gameModeValue = (int)slider.value;
         if (gameModeValue == 1)
         {
+            gameDifficultySlider.interactable = false;
             gameModeSliderNumText.text = "#";
+            
         }
         if (gameModeValue == 2)
         {
+            gameDifficultySlider.interactable = true;
             gameModeSliderNumText.text = ">";
         }
     }
@@ -117,25 +125,25 @@ public class ButtonManagerForestBounty : MonoBehaviour
     public void ActivateGame()
     {
         startScreen.SetActive(false); // Disable and hide the starting screen.
-        gameStarter.GetComponent<BerryManager>().StartSpawn(difficultyValue, gameModeValue, desiredScoreValue);
+        gameStarter.GetComponent<BerryManager>().StartSpawn(difficultyValue, gameModeValue);
             //(difficultyValue, desiredScoreValue, gameModeValue, playerAmountValue);
     }
 
-    public void ActivateGameOverScreen(int result, int game_mode)
+    public void ActivateGameOverScreen(int result)
     {
         // result = 0 lintu voitti, result = 1 pelaaja voitti
 
         endScreen.SetActive(true); // Enable and display the game over screen.
 
-        if (game_mode == 1 && result == 1)
+        if (gameModeValue == 1 && result == 1)
         {
             scoreText1.text = "Hienoa, keräsit kaikki marjat!";
         }
-        else if ((game_mode == 2 || game_mode == 3) && result == 1)
+        else if ((gameModeValue == 2 || gameModeValue == 3) && result == 1)
         {
             scoreText1.text = "Hienoa, keräsit kaikki marjat ennen lintua!";
         }
-        else if ((game_mode == 2 || game_mode == 3) && result == 0)
+        else if ((gameModeValue == 2 || gameModeValue == 3) && result == 0)
         {
             scoreText1.text = "Lintu oli tällä kertaa nopeampi!";
         }
