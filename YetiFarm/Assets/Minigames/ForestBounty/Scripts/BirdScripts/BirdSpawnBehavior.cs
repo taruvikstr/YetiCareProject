@@ -14,10 +14,10 @@ public class BirdSpawnBehavior : MonoBehaviour
     public static int birdScoreCounter; // = how many berries the bird has to collect before it beats you
     public TMP_Text birdScoreText;
 
-    private void Awake()
-    {
-        birdScoreText.enabled = false;
-    }
+    //private void Awake()
+    //{
+    //    birdScoreText.enabled = false;
+    //}
 
     private void Update()
     {
@@ -30,6 +30,17 @@ public class BirdSpawnBehavior : MonoBehaviour
         while (BerryManager.gameOn == true)
         {
             Debug.Log("Spawn Bird");
+            spawnPoint = Random.Range(0, 2);
+            Debug.Log(spawnPoint);
+            if (spawnPoint == 0)
+            {
+                bird.gameObject.GetComponentInChildren<SpriteRenderer>().flipX = true;
+            }
+            else
+            {
+                bird.gameObject.GetComponentInChildren<SpriteRenderer>().flipX = false;
+            }
+
             yield return new WaitForSeconds(birdSpawnRate);
             Instantiate(bird, birdSpawnPoints[spawnPoint].transform.position, birdSpawnPoints[spawnPoint].transform.rotation);
         }      
@@ -39,23 +50,26 @@ public class BirdSpawnBehavior : MonoBehaviour
     {
         coroutine = DelayedBirdSpawn();
         StartCoroutine(coroutine);
-        spawnPoint = Random.Range(0, 2);
 
-        switch (BerryManager.bManagerDifficulty) // aka difficulty
-        {
-            case 1:
-                birdScoreText.enabled = false;
-                break;
+        birdScoreText.enabled = true;
+        birdScoreText.text = birdScoreCounter.ToString();
 
-            case 2:
-                birdScoreText.enabled = true;
-                birdScoreText.text = birdScoreCounter.ToString();
-                break;
+        //switch (BerryManager.bManagerDifficulty) // aka difficulty
+        //{
+        //    case 1:
+        //        birdScoreText.enabled = true;
+        //        birdScoreText.text = birdScoreCounter.ToString();
+        //        break;
 
-            case 3:
-                birdScoreText.enabled = true;
-                birdScoreText.text = birdScoreCounter.ToString();
-                break;
-        }
+        //    case 2:
+        //        birdScoreText.enabled = true;
+        //        birdScoreText.text = birdScoreCounter.ToString();
+        //        break;
+
+        //    case 3:
+        //        birdScoreText.enabled = true;
+        //        birdScoreText.text = birdScoreCounter.ToString();
+        //        break;
+        //}
     }
 }

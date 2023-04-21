@@ -68,7 +68,7 @@ public class BirdManager : MonoBehaviour
             toBerry = berryPositions[randomIndex].position;
             awayFromBerry = birdPositions[1].position;
 
-            if(BirdSpawnBehavior.birdScoreCounter == 0)
+            if(BirdSpawnBehavior.birdScoreCounter == 0 || BerryManager.gameOn == false)
             {
                 Destroy(gameObject);
             }
@@ -77,10 +77,12 @@ public class BirdManager : MonoBehaviour
             {
                 // bird has grabbed berry
                 transform.position = Vector2.MoveTowards(transform.position, awayFromBerry, movementSpeed * Time.deltaTime);
+                gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().flipX = true;
+                //gameObject.transform.GetChild(0).position = new Vector3(-0.5f, 0,0);
 
                 if ((transform.position.Equals(birdPositions[0].position) || transform.position.Equals(birdPositions[1].position)))
                 {
-                    if (gameObject.transform.childCount >= 1)
+                    if (gameObject.transform.childCount >= 2)
                     {
                         BirdSpawnBehavior.birdScoreCounter--;
                     }
@@ -91,7 +93,9 @@ public class BirdManager : MonoBehaviour
             {
                 // move away from berry when berry not found
                 gameObject.GetComponent<BoxCollider2D>().enabled = false;
+                gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().flipX = true;
                 transform.position = Vector2.MoveTowards(transform.position, birdPositions[1].position, movementSpeed * Time.deltaTime);
+                
 
                 if (transform.position.Equals(birdPositions[1].position))
                 {
@@ -102,6 +106,11 @@ public class BirdManager : MonoBehaviour
             {
                 // move bird to berry
                 gameObject.transform.position = Vector2.MoveTowards(transform.position, toBerry, movementSpeed * Time.deltaTime);
+
+                if (transform.position.Equals(birdPositions[0]))
+                {
+                    gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().flipX = true;
+                }
 
                 if (transform.position.Equals(toBerry) && berryPositions[randomIndex].GetComponent<SpawnBerry>().hasBerry == true && berryPositions[randomIndex].GetComponent<SpawnBerry>().berrySpawning == false)
                 {
@@ -120,6 +129,6 @@ public class BirdManager : MonoBehaviour
     {
         berryPositions[randomIndex].GetComponent<SpawnBerry>().currentBerry.GetComponent<BerryCheck>().OnSteal(gameObject);
         berryGrabbed = true;
-        gameObject.transform.GetChild(0).GetComponent<BerryCheck>().birdHasBerry = true;           
+        gameObject.transform.GetChild(1).GetComponent<BerryCheck>().birdHasBerry = true;           
     }
 }

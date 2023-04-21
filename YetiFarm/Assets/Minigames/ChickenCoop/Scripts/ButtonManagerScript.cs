@@ -27,6 +27,7 @@ public class ButtonManagerScript : MonoBehaviour
 
     private void Awake() // Set values to defaults. Remember to set sliders to these values as well.
     {
+        Time.timeScale = 1;
         difficultyValue = 2;
         playerAmountValue = 1;
         gameSpeedValue = 0;
@@ -141,7 +142,8 @@ public class ButtonManagerScript : MonoBehaviour
 
     public void ReturnToSettingScreen()
     {
-        endScreen.SetActive(false);
-        startScreen.SetActive(true);
+        SceneManager.LoadScene("ChickenCoop");
+        // endScreen.SetActive(false);
+        // startScreen.SetActive(true);
     }
 }

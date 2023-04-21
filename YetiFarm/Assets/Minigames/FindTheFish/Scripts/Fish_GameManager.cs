@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Fish_GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] fishPrefab;
     [SerializeField] public List<GameObject> fishInstances;
     [SerializeField] private List<GameObject> spawnpoints;
+    [SerializeField] private Animator diceAnimator;
     [SerializeField] public SpriteRenderer dicePrimary, diceSecondary, dicePattern;
     [SerializeField] private Sprite[] dicePatternSprites;
 
@@ -23,8 +25,10 @@ public class Fish_GameManager : MonoBehaviour
     private float time;
 
     [SerializeField] private Image timerImage;
+    [SerializeField] private TMP_Text timeText;
 
     [SerializeField] private FishUIController fish_UIController;
+    [SerializeField] private Fish_ButtonManager fish_ButtonManager;
 
     void Update()
     {
@@ -33,6 +37,12 @@ public class Fish_GameManager : MonoBehaviour
         {
             timerImage.fillAmount = timer / time;
             timer -= Time.deltaTime;
+
+            if (timer / 60 > 1)
+            {
+                timeText.text = ((int)timer/60).ToString() + " min.";
+            }
+            else timeText.text = ((int)timer).ToString();
         }
         else if (gameON && timer <= 0)
         {
@@ -42,12 +52,14 @@ public class Fish_GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            SceneManager.LoadScene("Main_Farm");
+            ResetGame();
+            fish_ButtonManager.ReturnToSettingScreen();
         }
     }
 
     public void StartGame(int _timer, int _playerAmount, int _fishAmount, int _patternAmount)
     {
+        FindObjectOfType<AudioManager>().PlaySound("FishAmbience");
         timer = _timer;
         time = timer;
         playerAmount = _playerAmount;
@@ -59,7 +71,7 @@ public class Fish_GameManager : MonoBehaviour
         //Spawning of the fishes
         for (int i = fishAmount; i > 0; i--)
         {
-            GameObject fishInstance = Instantiate(fishPrefab[Random.Range(0, fishPrefab.Length)], spawnpoints[i].transform);
+            GameObject fishInstance = Instantiate(fishPrefab[Random.Range(0, fishPrefab.Length)], spawnpoints[i-1].transform);
             fishInstance.name = fishInstance.name + spawnpoints[i].name;
             fishInstances.Add(fishInstance);
         }
@@ -72,7 +84,6 @@ public class Fish_GameManager : MonoBehaviour
     public IEnumerator RollDice(float delay)
     {
         yield return new WaitForSeconds(delay); //This is for the bubble particle delay
-
         dicePrimary.gameObject.SetActive(true);
         diceSecondary.gameObject.SetActive(true);
         dicePattern.gameObject.SetActive(true);
@@ -85,6 +96,8 @@ public class Fish_GameManager : MonoBehaviour
         //Setting the dice features according to the chosen fish
         dicePrimary.color = chosenFishController.primaryColor[0];
         diceSecondary.color = chosenFishController.secondaryColor[0];
+
+        AnimateDice(true);
 
         string chosenPattern = chosenFishController.pattern[0].name;
 
@@ -153,12 +166,18 @@ public class Fish_GameManager : MonoBehaviour
         StartCoroutine(RollDice(0f));
     }
 
+    public void AnimateDice(bool setBool)
+    {
+        diceAnimator.SetBool("In", setBool); 
+    }
+
     public void ResetGame()
     {
         StopAllCoroutines();
 
         foreach (GameObject fish in fishInstances) Destroy(fish);
 
+        timer = 0;
         fishInstances.Clear();
         dicePrimary.gameObject.SetActive(false);
         diceSecondary.gameObject.SetActive(false);

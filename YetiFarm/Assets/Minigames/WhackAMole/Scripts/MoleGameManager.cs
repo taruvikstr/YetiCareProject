@@ -14,7 +14,7 @@ public class MoleGameManager : MonoBehaviour
     [Header("UI objects")]
     [SerializeField] private GameObject playButton;
     [SerializeField] private GameObject gameUI;
-    [SerializeField] private GameObject outOfTimeText;
+   // [SerializeField] private GameObject outOfTimeText;
     [SerializeField] private GameObject bombText;
     [SerializeField] private TMPro.TextMeshProUGUI timeText;
     [SerializeField] private TMPro.TextMeshProUGUI scoreText;
@@ -41,11 +41,12 @@ public class MoleGameManager : MonoBehaviour
     int score;
     private bool playing = false;
     public ParticleSystem explosion; 
-    int difficultyLevel;
-    int molesInGame;
+    public int difficultyLevel;
+    private int molesInGame;
     public int vegetables;
     private int endlessGame;
     private int vegetablesStart;
+    public int grabTimer;
 
     private List<int> samenumbercheck = new List<int>();
 
@@ -64,8 +65,12 @@ public class MoleGameManager : MonoBehaviour
         vegeCountHeader.SetActive(false);
         // Getting number of vegetables in the start of the game
         vegetablesStart = moles.Count;
-        
-        
+        //Hide all holes before game to prevent clicking holes
+        foreach (GameObject hole in holes)
+        {
+            hole.SetActive(false);
+        }
+
 
 
     }
@@ -77,11 +82,18 @@ public class MoleGameManager : MonoBehaviour
     //This is public so the play button can see it.
     public void StartGame(int player_amount, int diff, int game_mode)
     {
+        //Activate holes before game.
+        foreach (GameObject hole in holes)
+        {
+            hole.SetActive(true);
+        }
+
         //Set endlessGamemode from buttonmanagerscript.
         endlessGame = game_mode;
         
         // Getting difficultyvalue from MoleGameManager Script.
         difficultyLevel = diff;
+        grabTimer = diff;
         // Getting moles in game value from buttonmanager script.
         molesInGame = player_amount;
         //Changin difficulty for molegame
@@ -102,7 +114,7 @@ public class MoleGameManager : MonoBehaviour
             }
             //  Debug.Log(molesInGame);
             //Change amount of moles in game
-
+            //Choose 3 random holes for moles
             if (molesInGame == 1)
             {
                 Debug.Log("Check");
@@ -117,11 +129,12 @@ public class MoleGameManager : MonoBehaviour
                         Debug.Log("Sama numero " + random);
                     }
                     moles[random].Hide();
-                    moles.Remove(moles[random]);
+                    moles[random].enabled = false;
                     samenumbercheck.Add(random);
 
                 }
             }
+            // If moles in game is 2 choose 6 random moles in game and else all holes are available.
             if (molesInGame == 2)
             {
                 for (int i = 0; i <= 2; i++)
@@ -134,7 +147,7 @@ public class MoleGameManager : MonoBehaviour
                         Debug.Log("Sama numero " + random);
                     }
                     moles[random].Hide();
-                    moles.Remove(moles[random]);
+                    moles[random].enabled = false;
                     samenumbercheck.Add(random);
                     Debug.Log(samenumbercheck[i]);
                 }
@@ -151,8 +164,8 @@ public class MoleGameManager : MonoBehaviour
         scoreTextObject.SetActive(true);
         timeTextObject.SetActive(true);
         //Hide/show the UI elements we dont / do want to see.
-        playButton.SetActive(false);
-        outOfTimeText.SetActive(false);
+       // playButton.SetActive(false);
+       // outOfTimeText.SetActive(false);
         bombText.SetActive(false);
         gameUI.SetActive(true);
         vegeCount.SetActive(true);
@@ -163,6 +176,7 @@ public class MoleGameManager : MonoBehaviour
         {
             moles[i].Hide();
             moles[i].SetIndex(i);
+            moles[i].enabled = true;
         }
         
 
@@ -189,17 +203,19 @@ public class MoleGameManager : MonoBehaviour
         yield return new WaitForSeconds(2);
         Destroy(explosion);
     }
+  
     public void GameOver(int type)
     {
         //Show message
-        if(type == 0)
-        {
-            outOfTimeText.SetActive(true);
-        }
+        //if(type == 0)
+        //{
+        //    outOfTimeText.SetActive(true);
+        //}
         //else
         //{
         //    bombText.SetActive(true);
         //}
+        
 
         //Hide all moles
         foreach(Mole mole in moles)

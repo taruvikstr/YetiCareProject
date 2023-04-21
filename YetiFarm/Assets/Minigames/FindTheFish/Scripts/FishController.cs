@@ -17,9 +17,11 @@ public class FishController : MonoBehaviour
     GameObject spawnParent;
 
     private Fish_GameManager gameManager;
+    private AudioManager audioManager;
 
     private Dictionary<int, Transform> draggingFish = new Dictionary<int, Transform>();
     private Vector3 offset;
+    private float previousXpos;
     [SerializeField] private LayerMask movableLayers;
 
     public bool isDragged = false;
@@ -34,7 +36,8 @@ public class FishController : MonoBehaviour
     private void Start()
     {
         fishName = gameObject.name;
-        gameManager = GameObject.Find("GameManager").GetComponent<Fish_GameManager>();
+        gameManager = FindObjectOfType<Fish_GameManager>();
+        audioManager = FindObjectOfType<AudioManager>();
         spawnParent = transform.parent.gameObject;
 
         if (transform.localScale.x == -1) flipped = true;
@@ -42,7 +45,7 @@ public class FishController : MonoBehaviour
 
         StartCoroutine(ChangeFishSortingLayer(transform.parent.GetComponent<SpriteRenderer>().sortingLayerName, gameObject, 0f));
 
-        speed = UnityEngine.Random.Range(0.05f, 1f);
+        speed = UnityEngine.Random.Range(0.05f, 1f); // Fishes swim at random speed
 
         ShuffleFeatures();
         RefreshFish();
@@ -50,6 +53,11 @@ public class FishController : MonoBehaviour
 
     private void Update()
     {
+        //Basic movements, when not being dragged
+        if (!isDragged && returned) Movement();
+        else if (!isDragged && !returned) MoveFishBackToSea();
+
+        //Touch dragging of the fish
         int touchCount = Input.touchCount;
         for (int i = 0; i < touchCount; i++)
         {
@@ -74,10 +82,11 @@ public class FishController : MonoBehaviour
                             dragging = grabbed.transform;
                             if(grabbed.name == fishName)
                             {
+                                audioManager.PlaySound("FishGrab");
                                 isDragged = true;
                                 returned = false;
                                 bubbleParticle.Play();
-                                StartCoroutine(ChangeFishSortingLayer("Dragged", grabbed.gameObject, 0f));
+                                StartCoroutine(ChangeFishSortingLayer("Dragged", grabbed.gameObject, 0f)); //Puts the fish on top layer
                                 offset = dragging.position - Camera.main.ScreenToWorldPoint(touch.position);
                                 draggingFish.Add(touchID, dragging);
                             }
@@ -114,16 +123,44 @@ public class FishController : MonoBehaviour
             }
         }
 
-        if (transform.position == spawnParent.transform.position && !returned)
+        //When fish get's back to it's original position, bubbles stop and get's flagged as returned
+        if (transform.position == spawnParent.transform.position && !returned) 
         {
             returned = true;
             StopBubbleParticles();
         }
 
-        if (!isDragged && returned) Movement();
-        else if (!isDragged && !returned) MoveFishBackToSea();
+        if(!returned && isDragged)
+        {
+            if (previousXpos - transform.position.x < 0) // Dragging right, flip sprite
+            {
+                transform.localScale = new Vector3(-1, 1, 1);
+                flipped = true;
+            }
+            else if (previousXpos - transform.position.x > 0) // Dragging left, flip srite
+            {
+                transform.localScale = new Vector3(1, 1, 1);
+                flipped = false;
+            }
+
+            previousXpos = transform.position.x;
+        }
+        else if(!returned && !isDragged) // Returning back to water after drag and flipping the sprite depending on the direction
+        {
+            if (spawnParent.transform.position.x - transform.position.x < 0)
+            {
+                transform.localScale = new Vector3(1, 1, 1);
+                flipped = false;
+            }
+            else
+            {
+                transform.localScale = new Vector3(-1, 1, 1);
+                flipped = true;
+            }
+        }
  
     }
+
 
     public IEnumerator ChangeFishSortingLayer(string layerName, GameObject fishInstance, float delay)
     {
@@ -158,22 +195,22 @@ public class FishController : MonoBehaviour
         patternRenderer.sprite = pattern[0];
     }
 
-    private void MoveFishBackToSea() //Found item is moved to it's original position if released
+    private void MoveFishBackToSea() // Fish moves to it's original position if released
     {
         Vector3 parentPos = spawnParent.transform.position;
 
         transform.position = Vector3.MoveTowards(transform.position, parentPos, 10f * Time.deltaTime);
     }
 
-    private void Movement()
+    private void Movement() // Swimming back and forth
     {
         if (!flipped) transform.Translate(Vector3.left * (speed * Time.deltaTime));
         else transform.Translate(Vector3.right * (speed * Time.deltaTime));
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision) // Turning around when enters one of the water triggers on the sides
     {
-        if (collision.gameObject.CompareTag("Water")) //Colliders on the edges of water area have this tag
+        if (collision.gameObject.CompareTag("Water")) // Colliders on the edges of water area have this tag
         {
             FlipSprite();
         }

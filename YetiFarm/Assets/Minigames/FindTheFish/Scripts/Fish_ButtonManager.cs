@@ -7,7 +7,7 @@ using TMPro;
 
 public class Fish_ButtonManager : MonoBehaviour
 {   
-    [SerializeField] private GameObject startScreen, endScreen, gameStarter;
+    [SerializeField] private GameObject startScreen, endScreen, gameCanvas, gameStarter;
     [SerializeField] private TMP_Text playersSlider, fishSlider, patternSlider, timeSlider;
     private int fishAmountValue;
     private int playerAmountValue;
@@ -16,9 +16,10 @@ public class Fish_ButtonManager : MonoBehaviour
 
     private void Awake() // Set values to defaults. Remember to set sliders to these values as well.
     {
+        Time.timeScale = 1;
         fishAmountValue = 10;
         playerAmountValue = 1;
-        timerValue = 60;
+        timerValue = 2;
         patternAmountValue = 4;
 
         UpdateSliderHandleValues();
@@ -36,8 +37,7 @@ public class Fish_ButtonManager : MonoBehaviour
     public void UpdateDifficulty(Slider slider)
     {
         fishAmountValue = (int)slider.value;
-        fishSlider.text = fishAmountValue.ToString();
-        
+        fishSlider.text = fishAmountValue.ToString(); 
     }
 
     public void UpdatePlayerAmount(Slider slider)
@@ -48,7 +48,7 @@ public class Fish_ButtonManager : MonoBehaviour
 
     public void UpdateGameSpeed(Slider slider)
     {
-        timerValue = (int)slider.value * 10;
+        timerValue = (int)slider.value ;
         timeSlider.text = timerValue.ToString();
     }
 
@@ -67,12 +67,11 @@ public class Fish_ButtonManager : MonoBehaviour
     public void ActivateGame()
     {
         startScreen.SetActive(false); // Disable and hide the starting screen.
-        gameStarter.GetComponent<Fish_GameManager>().StartGame(timerValue, playerAmountValue, fishAmountValue, patternAmountValue);
+        gameStarter.GetComponent<Fish_GameManager>().StartGame(timerValue * 60, playerAmountValue, fishAmountValue, patternAmountValue);
     }
 
     public void ReturnToSettingScreen()
     {
-        endScreen.SetActive(false);
-        startScreen.SetActive(true);
+        SceneManager.LoadScene("FindTheFish");
     }
 }

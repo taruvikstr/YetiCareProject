@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 { 
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI scoreText1;
 
-
+   
     public TextMeshProUGUI timerText;
 
 
@@ -56,7 +57,8 @@ public class GameManager : MonoBehaviour
         spawner.enabled = false;
 
         StartCoroutine(EndGameSequence());
-       // Pass values to end screen in order to give player feedback and display score values, then reset all values to default.
+
+        // Pass values to end screen in order to give player feedback and display score values, then reset all values to default.
     }
 
     private IEnumerator GameStart()
@@ -79,13 +81,10 @@ public class GameManager : MonoBehaviour
         {
             Destroy(rock.gameObject);
         }
-
+        scoreText.enabled = false;
+        scoreText1.enabled = false;
         Time.timeScale = 0;
         WbManager.ActivateGameOverScreen(score);
-    }
-    public void Timer()
-    {
-      
     }
 
 }

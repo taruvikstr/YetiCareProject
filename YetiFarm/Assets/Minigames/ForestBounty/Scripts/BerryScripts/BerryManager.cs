@@ -20,6 +20,7 @@ public class BerryManager : MonoBehaviour
     public GameObject birdSpawn;
     public GameObject containers; // aka buckets
     public GameObject buttonManager;
+    private int bManagerGameMode;
 
 
     private void Awake()
@@ -41,26 +42,40 @@ public class BerryManager : MonoBehaviour
 
     private void Update()
     {
-        // This happens when bird gathers all berries
-        if (BirdSpawnBehavior.birdScoreCounter == 0 && bManagerDifficulty != 1 && gameOn != false)
+        if (Input.GetKeyDown(KeyCode.Escape)) // If the back button of the device is pressed during game.
         {
             gameOn = false;
-            buttonManager.GetComponent<ButtonManagerForestBounty>().ActivateGameOverScreen(0, bManagerDifficulty);
+
+            // Delete birds
+            foreach (GameObject bird in GameObject.FindGameObjectsWithTag("ProjectileTag"))
+            {
+                Destroy(bird);
+            }
+            buttonManager.GetComponent<ButtonManagerForestBounty>().ReturnToMainScreen(); // Return to main view.
+        }
+        // This happens when bird gathers all berries
+        if (BirdSpawnBehavior.birdScoreCounter == 0 && bManagerGameMode == 2 && gameOn != false)
+        {
+            gameOn = false;
+            buttonManager.GetComponent<ButtonManagerForestBounty>().ActivateGameOverScreen(0);
         }
 
         // This happens when player gathers all berries
-        if (endGame == 4 && gameOn != false)
+        if (endGame == 4 && (bManagerGameMode == 1 || bManagerGameMode == 2) && gameOn != false)
         {     
             gameOn = false;
-            buttonManager.GetComponent<ButtonManagerForestBounty>().ActivateGameOverScreen(1, bManagerDifficulty);
+            buttonManager.GetComponent<ButtonManagerForestBounty>().ActivateGameOverScreen(1);
         }
     }
 
-    public void StartSpawn(int difficulty)
+
+    // TO DO: berry amount changing int
+    public void StartSpawn(int difficulty, int gameMode)
     {
         gameOn = true;
         endGame = 0;
         bManagerDifficulty = difficulty;
+        bManagerGameMode = gameMode;
 
         containers.GetComponent<BucketSpawn>().SpawnBuckets();
 
@@ -70,23 +85,28 @@ public class BerryManager : MonoBehaviour
             spawn.GetComponent<SpawnBerry>().diff = difficulty;
         }
 
-        switch (difficulty) // difficulty 1, 2 or 3. on default it's 2 
+        switch (difficulty, gameMode) // difficulty 1, 2 or 3. on default it's 2 
         {
-            case 1:     
+            case (1, 1):
                 // easy
                 //BerryBucket.birdScoreCounter
 
                 break;
 
-            case 2:  
-                // medium difficulty
-                BirdSpawnBehavior.birdScoreCounter = 1;
-
+            case (1, 2):
+                BirdSpawnBehavior.birdScoreCounter = 3;
                 birdSpawn.GetComponent<BirdSpawnBehavior>().BirdSpawnStarter(); // Starts bird 
 
                 break;
 
-            case 3:
+            case (2, 2):
+                // medium difficulty
+                BirdSpawnBehavior.birdScoreCounter = 5;
+                birdSpawn.GetComponent<BirdSpawnBehavior>().BirdSpawnStarter(); // Starts bird 
+
+                break;
+
+            case (3, 2):
                 // hard
                 BirdSpawnBehavior.birdScoreCounter = 10;
 

@@ -30,6 +30,7 @@ public class SpawnEgg : MonoBehaviour
 
     public IEnumerator PlayLayingAnimation(int diff)
     {
+        yield return new WaitForSeconds(0.0f);
         float animationTime = 0;
         idle.enabled = false;
         laying[0].enabled = true;
