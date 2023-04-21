@@ -37,8 +37,7 @@ public class Fish_ButtonManager : MonoBehaviour
     public void UpdateDifficulty(Slider slider)
     {
         fishAmountValue = (int)slider.value;
-        fishSlider.text = fishAmountValue.ToString();
-        
+        fishSlider.text = fishAmountValue.ToString(); 
     }
 
     public void UpdatePlayerAmount(Slider slider)
