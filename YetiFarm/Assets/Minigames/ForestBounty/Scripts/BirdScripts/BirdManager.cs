@@ -93,6 +93,7 @@ public class BirdManager : MonoBehaviour
             {
                 // move away from berry when berry not found
                 gameObject.GetComponent<BoxCollider2D>().enabled = false;
+                gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().flipX = true;
                 transform.position = Vector2.MoveTowards(transform.position, birdPositions[1].position, movementSpeed * Time.deltaTime);
                 
 

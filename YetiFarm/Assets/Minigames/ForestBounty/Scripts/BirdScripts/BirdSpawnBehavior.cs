@@ -38,7 +38,7 @@ public class BirdSpawnBehavior : MonoBehaviour
             }
             else
             {
-                bird.gameObject.GetComponentInChildren<SpriteRenderer>().flipY = false;
+                bird.gameObject.GetComponentInChildren<SpriteRenderer>().flipX = false;
             }
 
             yield return new WaitForSeconds(birdSpawnRate);
