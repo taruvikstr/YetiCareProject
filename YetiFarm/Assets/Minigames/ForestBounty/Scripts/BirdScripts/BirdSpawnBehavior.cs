@@ -14,10 +14,10 @@ public class BirdSpawnBehavior : MonoBehaviour
     public static int birdScoreCounter; // = how many berries the bird has to collect before it beats you
     public TMP_Text birdScoreText;
 
-    private void Awake()
-    {
-        birdScoreText.enabled = false;
-    }
+    //private void Awake()
+    //{
+    //    birdScoreText.enabled = false;
+    //}
 
     private void Update()
     {
@@ -50,22 +50,26 @@ public class BirdSpawnBehavior : MonoBehaviour
     {
         coroutine = DelayedBirdSpawn();
         StartCoroutine(coroutine);
-        
-        switch (BerryManager.bManagerDifficulty) // aka difficulty
-        {
-            case 1:
-                birdScoreText.enabled = false;
-                break;
 
-            case 2:
-                birdScoreText.enabled = true;
-                birdScoreText.text = birdScoreCounter.ToString();
-                break;
+        birdScoreText.enabled = true;
+        birdScoreText.text = birdScoreCounter.ToString();
 
-            case 3:
-                birdScoreText.enabled = true;
-                birdScoreText.text = birdScoreCounter.ToString();
-                break;
-        }
+        //switch (BerryManager.bManagerDifficulty) // aka difficulty
+        //{
+        //    case 1:
+        //        birdScoreText.enabled = true;
+        //        birdScoreText.text = birdScoreCounter.ToString();
+        //        break;
+
+        //    case 2:
+        //        birdScoreText.enabled = true;
+        //        birdScoreText.text = birdScoreCounter.ToString();
+        //        break;
+
+        //    case 3:
+        //        birdScoreText.enabled = true;
+        //        birdScoreText.text = birdScoreCounter.ToString();
+        //        break;
+        //}
     }
 }

@@ -1365,7 +1365,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: :|
+  m_text: :)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7fbdf7fb665dc8d43ac1ac6bb0e789ab, type: 2}
   m_sharedMaterial: {fileID: 4453648058832637171, guid: 7fbdf7fb665dc8d43ac1ac6bb0e789ab, type: 2}
@@ -2169,7 +2169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b504a137b5bcd7439e025fc3c84adf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startScreen: {fileID: 0}
+  startScreen: {fileID: 1515476850}
   endScreen: {fileID: 2145089489}
   scoreText1: {fileID: 1969464494}
   gameStarter: {fileID: 1522777552}
@@ -2177,6 +2177,7 @@ MonoBehaviour:
   difficultySliderNumText: {fileID: 574564041}
   gameModeSliderNumText: {fileID: 1135126653}
   amountSliderNumText: {fileID: 2059009429}
+  gameDifficultySlider: {fileID: 2035356033}
 --- !u!4 &819114931
 Transform:
   m_ObjectHideFlags: 0
@@ -6898,7 +6899,7 @@ MonoBehaviour:
   m_MinValue: 1
   m_MaxValue: 3
   m_WholeNumbers: 1
-  m_Value: 2
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
