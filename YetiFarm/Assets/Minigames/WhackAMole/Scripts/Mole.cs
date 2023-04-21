@@ -20,8 +20,9 @@ public class Mole : MonoBehaviour
 
     [Header("GameManager")]
     [SerializeField] private MoleGameManager gameManager;
-
     [SerializeField] private TMPro.TextMeshPro grabTimerText;
+
+    public AudioManager audioManager;
     //Sprite offset of the sprite to hide it
     private Vector2 startPosition = new Vector2(0f, -2f); //Pixelsize / PixelsPerUnit
     private Vector2 endPosition = Vector2.zero;
@@ -40,6 +41,8 @@ public class Mole : MonoBehaviour
     private Vector2 boxOffsetHidden;
     private Vector2 boxSizeHidden;
 
+    public RuntimeAnimatorController newController;
+
     //Mole Parameters
 
     public enum MoleType {Standard,HardHat,Bomb };
@@ -49,7 +52,7 @@ public class Mole : MonoBehaviour
     private int lives;
     private int moleIndex;
 
-
+   
 
     private IEnumerator ShowHide(Vector2 start, Vector2 end)
     {
@@ -106,6 +109,8 @@ public class Mole : MonoBehaviour
                 
             grabTimerText.enabled = true;
             Debug.Log(grabAnimationDuration);
+            animator.runtimeAnimatorController = newController;
+            animator.enabled = true;
             while (grabAnimationDuration > 0f)
             {
 
@@ -176,6 +181,8 @@ public class Mole : MonoBehaviour
             switch (moleType)
             {
                 case MoleType.Standard:
+                    //PlayClickSound when a standardmole is active
+                    audioManager.PlaySound("Click");
                  
                     moleHands.SetActive(false);
                     Debug.Log("normal hit");
@@ -295,7 +302,7 @@ public class Mole : MonoBehaviour
         //Get references to the components we'll need.
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-
+        audioManager = FindObjectOfType<AudioManager>();
         boxCollider2D = GetComponent<BoxCollider2D>();
         //Work out collider values.
         boxOffset = boxCollider2D.offset;

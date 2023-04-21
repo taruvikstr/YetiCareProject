@@ -65,8 +65,12 @@ public class MoleGameManager : MonoBehaviour
         vegeCountHeader.SetActive(false);
         // Getting number of vegetables in the start of the game
         vegetablesStart = moles.Count;
-        
-        
+        //Hide all holes before game to prevent clicking holes
+        foreach (GameObject hole in holes)
+        {
+            hole.SetActive(false);
+        }
+
 
 
     }
@@ -78,6 +82,12 @@ public class MoleGameManager : MonoBehaviour
     //This is public so the play button can see it.
     public void StartGame(int player_amount, int diff, int game_mode)
     {
+        //Activate holes before game.
+        foreach (GameObject hole in holes)
+        {
+            hole.SetActive(true);
+        }
+
         //Set endlessGamemode from buttonmanagerscript.
         endlessGame = game_mode;
         
@@ -193,6 +203,7 @@ public class MoleGameManager : MonoBehaviour
         yield return new WaitForSeconds(2);
         Destroy(explosion);
     }
+  
     public void GameOver(int type)
     {
         //Show message
