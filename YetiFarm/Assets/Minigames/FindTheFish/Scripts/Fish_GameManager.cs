@@ -9,6 +9,7 @@ public class Fish_GameManager : MonoBehaviour
     [SerializeField] private GameObject[] fishPrefab;
     [SerializeField] public List<GameObject> fishInstances;
     [SerializeField] private List<GameObject> spawnpoints;
+    [SerializeField] private Animator diceAnimator;
     [SerializeField] public SpriteRenderer dicePrimary, diceSecondary, dicePattern;
     [SerializeField] private Sprite[] dicePatternSprites;
 
@@ -74,7 +75,6 @@ public class Fish_GameManager : MonoBehaviour
     public IEnumerator RollDice(float delay)
     {
         yield return new WaitForSeconds(delay); //This is for the bubble particle delay
-
         dicePrimary.gameObject.SetActive(true);
         diceSecondary.gameObject.SetActive(true);
         dicePattern.gameObject.SetActive(true);
@@ -87,6 +87,8 @@ public class Fish_GameManager : MonoBehaviour
         //Setting the dice features according to the chosen fish
         dicePrimary.color = chosenFishController.primaryColor[0];
         diceSecondary.color = chosenFishController.secondaryColor[0];
+
+        AnimateDice(true);
 
         string chosenPattern = chosenFishController.pattern[0].name;
 
@@ -153,6 +155,11 @@ public class Fish_GameManager : MonoBehaviour
         }
 
         StartCoroutine(RollDice(0f));
+    }
+
+    public void AnimateDice(bool setBool)
+    {
+        diceAnimator.SetBool("In", setBool); 
     }
 
     public void ResetGame()
