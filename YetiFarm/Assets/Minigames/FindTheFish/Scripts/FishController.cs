@@ -17,6 +17,7 @@ public class FishController : MonoBehaviour
     GameObject spawnParent;
 
     private Fish_GameManager gameManager;
+    private AudioManager audioManager;
 
     private Dictionary<int, Transform> draggingFish = new Dictionary<int, Transform>();
     private Vector3 offset;
@@ -35,7 +36,8 @@ public class FishController : MonoBehaviour
     private void Start()
     {
         fishName = gameObject.name;
-        gameManager = GameObject.Find("GameManager").GetComponent<Fish_GameManager>();
+        gameManager = FindObjectOfType<Fish_GameManager>();
+        audioManager = FindObjectOfType<AudioManager>();
         spawnParent = transform.parent.gameObject;
 
         if (transform.localScale.x == -1) flipped = true;
@@ -80,6 +82,7 @@ public class FishController : MonoBehaviour
                             dragging = grabbed.transform;
                             if(grabbed.name == fishName)
                             {
+                                audioManager.PlaySound("FishGrab");
                                 isDragged = true;
                                 returned = false;
                                 bubbleParticle.Play();

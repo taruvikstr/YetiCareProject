@@ -12,6 +12,7 @@ public class Fish_PlayerBuckets : MonoBehaviour
     public TMP_Text amountTxt;
     [SerializeField] private Fish_GameManager fish_GameManager;
     [SerializeField] private FishUIController fish_UIController;
+    [SerializeField] private AudioManager audioManager;
 
     private void Start()
     {
@@ -51,6 +52,7 @@ public class Fish_PlayerBuckets : MonoBehaviour
 
     private void IncreaseFishAmount()
     {
+        audioManager.PlaySound("FishCollect");
         collectedAmount++;
         amountTxt.text = collectedAmount.ToString();
         fish_GameManager.StartCoroutine("AddNewFish");
