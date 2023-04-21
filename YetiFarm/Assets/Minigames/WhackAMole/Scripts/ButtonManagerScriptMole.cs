@@ -105,45 +105,45 @@ public class ButtonManagerScriptMole : MonoBehaviour
     public void ActivateGameOverScreen(int score_points, int failed_things, int game_mode)
     {
         endScreen.SetActive(true); // Enable and display the game over screen.
-        scoreText1.text = "Tainnutit " + score_points.ToString() + " myyr‰‰.";
-        scoreText2.text = "Pilalle meni " + failed_things.ToString() + " vihannesta.";
+        scoreText1.text = "Tainnutit " + score_points.ToString() + " myyr√§√§.";
+        scoreText2.text = "Menetit " + failed_things.ToString() + " vihannesta.";
 
         if (failed_things == 1)
         {
-            scoreText2.text = "Pilalle meni " + failed_things.ToString() + " vihannes.";
+            scoreText2.text = "Menetit " + failed_things.ToString() + " vihanneksen.";
         }
 
-        if (game_mode == 1 && failed_things < score_points / 4)
+        if (game_mode == 1 && failed_things < score_points / 7)
         {
-            feedbackText.text = "Hienoa tyˆt‰!";
+            feedbackText.text = "Hienoa ty√∂t√§!";
         }
-        else if (game_mode == 1 && failed_things > score_points / 4)
+        else if (game_mode == 1 && failed_things > score_points / 12)
         {
-            feedbackText.text = "Ole ensi kerralla varovaisempi!";
+            feedbackText.text = "Ole ensi kerralla nopeampi!";
         }
-        else if (game_mode == 2 && score_points <= 10)
+        else if (game_mode == 2 && score_points <= 20)
         {
             feedbackText.text = "Parempi onni ensi kerralla!";
         }
-        else if (game_mode == 2 && score_points <= 20 && score_points > 10)
+        else if (game_mode == 2 && score_points <= 30 && score_points > 20)
         {
-            feedbackText.text = "P‰‰sit hyvin alkuun!";
+            feedbackText.text = "P√§√§sit hyvin alkuun!";
         }
-        else if (game_mode == 2 && score_points <= 40 && score_points > 20)
+        else if (game_mode == 2 && score_points <= 40 && score_points > 30)
         {
-            feedbackText.text = "Seh‰n meni hienosti!";
+            feedbackText.text = "Seh√§n meni hienosti!";
         }
-        else if (game_mode == 2 && score_points <= 60 && score_points > 40)
+        else if (game_mode == 2 && score_points <= 50 && score_points > 40)
         {
-            feedbackText.text = "Hienoa! Olet oikea kanalan kauhu!";
+            feedbackText.text = "Hienoa! Olet oikea myyrien karkoittaja!";
         }
-        else if (game_mode == 2 && score_points <= 80 && score_points > 60)
+        else if (game_mode == 2 && score_points <= 60 && score_points > 50)
         {
             feedbackText.text = "Upeaa! Kadehdittava tulos!";
         }
-        else if (game_mode == 2 && score_points > 80)
+        else if (game_mode == 2 && score_points > 70)
         {
-            feedbackText.text = "Onneksi olkoon! Olet mestariker‰‰j‰!";
+            feedbackText.text = "Onneksi olkoon! Olet vihannesmaan sankari!";
         }
     }
 
