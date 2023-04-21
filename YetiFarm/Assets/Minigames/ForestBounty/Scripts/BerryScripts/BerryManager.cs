@@ -67,7 +67,7 @@ public class BerryManager : MonoBehaviour
         }
     }
 
-    public void StartSpawn(int difficulty)
+    public void StartSpawn(int difficulty, int gameMode, int collectionAmount)
     {
         gameOn = true;
         endGame = 0;

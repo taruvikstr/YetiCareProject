@@ -11,18 +11,27 @@ public class ButtonManagerForestBounty : MonoBehaviour
     public GameObject startScreen;
     public GameObject endScreen;
     public TextMeshProUGUI scoreText1;
+    //public TextMeshProUGUI scoreText2;
+    //public TextMeshProUGUI scoreText3;
+    //public TextMeshProUGUI scoreText4;
+    //public TextMeshProUGUI feedbackText;
 
     public GameObject gameStarter; // The object that has the script and function for starting the game based on given parameters.
     private int difficultyValue;
-    //private int playerAmountValue;
-    //private int gameSpeedValue;
-    //private int gameModeValue;
-    //private int desiredScoreValue;
+    private int playerAmountValue;
+    private int gameSpeedValue;
+    private int gameModeValue;
+    private int desiredScoreValue;
 
-    public ToggleGroup berryAmountGroup;
-    public Toggle toggleLow;
-    public Toggle toggleMedium;
-    public Toggle toggleHigh;
+    public TextMeshProUGUI playerAmountSliderNumText;
+    public TextMeshProUGUI difficultySliderNumText;
+    public TextMeshProUGUI gameModeSliderNumText;
+    public TextMeshProUGUI amountSliderNumText;
+
+    //public ToggleGroup berryAmountGroup;
+    //public Toggle toggleLow;
+    //public Toggle toggleMedium;
+    //public Toggle toggleHigh;
 
 
     private void Awake() // Set values to defaults. Remember to set sliders to these values as well.
@@ -43,39 +52,60 @@ public class ButtonManagerForestBounty : MonoBehaviour
 
     public void UpdateDifficulty(Slider slider)
     {
-        
+        difficultyValue = (int)slider.value;
+        if (difficultyValue == 1)
+        {
+            difficultySliderNumText.text = ":)";
+        }
+        if (difficultyValue == 2)
+        {
+            difficultySliderNumText.text = ":|";
+        }
+        if (difficultyValue == 3)
+        {
+            difficultySliderNumText.text = ":(";
+        }
     }
 
     // Uses toggle group, where player decides the amount of berries
-    public void UpdateBerryAmount()
-    {
-        if (toggleLow.isOn)
-        {
-            difficultyValue = 1;
-        }
-        else if (toggleMedium.isOn)
-        {
-            difficultyValue = 2;
-        }
-        else if (toggleHigh.isOn)
-        {
-            difficultyValue = 3;
-        }
-    }
+    //public void UpdateBerryAmount()
+    //{
+    //    if (toggleLow.isOn)
+    //    {
+    //        difficultyValue = 1;
+    //    }
+    //    else if (toggleMedium.isOn)
+    //    {
+    //        difficultyValue = 2;
+    //    }
+    //    else if (toggleHigh.isOn)
+    //    {
+    //        difficultyValue = 3;
+    //    }
+    //}
 
-    public void UpdateGameSpeed(Slider slider)
-    {
-        //gameSpeedValue = (int)slider.value;
-    }
+    //public void UpdateGameSpeed(Slider slider)
+    //{
+    //    gameSpeedValue = (int)slider.value;
+    //}
 
     public void UpdateGameMode(Slider slider)
     {
-        //gameModeValue = (int)slider.value;
+        gameModeValue = (int)slider.value;
+        if (gameModeValue == 1)
+        {
+            gameModeSliderNumText.text = "#";
+        }
+        if (gameModeValue == 2)
+        {
+            gameModeSliderNumText.text = ">";
+        }
     }
 
     public void UpdateDesiredScore(Slider slider)
     {
-        //desiredScoreValue = (int)slider.value * 10;
+        desiredScoreValue = (int)slider.value;
+        amountSliderNumText.text = (4 * desiredScoreValue).ToString();
     }
 
 
@@ -87,7 +117,7 @@ public class ButtonManagerForestBounty : MonoBehaviour
     public void ActivateGame()
     {
         startScreen.SetActive(false); // Disable and hide the starting screen.
-        gameStarter.GetComponent<BerryManager>().StartSpawn(difficultyValue);
+        gameStarter.GetComponent<BerryManager>().StartSpawn(difficultyValue, gameModeValue, desiredScoreValue);
             //(difficultyValue, desiredScoreValue, gameModeValue, playerAmountValue);
     }
 
@@ -113,7 +143,8 @@ public class ButtonManagerForestBounty : MonoBehaviour
 
     public void ReturnToSettingScreen()
     {
-        endScreen.SetActive(false);
-        startScreen.SetActive(true);
+        SceneManager.LoadScene("ForestBounty");
+        //endScreen.SetActive(false);
+        //startScreen.SetActive(true);
     }
 }
