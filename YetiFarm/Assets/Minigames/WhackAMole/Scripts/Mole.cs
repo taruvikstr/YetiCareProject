@@ -183,7 +183,7 @@ public class Mole : MonoBehaviour
             {
                 case MoleType.Standard:
                     //PlayClickSound when a standardmole is active
-                    audioManager.PlaySound("Click");
+                    audioManager.PlaySound("Hit1");
                     
                  
                     moleHands.SetActive(false);
