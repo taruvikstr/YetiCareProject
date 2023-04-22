@@ -205,6 +205,7 @@ public class Mole : MonoBehaviour
                     {
                         brokenHat.SetActive(true);
                         hat.SetActive(false);
+                        audioManager.PlaySound("HelmetHit");
                         lives--;
                     }
                     else

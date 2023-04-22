@@ -28,7 +28,8 @@ public class MoleGameManager : MonoBehaviour
     [SerializeField] private GameObject exitButton;
     [SerializeField] private GameObject vegeCount;
     [SerializeField] private GameObject vegeCountHeader;
-   // [SerializeField] private GameObject Explosion;
+    // [SerializeField] private GameObject Explosion;
+    public AudioManager audioManager;
 
     public GameObject buttonManager;
 
@@ -60,7 +61,7 @@ public class MoleGameManager : MonoBehaviour
         scoreTextObject.SetActive(false);
         timeTextObject.SetActive(false);
         timeheader.SetActive(false);
-        //exitButton.SetActive(false);
+        exitButton.SetActive(false);
         vegeCount.SetActive(false);
         vegeCountHeader.SetActive(false);
         // Getting number of vegetables in the start of the game
@@ -118,7 +119,7 @@ public class MoleGameManager : MonoBehaviour
             if (molesInGame == 3)
             {
                 Debug.Log("Check");
-                for (int i = 0; i <= 3; i++)
+                for (int i = 0; i <= 5; i++)
                 {
                     Debug.Log("Check");
                     random = Random.Range(0, moles.Count);
@@ -134,7 +135,7 @@ public class MoleGameManager : MonoBehaviour
 
                 }
             }
-            // If moles in game is 6 choose 6 random moles in game and else all holes are available.
+            // If active mole holes in game is set to 6, generate 6 random moles in game and else all holes are available.
             if (molesInGame == 6)
             {
                 for (int i = 0; i <= 6; i++)
@@ -153,10 +154,10 @@ public class MoleGameManager : MonoBehaviour
                 }
             }
         }
-        
-        
-        
-        
+
+
+
+
 
         //Setting startingcanvas to false and time and scoretextobjects to true.
         scoreHeader.SetActive(true);
@@ -170,6 +171,7 @@ public class MoleGameManager : MonoBehaviour
         gameUI.SetActive(true);
         vegeCount.SetActive(true);
         vegeCountHeader.SetActive(true);
+        exitButton.SetActive(true);
         //Hide all the visible moles.
 
         for(int i = 0; i < moles.Count; i++)
@@ -268,6 +270,7 @@ public class MoleGameManager : MonoBehaviour
                 difficultyLevel = score;
                 if (vegetablesStart != vegetables)
                 {
+                 //   audioManager.PlaySound("VegePick");
                     GameOver(0);
                 }
                 // Set timer text objects to false during endless mode
