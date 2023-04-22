@@ -41,7 +41,8 @@ public class Mole : MonoBehaviour
     private Vector2 boxOffsetHidden;
     private Vector2 boxSizeHidden;
 
-    public RuntimeAnimatorController newController;
+    public RuntimeAnimatorController moleGrabbingAnimation;
+    public RuntimeAnimatorController bombAnimation;
 
     //Mole Parameters
 
@@ -90,7 +91,7 @@ public class Mole : MonoBehaviour
          * 
          * This should be implemented in the hide mole section below.
          */
-        if (moleType != MoleType.Bomb)
+        if (moleType != MoleType.Bomb && vegetable.activeInHierarchy)
         {
             switch (grabAnimationDuration)
             {
@@ -107,9 +108,11 @@ public class Mole : MonoBehaviour
                     break;
             }
 
+            // Start timer for grabbing animation    
             grabTimerText.enabled = true;
             Debug.Log(grabAnimationDuration);
-            animator.runtimeAnimatorController = newController;
+            //Switch to moleGrabbing animation
+            animator.runtimeAnimatorController = moleGrabbingAnimation;
             animator.enabled = true;
             while (grabAnimationDuration > 0f)
             {
@@ -124,6 +127,7 @@ public class Mole : MonoBehaviour
                 gameManager.vegetables -= 1;
                 audioManager.PlaySound("VegePick");
             }
+            animator.enabled = false;
             vegetable.SetActive(false);
             grabTimerText.enabled = false;
         }
@@ -264,6 +268,7 @@ public class Mole : MonoBehaviour
             hat.SetActive(false);
             brokenHat.SetActive(false);
             // The animator handles setting the sprite.
+            animator.runtimeAnimatorController = bombAnimation;
             animator.enabled = true;
         }
         else
