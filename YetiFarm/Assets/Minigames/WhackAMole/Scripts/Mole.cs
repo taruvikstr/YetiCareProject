@@ -11,7 +11,7 @@ public class Mole : MonoBehaviour
     [SerializeField] private Sprite moleHatBroken;
     [SerializeField] private Sprite moleHit;
     [SerializeField] private Sprite moleHatHit;
-   // [SerializeField] private ParticleSystem hatSparks;
+    // [SerializeField] private ParticleSystem hatSparks;
     [SerializeField] public GameObject moleHands;
     [SerializeField] public GameObject vegetable;
     [SerializeField] public GameObject hat;
@@ -41,24 +41,23 @@ public class Mole : MonoBehaviour
     private Vector2 boxOffsetHidden;
     private Vector2 boxSizeHidden;
 
-    public RuntimeAnimatorController moleGrabbingAnimation;
-    public RuntimeAnimatorController bombAnimation;
+    public RuntimeAnimatorController newController;
 
     //Mole Parameters
 
-    public enum MoleType {Standard,HardHat,Bomb };
+    public enum MoleType { Standard, HardHat, Bomb };
     private MoleType moleType;
     private float hardRate = 0.25f;
     private float bombRate = 0f;
     private int lives;
     private int moleIndex;
 
-   
+
 
     private IEnumerator ShowHide(Vector2 start, Vector2 end)
     {
         // Startposition
-        
+
         transform.localPosition = start;
         float elapsed = 0f;
         while (elapsed < showDuration)
@@ -91,7 +90,7 @@ public class Mole : MonoBehaviour
          * 
          * This should be implemented in the hide mole section below.
          */
-        if (moleType != MoleType.Bomb && vegetable.activeInHierarchy)
+        if (moleType != MoleType.Bomb)
         {
             switch (grabAnimationDuration)
             {
@@ -108,11 +107,9 @@ public class Mole : MonoBehaviour
                     break;
             }
 
-            // Start timer for grabbing animation    
             grabTimerText.enabled = true;
             Debug.Log(grabAnimationDuration);
-            //Switch to moleGrabbing animation
-            animator.runtimeAnimatorController = moleGrabbingAnimation;
+            animator.runtimeAnimatorController = newController;
             animator.enabled = true;
             while (grabAnimationDuration > 0f)
             {
@@ -121,17 +118,17 @@ public class Mole : MonoBehaviour
                 grabAnimationDuration -= Time.deltaTime;
                 yield return null;
             }
-            
+
             if (vegetable.activeInHierarchy)
             {
                 gameManager.vegetables -= 1;
+                audioManager.PlaySound("VegePick");
             }
-            animator.enabled = false;
             vegetable.SetActive(false);
             grabTimerText.enabled = false;
         }
-      
-       
+
+
 
         //Hide mole
         elapsed = 0f;
@@ -157,7 +154,7 @@ public class Mole : MonoBehaviour
         }
 
     }
-   
+
     public void Hide()
     {
         grabTimerText.enabled = false;
@@ -187,7 +184,8 @@ public class Mole : MonoBehaviour
                 case MoleType.Standard:
                     //PlayClickSound when a standardmole is active
                     audioManager.PlaySound("Click");
-                 
+
+
                     moleHands.SetActive(false);
                     Debug.Log("normal hit");
                     spriteRenderer.sprite = moleHit;
@@ -207,7 +205,10 @@ public class Mole : MonoBehaviour
                     }
                     else
                     {
-                       // hatSparks.Play();
+                        // hatSparks.Play();
+
+                        //HatMole sound
+                        audioManager.PlaySound("HelmetHit");
                         moleHands.SetActive(false);
                         Debug.Log("hatHit");
                         spriteRenderer.sprite = moleHit;
@@ -220,21 +221,23 @@ public class Mole : MonoBehaviour
                     }
                     break;
                 case MoleType.Bomb:
-                    
+
                     //Game over, 1 for bomb.
                     Debug.Log("Bomb hit");
                     if (vegetable.activeInHierarchy)
                     {
                         gameManager.vegetables -= 1;
                     }
-                    gameManager.BombExplosion(gameObject.transform.position,moleIndex);
+                    //Explosion sound
+                    audioManager.PlaySound("BombHit");
+                    gameManager.BombExplosion(gameObject.transform.position, moleIndex);
                     gameManager.AddScore(moleIndex, moleType != MoleType.Bomb);
                     StopAllCoroutines();
                     StartCoroutine(QuickHide());
                     StartCoroutine(VegetableActiveFalseDelay());
                     animator.enabled = false;
                     hittable = false;
-                    
+
                     break;
                 default:
                     break;
@@ -261,7 +264,6 @@ public class Mole : MonoBehaviour
             hat.SetActive(false);
             brokenHat.SetActive(false);
             // The animator handles setting the sprite.
-            animator.runtimeAnimatorController = bombAnimation;
             animator.enabled = true;
         }
         else
@@ -272,7 +274,7 @@ public class Mole : MonoBehaviour
             {
                 // Create a hard one.
                 moleType = MoleType.HardHat;
-                spriteRenderer.sprite = mole; 
+                spriteRenderer.sprite = mole;
                 hat.SetActive(true);
                 brokenHat.SetActive(false);
                 lives = 2;
@@ -316,7 +318,7 @@ public class Mole : MonoBehaviour
         boxSizeHidden = new Vector2(boxSize.x, 0f);
 
     }
-    
+
     public void Activate(int level)
     {
         grabAnimationDuration = gameManager.grabTimer;
