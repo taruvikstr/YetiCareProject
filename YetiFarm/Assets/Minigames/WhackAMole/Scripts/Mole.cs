@@ -122,6 +122,7 @@ public class Mole : MonoBehaviour
             if (vegetable.activeInHierarchy)
             {
                 gameManager.vegetables -= 1;
+                audioManager.PlaySound("VegePick");
             }
             vegetable.SetActive(false);
             grabTimerText.enabled = false;
