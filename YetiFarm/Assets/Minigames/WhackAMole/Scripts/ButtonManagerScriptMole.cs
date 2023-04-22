@@ -59,8 +59,8 @@ public class ButtonManagerScriptMole : MonoBehaviour
 
     public void UpdatePlayerAmount(Slider slider)
     {
-        playerAmountValueMole = (int)slider.value;
-        playerAmountSliderNumText.text = playerAmountValueMole.ToString();
+        playerAmountValueMole = (int)slider.value*3;
+        playerAmountSliderNumText.text = (slider.value*3).ToString();
     }
 
     public void UpdateGameSpeed(Slider slider)

@@ -57,3 +57,9 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - clipName: BombExplosion
+    clip: {fileID: 8300000, guid: 82480038cd86c9649815daa1a4b3f38f, type: 3}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}

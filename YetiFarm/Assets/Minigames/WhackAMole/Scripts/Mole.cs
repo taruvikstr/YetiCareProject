@@ -183,6 +183,7 @@ public class Mole : MonoBehaviour
                 case MoleType.Standard:
                     //PlayClickSound when a standardmole is active
                     audioManager.PlaySound("Click");
+                    
                  
                     moleHands.SetActive(false);
                     Debug.Log("normal hit");
@@ -203,7 +204,10 @@ public class Mole : MonoBehaviour
                     }
                     else
                     {
-                       // hatSparks.Play();
+                        // hatSparks.Play();
+
+                        //HatMole sound
+                        audioManager.PlaySound("HelmetHit");
                         moleHands.SetActive(false);
                         Debug.Log("hatHit");
                         spriteRenderer.sprite = moleHit;
@@ -223,6 +227,8 @@ public class Mole : MonoBehaviour
                     {
                         gameManager.vegetables -= 1;
                     }
+                    //Explosion sound
+                    audioManager.PlaySound("BombHit");
                     gameManager.BombExplosion(gameObject.transform.position,moleIndex);
                     gameManager.AddScore(moleIndex, moleType != MoleType.Bomb);
                     StopAllCoroutines();
