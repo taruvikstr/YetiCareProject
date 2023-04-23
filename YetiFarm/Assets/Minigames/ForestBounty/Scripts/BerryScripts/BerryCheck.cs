@@ -8,11 +8,9 @@ public class BerryCheck : MonoBehaviour
     public GameObject spawnOrigin = null; // berry knows its spawnpoint
     public bool berryLayingAround = false;
 
-    // DragBerries stuff: 
-    //private Transform dragging = null;
     private Dictionary<int, Transform> draggingObjects = new Dictionary<int, Transform>();
     private Vector3 offset;
-    [SerializeField] private LayerMask movableLayers;
+    public LayerMask movableLayers;
     public bool birdHasBerry = false;
 
     // Update is called once per frame
@@ -30,7 +28,6 @@ public class BerryCheck : MonoBehaviour
             switch (touch.phase)
             {
                 case TouchPhase.Began:
-
                     // touch is being detected on screen
                     // cast ray, restrict the functionality to objects on "Movable" -layer 
                     RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touch.position),
@@ -38,6 +35,7 @@ public class BerryCheck : MonoBehaviour
 
                     if (hit)
                     {
+                        FindObjectOfType<AudioManager>().PlaySound("BerryPick");
                         birdHasBerry = false;
                         int touchID = touch.fingerId;
                         if (!draggingObjects.ContainsKey(touchID))
@@ -61,7 +59,6 @@ public class BerryCheck : MonoBehaviour
                     break;
 
                 case TouchPhase.Moved:
-
                     // touch is moving across screen
                     if (draggingObjects.ContainsKey(touch.fingerId))
                     {

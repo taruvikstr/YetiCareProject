@@ -12,7 +12,7 @@ public class BerryManager : MonoBehaviour
 {
     public Transform[] berrySpawnerList; // list of berry spawnpoints in scene
     public static bool gameOn = false; // while player is picking berries, the game is on 
-    public static int bManagerDifficulty; // 3 difficulties
+    public static int bManagerDifficulty; // 3 bird difficulties 
 
     public TMP_Text endgame_txt;
     public static int endGame = 0; // when endgame == 4, game ends
@@ -20,7 +20,7 @@ public class BerryManager : MonoBehaviour
     public GameObject birdSpawn;
     public GameObject containers; // aka buckets
     public GameObject buttonManager;
-    private int bManagerGameMode;
+    public static int bManagerGameMode;
 
 
     private void Awake()
@@ -68,14 +68,26 @@ public class BerryManager : MonoBehaviour
         }
     }
 
-
+    
     // TO DO: berry amount changing int
-    public void StartSpawn(int difficulty, int gameMode)
+    public void StartSpawn(int difficulty, int gameMode, int desiredScore)
     {
         gameOn = true;
         endGame = 0;
         bManagerDifficulty = difficulty;
         bManagerGameMode = gameMode;
+        desiredScore = desiredScore * 4;
+        int[] bucketScores = new int[4];
+
+        FindObjectOfType<AudioManager>().PlaySound("MainAmbience");
+        
+        for (int i = 0; i < 3; i++) // generate scores for the first 3 buckets
+        {
+            bucketScores[i] = Random.Range(1, desiredScore - (3 - i));
+            desiredScore -= bucketScores[i];
+        }
+
+        bucketScores[3] = desiredScore; // last bucket gets whatever is left from the desired score        
 
         containers.GetComponent<BucketSpawn>().SpawnBuckets();
 
@@ -85,11 +97,10 @@ public class BerryManager : MonoBehaviour
             spawn.GetComponent<SpawnBerry>().diff = difficulty;
         }
 
-        switch (difficulty, gameMode) // difficulty 1, 2 or 3. on default it's 2 
+        switch (difficulty, gameMode) // difficulty 1, 2 or 3
         {
             case (1, 1):
-                // easy
-                //BerryBucket.birdScoreCounter
+                // easy, no bird
 
                 break;
 
@@ -122,9 +133,13 @@ public class BerryManager : MonoBehaviour
         }
 
         BerryBucket[] childContainers = containers.GetComponentsInChildren<BerryBucket>();
+        int temp = 0;
         foreach (BerryBucket childContainer in childContainers)
         {
+            childContainer.counter = bucketScores[temp];
             childContainer.StartBuckets();
+            temp++;
         }
+
     }
 }

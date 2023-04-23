@@ -5,33 +5,20 @@ using TMPro;
 
 public class BerryBucket : MonoBehaviour
 {
-    int counter = 0; // berrycounter
+    public int counter = 0; // berrycounter
     public TMP_Text txt; // berrycounter text
     public string bucketType; // cowberry, blueberry, strawberry or raspberry
 
     public void StartBuckets()
     {
         gameObject.GetComponent<BoxCollider2D>().enabled = true;
-        switch (BerryManager.bManagerDifficulty) // aka difficulty
-        {
-            case 1:
-                counter = Random.Range(1, 5);
-                break;
-            case 2:
-                counter = Random.Range(4, 10);
-                break;
-            case 3:
-                counter = Random.Range(10, 20);
-                break;
-        }
-
         txt.enabled = true;
         txt.text = counter.ToString();
 
     }
     private void Update()
     {
-        if (BerryManager.endGame == 4 || (BirdSpawnBehavior.birdScoreCounter == 0 && BerryManager.bManagerDifficulty != 1))
+        if (BerryManager.endGame == 4 || (BirdSpawnBehavior.birdScoreCounter == 0 && BerryManager.bManagerGameMode != 1))
         {
             txt.enabled = false;
         }
@@ -44,6 +31,7 @@ public class BerryBucket : MonoBehaviour
             counter--;
             collision.gameObject.GetComponent<BerryCheck>().spawnOrigin.GetComponent<SpawnBerry>().BerryToFalse();
             Destroy(collision.gameObject);
+            FindObjectOfType<AudioManager>().PlaySound("PickUp");
 
             if (counter > 0) 
             {
@@ -62,6 +50,7 @@ public class BerryBucket : MonoBehaviour
             counter--;
             collision.gameObject.GetComponent<BerryCheck>().spawnOrigin.GetComponent<SpawnBerry>().BerryToFalse();
             Destroy(collision.gameObject);
+            FindObjectOfType<AudioManager>().PlaySound("PickUp");
 
             if (counter > 0)
             {
@@ -80,6 +69,7 @@ public class BerryBucket : MonoBehaviour
             counter--;
             collision.gameObject.GetComponent<BerryCheck>().spawnOrigin.GetComponent<SpawnBerry>().BerryToFalse();
             Destroy(collision.gameObject);
+            FindObjectOfType<AudioManager>().PlaySound("PickUp");
 
             if (counter > 0)
             {
@@ -98,6 +88,7 @@ public class BerryBucket : MonoBehaviour
             counter--;
             collision.gameObject.GetComponent<BerryCheck>().spawnOrigin.GetComponent<SpawnBerry>().BerryToFalse();
             Destroy(collision.gameObject);
+            FindObjectOfType<AudioManager>().PlaySound("PickUp");
 
             if (counter > 0)
             {     

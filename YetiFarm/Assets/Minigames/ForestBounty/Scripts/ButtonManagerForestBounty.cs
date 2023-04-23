@@ -41,10 +41,7 @@ public class ButtonManagerForestBounty : MonoBehaviour
         difficultyValue = 1;
         gameDifficultySlider.interactable = false;
         gameModeValue = 1;
-        //playerAmountValue = 1;
-        //gameSpeedValue = 0;
-        //gameModeValue = 1;
-        //desiredScoreValue = 60;
+        desiredScoreValue = 6;
     }
 
     //public Toggle difficultySelection
@@ -125,8 +122,7 @@ public class ButtonManagerForestBounty : MonoBehaviour
     public void ActivateGame()
     {
         startScreen.SetActive(false); // Disable and hide the starting screen.
-        gameStarter.GetComponent<BerryManager>().StartSpawn(difficultyValue, gameModeValue);
-            //(difficultyValue, desiredScoreValue, gameModeValue, playerAmountValue);
+        gameStarter.GetComponent<BerryManager>().StartSpawn(difficultyValue, gameModeValue, desiredScoreValue);
     }
 
     public void ActivateGameOverScreen(int result)
