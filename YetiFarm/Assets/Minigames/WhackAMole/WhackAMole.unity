@@ -3758,6 +3758,7 @@ MonoBehaviour:
   feedbackText: {fileID: 1337111728}
   moleCountSlider: {fileID: 223564408}
   moleDifficultySlider: {fileID: 672991438}
+  moleGameModeSlider: {fileID: 950915595}
   gameStarter: {fileID: 614568867}
   difficultyValueMole: 0
   playerAmountValueMole: 0
