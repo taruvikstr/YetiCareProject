@@ -80,7 +80,7 @@ public class FishController : MonoBehaviour
                             Transform dragging = hit.transform;
                             grabbed = dragging.transform.gameObject;
                             dragging = grabbed.transform;
-                            if(grabbed.name == fishName)
+                            if(grabbed.name == fishName && !GameObject.Find(fishName).GetComponent<FishController>().isDragged)
                             {
                                 audioManager.PlaySound("FishGrab");
                                 isDragged = true;
