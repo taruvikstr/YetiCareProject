@@ -97,21 +97,25 @@ public class MoleGameManager : MonoBehaviour
         grabTimer = diff;
         // Getting moles in game value from buttonmanager script.
         molesInGame = player_amount;
-        //Changin difficulty for molegame
+        PlayerPrefs.SetInt("player_amount", molesInGame);
+        PlayerPrefs.SetInt("diff", difficultyLevel);
+        PlayerPrefs.SetInt("game_mode", endlessGame);
 
-        if(endlessGame == 1)
+        //Changin difficulty for molegame
+        if (endlessGame == 1)
         {
             if (difficultyLevel == 1)
             {
-                difficultyLevel = 10;
+                // difficultylevel 9 so it is under 10
+                difficultyLevel = 9;
             }
             else if (difficultyLevel == 2)
             {
-                difficultyLevel = 20;
+                difficultyLevel = 10;
             }
             else
             {
-                difficultyLevel = 30;
+                difficultyLevel = 20;
             }
             //  Debug.Log(molesInGame);
             //Change amount of moles in game
@@ -224,6 +228,14 @@ public class MoleGameManager : MonoBehaviour
         {
             mole.StopGame();
         }
+        //Setting time and score text objects to false at endcanvas.
+        scoreHeader.SetActive(false);
+        scoreTextObject.SetActive(false);
+        timeTextObject.SetActive(false);
+        timeheader.SetActive(false);
+        exitButton.SetActive(false);
+        vegeCount.SetActive(false);
+        vegeCountHeader.SetActive(false);
 
         //Stop the game and show the start UI.
         playing = false;
