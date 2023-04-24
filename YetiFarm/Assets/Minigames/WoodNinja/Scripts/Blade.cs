@@ -83,6 +83,11 @@ public class Blade : MonoBehaviour
         transform.position = newPosition;
     }
 
-
+    private IEnumerator BladeOff()
+    {
+        bladeCollider.enabled = false;
+        yield return new WaitForSeconds(3f);
+        bladeCollider.enabled = true;
+    }
 
 }
