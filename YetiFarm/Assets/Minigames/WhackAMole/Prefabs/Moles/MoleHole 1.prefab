@@ -320,7 +320,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 390bb5af649f2aa46ac2a26037d98451, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5750a6877151f3c47a9cd23c3b44140f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -571,7 +571,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 8179b5404d762254ca6349e8bf73ea94, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 549266a451af5554a988c50c18df0063, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -676,7 +676,7 @@ GameObject:
   - component: {fileID: 799838802891211594}
   - component: {fileID: 3253200008507910458}
   m_Layer: 0
-  m_Name: kuoppataka
+  m_Name: HoleBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1015,7 +1015,7 @@ GameObject:
   - component: {fileID: 7704959915158245166}
   - component: {fileID: 691113534309143721}
   m_Layer: 0
-  m_Name: kuoppaetu
+  m_Name: HoleFront
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

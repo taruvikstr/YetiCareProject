@@ -23,10 +23,10 @@ public class Mole : MonoBehaviour
     [SerializeField] private TMPro.TextMeshPro grabTimerText;
 
     public AudioManager audioManager;
-    //Sprite offset of the sprite to hide it
-    private Vector2 startPosition = new Vector2(0f, -2f); //Pixelsize / PixelsPerUnit
+    // Sprite offset of the sprite to hide it
+    private Vector2 startPosition = new Vector2(0f, -2f); // Pixelsize / PixelsPerUnit
     private Vector2 endPosition = Vector2.zero;
-    //How long it takes to show a mole
+    // How long it takes to show a mole
     private float showDuration = 0.5f;
     public float duration = 1f;
     private bool hittable = true;
@@ -44,21 +44,16 @@ public class Mole : MonoBehaviour
     public RuntimeAnimatorController moleGrabbingAnimation;
     public RuntimeAnimatorController bombAnimation;
 
-    //Mole Parameters
-
+    // Mole Parameters
     public enum MoleType { Standard, HardHat, Bomb };
     private MoleType moleType;
     private float hardRate = 0.25f;
     private float bombRate = 0f;
     private int lives;
     private int moleIndex;
-
-
-
     private IEnumerator ShowHide(Vector2 start, Vector2 end)
     {
         // Startposition
-
         transform.localPosition = start;
         float elapsed = 0f;
         while (elapsed < showDuration)
@@ -70,7 +65,7 @@ public class Mole : MonoBehaviour
             yield return null;
         }
 
-        //Endposition
+        // Endposition
         transform.localPosition = end;
         boxCollider2D.offset = boxOffset;
         boxCollider2D.size = boxSize;
@@ -79,7 +74,7 @@ public class Mole : MonoBehaviour
             moleHands.SetActive(true);
         }
 
-        //Wait for duration to pass
+        // Wait for duration to pass
         yield return new WaitForSeconds(duration);
         moleHands.SetActive(false);
 
@@ -111,12 +106,11 @@ public class Mole : MonoBehaviour
             // Start timer for grabbing animation    
             grabTimerText.enabled = true;
             Debug.Log(grabAnimationDuration);
-            //Switch to moleGrabbing animation
+            // Switch to moleGrabbing animation
             animator.runtimeAnimatorController = moleGrabbingAnimation;
             animator.enabled = true;
             while (grabAnimationDuration > 0f)
             {
-
                 grabTimerText.text = Mathf.Round(grabAnimationDuration).ToString();
                 grabAnimationDuration -= Time.deltaTime;
                 yield return null;
@@ -132,16 +126,14 @@ public class Mole : MonoBehaviour
             grabTimerText.enabled = false;
         }
 
-
-
-        //Hide mole
+        // Hide mole
         elapsed = 0f;
         while (elapsed < showDuration)
         {
             transform.localPosition = Vector2.Lerp(end, start, elapsed / showDuration);
             boxCollider2D.offset = Vector2.Lerp(boxOffset, boxOffsetHidden, elapsed / showDuration);
             boxCollider2D.size = Vector2.Lerp(boxSize, boxSizeHidden, elapsed / showDuration);
-            //Update at max framerate
+            // Update at max framerate
             elapsed += Time.deltaTime;
             yield return null;
         }
@@ -149,14 +141,14 @@ public class Mole : MonoBehaviour
         transform.localPosition = start;
         boxCollider2D.offset = boxOffsetHidden;
         boxCollider2D.size = boxSizeHidden;
-        //If we got to the end and its still hittable then we missed it.
+
+        // If we got to the end and its still hittable then we missed it.
         if (hittable)
         {
             hittable = false;
-            //We only give time penalty if it isnt a bomb
+            // We only give time penalty if it isnt a bomb
             gameManager.Missed(moleIndex, moleType != MoleType.Bomb);
         }
-
     }
 
     public void Hide()
@@ -175,7 +167,6 @@ public class Mole : MonoBehaviour
         {
             Hide();
         }
-
     }
 
     // Check if the mole is touched/clicked
@@ -186,18 +177,16 @@ public class Mole : MonoBehaviour
             switch (moleType)
             {
                 case MoleType.Standard:
-                    //PlayClickSound when a standardmole is active
+                    // PlayClickSound when a standardmole is active
                     audioManager.PlaySound("Click");
-
-
                     moleHands.SetActive(false);
                     Debug.Log("normal hit");
                     spriteRenderer.sprite = moleHit;
                     gameManager.AddScore(moleIndex, moleType != MoleType.Bomb);
-                    //Stop Coroutines
+                    // Stop Coroutines
                     StopAllCoroutines();
                     StartCoroutine(QuickHide());
-                    //Turn off hittable so that we cant keep tapping for score.
+                    // Turn off hittable so that we cant keep tapping for score.
                     hittable = false;
                     break;
                 case MoleType.HardHat:
@@ -218,7 +207,7 @@ public class Mole : MonoBehaviour
                         Debug.Log("hatHit");
                         spriteRenderer.sprite = moleHit;
                         gameManager.AddScore(moleIndex, moleType != MoleType.Bomb);
-                        //Stop the animation
+                        // Stop the animation
                         StopAllCoroutines();
                         StartCoroutine(QuickHide());
                         // Turn off hittable so that we cant keep tapping for score.
@@ -227,13 +216,13 @@ public class Mole : MonoBehaviour
                     break;
                 case MoleType.Bomb:
 
-                    //Game over, 1 for bomb.
+                    // Game over, 1 for bomb.
                     Debug.Log("Bomb hit");
                     if (vegetable.activeInHierarchy)
                     {
                         gameManager.vegetables -= 1;
                     }
-                    //Explosion sound
+                    // Explosion sound
                     audioManager.PlaySound("BombHit");
                     gameManager.BombExplosion(gameObject.transform.position, moleIndex);
                     gameManager.AddScore(moleIndex, moleType != MoleType.Bomb);
@@ -246,13 +235,11 @@ public class Mole : MonoBehaviour
                     break;
                 default:
                     break;
-
             }
-
         }
-
     }
-    //Hide vegetable delayed
+
+    // Hide vegetable delayed
     IEnumerator VegetableActiveFalseDelay()
     {
         yield return new WaitForSeconds(0.5f);
@@ -263,7 +250,6 @@ public class Mole : MonoBehaviour
         float random = Random.Range(0f, 1f);
         if (random < bombRate)
         {
-
             // Make a bomb.
             moleType = MoleType.Bomb;
             hat.SetActive(false);
@@ -301,10 +287,10 @@ public class Mole : MonoBehaviour
     // As the level progresses the game gets harder.
     private void SetLevel(int level)
     {
-        //As level increases increase the bomb rate to 0.25 at level 10
+        // As level increases increase the bomb rate to 0.25 at level 10
         bombRate = Mathf.Min(level * 0.025f, 0.25f);
         hardRate = Mathf.Min(level * 0.025f, 1f);
-        //Duration bound get quicker as we progress. No cap.
+        // Duration bound get quicker as we progress. No cap.
         float durationMin = Mathf.Clamp(1 - level * 0.1f, 0.01f, 1f);
         float durationMax = Mathf.Clamp(2 - level * 0.1f, 0.01f, 2f);
         duration = Random.Range(durationMin, durationMax);
@@ -312,17 +298,16 @@ public class Mole : MonoBehaviour
     private void Awake()
     {
         gameManager.vegetables += 1;
-        //Get references to the components we'll need.
+        // Get references to the components we'll need.
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         audioManager = FindObjectOfType<AudioManager>();
         boxCollider2D = GetComponent<BoxCollider2D>();
-        //Work out collider values.
+        // Work out collider values.
         boxOffset = boxCollider2D.offset;
         boxSize = boxCollider2D.size;
         boxOffsetHidden = new Vector2(boxOffset.x, -startPosition.y / 2f);
         boxSizeHidden = new Vector2(boxSize.x, 0f);
-
     }
 
     public void Activate(int level)

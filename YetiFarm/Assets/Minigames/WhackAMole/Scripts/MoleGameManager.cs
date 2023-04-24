@@ -14,7 +14,7 @@ public class MoleGameManager : MonoBehaviour
     [Header("UI objects")]
     [SerializeField] private GameObject playButton;
     [SerializeField] private GameObject gameUI;
-   // [SerializeField] private GameObject outOfTimeText;
+    // [SerializeField] private GameObject outOfTimeText;
     [SerializeField] private GameObject bombText;
     [SerializeField] private TMPro.TextMeshProUGUI timeText;
     [SerializeField] private TMPro.TextMeshProUGUI scoreText;
@@ -34,9 +34,9 @@ public class MoleGameManager : MonoBehaviour
     public GameObject buttonManager;
 
 
-    //Hardcoded variables you may want to tune.
+    // Hardcoded variables you may want to tune.
     private float startingTime = 60f;
-    //Global variables
+    // Global variables
     private float timeRemaining;
     private HashSet<Mole> currentMoles = new HashSet<Mole>();
     int score;
@@ -55,8 +55,7 @@ public class MoleGameManager : MonoBehaviour
 
     private void Start()
     {
-        
-        //Setting time and score text objects to false at startingCanvas.
+        // Setting time and score text objects to false at startingCanvas.
         scoreHeader.SetActive(false);
         scoreTextObject.SetActive(false);
         timeTextObject.SetActive(false);
@@ -66,30 +65,28 @@ public class MoleGameManager : MonoBehaviour
         vegeCountHeader.SetActive(false);
         // Getting number of vegetables in the start of the game
         vegetablesStart = moles.Count;
-        //Hide all holes before game to prevent clicking holes
+        // Hide all holes before game to prevent clicking holes
         foreach (GameObject hole in holes)
         {
             hole.SetActive(false);
         }
-
-
-
     }
+
     public void SetMainMenu()
     {
         SceneManager.LoadScene(2);
     }
 
-    //This is public so the play button can see it.
+    // This is public so the play button can see it.
     public void StartGame(int player_amount, int diff, int game_mode)
     {
-        //Activate holes before game.
+        // Activate holes before game.
         foreach (GameObject hole in holes)
         {
             hole.SetActive(true);
         }
 
-        //Set endlessGamemode from buttonmanagerscript.
+        // Set endlessGamemode from buttonmanagerscript.
         endlessGame = game_mode;
         
         // Getting difficultyvalue from MoleGameManager Script.
@@ -101,7 +98,7 @@ public class MoleGameManager : MonoBehaviour
         PlayerPrefs.SetInt("diff", difficultyLevel);
         PlayerPrefs.SetInt("game_mode", endlessGame);
 
-        //Changin difficulty for molegame
+        // Changin difficulty for molegame
         if (endlessGame == 1)
         {
             if (difficultyLevel == 1)
@@ -118,8 +115,8 @@ public class MoleGameManager : MonoBehaviour
                 difficultyLevel = 20;
             }
             //  Debug.Log(molesInGame);
-            //Change amount of moles in game
-            //Choose 3 random holes for moles
+            // Change amount of moles in game
+            // Choose 3 random holes for moles
             if (molesInGame == 3)
             {
                 Debug.Log("Check");
@@ -136,7 +133,6 @@ public class MoleGameManager : MonoBehaviour
                     moles[random].Hide();
                     moles[random].enabled = false;
                     samenumbercheck.Add(random);
-
                 }
             }
             // If active mole holes in game is set to 6, generate 6 random moles in game and else all holes are available.
@@ -159,76 +155,70 @@ public class MoleGameManager : MonoBehaviour
             }
         }
 
-
-
-
-
-        //Setting startingcanvas to false and time and scoretextobjects to true.
+        // Setting startingcanvas to false and time and scoretextobjects to true.
         scoreHeader.SetActive(true);
         timeheader.SetActive(true);
         scoreTextObject.SetActive(true);
         timeTextObject.SetActive(true);
-        //Hide/show the UI elements we dont / do want to see.
-       // playButton.SetActive(false);
-       // outOfTimeText.SetActive(false);
+        // Hide/show the UI elements we dont / do want to see.
+        // playButton.SetActive(false);
+        // outOfTimeText.SetActive(false);
         bombText.SetActive(false);
         gameUI.SetActive(true);
         vegeCount.SetActive(true);
         vegeCountHeader.SetActive(true);
         exitButton.SetActive(true);
-        //Hide all the visible moles.
 
+        // Hide all the visible moles.
         for(int i = 0; i < moles.Count; i++)
         {
             moles[i].Hide();
             moles[i].SetIndex(i);
             moles[i].enabled = true;
         }
-        
 
         currentMoles.Clear();
         timeRemaining = startingTime;
         score = 0;
         scoreText.text = "0";
         playing = true;
-
     }
+
     // If bomb is clicked explosion particle effect is triggered.
     public void BombExplosion(Vector2 molepos,int moleindex)
     {
-        
         ParticleSystem newExplosion = Instantiate(explosion);
         GameObject expGameObject = newExplosion.gameObject;
         newExplosion.transform.position = molepos;
         newExplosion.Play();
         StartCoroutine(DeleteOldExplosion(expGameObject));
     }
-    //Old particlesystem explosion gameobject is deleted from scene after 3 seconds.
+    // Old particlesystem explosion gameobject is deleted from scene after 3 seconds.
     IEnumerator DeleteOldExplosion(GameObject explosion)
     {
         yield return new WaitForSeconds(2);
         Destroy(explosion);
     }
-  
+
     public void GameOver(int type)
     {
-        //Show message
-        //if(type == 0)
-        //{
+        // Show message
+        // if(type == 0)
+        // {
         //    outOfTimeText.SetActive(true);
-        //}
-        //else
-        //{
+        // }
+        // else
+        // {
         //    bombText.SetActive(true);
-        //}
-        
+        // }
 
-        //Hide all moles
+        // Hide all moles
         foreach(Mole mole in moles)
         {
             mole.StopGame();
         }
-        //Setting time and score text objects to false at endcanvas.
+
+        // Setting time and score text objects to false at endcanvas.
         scoreHeader.SetActive(false);
         scoreTextObject.SetActive(false);
         timeTextObject.SetActive(false);
@@ -237,15 +227,15 @@ public class MoleGameManager : MonoBehaviour
         vegeCount.SetActive(false);
         vegeCountHeader.SetActive(false);
 
-        //Stop the game and show the start UI.
+        // Stop the game and show the start UI.
         playing = false;
         buttonManager.GetComponent<ButtonManagerScriptMole>().ActivateGameOverScreen(score, (9 - vegetables), endlessGame);
-        //playButton.SetActive(true);
-        //exitButton.SetActive(true);
+        // playButton.SetActive(true);
+        // exitButton.SetActive(true);
     }
     public void AddScore(int moleIndex, bool isMole)
     {
-        //Add and update score if it is a mole.
+        // Add and update score if it is a mole.
         if (isMole)
         {
             score += 1;
@@ -255,36 +245,36 @@ public class MoleGameManager : MonoBehaviour
         // Increase time little bit.
        // timeRemaining += 1;
 
-        //Remove from active moles.
+        // Remove from active moles.
         currentMoles.Remove(moles[moleIndex]);
     }
     public void Missed(int moleIndex, bool isMole)
     {
         if (isMole)
         {
-            //Decrease time by a little bit.
-           // timeRemaining -= 2;
+            // Decrease time by a little bit.
+            // timeRemaining -= 2;
         }
        
         currentMoles.Remove(moles[moleIndex]);
     }
 
-    
     void Update()
     {
-        //If a veggie is destroyed it's game over.
+        // If a veggie is destroyed it's game over.
         if (playing)
         {
-            //if endless game mode time is set to 1 for the whole duration. And difficultylevel increases as score increases, and if vegetable is destroyed game is over.
+            // If endless game mode time is set to 1 for the whole duration. And difficultylevel increases as score increases, and if vegetable is destroyed game is over.
             vegetableCount.text = vegetables.ToString();
             if(endlessGame == 2)
             {
                 difficultyLevel = score;
                 if (vegetablesStart != vegetables)
                 {
-                 //   audioManager.PlaySound("VegePick");
+                    // audioManager.PlaySound("VegePick");
                     GameOver(0);
                 }
+
                 // Set timer text objects to false during endless mode
                 timeRemaining = 1;
                 timeheader.SetActive(false);
@@ -309,15 +299,16 @@ public class MoleGameManager : MonoBehaviour
                     mole.StopGame();
                 }
 
-                //Stop the game and show the start UI.
+                // Stop the game and show the start UI.
                 playing = false;
                 buttonManager.GetComponent<ButtonManagerScriptMole>().ReturnToSettingScreen();
             }
-                    timeText.text = $"{(int)timeRemaining / 60} : {(int)timeRemaining % 60:D2}";
-            //Check if we need to start any more moles.
+                timeText.text = $"{(int)timeRemaining / 60} : {(int)timeRemaining % 60:D2}";
+
+            // Check if we need to start any more moles.
             if(currentMoles.Count <= (difficultyLevel / 10))
             {
-                //Choose a random mole.
+                // Choose a random mole.
                 int index = Random.Range(0, moles.Count);
                 if (!currentMoles.Contains(moles[index]))
                 {
@@ -325,9 +316,7 @@ public class MoleGameManager : MonoBehaviour
                     currentMoles.Add(moles[index]);
                     moles[index].Activate(difficultyLevel / 10);
                 }
-
             }
         }
-
     }
 }
