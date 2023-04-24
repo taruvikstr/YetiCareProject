@@ -5,17 +5,23 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
+// Kun pelaajan blade disabloituu väläytä taustan väriä -> tai kiven partikkeli efekti
+
+
+
+
 public class GameManager : MonoBehaviour
 { 
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI scoreText1;
+    public TextMeshProUGUI countdownText;
+    public TextMeshProUGUI countdownText1;
 
-   
-    public TextMeshProUGUI timerText;
-
-
+    //public TextMeshProUGUI timerText;
+    public GameObject spawnerList;
+    public Timer timer;
     private Blade blade;
-    private SpawnerV2 spawner;
+    private Spawner spawner;
     
     public int score;
     [SerializeField]private WoodButtonManagerScript WbManager;
@@ -23,19 +29,34 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         blade = FindObjectOfType<Blade>();
-        spawner = FindObjectOfType<SpawnerV2>();
+        spawner = FindObjectOfType<Spawner>();
 
     }
+  
     // Start is called before the first frame update
 
     public void StartWoodSpawns(int difficultyValue, int gameModeValue)
     {
         // Start the game with the settings given in the parameters.
+        WaitForSeconds();
         Time.timeScale = 1;
-        GameStart();
-        scoreText.enabled = true;
-        scoreText1.enabled = true;
-
+        spawner.StartSpawns(difficultyValue, gameModeValue);
+        if(gameModeValue == 1)
+        {
+            countdownText.enabled = true;
+            countdownText1.enabled = true;
+            scoreText.enabled = true;
+            scoreText1.enabled = true;
+            timer.Timer1();
+        }
+        else if(gameModeValue == 2)
+        {
+            scoreText.enabled = true;
+            scoreText1.enabled = true;
+            countdownText.enabled = false;
+            countdownText1.enabled = false;
+            Destroy(timer);
+        }
 
     }
 
@@ -45,10 +66,14 @@ public class GameManager : MonoBehaviour
         scoreText1.text = score.ToString();
 
     }
+
+
     public void PauseGame()
     {
         scoreText.enabled = false;
         scoreText1.enabled = false;
+        countdownText.enabled = false;
+        countdownText1.enabled = false;
         Time.timeScale = 0;
     }
     public void EndGame()
@@ -61,15 +86,12 @@ public class GameManager : MonoBehaviour
         // Pass values to end screen in order to give player feedback and display score values, then reset all values to default.
     }
 
-    private IEnumerator GameStart()
-    {
-        yield return new WaitForSeconds(3f);
-    }
+    
     
     private IEnumerator EndGameSequence()
     {
 
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(1f);
 
         WoodSlicer[] woods = FindObjectsOfType<WoodSlicer>();
         foreach (WoodSlicer wood in woods)
@@ -83,8 +105,14 @@ public class GameManager : MonoBehaviour
         }
         scoreText.enabled = false;
         scoreText1.enabled = false;
+        countdownText.enabled = false;
+        countdownText1.enabled = false;
         Time.timeScale = 0;
         WbManager.ActivateGameOverScreen(score);
     }
 
+    private IEnumerator WaitForSeconds()
+    {
+        yield return new WaitForSeconds(3f);
+    }
 }

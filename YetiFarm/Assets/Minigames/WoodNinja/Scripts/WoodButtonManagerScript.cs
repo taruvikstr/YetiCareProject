@@ -41,6 +41,10 @@ public class WoodButtonManagerScript : MonoBehaviour
         }
         if (difficultyValue == 2)
         {
+            difficultySliderNumText.text = ":|";
+        }
+        if (difficultyValue == 3)
+        {
             difficultySliderNumText.text = ":(";
         }
     }
@@ -70,7 +74,6 @@ public class WoodButtonManagerScript : MonoBehaviour
         
         startScreen.SetActive(false); // Disable and hide the starting screen.
         gameManager.StartWoodSpawns(difficultyValue, gameModeValue);
-        
         FindObjectOfType<Blade>().enabled = true;
         
 
