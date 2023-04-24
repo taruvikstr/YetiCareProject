@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1353292221}
     m_Modifications:
+    - target: {fileID: -8077799950887730454, guid: 0ebb896b69aac2344bfc8475748cfe60, type: 3}
+      propertyPath: particleEffect
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8969974947508468098, guid: 0ebb896b69aac2344bfc8475748cfe60, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -793,6 +797,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StrawberrySpawn3
       objectReference: {fileID: 0}
+    - target: {fileID: 7407656146592301010, guid: cce99bf14f92cf04cbb1f1434397171e, type: 3}
+      propertyPath: particleEffect
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cce99bf14f92cf04cbb1f1434397171e, type: 3}
 --- !u!4 &313766417 stripped
@@ -1292,6 +1300,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlueberrySpawn
       objectReference: {fileID: 0}
+    - target: {fileID: 7340331717343506630, guid: d7772a80a94af284699cf1e5623f5e7c, type: 3}
+      propertyPath: particleEffect
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7772a80a94af284699cf1e5623f5e7c, type: 3}
 --- !u!4 &549994247 stripped
@@ -1441,6 +1453,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1353292221}
     m_Modifications:
+    - target: {fileID: -8077799950887730454, guid: 0ebb896b69aac2344bfc8475748cfe60, type: 3}
+      propertyPath: particleEffect
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8969974947508468098, guid: 0ebb896b69aac2344bfc8475748cfe60, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -1816,6 +1832,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1353292221}
     m_Modifications:
+    - target: {fileID: -8077799950887730454, guid: 0ebb896b69aac2344bfc8475748cfe60, type: 3}
+      propertyPath: particleEffect
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8969974947508468098, guid: 0ebb896b69aac2344bfc8475748cfe60, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -3874,6 +3894,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlueberrySpawn (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7340331717343506630, guid: d7772a80a94af284699cf1e5623f5e7c, type: 3}
+      propertyPath: particleEffect
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7772a80a94af284699cf1e5623f5e7c, type: 3}
 --- !u!4 &1246724092 stripped
@@ -4100,6 +4124,10 @@ PrefabInstance:
     - target: {fileID: 6024610356820483943, guid: c50d302e20525a640ab75c7f788d7c5a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7836377592865572168, guid: c50d302e20525a640ab75c7f788d7c5a, type: 3}
+      propertyPath: particleEffect
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c50d302e20525a640ab75c7f788d7c5a, type: 3}
@@ -4777,6 +4805,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7836377592865572168, guid: c50d302e20525a640ab75c7f788d7c5a, type: 3}
+      propertyPath: particleEffect
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c50d302e20525a640ab75c7f788d7c5a, type: 3}
 --- !u!4 &1476302496 stripped
@@ -5254,6 +5286,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StrawberrySpawn
       objectReference: {fileID: 0}
+    - target: {fileID: 7407656146592301010, guid: cce99bf14f92cf04cbb1f1434397171e, type: 3}
+      propertyPath: particleEffect
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cce99bf14f92cf04cbb1f1434397171e, type: 3}
 --- !u!1 &1618565391
@@ -5452,6 +5488,10 @@ PrefabInstance:
     - target: {fileID: 3815548701685946619, guid: d7772a80a94af284699cf1e5623f5e7c, type: 3}
       propertyPath: m_Name
       value: BlueberrySpawn (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7340331717343506630, guid: d7772a80a94af284699cf1e5623f5e7c, type: 3}
+      propertyPath: particleEffect
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7772a80a94af284699cf1e5623f5e7c, type: 3}
@@ -5785,6 +5825,10 @@ PrefabInstance:
     - target: {fileID: 2497295282031882742, guid: cce99bf14f92cf04cbb1f1434397171e, type: 3}
       propertyPath: m_Name
       value: StrawberrySpawn2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7407656146592301010, guid: cce99bf14f92cf04cbb1f1434397171e, type: 3}
+      propertyPath: particleEffect
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cce99bf14f92cf04cbb1f1434397171e, type: 3}
@@ -7760,6 +7804,10 @@ PrefabInstance:
     - target: {fileID: 6024610356820483943, guid: c50d302e20525a640ab75c7f788d7c5a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7836377592865572168, guid: c50d302e20525a640ab75c7f788d7c5a, type: 3}
+      propertyPath: particleEffect
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c50d302e20525a640ab75c7f788d7c5a, type: 3}

@@ -7,6 +7,7 @@ public class BerryCheck : MonoBehaviour
 {
     public GameObject spawnOrigin = null; // berry knows its spawnpoint
     public bool berryLayingAround = false;
+    //[SerializeField] private ParticleSystem leaves;
 
     private Dictionary<int, Transform> draggingObjects = new Dictionary<int, Transform>();
     private Vector3 offset;
@@ -36,10 +37,12 @@ public class BerryCheck : MonoBehaviour
                     if (hit)
                     {
                         FindObjectOfType<AudioManager>().PlaySound("BerryPick");
+                        
                         birdHasBerry = false;
                         int touchID = touch.fingerId;
                         if (!draggingObjects.ContainsKey(touchID))
                         {
+                            
                             Transform dragging = hit.transform;
                             if (dragging.transform.childCount >= 1)
                             {
@@ -52,8 +55,7 @@ public class BerryCheck : MonoBehaviour
                             dragging.transform.parent = null;
                             offset = dragging.position - Camera.main.ScreenToWorldPoint(touch.position);
                             draggingObjects.Add(touchID, dragging);
-                        }
-                        ////spawnOrigin.GetComponent<SpawnBerry>().particleEffect.SetActive(true);
+                        }                     
                     }
 
                     break;
@@ -68,7 +70,12 @@ public class BerryCheck : MonoBehaviour
                         {
                             dragging.position = Camera.main.ScreenToWorldPoint(touch.position) + offset;
                             dragging.transform.parent = null;
+                            //leaves.Play();
                             berryLayingAround = true;
+
+
+                            //gameObject.GetComponent<BerryCheck>().spawnOrigin.GetComponent<SpawnBerry>().StartParticleEffect();
+                            //spawnOrigin.GetComponent<SpawnBerry>().StartParticleEffect();
                         }
 
                     }

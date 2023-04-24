@@ -105,14 +105,16 @@ public class BerryManager : MonoBehaviour
                 break;
 
             case (1, 2):
-                BirdSpawnBehavior.birdScoreCounter = 3;
+                BirdSpawnBehavior.birdScoreCounter = 10;
+                birdSpawn.GetComponent<BirdSpawnBehavior>().birdSpawnRate = 15f;
                 birdSpawn.GetComponent<BirdSpawnBehavior>().BirdSpawnStarter(); // Starts bird 
 
                 break;
 
             case (2, 2):
                 // medium difficulty
-                BirdSpawnBehavior.birdScoreCounter = 5;
+                BirdSpawnBehavior.birdScoreCounter = 10;
+                birdSpawn.GetComponent<BirdSpawnBehavior>().birdSpawnRate = 10f;
                 birdSpawn.GetComponent<BirdSpawnBehavior>().BirdSpawnStarter(); // Starts bird 
 
                 break;
@@ -120,7 +122,6 @@ public class BerryManager : MonoBehaviour
             case (3, 2):
                 // hard
                 BirdSpawnBehavior.birdScoreCounter = 10;
-
                 birdSpawn.GetComponent<BirdSpawnBehavior>().birdSpawnRate = 5f; // set bird to spawn a bit faster
                 birdSpawn.GetComponent<BirdSpawnBehavior>().BirdSpawnStarter(); // Starts bird 
 
