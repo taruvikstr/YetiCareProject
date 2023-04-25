@@ -32,7 +32,7 @@ public class BirdSpawnBehavior : MonoBehaviour
             Debug.Log("Spawn Bird");
             spawnPoint = Random.Range(0, 2);
             Debug.Log(spawnPoint);
-            if (spawnPoint == 0)
+            if (spawnPoint == 1)
             {
                 bird.gameObject.GetComponentInChildren<SpriteRenderer>().flipX = true;
             }
