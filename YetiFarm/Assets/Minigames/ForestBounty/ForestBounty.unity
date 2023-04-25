@@ -182,6 +182,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CowberrySpawn (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8969974947508468109, guid: 0ebb896b69aac2344bfc8475748cfe60, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ebb896b69aac2344bfc8475748cfe60, type: 3}
 --- !u!4 &6853046 stripped
@@ -250,7 +254,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 98708551}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.6, y: -2, z: 0}
+  m_LocalPosition: {x: -1.6, y: -1.91, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -797,6 +801,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StrawberrySpawn3
       objectReference: {fileID: 0}
+    - target: {fileID: 2497295282031882742, guid: cce99bf14f92cf04cbb1f1434397171e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7407656146592301010, guid: cce99bf14f92cf04cbb1f1434397171e, type: 3}
       propertyPath: particleEffect
       value: 
@@ -1300,6 +1308,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlueberrySpawn
       objectReference: {fileID: 0}
+    - target: {fileID: 3815548701685946619, guid: d7772a80a94af284699cf1e5623f5e7c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7340331717343506630, guid: d7772a80a94af284699cf1e5623f5e7c, type: 3}
       propertyPath: particleEffect
       value: 
@@ -1504,6 +1516,10 @@ PrefabInstance:
     - target: {fileID: 8969974947508468109, guid: 0ebb896b69aac2344bfc8475748cfe60, type: 3}
       propertyPath: m_Name
       value: CowberrySpawn (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8969974947508468109, guid: 0ebb896b69aac2344bfc8475748cfe60, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ebb896b69aac2344bfc8475748cfe60, type: 3}
@@ -1883,6 +1899,10 @@ PrefabInstance:
     - target: {fileID: 8969974947508468109, guid: 0ebb896b69aac2344bfc8475748cfe60, type: 3}
       propertyPath: m_Name
       value: CowberrySpawn
+      objectReference: {fileID: 0}
+    - target: {fileID: 8969974947508468109, guid: 0ebb896b69aac2344bfc8475748cfe60, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ebb896b69aac2344bfc8475748cfe60, type: 3}
@@ -2549,7 +2569,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1025906972}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.6, y: -2, z: 0}
+  m_LocalPosition: {x: 1.6, y: -1.9100001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3894,6 +3914,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlueberrySpawn (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3815548701685946619, guid: d7772a80a94af284699cf1e5623f5e7c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7340331717343506630, guid: d7772a80a94af284699cf1e5623f5e7c, type: 3}
       propertyPath: particleEffect
       value: 
@@ -4080,6 +4104,10 @@ PrefabInstance:
     - target: {fileID: 6024610356820483936, guid: c50d302e20525a640ab75c7f788d7c5a, type: 3}
       propertyPath: m_Name
       value: RaspberrySpawn (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6024610356820483936, guid: c50d302e20525a640ab75c7f788d7c5a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6024610356820483943, guid: c50d302e20525a640ab75c7f788d7c5a, type: 3}
       propertyPath: m_RootOrder
@@ -4519,7 +4547,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1409680232}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5, y: -2, z: 0}
+  m_LocalPosition: {x: -4.75, y: -1.9100001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4760,6 +4788,10 @@ PrefabInstance:
     - target: {fileID: 6024610356820483936, guid: c50d302e20525a640ab75c7f788d7c5a, type: 3}
       propertyPath: m_Name
       value: RaspberrySpawn (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6024610356820483936, guid: c50d302e20525a640ab75c7f788d7c5a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6024610356820483943, guid: c50d302e20525a640ab75c7f788d7c5a, type: 3}
       propertyPath: m_RootOrder
@@ -5286,6 +5318,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StrawberrySpawn
       objectReference: {fileID: 0}
+    - target: {fileID: 2497295282031882742, guid: cce99bf14f92cf04cbb1f1434397171e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7407656146592301010, guid: cce99bf14f92cf04cbb1f1434397171e, type: 3}
       propertyPath: particleEffect
       value: 
@@ -5489,6 +5525,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlueberrySpawn (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3815548701685946619, guid: d7772a80a94af284699cf1e5623f5e7c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7340331717343506630, guid: d7772a80a94af284699cf1e5623f5e7c, type: 3}
       propertyPath: particleEffect
       value: 
@@ -5658,7 +5698,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1727761195}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5, y: -2, z: 0}
+  m_LocalPosition: {x: 4.75, y: -1.9100001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5825,6 +5865,10 @@ PrefabInstance:
     - target: {fileID: 2497295282031882742, guid: cce99bf14f92cf04cbb1f1434397171e, type: 3}
       propertyPath: m_Name
       value: StrawberrySpawn2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2497295282031882742, guid: cce99bf14f92cf04cbb1f1434397171e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7407656146592301010, guid: cce99bf14f92cf04cbb1f1434397171e, type: 3}
       propertyPath: particleEffect
@@ -6408,7 +6452,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7fbdf7fb665dc8d43ac1ac6bb0e789ab, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -6433,8 +6477,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -6472,7 +6516,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!223 &1969464495
@@ -7760,6 +7804,10 @@ PrefabInstance:
     - target: {fileID: 6024610356820483936, guid: c50d302e20525a640ab75c7f788d7c5a, type: 3}
       propertyPath: m_Name
       value: RaspberrySpawn
+      objectReference: {fileID: 0}
+    - target: {fileID: 6024610356820483936, guid: c50d302e20525a640ab75c7f788d7c5a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6024610356820483943, guid: c50d302e20525a640ab75c7f788d7c5a, type: 3}
       propertyPath: m_RootOrder

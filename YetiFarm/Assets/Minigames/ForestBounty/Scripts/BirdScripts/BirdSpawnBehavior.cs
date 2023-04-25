@@ -14,15 +14,15 @@ public class BirdSpawnBehavior : MonoBehaviour
     public static int birdScoreCounter; // = how many berries the bird has to collect before it beats you
     public TMP_Text birdScoreText;
 
-    //private void Awake()
-    //{
-    //    birdScoreText.enabled = false;
-    //}
-
     private void Update()
     {
         // Update the counter everytime bird steals berry
         birdScoreText.text = birdScoreCounter.ToString();
+
+        if (BerryManager.gameOn == false)
+        {
+            birdScoreText.enabled = false;
+        }
     }
 
     public IEnumerator DelayedBirdSpawn()
@@ -53,23 +53,5 @@ public class BirdSpawnBehavior : MonoBehaviour
 
         birdScoreText.enabled = true;
         birdScoreText.text = birdScoreCounter.ToString();
-
-        //switch (BerryManager.bManagerDifficulty) // aka difficulty
-        //{
-        //    case 1:
-        //        birdScoreText.enabled = true;
-        //        birdScoreText.text = birdScoreCounter.ToString();
-        //        break;
-
-        //    case 2:
-        //        birdScoreText.enabled = true;
-        //        birdScoreText.text = birdScoreCounter.ToString();
-        //        break;
-
-        //    case 3:
-        //        birdScoreText.enabled = true;
-        //        birdScoreText.text = birdScoreCounter.ToString();
-        //        break;
-        //}
     }
 }

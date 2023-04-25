@@ -72,22 +72,27 @@ public class BerryManager : MonoBehaviour
     // TO DO: berry amount changing int
     public void StartSpawn(int difficulty, int gameMode, int desiredScore)
     {
+        foreach (Transform berrySpawn in berrySpawnerList)
+        {
+            berrySpawn.gameObject.SetActive(true);
+        }
+
+        FindObjectOfType<AudioManager>().PlaySound("MainAmbience");
         gameOn = true;
         endGame = 0;
         bManagerDifficulty = difficulty;
         bManagerGameMode = gameMode;
-        desiredScore = desiredScore * 4;
+        int desiredSum = desiredScore * 4;
         int[] bucketScores = new int[4];
+        int difference = desiredSum / 4; // uniform distribution.... so that the random generated bucket scores wont differ too much from each other
 
-        FindObjectOfType<AudioManager>().PlaySound("MainAmbience");
-        
         for (int i = 0; i < 3; i++) // generate scores for the first 3 buckets
         {
-            bucketScores[i] = Random.Range(1, desiredScore - (3 - i));
-            desiredScore -= bucketScores[i];
+            bucketScores[i] = Random.Range(difference - difference/4, difference + difference/4);
+            desiredSum -= bucketScores[i];
         }
 
-        bucketScores[3] = desiredScore; // last bucket gets whatever is left from the desired score        
+        bucketScores[3] = desiredSum; // last bucket gets whatever is left from the desired score        
 
         containers.GetComponent<BucketSpawn>().SpawnBuckets();
 
