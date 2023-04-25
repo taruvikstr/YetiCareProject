@@ -14,6 +14,7 @@ public class EggSpawnManager : MonoBehaviour
     public GameObject rightBackground3;
     public GameObject leftBackground2;
     public GameObject rightBackground2;
+    public GameObject middleBackground1;
     public List<GameObject> eggSpawnerList;
     public List<GameObject> boardList1p;
     public List<GameObject> boardList2p;
@@ -61,6 +62,7 @@ public class EggSpawnManager : MonoBehaviour
             rightBackground3.SetActive(false);
             leftBackground2.SetActive(false);
             rightBackground2.SetActive(false);
+            middleBackground1.SetActive(true);
 
             for (int i = 0; i < 9; i++)
             {
@@ -87,6 +89,7 @@ public class EggSpawnManager : MonoBehaviour
             rightBackground3.SetActive(false);
             leftBackground2.SetActive(true);
             rightBackground2.SetActive(true);
+            middleBackground1.SetActive(false);
 
             for (int i = 0; i < 9; i++)
             {
@@ -115,6 +118,7 @@ public class EggSpawnManager : MonoBehaviour
             rightBackground3.SetActive(true);
             leftBackground2.SetActive(false);
             rightBackground2.SetActive(false);
+            middleBackground1.SetActive(false);
 
             for (int i = 0; i < 9; i++)
             {
@@ -364,7 +368,7 @@ public class EggSpawnManager : MonoBehaviour
         }
         if (gameMode == 2)
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.3f);
         }
         gameLost = true;
     }
