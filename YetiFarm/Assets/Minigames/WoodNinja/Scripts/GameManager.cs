@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     public Timer timer;
     private Blade blade;
     private Spawner spawner;
-    public AudioManager audioMangager;
+    private AudioManager audioManager;
     public int score;
     [SerializeField]private WoodButtonManagerScript WbManager;
 
@@ -32,12 +32,16 @@ public class GameManager : MonoBehaviour
         spawner = FindObjectOfType<Spawner>();
 
     }
-  
+    private void Start()
+    {
+        audioManager = FindObjectOfType<AudioManager>();
+    }
     // Start is called before the first frame update
 
     public void StartWoodSpawns(int difficultyValue, int gameModeValue)
     {
         // Start the game with the settings given in the parameters.
+        audioManager.PlaySound("Ambience");
         WaitForSeconds();
         Time.timeScale = 1;
         spawner.StartSpawns(difficultyValue, gameModeValue);
@@ -70,6 +74,7 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame()
     {
+        
         scoreText.enabled = false;
         scoreText1.enabled = false;
         countdownText.enabled = false;
@@ -80,10 +85,7 @@ public class GameManager : MonoBehaviour
     {
         blade.enabled = false;
         spawner.enabled = false;
-
         StartCoroutine(EndGameSequence());
-
-        // Pass values to end screen in order to give player feedback and display score values, then reset all values to default.
     }
 
     
@@ -92,7 +94,7 @@ public class GameManager : MonoBehaviour
     {
 
         yield return new WaitForSeconds(1f);
-
+        
         WoodSlicer[] woods = FindObjectsOfType<WoodSlicer>();
         foreach (WoodSlicer wood in woods)
         {
@@ -107,6 +109,7 @@ public class GameManager : MonoBehaviour
         scoreText1.enabled = false;
         countdownText.enabled = false;
         countdownText1.enabled = false;
+        Destroy(audioManager.gameObject);
         Time.timeScale = 0;
         WbManager.ActivateGameOverScreen(score);
     }

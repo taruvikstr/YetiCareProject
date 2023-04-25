@@ -98,7 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whole: {fileID: 8152139696835482121}
   sliced: {fileID: 6625070020662749935}
-  audioManager: {fileID: 0}
+  gameManager: {fileID: 0}
   points: 1
 --- !u!1 &6539126169222909210
 GameObject:
