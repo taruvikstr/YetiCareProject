@@ -9,7 +9,7 @@ public class SpawnBerry : MonoBehaviour
     public int diff;
     public bool berrySpawning = false;
     public GameObject currentBerry = null;
-    [SerializeField] private ParticleSystem leaves;
+    //[SerializeField] private ParticleSystem leaves;
 
     private void Update()
     {
@@ -55,8 +55,8 @@ public class SpawnBerry : MonoBehaviour
         StartCoroutine(RespawnDelay());
     }
 
-    public void StartParticleEffect()
-    {
-        leaves.Play();
-    }
+    //public void StartParticleEffect()
+    //{
+    //    leaves.Play();
+    //}
 }

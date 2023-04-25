@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class BirdSpawnBehavior : MonoBehaviour
@@ -10,6 +11,7 @@ public class BirdSpawnBehavior : MonoBehaviour
     private IEnumerator coroutine;
     public float birdSpawnRate = 10f;
     private int spawnPoint;
+    public GameObject birdNest;
 
     public static int birdScoreCounter; // = how many berries the bird has to collect before it beats you
     public TMP_Text birdScoreText;
@@ -22,6 +24,7 @@ public class BirdSpawnBehavior : MonoBehaviour
         if (BerryManager.gameOn == false)
         {
             birdScoreText.enabled = false;
+            birdNest.GetComponent<SpriteRenderer>().enabled = false;
         }
     }
 
@@ -53,5 +56,7 @@ public class BirdSpawnBehavior : MonoBehaviour
 
         birdScoreText.enabled = true;
         birdScoreText.text = birdScoreCounter.ToString();
+        birdNest.GetComponent<SpriteRenderer>().enabled = true;
+
     }
 }

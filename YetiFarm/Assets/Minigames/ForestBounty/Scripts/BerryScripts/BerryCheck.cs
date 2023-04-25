@@ -7,14 +7,11 @@ public class BerryCheck : MonoBehaviour
 {
     public GameObject spawnOrigin = null; // berry knows its spawnpoint
     public bool berryLayingAround = false;
-    //[SerializeField] private ParticleSystem leaves;
-
     private Dictionary<int, Transform> draggingObjects = new Dictionary<int, Transform>();
     private Vector3 offset;
     public LayerMask movableLayers;
     public bool birdHasBerry = false;
 
-    // Update is called once per frame
     void Update()
     {
         if (draggingObjects.Count == 0 && berryLayingAround == true && birdHasBerry == false && gameObject.transform.parent == null)
@@ -29,6 +26,7 @@ public class BerryCheck : MonoBehaviour
             switch (touch.phase)
             {
                 case TouchPhase.Began:
+
                     // touch is being detected on screen
                     // cast ray, restrict the functionality to objects on "Movable" -layer 
                     RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touch.position),
@@ -37,7 +35,6 @@ public class BerryCheck : MonoBehaviour
                     if (hit)
                     {
                         FindObjectOfType<AudioManager>().PlaySound("BerryPick");
-                        
                         birdHasBerry = false;
                         int touchID = touch.fingerId;
                         if (!draggingObjects.ContainsKey(touchID))
@@ -52,6 +49,13 @@ public class BerryCheck : MonoBehaviour
                                 dragging = grabbed.transform;
                                 dragging.parent = null;
                             }
+
+                            // Particle effect
+                            if(dragging.position == spawnOrigin.transform.position)
+                            {
+                                dragging.gameObject.GetComponent<ParticleSystem>().Play();
+                            }
+
                             dragging.transform.parent = null;
                             offset = dragging.position - Camera.main.ScreenToWorldPoint(touch.position);
                             draggingObjects.Add(touchID, dragging);
@@ -70,12 +74,7 @@ public class BerryCheck : MonoBehaviour
                         {
                             dragging.position = Camera.main.ScreenToWorldPoint(touch.position) + offset;
                             dragging.transform.parent = null;
-                            //leaves.Play();
                             berryLayingAround = true;
-
-
-                            //gameObject.GetComponent<BerryCheck>().spawnOrigin.GetComponent<SpawnBerry>().StartParticleEffect();
-                            //spawnOrigin.GetComponent<SpawnBerry>().StartParticleEffect();
                         }
 
                     }
@@ -89,7 +88,6 @@ public class BerryCheck : MonoBehaviour
                     break;
                     //case TouchPhase.Canceled:
                     // touch ended or cancelled, remove from dictionary
-
             }
         }
     }
