@@ -23,17 +23,11 @@ public class ButtonManagerForestBounty : MonoBehaviour
     private int gameModeValue;
     private int desiredScoreValue;
 
-    public TextMeshProUGUI playerAmountSliderNumText;
     public TextMeshProUGUI difficultySliderNumText;
     public TextMeshProUGUI gameModeSliderNumText;
     public TextMeshProUGUI amountSliderNumText;
 
     public Slider gameDifficultySlider;
-    //public ToggleGroup berryAmountGroup;
-    //public Toggle toggleLow;
-    //public Toggle toggleMedium;
-    //public Toggle toggleHigh;
-
 
     private void Awake() // Set values to defaults. Remember to set sliders to these values as well.
     {
@@ -43,12 +37,6 @@ public class ButtonManagerForestBounty : MonoBehaviour
         gameModeValue = 1;
         desiredScoreValue = 6;
     }
-
-    //public Toggle difficultySelection
-    //{
-    //    get { return berryAmountGroup.ActiveToggles().FirstOrDefault (); }
-    //}
-
 
     public void UpdateDifficulty(Slider slider)
     {
@@ -68,28 +56,6 @@ public class ButtonManagerForestBounty : MonoBehaviour
             difficultySliderNumText.text = ":(";
         }
     }
-
-    // Uses toggle group, where player decides the amount of berries
-    //public void UpdateBerryAmount()
-    //{
-    //    if (toggleLow.isOn)
-    //    {
-    //        difficultyValue = 1;
-    //    }
-    //    else if (toggleMedium.isOn)
-    //    {
-    //        difficultyValue = 2;
-    //    }
-    //    else if (toggleHigh.isOn)
-    //    {
-    //        difficultyValue = 3;
-    //    }
-    //}
-
-    //public void UpdateGameSpeed(Slider slider)
-    //{
-    //    gameSpeedValue = (int)slider.value;
-    //}
 
     public void UpdateGameMode(Slider slider)
     {

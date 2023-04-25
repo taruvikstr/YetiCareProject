@@ -18,40 +18,50 @@ public class ButtonManagerScriptMole : MonoBehaviour
     public Slider moleCountSlider;
     public Slider moleDifficultySlider;
     public Slider moleGameModeSlider;
+    public Slider rowsSlider;
     public GameObject gameStarter; // The object that has the script and function for starting the game based on given parameters.
     public int difficultyValueMole;
     public int playerAmountValueMole;
     private int gameSpeedValue;
     public int gameModeValueMole;
     private int desiredScoreValue;
+    private int rowsInGame;
+    
 
     public TextMeshProUGUI playerAmountSliderNumText;
     public TextMeshProUGUI difficultySliderNumText;
     public TextMeshProUGUI gameModeSliderNumText;
+    public TextMeshProUGUI rowsInGameText;
 
     private void Awake() // Set values to defaults. Remember to set sliders to these values as well.
     {
         Time.timeScale = 1;
-       // difficultyValueMole = 2;
+      //  difficultyValueMole = 2;
        // playerAmountValueMole = 1;
         gameSpeedValue = 0;
-        // gameModeValueMole = 1;
+      //  gameModeValueMole = 1;
         desiredScoreValue = 60;
 
-        // Fetching previous start settings from player prefabs, and assigning corresponding values to sliders.
+
+        //Fetching previous start settings from player prefabs, and assigning corresponding values to sliders.
         playerAmountValueMole = PlayerPrefs.GetInt("player_amount", 3);
         difficultyValueMole = PlayerPrefs.GetInt("diff", 2);
         gameModeValueMole = PlayerPrefs.GetInt("game_mode", 1);
-
+        rowsInGame = PlayerPrefs.GetInt("rows", 3);
+    
+       
         playerAmountValueMole =playerAmountValueMole/3;
        // Debug.Log(playerAmountValueMole + " " + difficultyValueMole + " " + gameModeValueMole);
         moleCountSlider.value = playerAmountValueMole;
         moleDifficultySlider.value = difficultyValueMole;
         moleGameModeSlider.value = gameModeValueMole;
+        rowsSlider.value = rowsInGame;
         UpdateGameMode(moleGameModeSlider);
         UpdatePlayerAmount(moleCountSlider);
         UpdateDifficulty(moleDifficultySlider);
+        UpdateRowsAmount(rowsSlider);
     }
+
 
     public void UpdateDifficulty(Slider slider)
     {
@@ -76,6 +86,13 @@ public class ButtonManagerScriptMole : MonoBehaviour
         playerAmountValueMole = (int)slider.value*3;
         playerAmountSliderNumText.text = (slider.value*3).ToString();
     }
+    public void UpdateRowsAmount(Slider slider)
+    {
+        rowsInGame = (int)slider.value;
+        rowsInGameText.text = (slider.value).ToString();
+        UpdatePlayerAmount(slider);
+
+    }
 
     public void UpdateGameSpeed(Slider slider)
     {
@@ -90,18 +107,22 @@ public class ButtonManagerScriptMole : MonoBehaviour
         {
             moleCountSlider.interactable = false;
             moleDifficultySlider.interactable = false;
+            rowsSlider.interactable = false;
         }
         else
         {
             moleCountSlider.interactable = true;
             moleDifficultySlider.interactable = true;
+            rowsSlider.interactable = true;
         }
+
     }
 
     public void UpdateDesiredScore(Slider slider)
     {
         desiredScoreValue = (int)slider.value * 10;
     }
+
 
     public void ReturnToMainScreen()
     {
@@ -111,7 +132,7 @@ public class ButtonManagerScriptMole : MonoBehaviour
     public void ActivateGame()
     {
         startScreen.SetActive(false); // Disable and hide the starting screen.
-        gameStarter.GetComponent<MoleGameManager>().StartGame(playerAmountValueMole, difficultyValueMole, gameModeValueMole);
+        gameStarter.GetComponent<MoleGameManager>().StartGame(playerAmountValueMole, difficultyValueMole, gameModeValueMole,rowsInGame);
     }
 
     public void ActivateGameOverScreen(int score_points, int failed_things, int game_mode)
@@ -120,31 +141,40 @@ public class ButtonManagerScriptMole : MonoBehaviour
         scoreText1.text = "Tainnutit " + score_points.ToString() + " myyrää.";
         scoreText2.text = "Menetit " + failed_things.ToString() + " vihannesta.";
 
-        if (score_points <= 10)
+        /*if (failed_things == 1)
+        {
+            scoreText2.text = "Rikki meni " + failed_things.ToString() + " kananmuna.";
+        }*/
+
+        if (game_mode == 1 && failed_things < score_points / 4)
+        {
+            feedbackText.text = "Hienoa työtä!";
+        }
+        else if (game_mode == 1 && failed_things > score_points / 4)
         {
             feedbackText.text = "Ole ensi kerralla varovaisempi!";
         }
-        else if (score_points <= 20 && score_points > 10)
+        else if (game_mode == 2 && score_points <= 15)
         {
             feedbackText.text = "Parempi onni ensi kerralla!";
         }
-        else if (score_points <= 30 && score_points > 20)
+        else if (game_mode == 2 && score_points <= 25 && score_points > 15)
         {
             feedbackText.text = "Pääsit hyvin alkuun!";
         }
-        else if ( score_points <= 40 && score_points > 30)
+        else if (game_mode == 2 && score_points <= 40 && score_points > 25)
         {
             feedbackText.text = "Sehän meni hienosti!";
         }
-        else if (score_points <= 50 && score_points > 40)
+        else if (game_mode == 2 && score_points <= 60 && score_points > 40)
         {
-            feedbackText.text = "Hienoa! Olet oikea myyrien kauhu!";
+            feedbackText.text = "Hienoa! Olet oikea myyrien karkoittaja!";
         }
-        else if (score_points <= 60 && score_points > 50)
+        else if (game_mode == 2 && score_points <= 80 && score_points > 60)
         {
             feedbackText.text = "Upeaa! Kadehdittava tulos!";
         }
-        else if (score_points < 60)
+        else if (game_mode == 2 && score_points > 80)
         {
             feedbackText.text = "Onneksi olkoon! Olet kasvimaan sankari!";
         }
