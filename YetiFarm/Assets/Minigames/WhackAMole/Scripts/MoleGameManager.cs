@@ -48,10 +48,13 @@ public class MoleGameManager : MonoBehaviour
     private int endlessGame;
     private int vegetablesStart;
     public int grabTimer;
+    private int rowsInGame;
 
     private List<int> samenumbercheck = new List<int>();
 
     private int random;
+
+    
 
     private void Start()
     {
@@ -81,7 +84,7 @@ public class MoleGameManager : MonoBehaviour
     }
 
     //This is public so the play button can see it.
-    public void StartGame(int player_amount, int diff, int game_mode)
+    public void StartGame(int player_amount, int diff, int game_mode,int rows)
     {
         //Activate holes before game.
         foreach (GameObject hole in holes)
@@ -91,7 +94,7 @@ public class MoleGameManager : MonoBehaviour
 
         //Set endlessGamemode from buttonmanagerscript.
         endlessGame = game_mode;
-        
+        rowsInGame = rows;
         // Getting difficultyvalue from MoleGameManager Script.
         difficultyLevel = diff;
         grabTimer = diff;
@@ -100,6 +103,7 @@ public class MoleGameManager : MonoBehaviour
         PlayerPrefs.SetInt("player_amount", molesInGame);
         PlayerPrefs.SetInt("diff", difficultyLevel);
         PlayerPrefs.SetInt("game_mode", endlessGame);
+        PlayerPrefs.SetInt("rows", rowsInGame);
 
         //Changin difficulty for molegame
         if (endlessGame == 1)
@@ -117,15 +121,15 @@ public class MoleGameManager : MonoBehaviour
             {
                 difficultyLevel = 20;
             }
-            //  Debug.Log(molesInGame);
+            
             //Change amount of moles in game
             //Choose 3 random holes for moles
-            if (molesInGame == 3)
+
+            if (molesInGame == 3 && rows == 3)
             {
-                Debug.Log("Check");
-                for (int i = 0; i <= 5; i++)
+                for (int i = 0; i < 6; i++)
                 {
-                    Debug.Log("Check");
+                    Debug.Log(molesInGame);
                     random = Random.Range(0, moles.Count);
 
                     while (samenumbercheck.Contains(random))
@@ -133,16 +137,19 @@ public class MoleGameManager : MonoBehaviour
                         random = Random.Range(0, moles.Count);
                         Debug.Log("Sama numero " + random);
                     }
-                    moles[random].Hide();
-                    moles[random].enabled = false;
                     samenumbercheck.Add(random);
+                    moles[random].Hide();
+                    moles[random].StopAllCoroutines();
+                   
+                    moles.Remove(moles[random]);
+                    
 
                 }
             }
             // If active mole holes in game is set to 6, generate 6 random moles in game and else all holes are available.
-            if (molesInGame == 6)
+            if (molesInGame == 6 && rows == 3)
             {
-                for (int i = 0; i <= 6; i++)
+                for (int i = 0; i < 3; i++)
                 {
                     random = Random.Range(0, moles.Count);
 
@@ -151,10 +158,36 @@ public class MoleGameManager : MonoBehaviour
                         random = Random.Range(0, moles.Count);
                         Debug.Log("Sama numero " + random);
                     }
-                    moles[random].Hide();
-                    moles[random].enabled = false;
                     samenumbercheck.Add(random);
-                    Debug.Log(samenumbercheck[i]);
+                     moles[random].Hide();
+                    moles[random].StopAllCoroutines();
+                    moles.Remove(moles[random]);
+                    
+                   // Debug.Log(samenumbercheck[i]);
+                }
+            }
+            if(rows != 3)
+            {
+                switch (rows)
+                {
+                    case 1:
+                        for (int i = 0; i < 6; i++)
+                        {
+                            moles[0].Hide();
+                            moles[0].StopAllCoroutines();
+                            moles.Remove(moles[0]);
+                        }
+                        break;
+                    case 2:
+                        for (int i = 0; i < 3; i++)
+                        {
+                            moles[0].Hide();
+                            moles[0].StopAllCoroutines();
+                            moles.Remove(moles[0]);
+                        }
+                        break;
+                    default:
+                        break;
                 }
             }
         }

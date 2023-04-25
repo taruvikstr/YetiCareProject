@@ -18,16 +18,20 @@ public class ButtonManagerScriptMole : MonoBehaviour
     public Slider moleCountSlider;
     public Slider moleDifficultySlider;
     public Slider moleGameModeSlider;
+    public Slider rowsSlider;
     public GameObject gameStarter; // The object that has the script and function for starting the game based on given parameters.
     public int difficultyValueMole;
     public int playerAmountValueMole;
     private int gameSpeedValue;
     public int gameModeValueMole;
     private int desiredScoreValue;
+    private int rowsInGame;
+    
 
     public TextMeshProUGUI playerAmountSliderNumText;
     public TextMeshProUGUI difficultySliderNumText;
     public TextMeshProUGUI gameModeSliderNumText;
+    public TextMeshProUGUI rowsInGameText;
 
     private void Awake() // Set values to defaults. Remember to set sliders to these values as well.
     {
@@ -43,15 +47,19 @@ public class ButtonManagerScriptMole : MonoBehaviour
         playerAmountValueMole = PlayerPrefs.GetInt("player_amount", 3);
         difficultyValueMole = PlayerPrefs.GetInt("diff", 2);
         gameModeValueMole = PlayerPrefs.GetInt("game_mode", 1);
-
+        rowsInGame = PlayerPrefs.GetInt("rows", 3);
+    
+       
         playerAmountValueMole =playerAmountValueMole/3;
        // Debug.Log(playerAmountValueMole + " " + difficultyValueMole + " " + gameModeValueMole);
         moleCountSlider.value = playerAmountValueMole;
         moleDifficultySlider.value = difficultyValueMole;
         moleGameModeSlider.value = gameModeValueMole;
+        rowsSlider.value = rowsInGame;
         UpdateGameMode(moleGameModeSlider);
         UpdatePlayerAmount(moleCountSlider);
         UpdateDifficulty(moleDifficultySlider);
+        UpdateRowsAmount(rowsSlider);
     }
 
 
@@ -78,6 +86,12 @@ public class ButtonManagerScriptMole : MonoBehaviour
         playerAmountValueMole = (int)slider.value*3;
         playerAmountSliderNumText.text = (slider.value*3).ToString();
     }
+    public void UpdateRowsAmount(Slider slider)
+    {
+        rowsInGame = (int)slider.value;
+        rowsInGameText.text = (slider.value).ToString();
+
+    }
 
     public void UpdateGameSpeed(Slider slider)
     {
@@ -92,11 +106,13 @@ public class ButtonManagerScriptMole : MonoBehaviour
         {
             moleCountSlider.interactable = false;
             moleDifficultySlider.interactable = false;
+            rowsSlider.interactable = false;
         }
         else
         {
             moleCountSlider.interactable = true;
             moleDifficultySlider.interactable = true;
+            rowsSlider.interactable = true;
         }
 
     }
@@ -115,7 +131,7 @@ public class ButtonManagerScriptMole : MonoBehaviour
     public void ActivateGame()
     {
         startScreen.SetActive(false); // Disable and hide the starting screen.
-        gameStarter.GetComponent<MoleGameManager>().StartGame(playerAmountValueMole, difficultyValueMole, gameModeValueMole);
+        gameStarter.GetComponent<MoleGameManager>().StartGame(playerAmountValueMole, difficultyValueMole, gameModeValueMole,rowsInGame);
     }
 
     public void ActivateGameOverScreen(int score_points, int failed_things, int game_mode)

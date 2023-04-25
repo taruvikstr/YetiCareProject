@@ -110,7 +110,7 @@ public class Mole : MonoBehaviour
 
             // Start timer for grabbing animation    
             grabTimerText.enabled = true;
-            Debug.Log(grabAnimationDuration);
+           // Debug.Log(grabAnimationDuration);
             //Switch to moleGrabbing animation
             animator.runtimeAnimatorController = moleGrabbingAnimation;
             animator.enabled = true;
