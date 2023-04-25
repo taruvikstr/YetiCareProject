@@ -194,6 +194,8 @@ public class Mole : MonoBehaviour
                     Debug.Log("normal hit");
                     spriteRenderer.sprite = moleHit;
                     gameManager.AddScore(moleIndex, moleType != MoleType.Bomb);
+                    //Hide mole grabbing timer if mole is hit
+                    grabTimerText.enabled = false;
                     //Stop Coroutines
                     StopAllCoroutines();
                     StartCoroutine(QuickHide());
@@ -218,6 +220,8 @@ public class Mole : MonoBehaviour
                         Debug.Log("hatHit");
                         spriteRenderer.sprite = moleHit;
                         gameManager.AddScore(moleIndex, moleType != MoleType.Bomb);
+                        //Hide mole grabbing timer if mole is hit
+                        grabTimerText.enabled = false;
                         //Stop the animation
                         StopAllCoroutines();
                         StartCoroutine(QuickHide());
@@ -327,6 +331,7 @@ public class Mole : MonoBehaviour
 
     public void Activate(int level)
     {
+        // Getting difficultyvalue to the grabtimer from the gamemanager script
         grabAnimationDuration = gameManager.grabTimer;
         SetLevel(level);
         CreateNext();
