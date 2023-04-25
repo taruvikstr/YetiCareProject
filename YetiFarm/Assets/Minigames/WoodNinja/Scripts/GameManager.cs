@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     public Timer timer;
     private Blade blade;
     private Spawner spawner;
-    
+    public AudioManager audioMangager;
     public int score;
     [SerializeField]private WoodButtonManagerScript WbManager;
 
