@@ -124,7 +124,6 @@ public class MoleGameManager : MonoBehaviour
             
             //Change amount of moles in game
             //Choose 3 random holes for moles
-
             if (molesInGame == 3 && rows == 3)
             {
                 for (int i = 0; i < 6; i++)
@@ -166,6 +165,7 @@ public class MoleGameManager : MonoBehaviour
                    // Debug.Log(samenumbercheck[i]);
                 }
             }
+            //If rows are something else than all in use, it will be priority over active mole count.
             if(rows != 3)
             {
                 switch (rows)

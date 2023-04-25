@@ -90,6 +90,7 @@ public class ButtonManagerScriptMole : MonoBehaviour
     {
         rowsInGame = (int)slider.value;
         rowsInGameText.text = (slider.value).ToString();
+        UpdatePlayerAmount(slider);
 
     }
 
