@@ -41,7 +41,7 @@ public class Mole : MonoBehaviour
     private Vector2 boxOffsetHidden;
     private Vector2 boxSizeHidden;
 
-    public RuntimeAnimatorController moleGrabbingAnimation;
+    public RuntimeAnimatorController GrabbingAnimation;
     public RuntimeAnimatorController bombAnimation;
 
     //Mole Parameters
@@ -112,7 +112,7 @@ public class Mole : MonoBehaviour
             grabTimerText.enabled = true;
            // Debug.Log(grabAnimationDuration);
             //Switch to moleGrabbing animation
-            animator.runtimeAnimatorController = moleGrabbingAnimation;
+            animator.runtimeAnimatorController = GrabbingAnimation;
             animator.enabled = true;
             while (grabAnimationDuration > 0f)
             {
