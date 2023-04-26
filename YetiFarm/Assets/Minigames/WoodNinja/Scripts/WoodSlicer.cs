@@ -10,6 +10,7 @@ public class WoodSlicer : MonoBehaviour
     private Rigidbody2D woodRigidBody;
     private Collider2D woodCollider;
     private ParticleSystem splashParticleEffect;
+    private AudioManager audioManager;
 
     public int points = 1;
 
@@ -19,18 +20,21 @@ public class WoodSlicer : MonoBehaviour
         woodCollider = GetComponent<Collider2D>();
         splashParticleEffect = GetComponentInChildren<ParticleSystem>();
     }
-
+    private void Start()
+    {
+        audioManager = FindObjectOfType<AudioManager>();
+    }
     // These values come from the Blade Script
     private void Slice(Vector2 direction, Vector2 position, float force)
     {
         FindObjectOfType<GameManager>().IncreaseScore(points);
-
+        
         whole.SetActive(false);
         sliced.SetActive(true);
 
         woodCollider.enabled = false;
         splashParticleEffect.Play();
-
+        audioManager.PlaySound("WoodChop");
         
         sliced.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
 
