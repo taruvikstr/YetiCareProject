@@ -11,15 +11,9 @@ public class ButtonManagerForestBounty : MonoBehaviour
     public GameObject startScreen;
     public GameObject endScreen;
     public TextMeshProUGUI scoreText1;
-    //public TextMeshProUGUI scoreText2;
-    //public TextMeshProUGUI scoreText3;
-    //public TextMeshProUGUI scoreText4;
-    //public TextMeshProUGUI feedbackText;
 
     public GameObject gameStarter; // The object that has the script and function for starting the game based on given parameters.
     private int difficultyValue;
-    private int playerAmountValue;
-    private int gameSpeedValue;
     private int gameModeValue;
     private int desiredScoreValue;
 
@@ -97,7 +91,7 @@ public class ButtonManagerForestBounty : MonoBehaviour
 
     public void ActivateGameOverScreen(int result)
     {
-        // result = 0 lintu voitti, result = 1 pelaaja voitti
+        // result = 0 the bird won, result = 1 the player(s) won
 
         endScreen.SetActive(true); // Enable and display the game over screen.
 

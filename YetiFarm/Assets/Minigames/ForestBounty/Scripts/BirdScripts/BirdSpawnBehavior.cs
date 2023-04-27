@@ -13,7 +13,7 @@ public class BirdSpawnBehavior : MonoBehaviour
     private int spawnPoint;
     public GameObject birdNest;
 
-    public static int birdScoreCounter; // = how many berries the bird has to collect before it beats you
+    public static int birdScoreCounter = 10; // = how many berries the bird has to collect before it beats you
     public TMP_Text birdScoreText;
 
     private void Update()
@@ -26,15 +26,16 @@ public class BirdSpawnBehavior : MonoBehaviour
             birdScoreText.enabled = false;
             birdNest.GetComponent<SpriteRenderer>().enabled = false;
         }
+
     }
 
     public IEnumerator DelayedBirdSpawn()
     {
         while (BerryManager.gameOn == true)
         {
-            Debug.Log("Spawn Bird");
             spawnPoint = Random.Range(0, 2);
-            Debug.Log(spawnPoint);
+            Debug.Log("Spawn Bird. Spawnpoint: " + spawnPoint);
+
             if (spawnPoint == 1)
             {
                 bird.gameObject.GetComponentInChildren<SpriteRenderer>().flipX = true;
@@ -51,12 +52,12 @@ public class BirdSpawnBehavior : MonoBehaviour
 
     public void BirdSpawnStarter()
     {
+        birdScoreCounter = 10;
         coroutine = DelayedBirdSpawn();
         StartCoroutine(coroutine);
 
         birdScoreText.enabled = true;
         birdScoreText.text = birdScoreCounter.ToString();
         birdNest.GetComponent<SpriteRenderer>().enabled = true;
-
     }
 }
