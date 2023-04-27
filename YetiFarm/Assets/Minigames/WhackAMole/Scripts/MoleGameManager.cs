@@ -137,10 +137,11 @@ public class MoleGameManager : MonoBehaviour
                         random = Random.Range(0, moles.Count);
                         Debug.Log("Sama numero " + random);
                     }
+                    moles[random].vegetable.SetActive(false);
+                    vegetables -= 1;
                     samenumbercheck.Add(random);
                     moles[random].Hide();
                     moles[random].StopAllCoroutines();
-                   
                     moles.Remove(moles[random]);
                     
 
@@ -158,6 +159,9 @@ public class MoleGameManager : MonoBehaviour
                         random = Random.Range(0, moles.Count);
                         Debug.Log("Sama numero " + random);
                     }
+                    //Disable vegetable from hole when it is disabled.
+                    moles[random].vegetable.SetActive(false);
+                    vegetables -= 1;
                     samenumbercheck.Add(random);
                      moles[random].Hide();
                     moles[random].StopAllCoroutines();
@@ -174,6 +178,9 @@ public class MoleGameManager : MonoBehaviour
                     case 1:
                         for (int i = 0; i < 6; i++)
                         {
+                            //Disable vegetable from hole when it is disabled.
+                            moles[0].vegetable.SetActive(false);
+                            vegetables -= 1;
                             moles[0].Hide();
                             moles[0].StopAllCoroutines();
                             moles.Remove(moles[0]);
@@ -182,6 +189,9 @@ public class MoleGameManager : MonoBehaviour
                     case 2:
                         for (int i = 0; i < 3; i++)
                         {
+                            //Disable vegetable from hole when it is disabled.
+                            moles[0].vegetable.SetActive(false);
+                            vegetables -= 1;
                             moles[0].Hide();
                             moles[0].StopAllCoroutines();
                             moles.Remove(moles[0]);
