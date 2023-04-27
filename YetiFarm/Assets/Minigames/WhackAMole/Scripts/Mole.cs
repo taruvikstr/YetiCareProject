@@ -96,13 +96,13 @@ public class Mole : MonoBehaviour
             switch (grabAnimationDuration)
             {
                 case 1:
-                    grabAnimationDuration = 3;
+                    grabAnimationDuration = 4;
                     break;
                 case 2:
-                    grabAnimationDuration = 2;
+                    grabAnimationDuration = 3;
                     break;
                 case 3:
-                    grabAnimationDuration = 1;
+                    grabAnimationDuration = 2;
                     break;
                 default:
                     break;
@@ -205,7 +205,7 @@ public class Mole : MonoBehaviour
                 case MoleType.HardHat:
                     if (lives == 2)
                     {
-                        brokenHat.SetActive(true);
+                       // brokenHat.SetActive(true);
                         hat.SetActive(false);
                         audioManager.PlaySound("HelmetHit");
                         lives--;
@@ -215,7 +215,7 @@ public class Mole : MonoBehaviour
                         // hatSparks.Play();
 
                         //HatMole sound
-                        audioManager.PlaySound("HelmetHit");
+                        audioManager.PlaySound("Click");
                         moleHands.SetActive(false);
                         Debug.Log("hatHit");
                         spriteRenderer.sprite = moleHit;
@@ -271,7 +271,7 @@ public class Mole : MonoBehaviour
             // Make a bomb.
             moleType = MoleType.Bomb;
             hat.SetActive(false);
-            brokenHat.SetActive(false);
+           // brokenHat.SetActive(false);
             // The animator handles setting the sprite.
             animator.runtimeAnimatorController = bombAnimation;
             animator.enabled = true;
@@ -286,7 +286,7 @@ public class Mole : MonoBehaviour
                 moleType = MoleType.HardHat;
                 spriteRenderer.sprite = mole;
                 hat.SetActive(true);
-                brokenHat.SetActive(false);
+               // brokenHat.SetActive(false);
                 lives = 2;
             }
             else
@@ -295,7 +295,7 @@ public class Mole : MonoBehaviour
                 moleType = MoleType.Standard;
                 spriteRenderer.sprite = mole;
                 hat.SetActive(false);
-                brokenHat.SetActive(false);
+               // brokenHat.SetActive(false);
                 lives = 1;
             }
         }

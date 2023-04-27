@@ -4287,6 +4287,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7a7d7964ca4e4a4d99f4a70be0f2e6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  disabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+  rowsDifficultyHandle: {fileID: 110912341}
+  rowsDifficultyHandleText: {fileID: 83087206}
+  moleDifficultyHandle: {fileID: 942406011}
+  moleDifficultyHandleText: {fileID: 1273629735}
+  moleCountHandle: {fileID: 1631365650}
+  moleCountHandleText: {fileID: 1476612114}
   startScreen: {fileID: 345591524}
   endScreen: {fileID: 1534023959}
   scoreText1: {fileID: 782861831}

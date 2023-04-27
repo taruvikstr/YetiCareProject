@@ -7,6 +7,14 @@ using TMPro;
 
 public class ButtonManagerScriptMole : MonoBehaviour
 {
+    public Color disabledColor;
+
+    public GameObject rowsDifficultyHandle;
+    public GameObject rowsDifficultyHandleText;
+    public GameObject moleDifficultyHandle;
+    public GameObject moleDifficultyHandleText;
+    public GameObject moleCountHandle;
+    public GameObject moleCountHandleText;
     public GameObject startScreen;
     public GameObject endScreen;
     public TextMeshProUGUI scoreText1;
@@ -94,7 +102,22 @@ public class ButtonManagerScriptMole : MonoBehaviour
     {
         rowsInGame = (int)slider.value;
         rowsInGameText.text = (slider.value).ToString();
-        UpdatePlayerAmount(slider);
+        if(rowsInGame != 3 || gameModeValueMole == 2)
+        {
+            //Change handle and text color to gray to indicate disabled.
+            moleCountSlider.interactable = false;
+            moleCountHandle.GetComponent<Image>().color=disabledColor;
+            moleCountHandleText.GetComponent<TextMeshProUGUI>().color = disabledColor;
+            
+        }
+        else
+        {
+            //Set color back to original color if interactable.
+            moleCountSlider.interactable = true;
+            moleCountHandle.GetComponent<Image>().color = Color.white;
+            moleCountHandleText.GetComponent<TextMeshProUGUI>().color = Color.white;
+        }
+      
 
     }
 
@@ -109,15 +132,29 @@ public class ButtonManagerScriptMole : MonoBehaviour
         gameModeSliderNumText.text = gameModeValueMole.ToString();
         if (gameModeValueMole == 2)
         {
+            //Change handle and text color to gray to indicate disabled.
             moleCountSlider.interactable = false;
+            moleCountHandle.GetComponent<Image>().color = disabledColor;
+            moleCountHandleText.GetComponent<TextMeshProUGUI>().color = disabledColor;
             moleDifficultySlider.interactable = false;
+            moleDifficultyHandle.GetComponent<Image>().color = disabledColor;
+            moleDifficultyHandleText.GetComponent<TextMeshProUGUI>().color = disabledColor;
             rowsSlider.interactable = false;
+            rowsDifficultyHandle.GetComponent<Image>().color = disabledColor;
+            rowsDifficultyHandleText.GetComponent<TextMeshProUGUI>().color = disabledColor;
         }
         else
         {
+            //Set color back to original color if interactable.
             moleCountSlider.interactable = true;
+            moleCountHandle.GetComponent<Image>().color = Color.white;
+            moleCountHandleText.GetComponent<TextMeshProUGUI>().color = Color.white;
             moleDifficultySlider.interactable = true;
+            moleDifficultyHandle.GetComponent<Image>().color = Color.white;
+            moleDifficultyHandleText.GetComponent<TextMeshProUGUI>().color = Color.white;
             rowsSlider.interactable = true;
+            rowsDifficultyHandle.GetComponent<Image>().color = Color.white;
+            rowsDifficultyHandleText.GetComponent<TextMeshProUGUI>().color = Color.white;
         }
 
     }
