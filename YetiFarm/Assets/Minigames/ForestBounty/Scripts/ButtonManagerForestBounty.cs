@@ -22,14 +22,29 @@ public class ButtonManagerForestBounty : MonoBehaviour
     public TextMeshProUGUI amountSliderNumText;
 
     public Slider gameDifficultySlider;
+    public Slider gameModeSlider;
+    public Slider desiredScoreSlider;
 
     private void Awake() // Set values to defaults. Remember to set sliders to these values as well.
     {
         Time.timeScale = 1;
-        difficultyValue = 1;
         gameDifficultySlider.interactable = false;
-        gameModeValue = 1;
-        desiredScoreValue = 6;
+        //difficultyValue = 1;
+        //gameModeValue = 1;
+        //desiredScoreValue = 6;
+
+        difficultyValue = PlayerPrefs.GetInt("berry_difficulty", 1);
+        gameModeValue = PlayerPrefs.GetInt("berry_gameMode", 1);
+        desiredScoreValue = PlayerPrefs.GetInt("berry_desiredScore", 6);
+
+        gameDifficultySlider.value = difficultyValue;
+        gameModeSlider.value = gameModeValue;
+        desiredScoreSlider.value = desiredScoreValue;
+
+        UpdateDifficulty(gameDifficultySlider);
+        UpdateGameMode(gameModeSlider);
+        UpdateDesiredScore(desiredScoreSlider);
+
     }
     private void Start()
     {

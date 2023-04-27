@@ -12,15 +12,20 @@ public class BerryManager : MonoBehaviour
 {
     public Transform[] berrySpawnerList; // list of berry spawnpoints in scene
     public static bool gameOn = false; // while player is picking berries, the game is on 
-    public static int bManagerDifficulty; // 3 bird difficulties 
-
+    
     public TMP_Text endgame_txt;
     public static int endGame = 0; // when endgame == 4, game ends
 
     public GameObject birdSpawn;
     public GameObject containers; // aka buckets
     public GameObject buttonManager;
+
+    public static int bManagerDesiredScore;
     public static int bManagerGameMode;
+    public static int bManagerDifficulty; // 3 bird difficulties 
+
+    private int birdCount = 0;
+    private bool birdSoundOn = false;
 
 
     private void Awake()
@@ -42,6 +47,20 @@ public class BerryManager : MonoBehaviour
 
     private void Update()
     {
+        birdCount = GameObject.FindGameObjectsWithTag("ProjectileTag").Length;
+
+        if (birdCount > 0 && birdSoundOn == false)
+        {
+            Debug.Log(birdCount);
+            FindObjectOfType<AudioManager>().PlaySound("BirdFlap");
+            birdSoundOn = true;
+        }
+        else if (birdCount == 0 && birdSoundOn == true)
+        {
+            FindObjectOfType<AudioManager>().StopSound("BirdFlap");
+            birdSoundOn = false;
+        }
+
         if (Input.GetKeyDown(KeyCode.Escape)) // If the back button of the device is pressed during game.
         {
             gameOn = false;
@@ -78,6 +97,11 @@ public class BerryManager : MonoBehaviour
         endGame = 0;
         bManagerDifficulty = difficulty;
         bManagerGameMode = gameMode;
+        bManagerDesiredScore = desiredScore;
+
+        PlayerPrefs.SetInt("berry_difficulty", bManagerDifficulty);
+        PlayerPrefs.SetInt("berry_gameMode", bManagerGameMode);
+        PlayerPrefs.SetInt("berry_desiredScore", bManagerDesiredScore);
 
         foreach (Transform berrySpawn in berrySpawnerList)
         {

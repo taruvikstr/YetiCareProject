@@ -52,7 +52,7 @@ public class BirdManager : MonoBehaviour
     {  
         while (true)
         {
-            randomIndex = Random.Range(0, berryPositions.Count);
+            randomIndex = Random.Range(1, berryPositions.Count);
             if (berryPositions[randomIndex].GetComponent<SpawnBerry>().hasBerry == true && berryPositions[randomIndex].GetComponent<SpawnBerry>().berrySpawning == false)
             {
                 isMoving = true;
@@ -60,7 +60,7 @@ public class BirdManager : MonoBehaviour
             }
         }
         //GetComponent<AudioSource>().Play();
-        FindObjectOfType<AudioManager>().PlaySound("BirdFlap");
+        //FindObjectOfType<AudioManager>().PlaySound("BirdFlap");
     }
 
     private void Update()
