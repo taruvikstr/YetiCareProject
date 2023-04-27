@@ -205,6 +205,8 @@ public class Mole : MonoBehaviour
                 case MoleType.HardHat:
                     if (lives == 2)
                     {
+                        Vector2 temp = new Vector2(hat.transform.position.x, hat.transform.position.y+2f);
+                        gameManager.HelmetSpark(temp);
                        // brokenHat.SetActive(true);
                         hat.SetActive(false);
                         audioManager.PlaySound("HelmetHit");
