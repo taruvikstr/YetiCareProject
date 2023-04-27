@@ -30,6 +30,11 @@ public class WoodButtonManagerScript : MonoBehaviour
         FindObjectOfType<Blade>().enabled = false;
         gameManager.PauseGame();
     }
+    private void Start()
+    {
+        Application.targetFrameRate = 60;
+        QualitySettings.vSyncCount = 1;
+    }
 
 
     public void UpdateDifficulty(Slider slider)

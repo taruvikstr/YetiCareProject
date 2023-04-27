@@ -9,6 +9,7 @@ public class SpawnBerry : MonoBehaviour
     public int diff;
     public bool berrySpawning = false;
     public GameObject currentBerry = null;
+    private bool firstSpawn = true;
     //[SerializeField] private ParticleSystem leaves;
 
     private void Update()
@@ -42,12 +43,24 @@ public class SpawnBerry : MonoBehaviour
             delay = 3.0f;
         }
 
-        yield return new WaitForSeconds(delay);
+        if (firstSpawn)
+        {
+            currentBerry = Instantiate(berryPrefab, transform.position, transform.rotation);
+            currentBerry.GetComponent<BerryCheck>().spawnOrigin = gameObject;
+            hasBerry = true;
+            firstSpawn = false;
+        }
+        else
+        {
+            yield return new WaitForSeconds(delay);
+
+            currentBerry = Instantiate(berryPrefab, transform.position, transform.rotation);
+            currentBerry.GetComponent<BerryCheck>().spawnOrigin = gameObject;
+            hasBerry = true;
+        }
+
         berrySpawning = false;
 
-        currentBerry = Instantiate(berryPrefab, transform.position, transform.rotation);
-        currentBerry.GetComponent<BerryCheck>().spawnOrigin = gameObject;
-        hasBerry = true;
     }
 
     public void BerryToFalse()

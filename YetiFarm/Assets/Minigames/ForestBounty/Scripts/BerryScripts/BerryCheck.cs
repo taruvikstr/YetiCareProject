@@ -6,11 +6,11 @@ using UnityEngine;
 public class BerryCheck : MonoBehaviour
 {
     public GameObject spawnOrigin = null; // berry knows its spawnpoint
-    public bool berryLayingAround = false;
-    private Dictionary<int, Transform> draggingObjects = new Dictionary<int, Transform>();
-    private Vector3 offset;
-    public LayerMask movableLayers;
-    public bool birdHasBerry = false;
+    public bool berryLayingAround = false; // true if berry has been dragged/moved
+    private Dictionary<int, Transform> draggingObjects = new Dictionary<int, Transform>(); // directory to keep up with multiple touch events
+    private Vector3 offset; 
+    public LayerMask movableLayers; 
+    public bool birdHasBerry = false; 
 
     void Update()
     {
@@ -26,25 +26,24 @@ public class BerryCheck : MonoBehaviour
             switch (touch.phase)
             {
                 case TouchPhase.Began:
-
                     // touch is being detected on screen
                     // cast ray, restrict the functionality to objects on "Movable" -layer 
-                    RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touch.position),
-                        Vector2.zero, float.PositiveInfinity, movableLayers);
+                    RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touch.position), Vector2.zero, float.PositiveInfinity, movableLayers);
 
                     if (hit)
                     {
                         FindObjectOfType<AudioManager>().PlaySound("BerryPick");
                         birdHasBerry = false;
                         int touchID = touch.fingerId;
+
                         if (!draggingObjects.ContainsKey(touchID))
                         {
-                            
                             Transform dragging = hit.transform;
+
                             if (dragging.transform.childCount >= 1)
                             {
+                                // if bird has grabbed the berry, the berry is birds child object and this happens
                                 GameObject grabbed = dragging.transform.GetChild(0).gameObject;
-
                                 grabbed.transform.parent = null;
                                 dragging = grabbed.transform;
                                 dragging.parent = null;
@@ -61,7 +60,6 @@ public class BerryCheck : MonoBehaviour
                             draggingObjects.Add(touchID, dragging);
                         }                     
                     }
-
                     break;
 
                 case TouchPhase.Moved:
@@ -76,18 +74,16 @@ public class BerryCheck : MonoBehaviour
                             dragging.transform.parent = null;
                             berryLayingAround = true;
                         }
-
                     }
                     break;
 
                 case TouchPhase.Ended:
+                    // touch is no longer detected
                     if (draggingObjects.ContainsKey(touch.fingerId))
                     {
                         draggingObjects.Remove(touch.fingerId);
                     }
                     break;
-                    //case TouchPhase.Canceled:
-                    // touch ended or cancelled, remove from dictionary
             }
         }
     }

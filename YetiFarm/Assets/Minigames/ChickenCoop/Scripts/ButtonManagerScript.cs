@@ -35,6 +35,12 @@ public class ButtonManagerScript : MonoBehaviour
         desiredScoreValue = 50;
     }
 
+    private void Start()
+    {
+        Application.targetFrameRate = 60;
+        QualitySettings.vSyncCount = 1;
+    }
+
 
     public void UpdateDifficulty(Slider slider)
     {

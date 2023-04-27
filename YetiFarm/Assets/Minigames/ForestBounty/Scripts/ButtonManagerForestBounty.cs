@@ -11,15 +11,9 @@ public class ButtonManagerForestBounty : MonoBehaviour
     public GameObject startScreen;
     public GameObject endScreen;
     public TextMeshProUGUI scoreText1;
-    //public TextMeshProUGUI scoreText2;
-    //public TextMeshProUGUI scoreText3;
-    //public TextMeshProUGUI scoreText4;
-    //public TextMeshProUGUI feedbackText;
 
     public GameObject gameStarter; // The object that has the script and function for starting the game based on given parameters.
     private int difficultyValue;
-    private int playerAmountValue;
-    private int gameSpeedValue;
     private int gameModeValue;
     private int desiredScoreValue;
 
@@ -28,16 +22,35 @@ public class ButtonManagerForestBounty : MonoBehaviour
     public TextMeshProUGUI amountSliderNumText;
 
     public Slider gameDifficultySlider;
+    public Slider gameModeSlider;
+    public Slider desiredScoreSlider;
 
     private void Awake() // Set values to defaults. Remember to set sliders to these values as well.
     {
         Time.timeScale = 1;
-        difficultyValue = 1;
         gameDifficultySlider.interactable = false;
-        gameModeValue = 1;
-        desiredScoreValue = 6;
-    }
+        //difficultyValue = 1;
+        //gameModeValue = 1;
+        //desiredScoreValue = 6;
 
+        difficultyValue = PlayerPrefs.GetInt("berry_difficulty", 1);
+        gameModeValue = PlayerPrefs.GetInt("berry_gameMode", 1);
+        desiredScoreValue = PlayerPrefs.GetInt("berry_desiredScore", 6);
+
+        gameDifficultySlider.value = difficultyValue;
+        gameModeSlider.value = gameModeValue;
+        desiredScoreSlider.value = desiredScoreValue;
+
+        UpdateDifficulty(gameDifficultySlider);
+        UpdateGameMode(gameModeSlider);
+        UpdateDesiredScore(desiredScoreSlider);
+
+    }
+    private void Start()
+    {
+        Application.targetFrameRate = 60;
+        QualitySettings.vSyncCount = 1;
+    }
     public void UpdateDifficulty(Slider slider)
     {
         difficultyValue = (int)slider.value;
@@ -93,7 +106,7 @@ public class ButtonManagerForestBounty : MonoBehaviour
 
     public void ActivateGameOverScreen(int result)
     {
-        // result = 0 lintu voitti, result = 1 pelaaja voitti
+        // result = 0 the bird won, result = 1 the player(s) won
 
         endScreen.SetActive(true); // Enable and display the game over screen.
 

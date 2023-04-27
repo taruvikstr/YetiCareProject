@@ -41,7 +41,8 @@ public class MoleGameManager : MonoBehaviour
     private HashSet<Mole> currentMoles = new HashSet<Mole>();
     int score;
     private bool playing = false;
-    public ParticleSystem explosion; 
+    public ParticleSystem explosion;
+    public ParticleSystem helmetSparks;
     public int difficultyLevel;
     private int molesInGame;
     public int vegetables;
@@ -136,10 +137,11 @@ public class MoleGameManager : MonoBehaviour
                         random = Random.Range(0, moles.Count);
                         Debug.Log("Sama numero " + random);
                     }
+                    moles[random].vegetable.SetActive(false);
+                    vegetables -= 1;
                     samenumbercheck.Add(random);
                     moles[random].Hide();
                     moles[random].StopAllCoroutines();
-                   
                     moles.Remove(moles[random]);
                     
 
@@ -157,6 +159,9 @@ public class MoleGameManager : MonoBehaviour
                         random = Random.Range(0, moles.Count);
                         Debug.Log("Sama numero " + random);
                     }
+                    //Disable vegetable from hole when it is disabled.
+                    moles[random].vegetable.SetActive(false);
+                    vegetables -= 1;
                     samenumbercheck.Add(random);
                      moles[random].Hide();
                     moles[random].StopAllCoroutines();
@@ -173,6 +178,9 @@ public class MoleGameManager : MonoBehaviour
                     case 1:
                         for (int i = 0; i < 6; i++)
                         {
+                            //Disable vegetable from hole when it is disabled.
+                            moles[0].vegetable.SetActive(false);
+                            vegetables -= 1;
                             moles[0].Hide();
                             moles[0].StopAllCoroutines();
                             moles.Remove(moles[0]);
@@ -181,6 +189,9 @@ public class MoleGameManager : MonoBehaviour
                     case 2:
                         for (int i = 0; i < 3; i++)
                         {
+                            //Disable vegetable from hole when it is disabled.
+                            moles[0].vegetable.SetActive(false);
+                            vegetables -= 1;
                             moles[0].Hide();
                             moles[0].StopAllCoroutines();
                             moles.Remove(moles[0]);
@@ -234,13 +245,23 @@ public class MoleGameManager : MonoBehaviour
         GameObject expGameObject = newExplosion.gameObject;
         newExplosion.transform.position = molepos;
         newExplosion.Play();
-        StartCoroutine(DeleteOldExplosion(expGameObject));
+        StartCoroutine(DeleteOldPS(expGameObject));
+    }
+    //If helmet mole is clicked it will play particle effect.
+    public void HelmetSpark(Vector2 helmetPos)
+    {
+        ParticleSystem newHelmetSpark = Instantiate(helmetSparks);
+        GameObject tempGameObject = newHelmetSpark.gameObject;
+        newHelmetSpark.transform.position = helmetPos;
+        newHelmetSpark.Play();
+        StartCoroutine(DeleteOldPS(tempGameObject));
+
     }
     //Old particlesystem explosion gameobject is deleted from scene after 3 seconds.
-    IEnumerator DeleteOldExplosion(GameObject explosion)
+    IEnumerator DeleteOldPS(GameObject particle)
     {
         yield return new WaitForSeconds(2);
-        Destroy(explosion);
+        Destroy(particle);
     }
   
     public void GameOver(int type)
