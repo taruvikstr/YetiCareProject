@@ -25,6 +25,12 @@ public class Fish_ButtonManager : MonoBehaviour
         UpdateSliderHandleValues();
     }
 
+    private void Start()
+    {
+        Application.targetFrameRate = 60;
+        QualitySettings.vSyncCount = 1;
+    }
+
     private void UpdateSliderHandleValues()
     {
         playersSlider.text = playerAmountValue.ToString();

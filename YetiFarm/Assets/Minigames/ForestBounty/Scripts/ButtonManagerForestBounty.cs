@@ -37,7 +37,11 @@ public class ButtonManagerForestBounty : MonoBehaviour
         gameModeValue = 1;
         desiredScoreValue = 6;
     }
-
+    private void Start()
+    {
+        Application.targetFrameRate = 60;
+        QualitySettings.vSyncCount = 1;
+    }
     public void UpdateDifficulty(Slider slider)
     {
         difficultyValue = (int)slider.value;

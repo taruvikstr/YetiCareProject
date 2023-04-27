@@ -8,6 +8,10 @@ public class MainManager : MonoBehaviour
     private void Start()
     {
         FindObjectOfType<AudioManager>().PlaySound("MainAmbience");
+      
+        Application.targetFrameRate = 60;
+        QualitySettings.vSyncCount = 1;
+        
     }
     public void ToMinigame(string sceneName)
     {
