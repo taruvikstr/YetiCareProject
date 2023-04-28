@@ -188,35 +188,28 @@ public class ButtonManagerScriptMole : MonoBehaviour
             scoreText2.text = "Rikki meni " + failed_things.ToString() + " kananmuna.";
         }*/
 
-        if (game_mode == 1 && failed_things < score_points / 4)
-        {
-            feedbackText.text = "Hienoa työtä!";
-        }
-        else if (game_mode == 1 && failed_things > score_points / 4)
-        {
-            feedbackText.text = "Ole ensi kerralla varovaisempi!";
-        }
-        else if (game_mode == 2 && score_points <= 15)
-        {
-            feedbackText.text = "Parempi onni ensi kerralla!";
-        }
-        else if (game_mode == 2 && score_points <= 25 && score_points > 15)
+        
+        if (game_mode == 2 && score_points <= 10)
         {
             feedbackText.text = "Pääsit hyvin alkuun!";
         }
-        else if (game_mode == 2 && score_points <= 40 && score_points > 25)
+        else if (game_mode == 2 && score_points > 10 && score_points <= 20)
+        {
+            feedbackText.text = "Sinun pitää olla varovaisempi";
+        }
+        else if (game_mode == 2 && score_points > 20 && score_points <= 30)
         {
             feedbackText.text = "Sehän meni hienosti!";
         }
-        else if (game_mode == 2 && score_points <= 60 && score_points > 40)
+        else if (game_mode == 2 && score_points > 30 && score_points <= 40)
         {
             feedbackText.text = "Hienoa! Olet oikea myyrien karkoittaja!";
         }
-        else if (game_mode == 2 && score_points <= 80 && score_points > 60)
+        else if (game_mode == 2 && score_points > 40 && score_points <= 50)
         {
             feedbackText.text = "Upeaa! Kadehdittava tulos!";
         }
-        else if (game_mode == 2 && score_points > 80)
+        else if (game_mode == 2 && score_points > 50)
         {
             feedbackText.text = "Onneksi olkoon! Olet kasvimaan sankari!";
         }
