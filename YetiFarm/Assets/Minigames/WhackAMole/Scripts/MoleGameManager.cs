@@ -28,6 +28,7 @@ public class MoleGameManager : MonoBehaviour
     [SerializeField] private GameObject exitButton;
     [SerializeField] private GameObject vegeCount;
     [SerializeField] private GameObject vegeCountHeader;
+    private int vegetablesAtStart;
     // [SerializeField] private GameObject Explosion;
     public AudioManager audioManager;
 
@@ -137,10 +138,11 @@ public class MoleGameManager : MonoBehaviour
                         random = Random.Range(0, moles.Count);
                         Debug.Log("Sama numero " + random);
                     }
+                    moles[random].vegetable.SetActive(false);
+                    vegetables -= 1;
                     samenumbercheck.Add(random);
                     moles[random].Hide();
                     moles[random].StopAllCoroutines();
-                   
                     moles.Remove(moles[random]);
                     
 
@@ -158,6 +160,9 @@ public class MoleGameManager : MonoBehaviour
                         random = Random.Range(0, moles.Count);
                         Debug.Log("Sama numero " + random);
                     }
+                    //Disable vegetable from hole when it is disabled.
+                    moles[random].vegetable.SetActive(false);
+                    vegetables -= 1;
                     samenumbercheck.Add(random);
                      moles[random].Hide();
                     moles[random].StopAllCoroutines();
@@ -174,6 +179,9 @@ public class MoleGameManager : MonoBehaviour
                     case 1:
                         for (int i = 0; i < 6; i++)
                         {
+                            //Disable vegetable from hole when it is disabled.
+                            moles[0].vegetable.SetActive(false);
+                            vegetables -= 1;
                             moles[0].Hide();
                             moles[0].StopAllCoroutines();
                             moles.Remove(moles[0]);
@@ -182,6 +190,9 @@ public class MoleGameManager : MonoBehaviour
                     case 2:
                         for (int i = 0; i < 3; i++)
                         {
+                            //Disable vegetable from hole when it is disabled.
+                            moles[0].vegetable.SetActive(false);
+                            vegetables -= 1;
                             moles[0].Hide();
                             moles[0].StopAllCoroutines();
                             moles.Remove(moles[0]);
@@ -192,11 +203,7 @@ public class MoleGameManager : MonoBehaviour
                 }
             }
         }
-
-
-
-
-
+        
         //Setting startingcanvas to false and time and scoretextobjects to true.
         scoreHeader.SetActive(true);
         timeheader.SetActive(true);
@@ -225,6 +232,8 @@ public class MoleGameManager : MonoBehaviour
         score = 0;
         scoreText.text = "0";
         playing = true;
+        //Get vegetablecount if there are disabled vegetables
+        vegetablesAtStart = vegetables;
 
     }
     // If bomb is clicked explosion particle effect is triggered.
@@ -283,7 +292,7 @@ public class MoleGameManager : MonoBehaviour
 
         //Stop the game and show the start UI.
         playing = false;
-        buttonManager.GetComponent<ButtonManagerScriptMole>().ActivateGameOverScreen(score, (9 - vegetables), endlessGame);
+        buttonManager.GetComponent<ButtonManagerScriptMole>().ActivateGameOverScreen(score, (vegetablesAtStart - vegetables), endlessGame);
         //playButton.SetActive(true);
         //exitButton.SetActive(true);
     }

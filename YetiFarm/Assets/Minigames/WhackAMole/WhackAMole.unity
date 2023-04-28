@@ -688,11 +688,11 @@ PrefabInstance:
     - target: {fileID: 349789217551634661, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
       propertyPath: mole
       value: 
-      objectReference: {fileID: 21300000, guid: 89e4dee4d28154f44bc420a95a4fc095, type: 3}
+      objectReference: {fileID: 1703215556, guid: bd203b7333d9a2d48aeae45f509f8dd8, type: 3}
     - target: {fileID: 349789217551634661, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
       propertyPath: moleHit
       value: 
-      objectReference: {fileID: 21300000, guid: b4c267ddffe35d14f86fbf655907a0ba, type: 3}
+      objectReference: {fileID: 21300000, guid: 988bb68f19fc35c4abee44e62dfce442, type: 3}
     - target: {fileID: 349789217551634661, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
       propertyPath: brokenHat
       value: 
@@ -1687,11 +1687,11 @@ PrefabInstance:
     - target: {fileID: 349789217551634661, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
       propertyPath: mole
       value: 
-      objectReference: {fileID: 21300000, guid: 89e4dee4d28154f44bc420a95a4fc095, type: 3}
+      objectReference: {fileID: 1703215556, guid: bd203b7333d9a2d48aeae45f509f8dd8, type: 3}
     - target: {fileID: 349789217551634661, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
       propertyPath: moleHit
       value: 
-      objectReference: {fileID: 21300000, guid: b4c267ddffe35d14f86fbf655907a0ba, type: 3}
+      objectReference: {fileID: 21300000, guid: 988bb68f19fc35c4abee44e62dfce442, type: 3}
     - target: {fileID: 349789217551634661, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
       propertyPath: brokenHat
       value: 
@@ -1929,6 +1929,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1395181004}
     - target: {fileID: 349789217551634661, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
+      propertyPath: mole
+      value: 
+      objectReference: {fileID: 1703215556, guid: bd203b7333d9a2d48aeae45f509f8dd8, type: 3}
+    - target: {fileID: 349789217551634661, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
       propertyPath: brokenHat
       value: 
       objectReference: {fileID: 476795883}
@@ -2008,11 +2012,11 @@ PrefabInstance:
     - target: {fileID: 349789217551634661, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
       propertyPath: mole
       value: 
-      objectReference: {fileID: 21300000, guid: 89e4dee4d28154f44bc420a95a4fc095, type: 3}
+      objectReference: {fileID: 1703215556, guid: bd203b7333d9a2d48aeae45f509f8dd8, type: 3}
     - target: {fileID: 349789217551634661, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
       propertyPath: moleHit
       value: 
-      objectReference: {fileID: 21300000, guid: b4c267ddffe35d14f86fbf655907a0ba, type: 3}
+      objectReference: {fileID: 21300000, guid: 988bb68f19fc35c4abee44e62dfce442, type: 3}
     - target: {fileID: 349789217551634661, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
       propertyPath: brokenHat
       value: 
@@ -2309,8 +2313,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.174, y: -3}
-  m_SizeDelta: {x: 128, y: 128}
+  m_AnchoredPosition: {x: 1, y: -3}
+  m_SizeDelta: {x: 160.5992, y: 128}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &603263673
 MonoBehaviour:
@@ -3560,11 +3564,11 @@ PrefabInstance:
     - target: {fileID: 349789217551634661, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
       propertyPath: mole
       value: 
-      objectReference: {fileID: 21300000, guid: 89e4dee4d28154f44bc420a95a4fc095, type: 3}
+      objectReference: {fileID: 1703215556, guid: bd203b7333d9a2d48aeae45f509f8dd8, type: 3}
     - target: {fileID: 349789217551634661, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
       propertyPath: moleHit
       value: 
-      objectReference: {fileID: 21300000, guid: b4c267ddffe35d14f86fbf655907a0ba, type: 3}
+      objectReference: {fileID: 21300000, guid: 988bb68f19fc35c4abee44e62dfce442, type: 3}
     - target: {fileID: 349789217551634661, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
       propertyPath: brokenHat
       value: 
@@ -4419,11 +4423,11 @@ PrefabInstance:
     - target: {fileID: 349789217551634661, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
       propertyPath: mole
       value: 
-      objectReference: {fileID: 21300000, guid: 89e4dee4d28154f44bc420a95a4fc095, type: 3}
+      objectReference: {fileID: 1703215556, guid: bd203b7333d9a2d48aeae45f509f8dd8, type: 3}
     - target: {fileID: 349789217551634661, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
       propertyPath: moleHit
       value: 
-      objectReference: {fileID: 21300000, guid: b4c267ddffe35d14f86fbf655907a0ba, type: 3}
+      objectReference: {fileID: 21300000, guid: 988bb68f19fc35c4abee44e62dfce442, type: 3}
     - target: {fileID: 349789217551634661, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
       propertyPath: brokenHat
       value: 
@@ -5229,11 +5233,11 @@ PrefabInstance:
     - target: {fileID: 349789217551634661, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
       propertyPath: mole
       value: 
-      objectReference: {fileID: 21300000, guid: 89e4dee4d28154f44bc420a95a4fc095, type: 3}
+      objectReference: {fileID: 1703215556, guid: bd203b7333d9a2d48aeae45f509f8dd8, type: 3}
     - target: {fileID: 349789217551634661, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
       propertyPath: moleHit
       value: 
-      objectReference: {fileID: 21300000, guid: b4c267ddffe35d14f86fbf655907a0ba, type: 3}
+      objectReference: {fileID: 21300000, guid: 988bb68f19fc35c4abee44e62dfce442, type: 3}
     - target: {fileID: 349789217551634661, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
       propertyPath: brokenHat
       value: 
@@ -5253,7 +5257,7 @@ PrefabInstance:
     - target: {fileID: 349789217551634661, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
       propertyPath: moleHatHit
       value: 
-      objectReference: {fileID: 21300000, guid: 4702b86f3a3def34685d8d68ede166d7, type: 3}
+      objectReference: {fileID: 21300000, guid: 988bb68f19fc35c4abee44e62dfce442, type: 3}
     - target: {fileID: 349789217551634661, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
       propertyPath: gameManager
       value: 
@@ -5318,6 +5322,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3742278012984212325, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 553d062a7ff90b741add76180aeb3334, type: 2}
     - target: {fileID: 4026277225402769445, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
       propertyPath: m_Name
       value: MoleHole 1 (4)
@@ -5437,11 +5445,11 @@ PrefabInstance:
     - target: {fileID: 349789217551634661, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
       propertyPath: mole
       value: 
-      objectReference: {fileID: 21300000, guid: 89e4dee4d28154f44bc420a95a4fc095, type: 3}
+      objectReference: {fileID: 1703215556, guid: bd203b7333d9a2d48aeae45f509f8dd8, type: 3}
     - target: {fileID: 349789217551634661, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
       propertyPath: moleHit
       value: 
-      objectReference: {fileID: 21300000, guid: b4c267ddffe35d14f86fbf655907a0ba, type: 3}
+      objectReference: {fileID: 21300000, guid: 988bb68f19fc35c4abee44e62dfce442, type: 3}
     - target: {fileID: 349789217551634661, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
       propertyPath: brokenHat
       value: 
@@ -9610,11 +9618,11 @@ PrefabInstance:
     - target: {fileID: 349789217551634661, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
       propertyPath: mole
       value: 
-      objectReference: {fileID: 21300000, guid: 89e4dee4d28154f44bc420a95a4fc095, type: 3}
+      objectReference: {fileID: 1703215556, guid: bd203b7333d9a2d48aeae45f509f8dd8, type: 3}
     - target: {fileID: 349789217551634661, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
       propertyPath: moleHit
       value: 
-      objectReference: {fileID: 21300000, guid: b4c267ddffe35d14f86fbf655907a0ba, type: 3}
+      objectReference: {fileID: 21300000, guid: 988bb68f19fc35c4abee44e62dfce442, type: 3}
     - target: {fileID: 349789217551634661, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
       propertyPath: brokenHat
       value: 
