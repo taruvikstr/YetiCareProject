@@ -200,6 +200,7 @@ MonoBehaviour:
   duration: 1
   moleGrabbingAnimation: {fileID: 9100000, guid: 553d062a7ff90b741add76180aeb3334, type: 2}
   bombAnimation: {fileID: 9100000, guid: 4c11f9bfd357db44b99e8d91aed65987, type: 2}
+  pullingAnim: {fileID: 9100000, guid: ab6c4ad4e4df8234798d1448a628db17, type: 2}
 --- !u!61 &4071165849382617525
 BoxCollider2D:
   m_ObjectHideFlags: 0

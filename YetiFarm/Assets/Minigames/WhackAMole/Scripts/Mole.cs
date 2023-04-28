@@ -43,6 +43,7 @@ public class Mole : MonoBehaviour
 
     public RuntimeAnimatorController moleGrabbingAnimation;
     public RuntimeAnimatorController bombAnimation;
+    public RuntimeAnimatorController pullingAnim;
 
     //Mole Parameters
 
@@ -114,11 +115,16 @@ public class Mole : MonoBehaviour
             //Switch to moleGrabbing animation
             animator.runtimeAnimatorController = moleGrabbingAnimation;
             animator.enabled = true;
+            
             while (grabAnimationDuration > 0f)
             {
 
                 grabTimerText.text = Mathf.Round(grabAnimationDuration).ToString();
                 grabAnimationDuration -= Time.deltaTime;
+                if(grabAnimationDuration < 2f)
+                {
+                    animator.runtimeAnimatorController = pullingAnim;
+                }
                 yield return null;
             }
 
