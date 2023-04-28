@@ -17,6 +17,7 @@ public class ButtonManagerScriptMole : MonoBehaviour
     public GameObject moleCountHandleText;
     public GameObject startScreen;
     public GameObject endScreen;
+    public GameObject tutorialScreen;
     public TextMeshProUGUI scoreText1;
     public TextMeshProUGUI scoreText2;
     public TextMeshProUGUI scoreText3;
@@ -226,5 +227,17 @@ public class ButtonManagerScriptMole : MonoBehaviour
         SceneManager.LoadScene("WhackAMole");
         // endScreen.SetActive(false);
         // startScreen.SetActive(true);
+    }
+
+    public void ToggleTutorial()
+    {
+        if (tutorialScreen.activeSelf)
+        {
+            tutorialScreen.SetActive(false);
+        }
+        else
+        {
+            tutorialScreen.SetActive(true);
+        }
     }
 }

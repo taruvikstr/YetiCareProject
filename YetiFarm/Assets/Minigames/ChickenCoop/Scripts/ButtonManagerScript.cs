@@ -9,6 +9,7 @@ public class ButtonManagerScript : MonoBehaviour
 {
     public GameObject startScreen;
     public GameObject endScreen;
+    public GameObject tutorialScreen;
     public TextMeshProUGUI scoreText1;
     public TextMeshProUGUI scoreText2;
     public TextMeshProUGUI scoreText3;
@@ -151,5 +152,17 @@ public class ButtonManagerScript : MonoBehaviour
         SceneManager.LoadScene("ChickenCoop");
         // endScreen.SetActive(false);
         // startScreen.SetActive(true);
+    }
+
+    public void ToggleTutorial()
+    {
+        if (tutorialScreen.activeSelf)
+        {
+            tutorialScreen.SetActive(false);
+        }
+        else
+        {
+            tutorialScreen.SetActive(true);
+        }
     }
 }
