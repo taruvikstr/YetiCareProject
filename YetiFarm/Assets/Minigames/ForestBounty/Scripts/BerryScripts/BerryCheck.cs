@@ -10,13 +10,26 @@ public class BerryCheck : MonoBehaviour
     private Dictionary<int, Transform> draggingObjects = new Dictionary<int, Transform>(); // directory to keep up with multiple touch events
     private Vector3 offset; 
     public LayerMask movableLayers; 
-    public bool birdHasBerry = false; 
+    public bool birdHasBerry = false;
 
     void Update()
     {
-        if (draggingObjects.Count == 0 && berryLayingAround == true && birdHasBerry == false && gameObject.transform.parent == null)
+        // ÄLÄ POISTA
+        //if (draggingObjects.Count == 0 && berryLayingAround == true && birdHasBerry == false && gameObject.transform.parent == null)
+        //{
+        //    MoveBerryBack();
+        //}
+        if (transform.parent == null)
         {
-            MoveBerryBack();
+            birdHasBerry = false;
+        }
+
+        foreach (BerryCheck berry in FindObjectsOfType<BerryCheck>())
+        {
+            if (!draggingObjects.ContainsValue(berry.transform) && berry.berryLayingAround && !berry.birdHasBerry && berry.gameObject.transform.parent == null)
+            {
+                berry.MoveBerryBack();
+            }
         }
 
         int touchCount = Input.touchCount;
@@ -82,6 +95,7 @@ public class BerryCheck : MonoBehaviour
                     if (draggingObjects.ContainsKey(touch.fingerId))
                     {
                         draggingObjects.Remove(touch.fingerId);
+                        //berryLayingAround = true;
                     }
                     break;
             }
@@ -93,6 +107,7 @@ public class BerryCheck : MonoBehaviour
         // bird is stealing the berry
         transform.parent = collision.gameObject.transform;
         berryLayingAround = false;
+        gameObject.GetComponent<SpriteRenderer>().sortingOrder = 3;
     }
 
     public void MoveBerryBack()
@@ -101,7 +116,7 @@ public class BerryCheck : MonoBehaviour
         // it moves back to spawnpoint (or in this case, spawnOrigin)
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
         Vector3 parentPos = spawnOrigin.transform.position;
-        transform.position = Vector3.MoveTowards(transform.position, parentPos, 10f * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, parentPos, 2f * Time.deltaTime);
 
         if (transform.position.Equals(parentPos))
         {

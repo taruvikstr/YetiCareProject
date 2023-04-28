@@ -7,7 +7,7 @@ using TMPro;
 
 public class Fish_ButtonManager : MonoBehaviour
 {   
-    [SerializeField] private GameObject startScreen, endScreen, gameCanvas, gameStarter;
+    [SerializeField] private GameObject startScreen, endScreen, tutorialScreen, gameCanvas, gameStarter;
     [SerializeField] private TMP_Text playersSlider, fishSlider, patternSlider, timeSlider;
     private int fishAmountValue;
     private int playerAmountValue;
@@ -79,5 +79,17 @@ public class Fish_ButtonManager : MonoBehaviour
     public void ReturnToSettingScreen()
     {
         SceneManager.LoadScene("FindTheFish");
+    }
+
+    public void ToggleTutorial()
+    {
+        if (tutorialScreen.activeSelf)
+        {
+            tutorialScreen.SetActive(false);
+        }
+        else
+        {
+            tutorialScreen.SetActive(true);
+        }
     }
 }

@@ -28,6 +28,7 @@ public class MoleGameManager : MonoBehaviour
     [SerializeField] private GameObject exitButton;
     [SerializeField] private GameObject vegeCount;
     [SerializeField] private GameObject vegeCountHeader;
+    private int vegetablesAtStart;
     // [SerializeField] private GameObject Explosion;
     public AudioManager audioManager;
 
@@ -202,11 +203,7 @@ public class MoleGameManager : MonoBehaviour
                 }
             }
         }
-
-
-
-
-
+        
         //Setting startingcanvas to false and time and scoretextobjects to true.
         scoreHeader.SetActive(true);
         timeheader.SetActive(true);
@@ -235,6 +232,8 @@ public class MoleGameManager : MonoBehaviour
         score = 0;
         scoreText.text = "0";
         playing = true;
+        //Get vegetablecount if there are disabled vegetables
+        vegetablesAtStart = vegetables;
 
     }
     // If bomb is clicked explosion particle effect is triggered.
@@ -293,7 +292,7 @@ public class MoleGameManager : MonoBehaviour
 
         //Stop the game and show the start UI.
         playing = false;
-        buttonManager.GetComponent<ButtonManagerScriptMole>().ActivateGameOverScreen(score, (9 - vegetables), endlessGame);
+        buttonManager.GetComponent<ButtonManagerScriptMole>().ActivateGameOverScreen(score, (vegetablesAtStart - vegetables), endlessGame);
         //playButton.SetActive(true);
         //exitButton.SetActive(true);
     }

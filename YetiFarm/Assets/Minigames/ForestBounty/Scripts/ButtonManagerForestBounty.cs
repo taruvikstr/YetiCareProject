@@ -10,6 +10,7 @@ public class ButtonManagerForestBounty : MonoBehaviour
 {
     public GameObject startScreen;
     public GameObject endScreen;
+    public GameObject tutorialScreen;
     public TextMeshProUGUI scoreText1;
 
     public GameObject gameStarter; // The object that has the script and function for starting the game based on given parameters.
@@ -129,5 +130,17 @@ public class ButtonManagerForestBounty : MonoBehaviour
         SceneManager.LoadScene("ForestBounty");
         //endScreen.SetActive(false);
         //startScreen.SetActive(true);
+    }
+
+    public void ToggleTutorial()
+    {
+        if (tutorialScreen.activeSelf)
+        {
+            tutorialScreen.SetActive(false);
+        }
+        else
+        {
+            tutorialScreen.SetActive(true);
+        }
     }
 }

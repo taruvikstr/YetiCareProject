@@ -16,7 +16,7 @@ public class BirdManager : MonoBehaviour
 
     private float movementSpeed = 2f; // bird movement speed
     private bool isMoving = false; // is bird moving
-    private bool berryGrabbed = false; // did bird grab berry
+    public bool berryGrabbed = false; // did bird grab berry
     private int randomIndex; // random index for berryPositions list
     private bool berryNotVisited = true;  // when bird has reached berryPositions[randomIndex], berryNotVisited = false;
 
@@ -55,12 +55,11 @@ public class BirdManager : MonoBehaviour
             randomIndex = Random.Range(1, berryPositions.Count);
             if (berryPositions[randomIndex].GetComponent<SpawnBerry>().hasBerry == true && berryPositions[randomIndex].GetComponent<SpawnBerry>().berrySpawning == false)
             {
+                Debug.Log("lintu menee: " + randomIndex);
                 isMoving = true;
                 break;
             }
         }
-        //GetComponent<AudioSource>().Play();
-        //FindObjectOfType<AudioManager>().PlaySound("BirdFlap");
     }
 
     private void Update()
@@ -114,8 +113,16 @@ public class BirdManager : MonoBehaviour
 
     public void StealBerry()
     {
-        berryPositions[randomIndex].GetComponent<SpawnBerry>().currentBerry.GetComponent<BerryCheck>().OnSteal(gameObject);
-        berryGrabbed = true;
-        gameObject.transform.GetChild(1).GetComponent<BerryCheck>().birdHasBerry = true;           
+        if (berryPositions[randomIndex].GetComponent<SpawnBerry>().currentBerry.GetComponent<BerryCheck>().berryLayingAround == false)
+        {
+            berryPositions[randomIndex].GetComponent<SpawnBerry>().currentBerry.GetComponent<BerryCheck>().OnSteal(gameObject);
+            berryGrabbed = true;
+            gameObject.transform.GetChild(1).GetComponent<BerryCheck>().birdHasBerry = true;
+        }
+
+        // ÄLÄ POISTA
+        //berryPositions[randomIndex].GetComponent<SpawnBerry>().currentBerry.GetComponent<BerryCheck>().OnSteal(gameObject);
+        //berryGrabbed = true;
+        //gameObject.transform.GetChild(1).GetComponent<BerryCheck>().birdHasBerry = true;
     }
 }
