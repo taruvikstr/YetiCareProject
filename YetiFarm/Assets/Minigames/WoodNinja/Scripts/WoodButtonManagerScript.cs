@@ -9,6 +9,7 @@ public class WoodButtonManagerScript : MonoBehaviour
 {
     public GameObject startScreen;
     public GameObject endScreen;
+    public GameObject tutorialScreen;
     public TextMeshProUGUI scoreText1;
     public TextMeshProUGUI feedbackText;
 
@@ -143,5 +144,17 @@ public class WoodButtonManagerScript : MonoBehaviour
         
         endScreen.SetActive(false);
         startScreen.SetActive(true);
+    }
+
+    public void ToggleTutorial()
+    {
+        if (tutorialScreen.activeSelf)
+        {
+            tutorialScreen.SetActive(false);
+        }
+        else
+        {
+            tutorialScreen.SetActive(true);
+        }
     }
 }
