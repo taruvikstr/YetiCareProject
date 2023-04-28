@@ -7,15 +7,15 @@ public class Mole : MonoBehaviour
 {
     [Header("Graphics")]
     [SerializeField] private Sprite mole;
-    [SerializeField] private Sprite moleHardHat;
-    [SerializeField] private Sprite moleHatBroken;
+   // [SerializeField] private Sprite moleHardHat;
+  //  [SerializeField] private Sprite moleHatBroken;
     [SerializeField] private Sprite moleHit;
-    [SerializeField] private Sprite moleHatHit;
+   // [SerializeField] private Sprite moleHatHit;
     // [SerializeField] private ParticleSystem hatSparks;
     [SerializeField] public GameObject moleHands;
     [SerializeField] public GameObject vegetable;
     [SerializeField] public GameObject hat;
-    [SerializeField] public GameObject brokenHat;
+   // [SerializeField] public GameObject brokenHat;
 
 
     [Header("GameManager")]
