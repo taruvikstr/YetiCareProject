@@ -40,7 +40,7 @@ public class Fish_GameManager : MonoBehaviour
 
             if (timer / 60 > 1)
             {
-                timeText.text = ((int)timer/60).ToString() + " min.";
+                timeText.text = ((int)timer/60 + 1).ToString() + " min.";
             }
             else timeText.text = ((int)timer).ToString();
         }
