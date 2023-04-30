@@ -17,16 +17,24 @@ public class WoodButtonManagerScript : MonoBehaviour
     
     private int gameModeValue;
 
+    public Slider diffSlider;
+    public Slider modeSlider;
     
     public TextMeshProUGUI difficultySliderNumText;
     public TextMeshProUGUI gameModeSliderNumText;
     
     [SerializeField] private GameManager gameManager;
 
-    private void Awake() // Set values to defaults. Remember to set sliders to these values as well.
+    private void Awake() // Set values to defaults.
     {
-        difficultyValue = 1;
-        gameModeValue = 1;
+        difficultyValue = PlayerPrefs.GetInt("wood_diff", 2);
+        gameModeValue = PlayerPrefs.GetInt("wood_mode", 1); ;
+
+        diffSlider.value = difficultyValue;
+        modeSlider.value = gameModeValue;
+
+        UpdateDifficulty(diffSlider);
+        UpdateGameMode(modeSlider);
 
         FindObjectOfType<Blade>().enabled = false;
         gameManager.PauseGame();
@@ -72,12 +80,15 @@ public class WoodButtonManagerScript : MonoBehaviour
 
     public void ReturnToMainScreen()
     {
+        PlayerPrefs.SetInt("wood_diff", 2);
+        PlayerPrefs.SetInt("wood_mode", 1);
         SceneManager.LoadScene("Main_Farm");
     }
 
     public void ActivateGame()
     {
-        
+        PlayerPrefs.SetInt("wood_diff", difficultyValue);
+        PlayerPrefs.SetInt("wood_mode", gameModeValue);
         startScreen.SetActive(false); // Disable and hide the starting screen.
         gameManager.StartWoodSpawns(difficultyValue, gameModeValue);
         FindObjectOfType<Blade>().enabled = true;
@@ -141,9 +152,9 @@ public class WoodButtonManagerScript : MonoBehaviour
     }
     public void ReturnToSettingScreen()
     {
-        
-        endScreen.SetActive(false);
-        startScreen.SetActive(true);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //endScreen.SetActive(false);
+        //startScreen.SetActive(true);
     }
 
     public void ToggleTutorial()

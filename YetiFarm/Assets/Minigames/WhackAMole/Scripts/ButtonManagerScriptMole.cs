@@ -106,7 +106,8 @@ public class ButtonManagerScriptMole : MonoBehaviour
         if(rowsInGame != 3 || gameModeValueMole == 2)
         {
             //Change handle and text color to gray to indicate disabled.
-            moleCountSlider.interactable = false;
+            //moleCountSlider.interactable = false;
+            moleCountSlider.gameObject.SetActive(false);
             moleCountHandle.GetComponent<Image>().color=disabledColor;
             moleCountHandleText.GetComponent<TextMeshProUGUI>().color = disabledColor;
             
@@ -114,7 +115,8 @@ public class ButtonManagerScriptMole : MonoBehaviour
         else
         {
             //Set color back to original color if interactable.
-            moleCountSlider.interactable = true;
+            //moleCountSlider.interactable = true;
+            moleCountSlider.gameObject.SetActive(true);
             moleCountHandle.GetComponent<Image>().color = Color.white;
             moleCountHandleText.GetComponent<TextMeshProUGUI>().color = Color.white;
         }
@@ -130,32 +132,42 @@ public class ButtonManagerScriptMole : MonoBehaviour
     public void UpdateGameMode(Slider slider)
     {
         gameModeValueMole = (int)slider.value;
-        gameModeSliderNumText.text = gameModeValueMole.ToString();
+        
         if (gameModeValueMole == 2)
         {
+            gameModeSliderNumText.text = "~";
+
             //Change handle and text color to gray to indicate disabled.
-            moleCountSlider.interactable = false;
-            moleCountHandle.GetComponent<Image>().color = disabledColor;
-            moleCountHandleText.GetComponent<TextMeshProUGUI>().color = disabledColor;
-            moleDifficultySlider.interactable = false;
-            moleDifficultyHandle.GetComponent<Image>().color = disabledColor;
-            moleDifficultyHandleText.GetComponent<TextMeshProUGUI>().color = disabledColor;
-            rowsSlider.interactable = false;
-            rowsDifficultyHandle.GetComponent<Image>().color = disabledColor;
-            rowsDifficultyHandleText.GetComponent<TextMeshProUGUI>().color = disabledColor;
+            //moleCountSlider.interactable = false;
+            moleCountSlider.gameObject.SetActive(false);
+            //moleCountHandle.GetComponent<Image>().color = disabledColor;
+            //moleCountHandleText.GetComponent<TextMeshProUGUI>().color = disabledColor;
+            //moleDifficultySlider.interactable = false;
+            moleDifficultySlider.gameObject.SetActive(false);
+            //moleDifficultyHandle.GetComponent<Image>().color = disabledColor;
+            //moleDifficultyHandleText.GetComponent<TextMeshProUGUI>().color = disabledColor;
+            //rowsSlider.interactable = false;
+            rowsSlider.gameObject.SetActive(false);
+            //rowsDifficultyHandle.GetComponent<Image>().color = disabledColor;
+            //rowsDifficultyHandleText.GetComponent<TextMeshProUGUI>().color = disabledColor;
         }
         else
         {
+            gameModeSliderNumText.text = "#";
+
             //Set color back to original color if interactable.
-            moleCountSlider.interactable = true;
-            moleCountHandle.GetComponent<Image>().color = Color.white;
-            moleCountHandleText.GetComponent<TextMeshProUGUI>().color = Color.white;
-            moleDifficultySlider.interactable = true;
-            moleDifficultyHandle.GetComponent<Image>().color = Color.white;
-            moleDifficultyHandleText.GetComponent<TextMeshProUGUI>().color = Color.white;
-            rowsSlider.interactable = true;
-            rowsDifficultyHandle.GetComponent<Image>().color = Color.white;
-            rowsDifficultyHandleText.GetComponent<TextMeshProUGUI>().color = Color.white;
+            //moleCountSlider.interactable = true;
+            moleCountSlider.gameObject.SetActive(true);
+            //moleCountHandle.GetComponent<Image>().color = Color.white;
+            //moleCountHandleText.GetComponent<TextMeshProUGUI>().color = Color.white;
+            //moleDifficultySlider.interactable = true;
+            moleDifficultySlider.gameObject.SetActive(true);
+            //moleDifficultyHandle.GetComponent<Image>().color = Color.white;
+            //moleDifficultyHandleText.GetComponent<TextMeshProUGUI>().color = Color.white;
+            //rowsSlider.interactable = true;
+            rowsSlider.gameObject.SetActive(true);
+            //rowsDifficultyHandle.GetComponent<Image>().color = Color.white;
+            //rowsDifficultyHandleText.GetComponent<TextMeshProUGUI>().color = Color.white;
         }
 
     }
@@ -168,11 +180,19 @@ public class ButtonManagerScriptMole : MonoBehaviour
 
     public void ReturnToMainScreen()
     {
+        PlayerPrefs.SetInt("player_amount", 3);
+        PlayerPrefs.SetInt("diff", 2);
+        PlayerPrefs.SetInt("game_mode", 1);
+        PlayerPrefs.GetInt("rows", 3);
         SceneManager.LoadScene("Main_Farm");
     }
 
     public void ActivateGame()
     {
+        PlayerPrefs.SetInt("player_amount", playerAmountValueMole);
+        PlayerPrefs.SetInt("diff", difficultyValueMole);
+        PlayerPrefs.SetInt("game_mode", gameModeValueMole);
+        PlayerPrefs.GetInt("rows", rowsInGame);
         startScreen.SetActive(false); // Disable and hide the starting screen.
         gameStarter.GetComponent<MoleGameManager>().StartGame(playerAmountValueMole, difficultyValueMole, gameModeValueMole,rowsInGame);
     }
