@@ -34,6 +34,7 @@ public class Mole : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
     private Animator animator;
+    public Animator hatAnimator;
     private BoxCollider2D boxCollider2D;
 
     private Vector2 boxOffset;
@@ -44,6 +45,7 @@ public class Mole : MonoBehaviour
     public RuntimeAnimatorController moleGrabbingAnimation;
     public RuntimeAnimatorController bombAnimation;
     public RuntimeAnimatorController pullingAnim;
+    public RuntimeAnimatorController hatTurn;
 
     //Mole Parameters
 
@@ -114,6 +116,9 @@ public class Mole : MonoBehaviour
            // Debug.Log(grabAnimationDuration);
             //Switch to moleGrabbing animation
             animator.runtimeAnimatorController = moleGrabbingAnimation;
+            hatAnimator.runtimeAnimatorController = hatTurn;
+
+            hatAnimator.enabled = true;
             animator.enabled = true;
             
             while (grabAnimationDuration > 0f)

@@ -203,6 +203,12 @@ public class MoleGameManager : MonoBehaviour
                 }
             }
         }
+        if(endlessGame == 2)
+        {
+            Debug.Log("Moi");
+        }
+              
+           
         
         //Setting startingcanvas to false and time and scoretextobjects to true.
         scoreHeader.SetActive(true);
