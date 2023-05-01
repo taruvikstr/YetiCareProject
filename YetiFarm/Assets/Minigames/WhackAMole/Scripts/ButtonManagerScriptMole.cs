@@ -213,25 +213,25 @@ public class ButtonManagerScriptMole : MonoBehaviour
         //Timed game mode feedback text
         if (game_mode == 1 && score_points <= 15)
         {
-            feedbackText.text = "Rauhallista ja rentoa peliä :)";
+            feedbackText.text = "Pisteet ei taida olla pääasia,rauhallista ja rentoa peliä :)";
         }
         else if (game_mode == 1 && score_points > 15 && score_points <= 25)
         {
-            feedbackText.text = "Sehän meni hienosti!";
+            feedbackText.text = "Se meni hienosti!";
         }
-        else if (game_mode == 1 && score_points > 25 && score_points <= 35)
+        else if (game_mode == 1 && score_points > 25 && score_points <= 40)
         {
             feedbackText.text = "Nyt oli vauhdikasta naputtelua!";
         }
-        else if (game_mode == 1 && score_points > 35 && score_points <= 45)
+        else if (game_mode == 1 && score_points > 40 && score_points <= 60)
         {
             feedbackText.text = "Mahtavaa! Olet hurja myyrien karkoittaja!";
         }
-        else if (game_mode == 1 && score_points > 45 && score_points <= 60)
+        else if (game_mode == 1 && score_points > 60 && score_points <= 80)
         {
             feedbackText.text = "Ooh, nyt on kadehdittava tulos! Ole ylpeä itsestäsi!";
         }
-        else if (game_mode == 1 && score_points > 60)
+        else if (game_mode == 1 && score_points > 80)
         {
             feedbackText.text = "Onneksi olkoon! Sinusta tuli juuri legendaarinen Kasvimaan Sankari!";
         }
@@ -249,15 +249,15 @@ public class ButtonManagerScriptMole : MonoBehaviour
         {
             feedbackText.text = "Nyt oli tarkkaa naputtelua!";
         }
-        else if (game_mode == 2 && score_points > 35 && score_points <= 45)
+        else if (game_mode == 2 && score_points > 35 && score_points <= 50)
         {
             feedbackText.text = "Mahtavaa! Olet hurja myyrien karkoittaja!";
         }
-        else if (game_mode == 2 && score_points > 45 && score_points <= 60)
+        else if (game_mode == 2 && score_points > 50 && score_points <= 70)
         {
             feedbackText.text = "Ooh, nyt on kadehdittava tulos! Ole ylpeä itsestäsi!";
         }
-        else if (game_mode == 2 && score_points > 60)
+        else if (game_mode == 2 && score_points > 70)
         {
             feedbackText.text = "Onneksi olkoon! Sinusta tuli juuri legendaarinen Kasvimaan Sankari!";
         }
