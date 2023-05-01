@@ -25,11 +25,12 @@ public class ButtonManagerForestBounty : MonoBehaviour
     public Slider gameDifficultySlider;
     public Slider gameModeSlider;
     public Slider desiredScoreSlider;
+    public GameObject diffSliderObj;
 
     private void Awake() // Set values to defaults. Remember to set sliders to these values as well.
     {
         Time.timeScale = 1;
-        gameDifficultySlider.interactable = false;
+        //gameDifficultySlider.interactable = false;
         //difficultyValue = 1;
         //gameModeValue = 1;
         //desiredScoreValue = 6;
@@ -76,14 +77,16 @@ public class ButtonManagerForestBounty : MonoBehaviour
         gameModeValue = (int)slider.value;
         if (gameModeValue == 1)
         {
-            gameDifficultySlider.interactable = false;
+            //gameDifficultySlider.interactable = false;
             gameModeSliderNumText.text = "#";
-            
+            diffSliderObj.SetActive(false);
+
         }
         if (gameModeValue == 2)
         {
-            gameDifficultySlider.interactable = true;
-            gameModeSliderNumText.text = ">";
+            //gameDifficultySlider.interactable = true;
+            gameModeSliderNumText.text = "~";
+            diffSliderObj.SetActive(true);
         }
     }
 
@@ -96,11 +99,17 @@ public class ButtonManagerForestBounty : MonoBehaviour
 
     public void ReturnToMainScreen()
     {
+        PlayerPrefs.SetInt("berry_difficulty", 1);
+        PlayerPrefs.SetInt("berry_gameMode", 1);
+        PlayerPrefs.SetInt("berry_desiredScore", 6);
         SceneManager.LoadScene("Main_Farm");
     }
 
     public void ActivateGame()
     {
+        difficultyValue = PlayerPrefs.GetInt("berry_difficulty", difficultyValue);
+        gameModeValue = PlayerPrefs.GetInt("berry_gameMode", gameModeValue);
+        desiredScoreValue = PlayerPrefs.GetInt("berry_desiredScore", desiredScoreValue);
         startScreen.SetActive(false); // Disable and hide the starting screen.
         gameStarter.GetComponent<BerryManager>().StartSpawn(difficultyValue, gameModeValue, desiredScoreValue);
     }

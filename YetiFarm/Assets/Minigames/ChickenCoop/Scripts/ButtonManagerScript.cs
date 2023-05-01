@@ -26,14 +26,31 @@ public class ButtonManagerScript : MonoBehaviour
     public TextMeshProUGUI gameModeSliderNumText;
     public TextMeshProUGUI amountSliderNumText;
 
-    private void Awake() // Set values to defaults. Remember to set sliders to these values as well.
+    public Slider playerSlider;
+    public Slider diffSlider;
+    public Slider modeSlider;
+    public Slider collectionAmountSlider;
+
+    private void Awake() // Set values to defaults.
     {
         Time.timeScale = 1;
-        difficultyValue = 2;
-        playerAmountValue = 1;
+
+        playerAmountValue = PlayerPrefs.GetInt("chicken_basketAmount", 1);
+        difficultyValue = PlayerPrefs.GetInt("chicken_diff", 2);
+        gameModeValue = PlayerPrefs.GetInt("chicken_gameMode", 1);
+        desiredScoreValue = PlayerPrefs.GetInt("chicken_desiredScore", 50);
         gameSpeedValue = 0;
-        gameModeValue = 1;
-        desiredScoreValue = 50;
+
+        playerSlider.value = playerAmountValue;
+        diffSlider.value = difficultyValue;
+        modeSlider.value = gameModeValue;
+        collectionAmountSlider.value = desiredScoreValue / 10;
+
+        UpdatePlayerAmount(playerSlider);
+        UpdateDifficulty(diffSlider);
+        UpdateGameMode(modeSlider);
+        UpdateDesiredScore(collectionAmountSlider);
+
     }
 
     private void Start()
@@ -77,10 +94,12 @@ public class ButtonManagerScript : MonoBehaviour
         if (gameModeValue == 1)
         {
             gameModeSliderNumText.text = "#";
+            collectionAmountSlider.gameObject.SetActive(true);
         }
         if (gameModeValue == 2)
         {
-            gameModeSliderNumText.text = ">";
+            gameModeSliderNumText.text = "~";
+            collectionAmountSlider.gameObject.SetActive(false);
         }
     }
 
@@ -93,11 +112,20 @@ public class ButtonManagerScript : MonoBehaviour
 
     public void ReturnToMainScreen()
     {
+        PlayerPrefs.SetInt("chicken_basketAmount", 1);
+        PlayerPrefs.SetInt("chicken_diff", 2);
+        PlayerPrefs.SetInt("chicken_gameMode", 1);
+        PlayerPrefs.SetInt("chicken_desiredScore", 50);
         SceneManager.LoadScene("Main_Farm");
     }
 
     public void ActivateGame()
     {
+        PlayerPrefs.SetInt("chicken_basketAmount", playerAmountValue);
+        PlayerPrefs.SetInt("chicken_diff", difficultyValue);
+        PlayerPrefs.SetInt("chicken_gameMode", gameModeValue);
+        PlayerPrefs.SetInt("chicken_desiredScore", desiredScoreValue);
+
         startScreen.SetActive(false); // Disable and hide the starting screen.
         gameStarter.GetComponent<EggSpawnManager>().StartEggSpawns(difficultyValue, desiredScoreValue, gameModeValue, playerAmountValue);
     }

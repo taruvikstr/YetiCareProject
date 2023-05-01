@@ -7,15 +7,15 @@ public class Mole : MonoBehaviour
 {
     [Header("Graphics")]
     [SerializeField] private Sprite mole;
-    [SerializeField] private Sprite moleHardHat;
-    [SerializeField] private Sprite moleHatBroken;
+   // [SerializeField] private Sprite moleHardHat;
+  //  [SerializeField] private Sprite moleHatBroken;
     [SerializeField] private Sprite moleHit;
-    [SerializeField] private Sprite moleHatHit;
+   // [SerializeField] private Sprite moleHatHit;
     // [SerializeField] private ParticleSystem hatSparks;
     [SerializeField] public GameObject moleHands;
     [SerializeField] public GameObject vegetable;
     [SerializeField] public GameObject hat;
-    [SerializeField] public GameObject brokenHat;
+   // [SerializeField] public GameObject brokenHat;
 
 
     [Header("GameManager")]
@@ -34,6 +34,7 @@ public class Mole : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
     private Animator animator;
+    public Animator hatAnimator;
     private BoxCollider2D boxCollider2D;
 
     private Vector2 boxOffset;
@@ -41,9 +42,10 @@ public class Mole : MonoBehaviour
     private Vector2 boxOffsetHidden;
     private Vector2 boxSizeHidden;
 
-    public RuntimeAnimatorController GrabbingAnimation;
+    public RuntimeAnimatorController moleGrabbingAnimation;
     public RuntimeAnimatorController bombAnimation;
     public RuntimeAnimatorController pullingAnim;
+    public RuntimeAnimatorController hatTurn;
 
     //Mole Parameters
 
@@ -97,13 +99,13 @@ public class Mole : MonoBehaviour
             switch (grabAnimationDuration)
             {
                 case 1:
-                    grabAnimationDuration = 4;
+                    grabAnimationDuration = 5;
                     break;
                 case 2:
-                    grabAnimationDuration = 3;
+                    grabAnimationDuration = 4;
                     break;
                 case 3:
-                    grabAnimationDuration = 2;
+                    grabAnimationDuration = 3;
                     break;
                 default:
                     break;
@@ -113,7 +115,10 @@ public class Mole : MonoBehaviour
             grabTimerText.enabled = true;
            // Debug.Log(grabAnimationDuration);
             //Switch to moleGrabbing animation
-            animator.runtimeAnimatorController = GrabbingAnimation;
+            animator.runtimeAnimatorController = moleGrabbingAnimation;
+            hatAnimator.runtimeAnimatorController = hatTurn;
+
+            hatAnimator.enabled = true;
             animator.enabled = true;
             
             while (grabAnimationDuration > 0f)
@@ -134,6 +139,7 @@ public class Mole : MonoBehaviour
                 audioManager.PlaySound("VegePick");
             }
             animator.enabled = false;
+            hatAnimator.enabled = false;
             vegetable.SetActive(false);
             grabTimerText.enabled = false;
         }
@@ -206,6 +212,8 @@ public class Mole : MonoBehaviour
                     StopAllCoroutines();
                     StartCoroutine(QuickHide());
                     //Turn off hittable so that we cant keep tapping for score.
+                    animator.enabled = false;
+                    
                     hittable = false;
                     break;
                 case MoleType.HardHat:
@@ -213,9 +221,12 @@ public class Mole : MonoBehaviour
                     {
                         Vector2 temp = new Vector2(hat.transform.position.x, hat.transform.position.y+2f);
                         gameManager.HelmetSpark(temp);
-                       // brokenHat.SetActive(true);
+                        // brokenHat.SetActive(true);
+                        hatAnimator.enabled = false;
                         hat.SetActive(false);
                         audioManager.PlaySound("HelmetHit");
+                        
+                        
                         lives--;
                     }
                     else
@@ -233,6 +244,8 @@ public class Mole : MonoBehaviour
                         //Stop the animation
                         StopAllCoroutines();
                         StartCoroutine(QuickHide());
+                        animator.enabled = false;
+                       
                         // Turn off hittable so that we cant keep tapping for score.
                         hittable = false;
                     }

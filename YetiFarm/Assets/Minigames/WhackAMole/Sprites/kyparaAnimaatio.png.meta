@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c59fd19df5e59ba4d9f1b7505b591240
+guid: 843a46cdc4dda73438303b32d89cce31
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,505 +117,505 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: myyra.animaatio_0
+      name: kyparaAnimaatio_0
       rect:
         serializedVersion: 2
-        x: 53
-        y: 549
-        width: 73
-        height: 59
+        x: 0
+        y: 512
+        width: 128
+        height: 128
       alignment: 9
-      pivot: {x: 0.3, y: 0.5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f26d025750073574ab81f4750c035588
-      internalID: 1703215556
+      spriteID: 3fa4422418d87e2438ede1628e3137d8
+      internalID: -398876847
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: myyra.animaatio_1
+      name: kyparaAnimaatio_1
       rect:
         serializedVersion: 2
-        x: 181
-        y: 549
-        width: 73
-        height: 59
+        x: 128
+        y: 512
+        width: 128
+        height: 128
       alignment: 9
-      pivot: {x: 0.3, y: 0.5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 38190991838d06d4c9a8df16ca71f67c
-      internalID: 1344219247
+      spriteID: f6d9560ee9926e44bba0ffde52072124
+      internalID: 1482603039
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: myyra.animaatio_2
+      name: kyparaAnimaatio_2
       rect:
         serializedVersion: 2
-        x: 309
-        y: 551
-        width: 73
-        height: 59
-      alignment: 9
-      pivot: {x: 0.3, y: 0.5}
+        x: 256
+        y: 512
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 63f1edb88436831439fc74bb7b4bec97
-      internalID: 771856446
+      spriteID: 5aa1b49a79e207649a0eb7639834a805
+      internalID: 591788130
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: myyra.animaatio_3
+      name: kyparaAnimaatio_3
       rect:
         serializedVersion: 2
-        x: 437
-        y: 551
-        width: 73
-        height: 59
-      alignment: 9
-      pivot: {x: 0.3, y: 0.5}
+        x: 384
+        y: 512
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b2d6246a07130654fa705791678f91ac
-      internalID: -397401030
+      spriteID: 9916bb8d8b0222743985df3e71c3b5bb
+      internalID: 1932103509
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: myyra.animaatio_4
+      name: kyparaAnimaatio_4
       rect:
         serializedVersion: 2
-        x: 565
-        y: 551
-        width: 73
-        height: 59
-      alignment: 9
-      pivot: {x: 0.3, y: 0.5}
+        x: 512
+        y: 512
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 25cee6498373aad438035030c797dcf6
-      internalID: 1642480809
+      spriteID: 6e8d6b34034681e4ba66233596f17aa5
+      internalID: 973218848
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: myyra.animaatio_6
+      name: kyparaAnimaatio_5
       rect:
         serializedVersion: 2
-        x: 53
-        y: 423
-        width: 73
-        height: 59
-      alignment: 9
-      pivot: {x: 0.3, y: 0.5}
+        x: 0
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c9ed5706d07927c42b38ca7055bd21b3
-      internalID: -268968698
+      spriteID: a385c7292905d7a43bce2813f5ecff13
+      internalID: -818599960
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: myyra.animaatio_7
+      name: kyparaAnimaatio_6
       rect:
         serializedVersion: 2
-        x: 181
-        y: 423
-        width: 73
-        height: 59
-      alignment: 9
-      pivot: {x: 0.3, y: 0.5}
+        x: 128
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 08bf8426976451a448f6de68859313a5
-      internalID: -403013899
+      spriteID: faffbf3cae278cf4d8f7b4c2832245cc
+      internalID: -805364320
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: myyra.animaatio_8
+      name: kyparaAnimaatio_7
       rect:
         serializedVersion: 2
-        x: 309
-        y: 423
-        width: 73
-        height: 59
-      alignment: 9
-      pivot: {x: 0.3, y: 0.5}
+        x: 256
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 81b9bd546679f2e48bb2ffa3bd381c6f
-      internalID: 1111853501
+      spriteID: 2c2f02bb3dd6c0948be16b2873eba76b
+      internalID: 732725086
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: myyra.animaatio_9
+      name: kyparaAnimaatio_8
       rect:
         serializedVersion: 2
-        x: 437
-        y: 423
-        width: 73
-        height: 59
-      alignment: 9
-      pivot: {x: 0.3, y: 0.5}
+        x: 384
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e9e2e859993ed2449ac2d97b20ef3b1a
-      internalID: -1054900752
+      spriteID: fe984b7883612b040a2ea715d904d19b
+      internalID: 1202867950
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: myyra.animaatio_10
+      name: kyparaAnimaatio_9
       rect:
         serializedVersion: 2
-        x: 565
-        y: 423
-        width: 73
-        height: 59
-      alignment: 9
-      pivot: {x: 0.3, y: 0.5}
+        x: 512
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 31dff7204ca525643a1bbf95e87dce2c
-      internalID: 1516529450
+      spriteID: abe6ccd8247b6a74d8c72c155dfdc528
+      internalID: 836397196
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: myyra.animaatio_11
+      name: kyparaAnimaatio_10
       rect:
         serializedVersion: 2
-        x: 53
-        y: 295
-        width: 73
-        height: 59
-      alignment: 9
-      pivot: {x: 0.3, y: 0.5}
+        x: 0
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aef365ea4257dc34488e70015a26c75f
-      internalID: -1925861465
+      spriteID: b2c96bb24a1ce2c4a8e77c1ae3ef0f0e
+      internalID: -300028289
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: myyra.animaatio_12
+      name: kyparaAnimaatio_11
       rect:
         serializedVersion: 2
-        x: 181
-        y: 295
-        width: 73
-        height: 59
-      alignment: 9
-      pivot: {x: 0.3, y: 0.5}
+        x: 128
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ce7196c9ff7d5974280b9810d359449a
-      internalID: 1591841116
+      spriteID: 19d9600279f053543b04560413f1e9a3
+      internalID: 416210956
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: myyra.animaatio_13
+      name: kyparaAnimaatio_12
       rect:
         serializedVersion: 2
-        x: 309
-        y: 295
-        width: 73
-        height: 59
-      alignment: 9
-      pivot: {x: 0.3, y: 0.5}
+        x: 256
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 208e3bb3be4ecf945b162759177324ed
-      internalID: 1244939801
+      spriteID: 4a42cfe20f896ff428d417b6dbf0c511
+      internalID: 778828643
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: myyra.animaatio_14
+      name: kyparaAnimaatio_13
       rect:
         serializedVersion: 2
-        x: 437
-        y: 300
-        width: 73
-        height: 59
-      alignment: 9
-      pivot: {x: 0.3, y: 0.5}
+        x: 384
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f5515d1b40f00a40ba385f5223a7593
-      internalID: 1884682770
+      spriteID: d7edba0ef007f9147a645bdf524ae02f
+      internalID: 1760800640
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: myyra.animaatio_15
+      name: kyparaAnimaatio_14
       rect:
         serializedVersion: 2
-        x: 565
-        y: 300
-        width: 73
-        height: 59
-      alignment: 9
-      pivot: {x: 0.3, y: 0.5}
+        x: 512
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 60d919abed716924cbf282fce3c6b7b7
-      internalID: 703540418
+      spriteID: 858e7e02df8131749840fced2c429346
+      internalID: -1221843734
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: myyra.animaatio_16
+      name: kyparaAnimaatio_15
       rect:
         serializedVersion: 2
-        x: 53
-        y: 172
-        width: 73
-        height: 59
-      alignment: 9
-      pivot: {x: 0.3, y: 0.5}
+        x: 0
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 111f4398c935c2c49b2ea7df909ed03f
-      internalID: -904267155
+      spriteID: 4fa23706de349604f83edaaee2789ea7
+      internalID: 1460433052
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: myyra.animaatio_17
+      name: kyparaAnimaatio_16
       rect:
         serializedVersion: 2
-        x: 181
-        y: 172
-        width: 73
-        height: 59
-      alignment: 9
-      pivot: {x: 0.3, y: 0.5}
+        x: 128
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ca15ca616471e374ea6bb3d4c0fd3ea5
-      internalID: 166294368
+      spriteID: 6bb00e0f36b16b14a86c54e657e5a3d4
+      internalID: 889921506
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: myyra.animaatio_18
+      name: kyparaAnimaatio_17
       rect:
         serializedVersion: 2
-        x: 309
-        y: 172
-        width: 73
-        height: 59
-      alignment: 9
-      pivot: {x: 0.3, y: 0.5}
+        x: 256
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 381b92da6cade384dbc86a7f062a5331
-      internalID: -1696883600
+      spriteID: 9f9267ddcaa182344ae48c2b945425f3
+      internalID: -1628201388
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: myyra.animaatio_19
+      name: kyparaAnimaatio_18
       rect:
         serializedVersion: 2
-        x: 437
-        y: 172
-        width: 73
-        height: 59
-      alignment: 9
-      pivot: {x: 0.3, y: 0.5}
+        x: 384
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1d943df998755ea4186bc73abf73c577
-      internalID: 1561233210
+      spriteID: 3b651d8c813abf044a074912638160d9
+      internalID: 1075216525
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: myyra.animaatio_21
+      name: kyparaAnimaatio_19
       rect:
         serializedVersion: 2
-        x: 565
-        y: 172
-        width: 73
-        height: 59
-      alignment: 9
-      pivot: {x: 0.3, y: 0.5}
+        x: 512
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3c14291ef622c934387dcf843e9c9a8e
-      internalID: -1962593396
+      spriteID: 1417a6092363eb34c9ecc7e9c49ddcde
+      internalID: 864572399
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: myyra.animaatio_22
+      name: kyparaAnimaatio_20
       rect:
         serializedVersion: 2
-        x: 53
-        y: 41
-        width: 73
-        height: 59
-      alignment: 9
-      pivot: {x: 0.3, y: 0.5}
+        x: 0
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b9cce0a51ba59f3498dd36d4c95f090f
-      internalID: -1172384497
+      spriteID: 88d4981278a0a2f4a8c94b92a0c889a7
+      internalID: 1385347871
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: myyra.animaatio_23
+      name: kyparaAnimaatio_21
       rect:
         serializedVersion: 2
-        x: 181
-        y: 44
-        width: 73
-        height: 59
-      alignment: 9
-      pivot: {x: 0.3, y: 0.5}
+        x: 128
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 86fcbbfc346a2fb4ca251f35e8686a2b
-      internalID: -819058871
+      spriteID: ac8a0e67b0f3acc4e934da17ff10e283
+      internalID: -1907487536
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: myyra.animaatio_25
+      name: kyparaAnimaatio_22
       rect:
         serializedVersion: 2
-        x: 309
-        y: 44
-        width: 73
-        height: 59
-      alignment: 9
-      pivot: {x: 0.3, y: 0.5}
+        x: 256
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2123fbc58d24a041a9a5081217f9130
-      internalID: 564324305
+      spriteID: d08af9b189126464ca0381addeb28b2f
+      internalID: -487454480
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: myyra.animaatio_27
+      name: kyparaAnimaatio_23
       rect:
         serializedVersion: 2
-        x: 437
-        y: 44
-        width: 73
-        height: 59
-      alignment: 9
-      pivot: {x: 0.3, y: 0.5}
+        x: 384
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e10de87dd33e0d04b86a83fc5de9b35d
-      internalID: -1148198607
+      spriteID: ad986f96c885ef9448002482aa88ae2e
+      internalID: 1812412720
       vertices: []
       indices: 
       edges: []
@@ -631,35 +631,30 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      myyra.animaatio_0: 1703215556
-      myyra.animaatio_1: 1344219247
-      myyra.animaatio_10: 1516529450
-      myyra.animaatio_11: -1925861465
-      myyra.animaatio_12: 1591841116
-      myyra.animaatio_13: 1244939801
-      myyra.animaatio_14: 1884682770
-      myyra.animaatio_15: 703540418
-      myyra.animaatio_16: -904267155
-      myyra.animaatio_17: 166294368
-      myyra.animaatio_18: -1696883600
-      myyra.animaatio_19: 1561233210
-      myyra.animaatio_2: 771856446
-      myyra.animaatio_20: -972264516
-      myyra.animaatio_21: -1962593396
-      myyra.animaatio_22: -1172384497
-      myyra.animaatio_23: -819058871
-      myyra.animaatio_24: 1847443600
-      myyra.animaatio_25: 564324305
-      myyra.animaatio_26: -243970527
-      myyra.animaatio_27: -1148198607
-      myyra.animaatio_28: -270295556
-      myyra.animaatio_3: -397401030
-      myyra.animaatio_4: 1642480809
-      myyra.animaatio_5: -964553630
-      myyra.animaatio_6: -268968698
-      myyra.animaatio_7: -403013899
-      myyra.animaatio_8: 1111853501
-      myyra.animaatio_9: -1054900752
+      kyparaAnimaatio_0: -398876847
+      kyparaAnimaatio_1: 1482603039
+      kyparaAnimaatio_10: -300028289
+      kyparaAnimaatio_11: 416210956
+      kyparaAnimaatio_12: 778828643
+      kyparaAnimaatio_13: 1760800640
+      kyparaAnimaatio_14: -1221843734
+      kyparaAnimaatio_15: 1460433052
+      kyparaAnimaatio_16: 889921506
+      kyparaAnimaatio_17: -1628201388
+      kyparaAnimaatio_18: 1075216525
+      kyparaAnimaatio_19: 864572399
+      kyparaAnimaatio_2: 591788130
+      kyparaAnimaatio_20: 1385347871
+      kyparaAnimaatio_21: -1907487536
+      kyparaAnimaatio_22: -487454480
+      kyparaAnimaatio_23: 1812412720
+      kyparaAnimaatio_3: 1932103509
+      kyparaAnimaatio_4: 973218848
+      kyparaAnimaatio_5: -818599960
+      kyparaAnimaatio_6: -805364320
+      kyparaAnimaatio_7: 732725086
+      kyparaAnimaatio_8: 1202867950
+      kyparaAnimaatio_9: 836397196
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
