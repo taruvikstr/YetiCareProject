@@ -221,10 +221,11 @@ public class Mole : MonoBehaviour
                     {
                         Vector2 temp = new Vector2(hat.transform.position.x, hat.transform.position.y+2f);
                         gameManager.HelmetSpark(temp);
-                       // brokenHat.SetActive(true);
+                        // brokenHat.SetActive(true);
+                        hatAnimator.enabled = false;
                         hat.SetActive(false);
                         audioManager.PlaySound("HelmetHit");
-                        hatAnimator.enabled = false;
+                        
                         
                         lives--;
                     }
