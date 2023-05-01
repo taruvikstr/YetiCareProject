@@ -141,15 +141,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: mole.basic
+      name: myyra.animaatio_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 512
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 53
+        y: 549
+        width: 73
+        height: 59
+      alignment: 9
+      pivot: {x: 0.3, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -162,15 +162,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mole.turn1
+      name: myyra.animaatio_1
       rect:
         serializedVersion: 2
-        x: 128
-        y: 512
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 181
+        y: 549
+        width: 73
+        height: 59
+      alignment: 9
+      pivot: {x: 0.3, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -183,15 +183,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mole.turn2
+      name: myyra.animaatio_2
       rect:
         serializedVersion: 2
-        x: 256
-        y: 512
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 309
+        y: 551
+        width: 73
+        height: 59
+      alignment: 9
+      pivot: {x: 0.3, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -204,15 +204,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mole.turn3
+      name: myyra.animaatio_3
       rect:
         serializedVersion: 2
-        x: 384
-        y: 512
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 437
+        y: 551
+        width: 73
+        height: 59
+      alignment: 9
+      pivot: {x: 0.3, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -225,15 +225,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mole.turn4
+      name: myyra.animaatio_4
       rect:
         serializedVersion: 2
-        x: 512
-        y: 512
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 565
+        y: 551
+        width: 73
+        height: 59
+      alignment: 9
+      pivot: {x: 0.3, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -249,12 +249,12 @@ TextureImporter:
       name: myyra.animaatio_6
       rect:
         serializedVersion: 2
-        x: 128
-        y: 384
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 53
+        y: 423
+        width: 73
+        height: 59
+      alignment: 9
+      pivot: {x: 0.3, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -267,15 +267,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mole.turn6
+      name: myyra.animaatio_7
       rect:
         serializedVersion: 2
-        x: 256
-        y: 384
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 181
+        y: 423
+        width: 73
+        height: 59
+      alignment: 9
+      pivot: {x: 0.3, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -291,12 +291,12 @@ TextureImporter:
       name: myyra.animaatio_8
       rect:
         serializedVersion: 2
-        x: 384
-        y: 384
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 309
+        y: 423
+        width: 73
+        height: 59
+      alignment: 9
+      pivot: {x: 0.3, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -309,15 +309,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mole.turn7
+      name: myyra.animaatio_9
       rect:
         serializedVersion: 2
-        x: 512
-        y: 384
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 437
+        y: 423
+        width: 73
+        height: 59
+      alignment: 9
+      pivot: {x: 0.3, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -330,15 +330,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mole.turn8
+      name: myyra.animaatio_10
       rect:
         serializedVersion: 2
-        x: 0
-        y: 256
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 565
+        y: 423
+        width: 73
+        height: 59
+      alignment: 9
+      pivot: {x: 0.3, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -354,12 +354,12 @@ TextureImporter:
       name: myyra.animaatio_11
       rect:
         serializedVersion: 2
-        x: 128
-        y: 256
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 53
+        y: 295
+        width: 73
+        height: 59
+      alignment: 9
+      pivot: {x: 0.3, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -372,15 +372,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mole.turn9
+      name: myyra.animaatio_12
       rect:
         serializedVersion: 2
-        x: 256
-        y: 256
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 181
+        y: 295
+        width: 73
+        height: 59
+      alignment: 9
+      pivot: {x: 0.3, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -393,15 +393,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mole.grab1
+      name: myyra.animaatio_13
       rect:
         serializedVersion: 2
-        x: 384
-        y: 256
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 309
+        y: 295
+        width: 73
+        height: 59
+      alignment: 9
+      pivot: {x: 0.3, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -417,12 +417,12 @@ TextureImporter:
       name: myyra.animaatio_14
       rect:
         serializedVersion: 2
-        x: 512
-        y: 256
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 437
+        y: 300
+        width: 73
+        height: 59
+      alignment: 9
+      pivot: {x: 0.3, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -438,12 +438,12 @@ TextureImporter:
       name: myyra.animaatio_15
       rect:
         serializedVersion: 2
-        x: 0
-        y: 128
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 565
+        y: 300
+        width: 73
+        height: 59
+      alignment: 9
+      pivot: {x: 0.3, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -459,12 +459,12 @@ TextureImporter:
       name: myyra.animaatio_16
       rect:
         serializedVersion: 2
-        x: 128
-        y: 128
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 53
+        y: 172
+        width: 73
+        height: 59
+      alignment: 9
+      pivot: {x: 0.3, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -480,12 +480,12 @@ TextureImporter:
       name: myyra.animaatio_17
       rect:
         serializedVersion: 2
-        x: 256
-        y: 128
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 181
+        y: 172
+        width: 73
+        height: 59
+      alignment: 9
+      pivot: {x: 0.3, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -498,15 +498,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mole.grab4
+      name: myyra.animaatio_18
       rect:
         serializedVersion: 2
-        x: 385
-        y: 128
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 309
+        y: 172
+        width: 73
+        height: 59
+      alignment: 9
+      pivot: {x: 0.3, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -519,15 +519,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mole.grab2
+      name: myyra.animaatio_19
       rect:
         serializedVersion: 2
-        x: 512
-        y: 128
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 437
+        y: 172
+        width: 73
+        height: 59
+      alignment: 9
+      pivot: {x: 0.3, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -540,15 +540,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mole.grab3
+      name: myyra.animaatio_21
       rect:
         serializedVersion: 2
-        x: 128
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 565
+        y: 172
+        width: 73
+        height: 59
+      alignment: 9
+      pivot: {x: 0.3, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -564,12 +564,12 @@ TextureImporter:
       name: myyra.animaatio_22
       rect:
         serializedVersion: 2
-        x: 256
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 53
+        y: 41
+        width: 73
+        height: 59
+      alignment: 9
+      pivot: {x: 0.3, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -585,12 +585,12 @@ TextureImporter:
       name: myyra.animaatio_23
       rect:
         serializedVersion: 2
-        x: 384
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 181
+        y: 44
+        width: 73
+        height: 59
+      alignment: 9
+      pivot: {x: 0.3, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -603,43 +603,43 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mole.turn5
+      name: myyra.animaatio_25
       rect:
         serializedVersion: 2
-        x: 0
-        y: 384
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 309
+        y: 44
+        width: 73
+        height: 59
+      alignment: 9
+      pivot: {x: 0.3, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 52d4532218944cb4ebd315f346267a26
-      internalID: -964553630
+      spriteID: f2123fbc58d24a041a9a5081217f9130
+      internalID: 564324305
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: myyra.animaatio_20
+      name: myyra.animaatio_27
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 437
+        y: 44
+        width: 73
+        height: 59
+      alignment: 9
+      pivot: {x: 0.3, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2e0fe705c2ac2841b2b71d16b5995be
-      internalID: -972264516
+      spriteID: e10de87dd33e0d04b86a83fc5de9b35d
+      internalID: -1148198607
       vertices: []
       indices: 
       edges: []
@@ -655,30 +655,35 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      mole.basic: 1703215556
-      mole.grab1: 1244939801
-      mole.grab2: 1561233210
-      mole.grab3: -1962593396
-      mole.grab4: -1696883600
-      mole.turn1: 1344219247
-      mole.turn2: 771856446
-      mole.turn3: -397401030
-      mole.turn4: 1642480809
-      mole.turn5: -964553630
-      mole.turn6: -403013899
-      mole.turn7: -1054900752
-      mole.turn8: 1516529450
-      mole.turn9: 1591841116
-      myyra.animaatio_11: 1884682770
-      myyra.animaatio_14: 166294368
-      myyra.animaatio_15: -1696883600
-      myyra.animaatio_16: 1561233210
-      myyra.animaatio_17: -972264516
-      myyra.animaatio_20: 1703215556
-      myyra.animaatio_22: 771856446
-      myyra.animaatio_23: -397401030
-      myyra.animaatio_6: -403013899
-      myyra.animaatio_8: -1054900752
+      myyra.animaatio_0: 1703215556
+      myyra.animaatio_1: 1344219247
+      myyra.animaatio_10: 1516529450
+      myyra.animaatio_11: -1925861465
+      myyra.animaatio_12: 1591841116
+      myyra.animaatio_13: 1244939801
+      myyra.animaatio_14: 1884682770
+      myyra.animaatio_15: 703540418
+      myyra.animaatio_16: -904267155
+      myyra.animaatio_17: 166294368
+      myyra.animaatio_18: -1696883600
+      myyra.animaatio_19: 1561233210
+      myyra.animaatio_2: 771856446
+      myyra.animaatio_20: -972264516
+      myyra.animaatio_21: -1962593396
+      myyra.animaatio_22: -1172384497
+      myyra.animaatio_23: -819058871
+      myyra.animaatio_24: 1847443600
+      myyra.animaatio_25: 564324305
+      myyra.animaatio_26: -243970527
+      myyra.animaatio_27: -1148198607
+      myyra.animaatio_28: -270295556
+      myyra.animaatio_3: -397401030
+      myyra.animaatio_4: 1642480809
+      myyra.animaatio_5: -964553630
+      myyra.animaatio_6: -268968698
+      myyra.animaatio_7: -403013899
+      myyra.animaatio_8: 1111853501
+      myyra.animaatio_9: -1054900752
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

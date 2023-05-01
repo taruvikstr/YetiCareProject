@@ -208,30 +208,58 @@ public class ButtonManagerScriptMole : MonoBehaviour
             scoreText2.text = "Rikki meni " + failed_things.ToString() + " kananmuna.";
         }*/
 
-        
-        if (game_mode == 2 && score_points <= 10)
+
+
+        //Timed game mode feedback text
+        if (game_mode == 1 && score_points <= 15)
         {
-            feedbackText.text = "Pääsit hyvin alkuun!";
+            feedbackText.text = "Rauhallista ja rentoa peliä :)";
         }
-        else if (game_mode == 2 && score_points > 10 && score_points <= 20)
-        {
-            feedbackText.text = "Sinun pitää olla varovaisempi";
-        }
-        else if (game_mode == 2 && score_points > 20 && score_points <= 30)
+        else if (game_mode == 1 && score_points > 15 && score_points <= 25)
         {
             feedbackText.text = "Sehän meni hienosti!";
         }
-        else if (game_mode == 2 && score_points > 30 && score_points <= 40)
+        else if (game_mode == 1 && score_points > 25 && score_points <= 35)
         {
-            feedbackText.text = "Hienoa! Olet oikea myyrien karkoittaja!";
+            feedbackText.text = "Nyt oli vauhdikasta naputtelua!";
         }
-        else if (game_mode == 2 && score_points > 40 && score_points <= 50)
+        else if (game_mode == 1 && score_points > 35 && score_points <= 45)
         {
-            feedbackText.text = "Upeaa! Kadehdittava tulos!";
+            feedbackText.text = "Mahtavaa! Olet hurja myyrien karkoittaja!";
         }
-        else if (game_mode == 2 && score_points > 50)
+        else if (game_mode == 1 && score_points > 45 && score_points <= 60)
         {
-            feedbackText.text = "Onneksi olkoon! Olet kasvimaan sankari!";
+            feedbackText.text = "Ooh, nyt on kadehdittava tulos! Ole ylpeä itsestäsi!";
+        }
+        else if (game_mode == 1 && score_points > 60)
+        {
+            feedbackText.text = "Onneksi olkoon! Sinusta tuli juuri legendaarinen Kasvimaan Sankari!";
+        }
+
+        // Challenge game mode score feedback text 
+        if (game_mode == 2 && score_points <= 15)
+        {
+            feedbackText.text = "Pääsit kivasti alkuun!";
+        }
+        else if (game_mode == 2 && score_points > 15 && score_points <= 25)
+        {
+            feedbackText.text = "Sinun pitää olla varovaisempi";
+        }
+        else if (game_mode == 2 && score_points > 25 && score_points <= 35)
+        {
+            feedbackText.text = "Nyt oli tarkkaa naputtelua!";
+        }
+        else if (game_mode == 2 && score_points > 35 && score_points <= 45)
+        {
+            feedbackText.text = "Mahtavaa! Olet hurja myyrien karkoittaja!";
+        }
+        else if (game_mode == 2 && score_points > 45 && score_points <= 60)
+        {
+            feedbackText.text = "Ooh, nyt on kadehdittava tulos! Ole ylpeä itsestäsi!";
+        }
+        else if (game_mode == 2 && score_points > 60)
+        {
+            feedbackText.text = "Onneksi olkoon! Sinusta tuli juuri legendaarinen Kasvimaan Sankari!";
         }
     }
 
