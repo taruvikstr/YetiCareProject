@@ -112,7 +112,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2662183449673743038}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -168,7 +168,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 4, y: 4}
+  m_Size: {x: 2.28125, y: 1.84375}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cc2064649b99894982948b8e904069a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mole: {fileID: 21300000, guid: 72dcca84a74145848aa14480b946e0ba, type: 3}
+  mole: {fileID: 1703215556, guid: bd203b7333d9a2d48aeae45f509f8dd8, type: 3}
   moleHit: {fileID: 21300000, guid: 988bb68f19fc35c4abee44e62dfce442, type: 3}
   moleHands: {fileID: 3226915253435931892}
   vegetable: {fileID: 594868494847872573}
@@ -216,9 +216,9 @@ BoxCollider2D:
   m_Offset: {x: 0.031401157, y: 0.81372476}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.4375, y: 1.84375}
-    newSize: {x: 4, y: 4}
+    pivot: {x: 0.3, y: 0.5}
+    oldSize: {x: 2.28125, y: 1.84375}
+    newSize: {x: 2.28125, y: 1.84375}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -234,7 +234,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2662183449673743038}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 4c11f9bfd357db44b99e8d91aed65987, type: 2}
   m_CullingMode: 0
@@ -439,7 +439,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3570028749431425159}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.20000002, y: -1.2129999, z: -0.15924442}
+  m_LocalPosition: {x: 0.52, y: -0.46, z: -0.15924442}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -539,7 +539,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6036708857035519540}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 3aafd752bfb4ab94c931a85b0ba6fda7, type: 2}
   m_CullingMode: 0

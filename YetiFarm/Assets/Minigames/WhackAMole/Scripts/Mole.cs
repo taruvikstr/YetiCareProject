@@ -99,13 +99,13 @@ public class Mole : MonoBehaviour
             switch (grabAnimationDuration)
             {
                 case 1:
-                    grabAnimationDuration = 4;
+                    grabAnimationDuration = 5;
                     break;
                 case 2:
-                    grabAnimationDuration = 3;
+                    grabAnimationDuration = 4;
                     break;
                 case 3:
-                    grabAnimationDuration = 2;
+                    grabAnimationDuration = 3;
                     break;
                 default:
                     break;
@@ -139,6 +139,7 @@ public class Mole : MonoBehaviour
                 audioManager.PlaySound("VegePick");
             }
             animator.enabled = false;
+            hatAnimator.enabled = false;
             vegetable.SetActive(false);
             grabTimerText.enabled = false;
         }
@@ -211,6 +212,8 @@ public class Mole : MonoBehaviour
                     StopAllCoroutines();
                     StartCoroutine(QuickHide());
                     //Turn off hittable so that we cant keep tapping for score.
+                    animator.enabled = false;
+                    
                     hittable = false;
                     break;
                 case MoleType.HardHat:
@@ -221,6 +224,8 @@ public class Mole : MonoBehaviour
                        // brokenHat.SetActive(true);
                         hat.SetActive(false);
                         audioManager.PlaySound("HelmetHit");
+                        hatAnimator.enabled = false;
+                        
                         lives--;
                     }
                     else
@@ -238,6 +243,8 @@ public class Mole : MonoBehaviour
                         //Stop the animation
                         StopAllCoroutines();
                         StartCoroutine(QuickHide());
+                        animator.enabled = false;
+                       
                         // Turn off hittable so that we cant keep tapping for score.
                         hittable = false;
                     }
