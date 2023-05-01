@@ -38,6 +38,14 @@ public class GameManager : MonoBehaviour
     }
     // Start is called before the first frame update
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            WbManager.ReturnToSettingScreen();
+        }
+    }
+
     public void StartWoodSpawns(int difficultyValue, int gameModeValue)
     {
         // Start the game with the settings given in the parameters.

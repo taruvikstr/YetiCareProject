@@ -6489,7 +6489,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Haaste
+  m_text: "Haaste - 1 el\xE4m\xE4"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7fbdf7fb665dc8d43ac1ac6bb0e789ab, type: 2}
   m_sharedMaterial: {fileID: 4453648058832637171, guid: 7fbdf7fb665dc8d43ac1ac6bb0e789ab, type: 2}
@@ -8808,6 +8808,10 @@ MonoBehaviour:
   difficultySliderNumText: {fileID: 455532190}
   gameModeSliderNumText: {fileID: 2089029849}
   amountSliderNumText: {fileID: 661354219}
+  playerSlider: {fileID: 1055653524}
+  diffSlider: {fileID: 962258130}
+  modeSlider: {fileID: 2144433925}
+  collectionAmountSlider: {fileID: 386157817}
 --- !u!4 &1628922502
 Transform:
   m_ObjectHideFlags: 0

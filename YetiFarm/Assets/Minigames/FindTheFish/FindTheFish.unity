@@ -15438,6 +15438,10 @@ MonoBehaviour:
   fishSlider: {fileID: 1730509753}
   patternSlider: {fileID: 1959566701}
   timeSlider: {fileID: 956254040}
+  playerAmountSlider: {fileID: 1640301079}
+  fishAmountSlider: {fileID: 575242775}
+  patternAmountSlider: {fileID: 1973061129}
+  timeAmountSlider: {fileID: 595371864}
 --- !u!4 &2083420926
 Transform:
   m_ObjectHideFlags: 0

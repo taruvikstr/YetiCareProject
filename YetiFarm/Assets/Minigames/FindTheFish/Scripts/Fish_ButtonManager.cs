@@ -14,15 +14,31 @@ public class Fish_ButtonManager : MonoBehaviour
     private int timerValue;
     private int patternAmountValue;
 
-    private void Awake() // Set values to defaults. Remember to set sliders to these values as well.
+    public Slider playerAmountSlider;
+    public Slider fishAmountSlider;
+    public Slider patternAmountSlider;
+    public Slider timeAmountSlider;
+
+    private void Awake() // Set values to defaults.
     {
         Time.timeScale = 1;
-        fishAmountValue = 10;
-        playerAmountValue = 1;
-        timerValue = 2;
-        patternAmountValue = 4;
 
-        UpdateSliderHandleValues();
+        playerAmountValue = PlayerPrefs.GetInt("fish_basketAmount", 1);
+        patternAmountValue = PlayerPrefs.GetInt("fish_patternAmount", 4);
+        timerValue = PlayerPrefs.GetInt("fish_timerAmount", 2);
+        fishAmountValue = PlayerPrefs.GetInt("fish_fishAmount", 10);
+
+        fishAmountSlider.value = fishAmountValue;
+        playerAmountSlider.value = playerAmountValue;
+        timeAmountSlider.value = timerValue;
+        patternAmountSlider.value = patternAmountValue;
+
+        UpdateDifficulty(fishAmountSlider);
+        UpdatePlayerAmount(playerAmountSlider);
+        UpdateGameSpeed(timeAmountSlider);
+        UpdatePatternAmount(patternAmountSlider);
+
+        // UpdateSliderHandleValues();
     }
 
     private void Start()
@@ -67,11 +83,20 @@ public class Fish_ButtonManager : MonoBehaviour
 
     public void ReturnToMainScreen()
     {
+        PlayerPrefs.SetInt("fish_basketAmount", 1);
+        PlayerPrefs.SetInt("fish_patternAmount", 4);
+        PlayerPrefs.SetInt("fish_timerAmount", 2);
+        PlayerPrefs.SetInt("fish_fishAmount", 10);
         SceneManager.LoadScene("Main_Farm");
     }
 
     public void ActivateGame()
     {
+        PlayerPrefs.SetInt("fish_basketAmount", playerAmountValue);
+        PlayerPrefs.SetInt("fish_patternAmount", patternAmountValue);
+        PlayerPrefs.SetInt("fish_timerAmount", timerValue);
+        PlayerPrefs.SetInt("fish_fishAmount", fishAmountValue);
+
         startScreen.SetActive(false); // Disable and hide the starting screen.
         gameStarter.GetComponent<Fish_GameManager>().StartGame(timerValue * 60, playerAmountValue, fishAmountValue, patternAmountValue);
     }
