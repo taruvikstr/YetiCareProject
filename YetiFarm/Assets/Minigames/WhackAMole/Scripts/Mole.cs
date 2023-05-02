@@ -116,20 +116,20 @@ public class Mole : MonoBehaviour
            // Debug.Log(grabAnimationDuration);
             //Switch to moleGrabbing animation
             animator.runtimeAnimatorController = moleGrabbingAnimation;
-            hatAnimator.runtimeAnimatorController = hatTurn;
+            //  hatAnimator.runtimeAnimatorController = hatTurn;
+            
 
             hatAnimator.enabled = true;
             animator.enabled = true;
+            animator.SetTrigger("Start");
             
+
             while (grabAnimationDuration > 0f)
             {
 
                 grabTimerText.text = Mathf.Round(grabAnimationDuration).ToString();
                 grabAnimationDuration -= Time.deltaTime;
-                if(grabAnimationDuration < 2f)
-                {
-                    animator.runtimeAnimatorController = pullingAnim;
-                }
+                
                 yield return null;
             }
 
@@ -138,6 +138,7 @@ public class Mole : MonoBehaviour
                 gameManager.vegetables -= 1;
                 audioManager.PlaySound("VegePick");
             }
+            
             animator.enabled = false;
             hatAnimator.enabled = false;
             vegetable.SetActive(false);
@@ -212,6 +213,7 @@ public class Mole : MonoBehaviour
                     StopAllCoroutines();
                     StartCoroutine(QuickHide());
                     //Turn off hittable so that we cant keep tapping for score.
+                    animator.SetTrigger("End");
                     animator.enabled = false;
                     
                     hittable = false;
