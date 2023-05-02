@@ -5,7 +5,7 @@ using UnityEngine;
 public class Timer : MonoBehaviour
 {
     public GameManager gameManager;
-    private float timeLeft = 20f;
+    private float timeLeft = 30f;
 
     // Update is called once per frame
     public void Update()
@@ -23,7 +23,7 @@ public class Timer : MonoBehaviour
         else if (timeLeft <= 0 && gameManager != null)
         {
             updateTimer(0);
-            gameManager.EndGame();
+            gameManager.EndGame(false);
         }
     }
 
