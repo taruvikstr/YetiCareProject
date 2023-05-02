@@ -5,21 +5,23 @@ using UnityEngine;
 
 public class BerryCheck : MonoBehaviour
 {
-    public GameObject spawnOrigin = null; // berry knows its spawnpoint
-    public bool berryLayingAround = false; // true if berry has been dragged/moved
-    private Dictionary<int, Transform> draggingObjects = new Dictionary<int, Transform>(); // directory to keep up with multiple touch events
+    private Dictionary<int, Transform> draggingObjects = new Dictionary<int, Transform>(); // Directory for multiple touch events
     private Vector3 offset; 
-    public LayerMask movableLayers; 
-    public bool birdHasBerry = false;
+    public LayerMask movableLayers;
+
+    public GameObject spawnOrigin = null; // Berry's spawn point
+    public bool berryLayingAround = false; // True if berry has been moved around the screen
+    public bool birdHasBerry = false; // Detect if bird has berry
+
 
     void Update()
     {
-        // ÄLÄ POISTA
-        if (!draggingObjects.ContainsValue(gameObject.transform) && berryLayingAround == true && birdHasBerry == false && gameObject.transform.parent == null)
+        // MoveBerryBack function works
+        if (!draggingObjects.ContainsValue(gameObject.transform) && berryLayingAround == true 
+            && birdHasBerry == false && gameObject.transform.parent == null)
         {
             MoveBerryBack();
         }
-
 
         //foreach (BerryCheck berry in FindObjectsOfType<BerryCheck>())
         //{
@@ -30,6 +32,8 @@ public class BerryCheck : MonoBehaviour
         //}
 
         int touchCount = Input.touchCount;
+
+        // Game's touch and multitouch 
         for (int i = 0; i < touchCount; i++)
         {
             Touch touch = Input.GetTouch(i);
@@ -46,23 +50,10 @@ public class BerryCheck : MonoBehaviour
                         birdHasBerry = false;
                         int touchID = touch.fingerId;
 
-                        
-
                         if (!draggingObjects.ContainsKey(touchID))
                         {
                             Transform dragging = hit.transform;
-
                             dragging.parent = null;
-
-                            //if (dragging.transform.childCount >= 1)
-                            //{
-                            //    // if bird has grabbed the berry, the berry is birds child object and this happens
-                            //    GameObject grabbed = dragging.transform.GetChild(0).gameObject;
-                            //    grabbed.transform.parent = null;
-                            //    dragging = grabbed.transform;
-                            //    dragging.parent = null;
-                            //    Debug.Log("MOIKKULI");
-                            //}
 
                             if (transform.parent == null)
                             {
@@ -78,7 +69,6 @@ public class BerryCheck : MonoBehaviour
                             {
                                 dragging.gameObject.GetComponent<ParticleSystem>().Play();
                             }
-
                             dragging.transform.parent = null;
                             offset = dragging.position - Camera.main.ScreenToWorldPoint(touch.position);
                             draggingObjects.Add(touchID, dragging);
@@ -106,28 +96,27 @@ public class BerryCheck : MonoBehaviour
                     if (draggingObjects.ContainsKey(touch.fingerId))
                     {
                         draggingObjects.Remove(touch.fingerId);
-                        //berryLayingAround = true;
                     }
                     break;
             }
         }
     }
 
+    // Bird is stealing the berry
     public void OnSteal(GameObject collision)
     {
-        // bird is stealing the berry
         transform.parent = collision.gameObject.transform;
         berryLayingAround = false;
         gameObject.GetComponent<SpriteRenderer>().sortingOrder = 3;
     }
 
+    // When you drag berry away from its spawnpoint and release it before the right bucket,
+    // it moves back to spawnpoint (or in this case, spawnOrigin)
     public void MoveBerryBack()
-    {
-        // when you drag berry away from its spawnpoint and release it before the right bucket,
-        // it moves back to spawnpoint (or in this case, spawnOrigin)
+    { 
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
         Vector3 parentPos = spawnOrigin.transform.position;
-        transform.position = Vector3.MoveTowards(transform.position, parentPos, 8f * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, parentPos, 10f * Time.deltaTime);
 
         if (transform.position.Equals(parentPos))
         {

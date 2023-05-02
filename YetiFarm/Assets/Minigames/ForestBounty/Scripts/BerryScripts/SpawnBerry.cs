@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class SpawnBerry : MonoBehaviour
 {
+    public GameObject currentBerry = null;
     public GameObject berryPrefab;
-    public bool hasBerry = false;
+
     public int diff;
     public bool berrySpawning = false;
-    public GameObject currentBerry = null;
+    public bool hasBerry = false;
     private bool firstSpawn = true;
-    //[SerializeField] private ParticleSystem leaves;
 
     private void Update()
     {
@@ -58,18 +58,11 @@ public class SpawnBerry : MonoBehaviour
             currentBerry.GetComponent<BerryCheck>().spawnOrigin = gameObject;
             hasBerry = true;
         }
-
         berrySpawning = false;
-
     }
 
     public void BerryToFalse()
     {
         StartCoroutine(RespawnDelay());
     }
-
-    //public void StartParticleEffect()
-    //{
-    //    leaves.Play();
-    //}
 }

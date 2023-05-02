@@ -126,11 +126,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f45403fce436b6848985a25d84b7b53c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnOrigin: {fileID: 8969974947508468109, guid: 0ebb896b69aac2344bfc8475748cfe60, type: 3}
-  berryLayingAround: 0
   movableLayers:
     serializedVersion: 2
     m_Bits: 256
+  spawnOrigin: {fileID: 8969974947508468109, guid: 0ebb896b69aac2344bfc8475748cfe60, type: 3}
+  berryLayingAround: 0
   birdHasBerry: 0
 --- !u!198 &-598904700878214272
 ParticleSystem:
@@ -1581,7 +1581,7 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 21300000, guid: f1dc33af547bbd74e815dd9ba47dd755, type: 3}
+    - sprite: {fileID: 21300000, guid: 57a9b8075b7d54a4a952e61c17bb188a, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:

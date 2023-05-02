@@ -27,13 +27,10 @@ public class ButtonManagerForestBounty : MonoBehaviour
     public Slider desiredScoreSlider;
     public GameObject diffSliderObj;
 
-    private void Awake() // Set values to defaults. Remember to set sliders to these values as well.
+    // In Awake set values to defaults. Remember to set sliders to these values as well.
+    private void Awake()
     {
         Time.timeScale = 1;
-        //gameDifficultySlider.interactable = false;
-        //difficultyValue = 1;
-        //gameModeValue = 1;
-        //desiredScoreValue = 6;
 
         difficultyValue = PlayerPrefs.GetInt("berry_difficulty", 1);
         gameModeValue = PlayerPrefs.GetInt("berry_gameMode", 1);
@@ -59,8 +56,7 @@ public class ButtonManagerForestBounty : MonoBehaviour
 
         if (difficultyValue == 1)
         {
-            difficultySliderNumText.text = ":)";
-            
+            difficultySliderNumText.text = ":)";          
         }
         if (difficultyValue == 2)
         {
