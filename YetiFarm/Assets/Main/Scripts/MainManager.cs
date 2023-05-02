@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class MainManager : MonoBehaviour
 {
+
+    public GameObject creditScreen;
+
     private void Start()
     {
         FindObjectOfType<AudioManager>().PlaySound("MainAmbience");
@@ -13,6 +16,15 @@ public class MainManager : MonoBehaviour
         QualitySettings.vSyncCount = 1;
         
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+    }
+
     public void ToMinigame(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
@@ -21,5 +33,17 @@ public class MainManager : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void ToggleCredits()
+    {
+        if (creditScreen.activeSelf)
+        {
+            creditScreen.SetActive(false);
+        }
+        else
+        {
+            creditScreen.SetActive(true);
+        }
     }
 }
