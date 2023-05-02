@@ -213,7 +213,7 @@ public class ButtonManagerScriptMole : MonoBehaviour
         //Timed game mode feedback text
         if (game_mode == 1 && score_points <= 15)
         {
-            feedbackText.text = "Pisteet ei taida olla pääasia,rauhallista ja rentoa peliä :)";
+            feedbackText.text = "Pisteet ei taida olla pääasia,rauhallista naputtelua!";
         }
         else if (game_mode == 1 && score_points > 15 && score_points <= 25)
         {
@@ -239,11 +239,11 @@ public class ButtonManagerScriptMole : MonoBehaviour
         // Challenge game mode score feedback text 
         if (game_mode == 2 && score_points <= 15)
         {
-            feedbackText.text = "Pääsit kivasti alkuun!";
+            feedbackText.text = "Voi ei! Sinun pitää olla varovaisempi!";
         }
         else if (game_mode == 2 && score_points > 15 && score_points <= 25)
         {
-            feedbackText.text = "Sinun pitää olla varovaisempi";
+            feedbackText.text = "Pääsit jo kivasti alkuun!";
         }
         else if (game_mode == 2 && score_points > 25 && score_points <= 35)
         {
