@@ -5,33 +5,28 @@ using UnityEngine;
 public class Timer : MonoBehaviour
 {
     public GameManager gameManager;
-    private float timeLeft = 60f;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private float timeLeft = 20f;
 
     // Update is called once per frame
     public void Update()
     {
         Timer1();
     }
+
     public void Timer1()
     {
         if (timeLeft > 0)
         {
             timeLeft -= Time.deltaTime;
+            updateTimer(timeLeft);
         }
-        else
+        else if (timeLeft <= 0 && gameManager != null)
         {
-            timeLeft = 0;
-
+            updateTimer(0);
             gameManager.EndGame();
         }
-        updateTimer(timeLeft);
     }
+
     public void updateTimer(float remainingTime)
     {
         if (remainingTime < 0)

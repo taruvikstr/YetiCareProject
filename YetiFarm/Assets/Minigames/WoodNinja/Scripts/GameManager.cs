@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     private AudioManager audioManager;
     public int score;
     [SerializeField]private WoodButtonManagerScript WbManager;
-
+    private bool isGameMode1 = false;
     private void Awake()
     {
         blade = FindObjectOfType<Blade>();
@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour
         spawner.StartSpawns(difficultyValue, gameModeValue);
         if(gameModeValue == 1)
         {
+            isGameMode1 = true;
             countdownText.enabled = true;
             countdownText1.enabled = true;
             scoreText.enabled = true;
@@ -63,6 +64,7 @@ public class GameManager : MonoBehaviour
         }
         else if(gameModeValue == 2)
         {
+            isGameMode1 = false;
             scoreText.enabled = true;
             scoreText1.enabled = true;
             countdownText.enabled = false;
@@ -91,13 +93,13 @@ public class GameManager : MonoBehaviour
     }
     public void EndGame()
     {
+      
         blade.enabled = false;
         spawner.enabled = false;
         StartCoroutine(EndGameSequence());
     }
 
-    
-    
+
     private IEnumerator EndGameSequence()
     {
 
@@ -126,4 +128,19 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
     }
+    private IEnumerator BladeOff()
+    {
+        
+        blade.enabled = false;
+        TrailRenderer.FindObjectOfType<TrailRenderer>().enabled = false;
+        yield return new WaitForSeconds(3f);
+        BladeOn();
+        
+    }
+    private void BladeOn()
+    {
+        blade.enabled = true;
+        TrailRenderer.FindObjectOfType<TrailRenderer>().enabled = true;
+    }
+
 }

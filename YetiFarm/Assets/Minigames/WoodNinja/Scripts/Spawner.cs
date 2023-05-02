@@ -48,8 +48,8 @@ public class Spawner : MonoBehaviour
         while (gameObject.activeSelf)
         {
             GameObject prefab = null;
-            float minSpawnDelay = 1f;
-            float maxSpawnDelay = 1.5f;
+            float minSpawnDelay = 0.4f;
+            float maxSpawnDelay = 1.7f;
 
             switch (gameModeValue)
             {
@@ -87,14 +87,14 @@ public class Spawner : MonoBehaviour
 
 
                 case 2:
-                    minSpawnDelay = minSpawnDelayWoodOnly - 0.5f;
+                    minSpawnDelay = minSpawnDelayWoodOnly - 0.1f;
                     maxSpawnDelay = maxSpawnDelayWoodOnly - 0.3f;
-                    bombChance = 0.2f;
+                    bombChance = 0.15f;
                     break;
                 case 3:
-                    minSpawnDelay = minSpawnDelayWoodOnly - 0.7f;
-                    maxSpawnDelay = maxSpawnDelayWoodOnly - 0.6f;
-                    bombChance = 0.3f;
+                    minSpawnDelay = minSpawnDelayWoodOnly - 0.2f;
+                    maxSpawnDelay = maxSpawnDelayWoodOnly - 0.5f;
+                    bombChance = 0.2f;
                     break;
             }
 

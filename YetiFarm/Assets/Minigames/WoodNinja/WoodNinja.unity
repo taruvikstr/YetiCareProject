@@ -638,7 +638,7 @@ GameObject:
   - component: {fileID: 264266067}
   - component: {fileID: 264266069}
   m_Layer: 5
-  m_Name: TimerText
+  m_Name: TimerText1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1069,7 +1069,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 041d85ae10221cb439dc402c785357ba, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 51965c6ab9747ac4eb3dd11f918066e4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5687,9 +5687,9 @@ MonoBehaviour:
   rockPrefab: {fileID: 2569313849382781560, guid: 5b5823285d7e82a4c92b5709092ee358, type: 3}
   bombChance: 0.2
   minSpawnDelayWoodOnly: 0.4
-  maxSpawnDelayWoodOnly: 2
+  maxSpawnDelayWoodOnly: 1.7
   minSpawnDelayWoodAndRock: 0.4
-  maxSpawnDelayWoodAndRock: 2
+  maxSpawnDelayWoodAndRock: 1.7
   minAngle: -12
   maxAngle: 12
   timer: {fileID: 264266069}
