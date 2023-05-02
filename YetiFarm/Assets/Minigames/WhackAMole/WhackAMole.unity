@@ -2886,7 +2886,7 @@ MonoBehaviour:
   - {fileID: 720802952}
   - {fileID: 711119256}
   - {fileID: 1222104577}
-  playButton: {fileID: 0}
+  playButton: {fileID: 1395459776}
   gameUI: {fileID: 1929204578}
   bombText: {fileID: 1619035177}
   timeText: {fileID: 2094548804}
@@ -2900,7 +2900,7 @@ MonoBehaviour:
   exitButton: {fileID: 558812878}
   vegeCount: {fileID: 450721167}
   vegeCountHeader: {fileID: 874174762}
-  audioManager: {fileID: 0}
+  audioManager: {fileID: 1737589690}
   buttonManager: {fileID: 929641237}
   explosion: {fileID: 5108086251381335303, guid: ee772aa453322994183a5245c85e9808, type: 3}
   helmetSparks: {fileID: 2451707003890451429, guid: c1819f165e4ba744ab3eb2d225584f59, type: 3}
@@ -3203,7 +3203,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590340131193783054, guid: 1666de98055b8e1419236a59b2826b64, type: 3}
       propertyPath: sounds.Array.data[2].volume
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 6590340131193783054, guid: 1666de98055b8e1419236a59b2826b64, type: 3}
       propertyPath: sounds.Array.data[3].volume
@@ -3211,7 +3211,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590340131193783054, guid: 1666de98055b8e1419236a59b2826b64, type: 3}
       propertyPath: sounds.Array.data[4].volume
-      value: 0.7
+      value: 0.701
       objectReference: {fileID: 0}
     - target: {fileID: 6590340131193783054, guid: 1666de98055b8e1419236a59b2826b64, type: 3}
       propertyPath: sounds.Array.data[0].clipName
@@ -8782,6 +8782,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 594868494847872573, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
   m_PrefabInstance: {fileID: 474307966}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1737589690 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6590340131193783054, guid: 1666de98055b8e1419236a59b2826b64, type: 3}
+  m_PrefabInstance: {fileID: 646217699}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 611a4b6f2e5aa574d8b263eaf1d77d70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1752605434 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6036708857035519540, guid: 8e8cdd63f7f5a8e4d8b74bc13895ace4, type: 3}
