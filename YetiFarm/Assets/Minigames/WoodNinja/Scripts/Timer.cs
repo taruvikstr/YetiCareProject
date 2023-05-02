@@ -5,7 +5,7 @@ using UnityEngine;
 public class Timer : MonoBehaviour
 {
     public GameManager gameManager;
-    private float timeLeft = 30f;
+    private float timeLeft = 60f;
 
     // Update is called once per frame
     public void Update()
