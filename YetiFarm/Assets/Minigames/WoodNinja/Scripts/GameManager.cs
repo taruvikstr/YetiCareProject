@@ -5,10 +5,6 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-// Kun pelaajan blade disabloituu väläytä taustan väriä -> tai kiven partikkeli efekti
-
-
-
 
 public class GameManager : MonoBehaviour
 { 
@@ -52,7 +48,7 @@ public class GameManager : MonoBehaviour
             if(flashScreen.GetComponent<Image>().color.a > 0)
             {
                 var color = flashScreen.GetComponent<Image>().color;
-                color.a -= 0.01f;
+                color.a -= 0.008f;
                 flashScreen.GetComponent<Image>().color = color;
                 
             }
@@ -168,7 +164,7 @@ public class GameManager : MonoBehaviour
         
         blade.enabled = false;
         TrailRenderer.FindObjectOfType<TrailRenderer>().enabled = false;
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         BladeOn();
         
     }
