@@ -15,22 +15,19 @@ public class BerryCheck : MonoBehaviour
     void Update()
     {
         // ÄLÄ POISTA
-        //if (draggingObjects.Count == 0 && berryLayingAround == true && birdHasBerry == false && gameObject.transform.parent == null)
-        //{
-        //    MoveBerryBack();
-        //}
-        if (transform.parent == null)
+        if (!draggingObjects.ContainsValue(gameObject.transform) && berryLayingAround == true && birdHasBerry == false && gameObject.transform.parent == null)
         {
-            birdHasBerry = false;
+            MoveBerryBack();
         }
 
-        foreach (BerryCheck berry in FindObjectsOfType<BerryCheck>())
-        {
-            if (!draggingObjects.ContainsValue(berry.transform) && berry.berryLayingAround && !berry.birdHasBerry && berry.gameObject.transform.parent == null)
-            {
-                berry.MoveBerryBack();
-            }
-        }
+
+        //foreach (BerryCheck berry in FindObjectsOfType<BerryCheck>())
+        //{
+        //    if (!draggingObjects.ContainsValue(berry.transform) && berry.berryLayingAround && !berry.birdHasBerry && berry.gameObject.transform.parent == null)
+        //    {
+        //        berry.MoveBerryBack();
+        //    }
+        //}
 
         int touchCount = Input.touchCount;
         for (int i = 0; i < touchCount; i++)
@@ -49,21 +46,35 @@ public class BerryCheck : MonoBehaviour
                         birdHasBerry = false;
                         int touchID = touch.fingerId;
 
+                        
+
                         if (!draggingObjects.ContainsKey(touchID))
                         {
                             Transform dragging = hit.transform;
 
-                            if (dragging.transform.childCount >= 1)
+                            dragging.parent = null;
+
+                            //if (dragging.transform.childCount >= 1)
+                            //{
+                            //    // if bird has grabbed the berry, the berry is birds child object and this happens
+                            //    GameObject grabbed = dragging.transform.GetChild(0).gameObject;
+                            //    grabbed.transform.parent = null;
+                            //    dragging = grabbed.transform;
+                            //    dragging.parent = null;
+                            //    Debug.Log("MOIKKULI");
+                            //}
+
+                            if (transform.parent == null)
                             {
-                                // if bird has grabbed the berry, the berry is birds child object and this happens
-                                GameObject grabbed = dragging.transform.GetChild(0).gameObject;
-                                grabbed.transform.parent = null;
-                                dragging = grabbed.transform;
-                                dragging.parent = null;
+                                birdHasBerry = false;
+                            }
+                            if (transform.parent != null)
+                            {
+                                birdHasBerry = true;
                             }
 
                             // Particle effect
-                            if(dragging.position == spawnOrigin.transform.position)
+                            if (dragging.position == spawnOrigin.transform.position)
                             {
                                 dragging.gameObject.GetComponent<ParticleSystem>().Play();
                             }
@@ -116,7 +127,7 @@ public class BerryCheck : MonoBehaviour
         // it moves back to spawnpoint (or in this case, spawnOrigin)
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
         Vector3 parentPos = spawnOrigin.transform.position;
-        transform.position = Vector3.MoveTowards(transform.position, parentPos, 2f * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, parentPos, 8f * Time.deltaTime);
 
         if (transform.position.Equals(parentPos))
         {

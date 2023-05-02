@@ -107,11 +107,12 @@ public class ButtonManagerForestBounty : MonoBehaviour
 
     public void ActivateGame()
     {
-        difficultyValue = PlayerPrefs.GetInt("berry_difficulty", difficultyValue);
-        gameModeValue = PlayerPrefs.GetInt("berry_gameMode", gameModeValue);
-        desiredScoreValue = PlayerPrefs.GetInt("berry_desiredScore", desiredScoreValue);
+        PlayerPrefs.SetInt("berry_difficulty", difficultyValue);
+        PlayerPrefs.SetInt("berry_gameMode", gameModeValue);
+        PlayerPrefs.SetInt("berry_desiredScore", desiredScoreValue);
         startScreen.SetActive(false); // Disable and hide the starting screen.
         gameStarter.GetComponent<BerryManager>().StartSpawn(difficultyValue, gameModeValue, desiredScoreValue);
+        Debug.Log("vaikeus " + difficultyValue + " game mode " + gameModeValue + " score " + desiredScoreValue);
     }
 
     public void ActivateGameOverScreen(int result)
