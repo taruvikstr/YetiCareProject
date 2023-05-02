@@ -72,6 +72,7 @@ public class MoleGameManager : MonoBehaviour
         // Getting number of vegetables in the start of the game
         vegetablesStart = moles.Count;
         //Hide all holes before game to prevent clicking holes
+        audioManager.PlaySound("MoleAmbience");
         foreach (GameObject hole in holes)
         {
             hole.SetActive(false);
