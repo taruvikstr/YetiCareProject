@@ -6,15 +6,16 @@ using UnityEngine;
 
 public class BirdSpawnBehavior : MonoBehaviour
 {
-    public GameObject bird;
     public List<GameObject> birdSpawnPoints;
     private IEnumerator coroutine;
+    public TMP_Text birdScoreText;
+
+    public GameObject birdNest;
+    public GameObject bird;
+
     public float birdSpawnRate = 10f;
     private int spawnPoint;
-    public GameObject birdNest;
-
     public static int birdScoreCounter = 10; // = how many berries the bird has to collect before it beats you
-    public TMP_Text birdScoreText;
 
     private void Update()
     {
@@ -26,7 +27,6 @@ public class BirdSpawnBehavior : MonoBehaviour
             birdScoreText.enabled = false;
             birdNest.GetComponent<SpriteRenderer>().enabled = false;
         }
-
     }
 
     public IEnumerator DelayedBirdSpawn()

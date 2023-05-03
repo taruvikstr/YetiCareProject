@@ -5,10 +5,6 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-// Kun pelaajan blade disabloituu väläytä taustan väriä -> tai kiven partikkeli efekti
-
-
-
 
 public class GameManager : MonoBehaviour
 { 
@@ -16,8 +12,10 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI scoreText1;
     public TextMeshProUGUI countdownText;
     public TextMeshProUGUI countdownText1;
+    
 
     //public TextMeshProUGUI timerText;
+    public GameObject flashScreen;
     public GameObject spawnerList;
     public Timer timer;
     private Blade blade;
@@ -35,6 +33,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         audioManager = FindObjectOfType<AudioManager>();
+        flashScreen.SetActive(false);
     }
     // Start is called before the first frame update
 
@@ -43,6 +42,16 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             WbManager.ReturnToSettingScreen();
+        }
+        if(flashScreen!= null)
+        {
+            if(flashScreen.GetComponent<Image>().color.a > 0)
+            {
+                var color = flashScreen.GetComponent<Image>().color;
+                color.a -= 0.008f;
+                flashScreen.GetComponent<Image>().color = color;
+                
+            }
         }
     }
 
@@ -91,12 +100,33 @@ public class GameManager : MonoBehaviour
         countdownText1.enabled = false;
         Time.timeScale = 0;
     }
-    public void EndGame()
+    public void EndGame(bool isRock)
     {
-      
-        blade.enabled = false;
-        spawner.enabled = false;
-        StartCoroutine(EndGameSequence());
+        if (isRock)
+        {
+            if (isGameMode1)
+            {
+                StartCoroutine(BladeOff());
+                
+            }
+            if (isGameMode1 == false)
+            {
+                StartCoroutine(EndGameSequence());
+                blade.enabled = false;
+                spawner.enabled = false;
+                flashScreen.SetActive(false);
+
+            }
+        }
+        else
+        {
+            StartCoroutine(EndGameSequence());
+            blade.enabled = false;
+            spawner.enabled = false;
+            flashScreen.SetActive(false);
+
+        }
+
     }
 
 
@@ -119,6 +149,7 @@ public class GameManager : MonoBehaviour
         scoreText1.enabled = false;
         countdownText.enabled = false;
         countdownText1.enabled = false;
+        flashScreen.SetActive(false);
         Destroy(audioManager.gameObject);
         Time.timeScale = 0;
         WbManager.ActivateGameOverScreen(score);
@@ -133,7 +164,7 @@ public class GameManager : MonoBehaviour
         
         blade.enabled = false;
         TrailRenderer.FindObjectOfType<TrailRenderer>().enabled = false;
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         BladeOn();
         
     }
@@ -142,5 +173,12 @@ public class GameManager : MonoBehaviour
         blade.enabled = true;
         TrailRenderer.FindObjectOfType<TrailRenderer>().enabled = true;
     }
-
+    public void FlashScreen()
+    {
+        
+        var color = flashScreen.GetComponent<Image>().color;
+        color.a = 0.8f;
+        flashScreen.GetComponent<Image>().color = color;
+        flashScreen.SetActive(true);
+    }
 }
