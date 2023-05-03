@@ -108,8 +108,8 @@ public class ButtonManagerScriptMole : MonoBehaviour
             //Change handle and text color to gray to indicate disabled.
             //moleCountSlider.interactable = false;
             moleCountSlider.gameObject.SetActive(false);
-            moleCountHandle.GetComponent<Image>().color=disabledColor;
-            moleCountHandleText.GetComponent<TextMeshProUGUI>().color = disabledColor;
+          //  moleCountHandle.GetComponent<Image>().color=disabledColor;
+          //  moleCountHandleText.GetComponent<TextMeshProUGUI>().color = disabledColor;
             
         }
         else
@@ -117,8 +117,8 @@ public class ButtonManagerScriptMole : MonoBehaviour
             //Set color back to original color if interactable.
             //moleCountSlider.interactable = true;
             moleCountSlider.gameObject.SetActive(true);
-            moleCountHandle.GetComponent<Image>().color = Color.white;
-            moleCountHandleText.GetComponent<TextMeshProUGUI>().color = Color.white;
+          //  moleCountHandle.GetComponent<Image>().color = Color.white;
+          //  moleCountHandleText.GetComponent<TextMeshProUGUI>().color = Color.white;
         }
       
 
