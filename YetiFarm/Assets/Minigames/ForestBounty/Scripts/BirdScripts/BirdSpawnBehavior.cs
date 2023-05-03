@@ -15,11 +15,11 @@ public class BirdSpawnBehavior : MonoBehaviour
 
     public float birdSpawnRate = 10f;
     private int spawnPoint;
-    public static int birdScoreCounter = 10; // = how many berries the bird has to collect before it beats you
+    public static int birdScoreCounter = 10;
 
     private void Update()
     {
-        // Update the counter everytime bird steals berry
+        // Update bird's score everytime bird steals berry
         birdScoreText.text = birdScoreCounter.ToString();
 
         if (BerryManager.gameOn == false)
@@ -29,6 +29,7 @@ public class BirdSpawnBehavior : MonoBehaviour
         }
     }
 
+    // Gives random spawn point for bird, instantiates bird, and sprite flip to correct direction
     public IEnumerator DelayedBirdSpawn()
     {
         while (BerryManager.gameOn == true)
