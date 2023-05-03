@@ -69,8 +69,7 @@ public class MoleGameManager : MonoBehaviour
        // exitButton.SetActive(false);
         vegeCount.SetActive(false);
         vegeCountHeader.SetActive(false);
-        // Getting number of vegetables in the start of the game
-        vegetablesStart = moles.Count;
+        
         //Hide all holes before game to prevent clicking holes
      
         audioManager.PlaySound("MoleAmbience");
@@ -90,6 +89,7 @@ public class MoleGameManager : MonoBehaviour
     //This is public so the play button can see it.
     public void StartGame(int player_amount, int diff, int game_mode,int rows)
     {
+
         //Activate holes before game.
         foreach (GameObject hole in holes)
         {
@@ -207,8 +207,38 @@ public class MoleGameManager : MonoBehaviour
         }
         if(endlessGame == 2)
         {
-            Debug.Log("Moi");
+            switch (rows)
+            {
+                case 1:
+                    for (int i = 0; i < 6; i++)
+                    {
+                        //Disable vegetable from hole when it is disabled.
+                        moles[0].vegetable.SetActive(false);
+                        vegetables -= 1;
+                        moles[0].Hide();
+                        moles[0].StopAllCoroutines();
+                        moles.Remove(moles[0]);
+                    }
+                    break;
+                case 2:
+                    for (int i = 0; i < 3; i++)
+                    {
+                        //Disable vegetable from hole when it is disabled.
+                        moles[0].vegetable.SetActive(false);
+                        vegetables -= 1;
+                        moles[0].Hide();
+                        moles[0].StopAllCoroutines();
+                        moles.Remove(moles[0]);
+                    }
+                    break;
+                default:
+                    break;
+
+            }
+            // Getting number of vegetables in the start of the game
+            vegetablesStart = moles.Count;
         }
+       
               
            
         

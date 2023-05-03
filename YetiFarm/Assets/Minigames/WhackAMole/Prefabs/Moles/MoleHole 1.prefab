@@ -780,7 +780,7 @@ GameObject:
   - component: {fileID: 799838802891211594}
   - component: {fileID: 3253200008507910458}
   m_Layer: 0
-  m_Name: kuoppataka
+  m_Name: holeBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1141,7 +1141,7 @@ GameObject:
   - component: {fileID: 7704959915158245166}
   - component: {fileID: 691113534309143721}
   m_Layer: 0
-  m_Name: kuoppaetu
+  m_Name: holeFront
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
