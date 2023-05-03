@@ -25,7 +25,7 @@ public class MoleGameManager : MonoBehaviour
     [SerializeField] private GameObject scoreHeader;
     [SerializeField] private GameObject timeTextObject;
     [SerializeField] private GameObject timeheader;
-    [SerializeField] private GameObject exitButton;
+   // [SerializeField] private GameObject exitButton;
     [SerializeField] private GameObject vegeCount;
     [SerializeField] private GameObject vegeCountHeader;
     private int vegetablesAtStart;
@@ -66,7 +66,7 @@ public class MoleGameManager : MonoBehaviour
         scoreTextObject.SetActive(false);
         timeTextObject.SetActive(false);
         timeheader.SetActive(false);
-        exitButton.SetActive(false);
+       // exitButton.SetActive(false);
         vegeCount.SetActive(false);
         vegeCountHeader.SetActive(false);
         // Getting number of vegetables in the start of the game
@@ -224,7 +224,7 @@ public class MoleGameManager : MonoBehaviour
         gameUI.SetActive(true);
         vegeCount.SetActive(true);
         vegeCountHeader.SetActive(true);
-        exitButton.SetActive(true);
+      //  exitButton.SetActive(true);
         //Hide all the visible moles.
 
         for(int i = 0; i < moles.Count; i++)
@@ -294,7 +294,7 @@ public class MoleGameManager : MonoBehaviour
         scoreTextObject.SetActive(false);
         timeTextObject.SetActive(false);
         timeheader.SetActive(false);
-        exitButton.SetActive(false);
+       // exitButton.SetActive(false);
         vegeCount.SetActive(false);
         vegeCountHeader.SetActive(false);
 

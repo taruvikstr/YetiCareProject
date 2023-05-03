@@ -5313,13 +5313,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e0080f95f4866f42a348a8b2443ee6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bird: {fileID: 7250496293832360283, guid: 04b8fe495299594418947eaa04717909, type: 3}
   birdSpawnPoints:
   - {fileID: 1489445203}
   - {fileID: 875788839}
-  birdSpawnRate: 5
-  birdNest: {fileID: 281511488}
   birdScoreText: {fileID: 2034596660}
+  birdNest: {fileID: 281511488}
+  bird: {fileID: 7250496293832360283, guid: 04b8fe495299594418947eaa04717909, type: 3}
+  birdSpawnRate: 5
 --- !u!1001 &1608426477
 PrefabInstance:
   m_ObjectHideFlags: 0
