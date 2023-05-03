@@ -118,10 +118,15 @@ public class Mole : MonoBehaviour
             animator.runtimeAnimatorController = moleGrabbingAnimation;
             //  hatAnimator.runtimeAnimatorController = hatTurn;
             
-
-            hatAnimator.enabled = true;
+            if(moleType == MoleType.HardHat)
+            {
+                hatAnimator.enabled = true;
+                hatAnimator.SetTrigger("Start");
+            }
+           
             animator.enabled = true;
             animator.SetTrigger("Start");
+          
             
 
             while (grabAnimationDuration > 0f)
@@ -137,6 +142,12 @@ public class Mole : MonoBehaviour
             {
                 gameManager.vegetables -= 1;
                 audioManager.PlaySound("VegePick");
+            }
+            animator.SetTrigger("End");
+            
+            if(hatAnimator.enabled == true)
+            {
+                hatAnimator.SetTrigger("End");
             }
             
             animator.enabled = false;
@@ -199,6 +210,10 @@ public class Mole : MonoBehaviour
             switch (moleType)
             {
                 case MoleType.Standard:
+                    if (animator.enabled == true)
+                    {
+                        animator.SetTrigger("End");
+                    }
                     //PlayClickSound when a standardmole is active
                     audioManager.PlaySound("Click");
 
@@ -213,10 +228,7 @@ public class Mole : MonoBehaviour
                     StopAllCoroutines();
                     StartCoroutine(QuickHide());
                     //Check if animator is true then trigger end event to restart animation for next round.
-                    if(animator.enabled == true)
-                    {
-                        animator.SetTrigger("End");
-                    }
+                    
                     
                     animator.enabled = false;
                     //Turn off hittable so that we cant keep tapping for score.
@@ -237,6 +249,10 @@ public class Mole : MonoBehaviour
                     }
                     else
                     {
+                        if (animator.enabled == true)
+                        {
+                            animator.SetTrigger("End");
+                        }
                         // hatSparks.Play();
 
                         //HatMole sound
@@ -251,10 +267,7 @@ public class Mole : MonoBehaviour
                         StopAllCoroutines();
                         StartCoroutine(QuickHide());
                         //Check if animator is true then trigger end event to restart animation for next round.
-                        if (animator.enabled == true )
-                        {
-                            animator.SetTrigger("End");
-                        }
+                        
                         animator.enabled = false;
                        
                         // Turn off hittable so that we cant keep tapping for score.
