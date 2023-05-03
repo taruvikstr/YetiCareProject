@@ -45,10 +45,7 @@ public class ButtonManagerScriptMole : MonoBehaviour
     private void Awake() // Set values to defaults. Remember to set sliders to these values as well.
     {
         Time.timeScale = 1;
-      //  difficultyValueMole = 2;
-       // playerAmountValueMole = 1;
         gameSpeedValue = 0;
-      //  gameModeValueMole = 1;
         desiredScoreValue = 60;
 
 
@@ -60,7 +57,6 @@ public class ButtonManagerScriptMole : MonoBehaviour
     
        
         playerAmountValueMole =playerAmountValueMole/3;
-       // Debug.Log(playerAmountValueMole + " " + difficultyValueMole + " " + gameModeValueMole);
         moleCountSlider.value = playerAmountValueMole;
         moleDifficultySlider.value = difficultyValueMole;
         moleGameModeSlider.value = gameModeValueMole;
@@ -203,10 +199,7 @@ public class ButtonManagerScriptMole : MonoBehaviour
         scoreText1.text = "Tainnutit " + score_points.ToString() + " myyrää.";
         scoreText2.text = "Menetit " + failed_things.ToString() + " vihannesta.";
 
-        /*if (failed_things == 1)
-        {
-            scoreText2.text = "Rikki meni " + failed_things.ToString() + " kananmuna.";
-        }*/
+        
 
 
 
@@ -266,8 +259,7 @@ public class ButtonManagerScriptMole : MonoBehaviour
     public void ReturnToSettingScreen()
     {
         SceneManager.LoadScene("WhackAMole");
-        // endScreen.SetActive(false);
-        // startScreen.SetActive(true);
+       
     }
 
     public void ToggleTutorial()

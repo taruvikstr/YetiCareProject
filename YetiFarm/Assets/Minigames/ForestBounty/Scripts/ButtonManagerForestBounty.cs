@@ -73,14 +73,12 @@ public class ButtonManagerForestBounty : MonoBehaviour
         gameModeValue = (int)slider.value;
         if (gameModeValue == 1)
         {
-            //gameDifficultySlider.interactable = false;
             gameModeSliderNumText.text = "#";
             diffSliderObj.SetActive(false);
 
         }
         if (gameModeValue == 2)
         {
-            //gameDifficultySlider.interactable = true;
             gameModeSliderNumText.text = "~";
             diffSliderObj.SetActive(true);
         }
@@ -113,8 +111,6 @@ public class ButtonManagerForestBounty : MonoBehaviour
 
     public void ActivateGameOverScreen(int result)
     {
-        // result = 0 the bird won, result = 1 the player(s) won
-
         endScreen.SetActive(true); // Enable and display the game over screen.
 
         if (gameModeValue == 1 && result == 1)
@@ -134,8 +130,6 @@ public class ButtonManagerForestBounty : MonoBehaviour
     public void ReturnToSettingScreen()
     {
         SceneManager.LoadScene("ForestBounty");
-        //endScreen.SetActive(false);
-        //startScreen.SetActive(true);
     }
 
     public void ToggleTutorial()

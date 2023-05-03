@@ -7,20 +7,13 @@ public class Mole : MonoBehaviour
 {
     [Header("Graphics")]
     [SerializeField] private Sprite mole;
-   // [SerializeField] private Sprite moleHardHat;
-  //  [SerializeField] private Sprite moleHatBroken;
     [SerializeField] private Sprite moleHit;
-   // [SerializeField] private Sprite moleHatHit;
-    // [SerializeField] private ParticleSystem hatSparks;
     [SerializeField] public GameObject moleHands;
     [SerializeField] public GameObject vegetable;
     [SerializeField] public GameObject hat;
-   // [SerializeField] public GameObject brokenHat;
-
 
     [Header("GameManager")]
     [SerializeField] private MoleGameManager gameManager;
- //   [SerializeField] private TMPro.TextMeshPro grabTimerText;
 
     public AudioManager audioManager;
     //Sprite offset of the sprite to hide it
@@ -44,7 +37,6 @@ public class Mole : MonoBehaviour
 
     public RuntimeAnimatorController moleGrabbingAnimation;
     public RuntimeAnimatorController bombAnimation;
-  // public RuntimeAnimatorController pullingAnim;
     public RuntimeAnimatorController hatTurn;
 
     //Mole Parameters
@@ -61,7 +53,6 @@ public class Mole : MonoBehaviour
     private IEnumerator ShowHide(Vector2 start, Vector2 end)
     {
         // Startposition
-
         transform.localPosition = start;
         float elapsed = 0f;
         while (elapsed < showDuration)
@@ -111,23 +102,25 @@ public class Mole : MonoBehaviour
                     break;
             }
 
-            // Start timer for grabbing animation    
-          //  grabTimerText.enabled = true;
-           // Debug.Log(grabAnimationDuration);
             //Switch to moleGrabbing animation
             animator.runtimeAnimatorController = moleGrabbingAnimation;
             //  hatAnimator.runtimeAnimatorController = hatTurn;
             
-
-            hatAnimator.enabled = true;
+            if(moleType == MoleType.HardHat)
+            {
+                hatAnimator.enabled = true;
+                hatAnimator.SetTrigger("Start");
+            }
+           
             animator.enabled = true;
             animator.SetTrigger("Start");
-            
 
+
+            // Start timer for grabbing animation  
             while (grabAnimationDuration > 0f)
             {
 
-              //  grabTimerText.text = Mathf.Round(grabAnimationDuration).ToString();
+           
                 grabAnimationDuration -= Time.deltaTime;
                 
                 yield return null;
@@ -138,11 +131,17 @@ public class Mole : MonoBehaviour
                 gameManager.vegetables -= 1;
                 audioManager.PlaySound("VegePick");
             }
+            animator.SetTrigger("End");
+            
+            if(hatAnimator.enabled == true)
+            {
+                hatAnimator.SetTrigger("End");
+            }
             
             animator.enabled = false;
             hatAnimator.enabled = false;
             vegetable.SetActive(false);
-         //   grabTimerText.enabled = false;
+       
         }
 
 
@@ -167,14 +166,14 @@ public class Mole : MonoBehaviour
         {
             hittable = false;
             //We only give time penalty if it isnt a bomb
-            gameManager.Missed(moleIndex, moleType != MoleType.Bomb);
+            gameManager.Missed(moleIndex);
         }
 
     }
 
     public void Hide()
     {
-       // grabTimerText.enabled = false;
+       
         moleHands.SetActive(false);
         transform.localPosition = startPosition;
         boxCollider2D.offset = boxOffsetHidden;
@@ -199,25 +198,21 @@ public class Mole : MonoBehaviour
             switch (moleType)
             {
                 case MoleType.Standard:
+                    if (animator.enabled == true)
+                    {
+                        animator.SetTrigger("End");
+                    }
                     //PlayClickSound when a standardmole is active
                     audioManager.PlaySound("Click");
 
 
                     moleHands.SetActive(false);
-                    Debug.Log("normal hit");
                     spriteRenderer.sprite = moleHit;
                     gameManager.AddScore(moleIndex, moleType != MoleType.Bomb);
-                    //Hide mole grabbing timer if mole is hit
-                   // grabTimerText.enabled = false;
                     //Stop Coroutines
                     StopAllCoroutines();
                     StartCoroutine(QuickHide());
                     //Check if animator is true then trigger end event to restart animation for next round.
-                    if(animator.enabled == true)
-                    {
-                        animator.SetTrigger("End");
-                    }
-                    
                     animator.enabled = false;
                     //Turn off hittable so that we cant keep tapping for score.
                     hittable = false;
@@ -225,9 +220,9 @@ public class Mole : MonoBehaviour
                 case MoleType.HardHat:
                     if (lives == 2)
                     {
+                        //Instantiate spark from helmetposition.
                         Vector2 temp = new Vector2(hat.transform.position.x, hat.transform.position.y+2f);
                         gameManager.HelmetSpark(temp);
-                        // brokenHat.SetActive(true);
                         hatAnimator.enabled = false;
                         hat.SetActive(false);
                         audioManager.PlaySound("HelmetHit");
@@ -237,12 +232,14 @@ public class Mole : MonoBehaviour
                     }
                     else
                     {
-                        // hatSparks.Play();
-
+                        if (animator.enabled == true)
+                        {
+                            animator.SetTrigger("End");
+                        }
+ 
                         //HatMole sound
                         audioManager.PlaySound("Click");
                         moleHands.SetActive(false);
-                        Debug.Log("hatHit");
                         spriteRenderer.sprite = moleHit;
                         gameManager.AddScore(moleIndex, moleType != MoleType.Bomb);
                         //Hide mole grabbing timer if mole is hit
@@ -251,12 +248,7 @@ public class Mole : MonoBehaviour
                         StopAllCoroutines();
                         StartCoroutine(QuickHide());
                         //Check if animator is true then trigger end event to restart animation for next round.
-                        if (animator.enabled == true )
-                        {
-                            animator.SetTrigger("End");
-                        }
                         animator.enabled = false;
-                       
                         // Turn off hittable so that we cant keep tapping for score.
                         hittable = false;
                     }
@@ -264,7 +256,6 @@ public class Mole : MonoBehaviour
                 case MoleType.Bomb:
 
                     //Game over, 1 for bomb.
-                    Debug.Log("Bomb hit");
                     if (vegetable.activeInHierarchy)
                     {
                         gameManager.vegetables -= 1;
@@ -318,7 +309,6 @@ public class Mole : MonoBehaviour
                 moleType = MoleType.HardHat;
                 spriteRenderer.sprite = mole;
                 hat.SetActive(true);
-               // brokenHat.SetActive(false);
                 lives = 2;
             }
             else
@@ -327,7 +317,6 @@ public class Mole : MonoBehaviour
                 moleType = MoleType.Standard;
                 spriteRenderer.sprite = mole;
                 hat.SetActive(false);
-               // brokenHat.SetActive(false);
                 lives = 1;
             }
         }

@@ -5,31 +5,23 @@ using UnityEngine;
 
 public class BerryCheck : MonoBehaviour
 {
-    private Dictionary<int, Transform> draggingObjects = new Dictionary<int, Transform>(); // Directory for multiple touch events
+    private Dictionary<int, Transform> draggingObjects = new Dictionary<int, Transform>();
     private Vector3 offset; 
     public LayerMask movableLayers;
 
-    public GameObject spawnOrigin = null; // Berry's spawn point
-    public bool berryLayingAround = false; // True if berry has been moved around the screen
-    public bool birdHasBerry = false; // Detect if bird has berry
+    public GameObject spawnOrigin = null;
+    public bool berryLayingAround = false;
+    public bool birdHasBerry = false;
 
 
     void Update()
     {
-        // MoveBerryBack function works
+        // MoveBerryBack function using
         if (!draggingObjects.ContainsValue(gameObject.transform) && berryLayingAround == true 
             && birdHasBerry == false && gameObject.transform.parent == null)
         {
             MoveBerryBack();
         }
-
-        //foreach (BerryCheck berry in FindObjectsOfType<BerryCheck>())
-        //{
-        //    if (!draggingObjects.ContainsValue(berry.transform) && berry.berryLayingAround && !berry.birdHasBerry && berry.gameObject.transform.parent == null)
-        //    {
-        //        berry.MoveBerryBack();
-        //    }
-        //}
 
         int touchCount = Input.touchCount;
 
@@ -39,9 +31,9 @@ public class BerryCheck : MonoBehaviour
             Touch touch = Input.GetTouch(i);
             switch (touch.phase)
             {
+                // Touch is being detected on screen
                 case TouchPhase.Began:
-                    // touch is being detected on screen
-                    // cast ray, restrict the functionality to objects on "Movable" -layer 
+                    // Cast ray, restrict the functionality to objects on "Movable" -layer 
                     RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touch.position), Vector2.zero, float.PositiveInfinity, movableLayers);
 
                     if (hit)
@@ -76,8 +68,8 @@ public class BerryCheck : MonoBehaviour
                     }
                     break;
 
+                // Touch is moving across screen
                 case TouchPhase.Moved:
-                    // touch is moving across screen
                     if (draggingObjects.ContainsKey(touch.fingerId))
                     {
                         Transform dragging = draggingObjects[touch.fingerId];
@@ -91,8 +83,8 @@ public class BerryCheck : MonoBehaviour
                     }
                     break;
 
+                // Touch is no longer detected
                 case TouchPhase.Ended:
-                    // touch is no longer detected
                     if (draggingObjects.ContainsKey(touch.fingerId))
                     {
                         draggingObjects.Remove(touch.fingerId);
@@ -111,12 +103,13 @@ public class BerryCheck : MonoBehaviour
     }
 
     // When you drag berry away from its spawnpoint and release it before the right bucket,
-    // it moves back to spawnpoint (or in this case, spawnOrigin)
+    // it moves back to spawnpoint (spawnOrigin)
     public void MoveBerryBack()
     { 
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
         Vector3 parentPos = spawnOrigin.transform.position;
         transform.position = Vector3.MoveTowards(transform.position, parentPos, 10f * Time.deltaTime);
+        gameObject.GetComponent<SpriteRenderer>().sortingOrder = 2;
 
         if (transform.position.Equals(parentPos))
         {

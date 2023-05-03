@@ -5,16 +5,15 @@ using TMPro;
 
 public class BerryBucket : MonoBehaviour
 {
-    public int counter = 0; // berrycounter
-    public TMP_Text txt; // berrycounter text
-    public string bucketType; // cowberry, blueberry, strawberry or raspberry
+    public int counter = 0;
+    public TMP_Text txt;
+    public string bucketType;
 
     public void StartBuckets()
     {
         gameObject.GetComponent<BoxCollider2D>().enabled = true;
         txt.enabled = true;
         txt.text = counter.ToString();
-
     }
     private void Update()
     {
@@ -24,6 +23,7 @@ public class BerryBucket : MonoBehaviour
         }
     }
 
+    // Collecting berries to 4 different buckets
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.name.StartsWith("Strawberry") && bucketType == "StrawberryBucket")
@@ -37,14 +37,14 @@ public class BerryBucket : MonoBehaviour
             {
                 txt.text = counter.ToString();
             }
-            else  // all berries collected in this berrybucket
+            else
             {
                 txt.text = "Ämpäri täynnä!";
                 BerryManager.endGame++;
                 gameObject.GetComponent<BoxCollider2D>().enabled = false;
-            }
-            
+            }          
         }
+
         if (collision.gameObject.name.StartsWith("Blueberry") && bucketType == "BlueberryBucket")
         {
             counter--;
@@ -56,14 +56,14 @@ public class BerryBucket : MonoBehaviour
             {
                 txt.text = counter.ToString();
             }
-            else  // all berries collected in this berrybucket
+            else
             {
-                txt.text = "Ämpäri täynnä!!";
+                txt.text = "Ämpäri täynnä!";
                 BerryManager.endGame++;
                 gameObject.GetComponent<BoxCollider2D>().enabled = false;
-            }
-            
+            }          
         }
+
         if (collision.gameObject.name.StartsWith("Raspberry") && bucketType == "RaspberryBucket")
         {
             counter--;
@@ -75,14 +75,14 @@ public class BerryBucket : MonoBehaviour
             {
                 txt.text = counter.ToString();
             }
-            else  // all berries collected in this berrybucket
+            else
             {
-                txt.text = "Ämpäri täynnä!!";
+                txt.text = "Ämpäri täynnä!";
                 BerryManager.endGame++;
                 gameObject.GetComponent<BoxCollider2D>().enabled = false;
             }
-
         }
+
         if (collision.gameObject.name.StartsWith("Cowberry") && bucketType == "CowberryBucket")
         {
             counter--;
@@ -94,13 +94,12 @@ public class BerryBucket : MonoBehaviour
             {     
                 txt.text = counter.ToString();
             }
-            else  // all berries collected in this berrybucket
+            else
             {
-                txt.text = "Ämpäri täynnä!!";
+                txt.text = "Ämpäri täynnä!";
                 BerryManager.endGame++;
                 gameObject.GetComponent<BoxCollider2D>().enabled = false;
             }
-
         }
     }
 }

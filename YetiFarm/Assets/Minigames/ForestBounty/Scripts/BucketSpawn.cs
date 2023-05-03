@@ -8,6 +8,7 @@ public class BucketSpawn : MonoBehaviour
     public List<GameObject> spawnPoint;
     private int bucketIndex = 0;
 
+    // Spawns buckets in random order
     public void SpawnBuckets()
     {
         while (true)

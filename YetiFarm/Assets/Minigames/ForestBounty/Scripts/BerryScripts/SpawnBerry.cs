@@ -26,7 +26,7 @@ public class SpawnBerry : MonoBehaviour
 
     public IEnumerator RespawnDelay()
     {
-        // berries spanw back with delay, and depending on difficulty the timedelay varies
+        // Berries spanw back with delay, and depending on difficulty the timedelay varies
         berrySpawning = true;
         float delay = 0;
 
@@ -43,6 +43,7 @@ public class SpawnBerry : MonoBehaviour
             delay = 3.0f;
         }
 
+        // Berries spawning in the beginning of game
         if (firstSpawn)
         {
             currentBerry = Instantiate(berryPrefab, transform.position, transform.rotation);
@@ -50,6 +51,8 @@ public class SpawnBerry : MonoBehaviour
             hasBerry = true;
             firstSpawn = false;
         }
+
+        // Berries spawning during game
         else
         {
             yield return new WaitForSeconds(delay);
@@ -58,6 +61,7 @@ public class SpawnBerry : MonoBehaviour
             currentBerry.GetComponent<BerryCheck>().spawnOrigin = gameObject;
             hasBerry = true;
         }
+
         berrySpawning = false;
     }
 
