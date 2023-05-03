@@ -192,13 +192,11 @@ MonoBehaviour:
   vegetable: {fileID: 594868494847872573}
   hat: {fileID: 6036708857035519540}
   gameManager: {fileID: 0}
-  grabTimerText: {fileID: 9004085113777636755}
   audioManager: {fileID: 0}
   duration: 1
   hatAnimator: {fileID: 3026128302719592677}
   moleGrabbingAnimation: {fileID: 9100000, guid: 553d062a7ff90b741add76180aeb3334, type: 2}
   bombAnimation: {fileID: 9100000, guid: 4c11f9bfd357db44b99e8d91aed65987, type: 2}
-  pullingAnim: {fileID: 9100000, guid: ab6c4ad4e4df8234798d1448a628db17, type: 2}
   hatTurn: {fileID: 9100000, guid: 3aafd752bfb4ab94c931a85b0ba6fda7, type: 2}
 --- !u!61 &4071165849382617525
 BoxCollider2D:
@@ -782,7 +780,7 @@ GameObject:
   - component: {fileID: 799838802891211594}
   - component: {fileID: 3253200008507910458}
   m_Layer: 0
-  m_Name: kuoppataka
+  m_Name: holeBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1143,7 +1141,7 @@ GameObject:
   - component: {fileID: 7704959915158245166}
   - component: {fileID: 691113534309143721}
   m_Layer: 0
-  m_Name: kuoppaetu
+  m_Name: holeFront
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

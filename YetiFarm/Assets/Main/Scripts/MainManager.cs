@@ -7,6 +7,7 @@ public class MainManager : MonoBehaviour
 {
 
     public GameObject creditScreen;
+    public GameObject highlights;
 
     private void Start()
     {
@@ -14,6 +15,7 @@ public class MainManager : MonoBehaviour
       
         Application.targetFrameRate = 60;
         QualitySettings.vSyncCount = 1;
+        StartCoroutine(blinkHighlights());
         
     }
 
@@ -44,6 +46,26 @@ public class MainManager : MonoBehaviour
         else
         {
             creditScreen.SetActive(true);
+        }
+    }
+
+    public IEnumerator blinkHighlights()
+    {
+        while(true)
+        {
+            yield return new WaitForSeconds(5.0f);
+            highlights.SetActive(false);
+            yield return new WaitForSeconds(0.2f);
+            highlights.SetActive(true);
+            yield return new WaitForSeconds(0.3f);
+            highlights.SetActive(false);
+            yield return new WaitForSeconds(0.2f);
+            highlights.SetActive(true);
+            yield return new WaitForSeconds(0.3f);
+            highlights.SetActive(false);
+            yield return new WaitForSeconds(0.2f);
+            highlights.SetActive(true);
+            yield return new WaitForSeconds(0.3f);
         }
     }
 }
