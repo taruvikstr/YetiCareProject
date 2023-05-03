@@ -7,16 +7,10 @@ public class Mole : MonoBehaviour
 {
     [Header("Graphics")]
     [SerializeField] private Sprite mole;
-   // [SerializeField] private Sprite moleHardHat;
-  //  [SerializeField] private Sprite moleHatBroken;
     [SerializeField] private Sprite moleHit;
-   // [SerializeField] private Sprite moleHatHit;
-    // [SerializeField] private ParticleSystem hatSparks;
     [SerializeField] public GameObject moleHands;
     [SerializeField] public GameObject vegetable;
     [SerializeField] public GameObject hat;
-   // [SerializeField] public GameObject brokenHat;
-
 
     [Header("GameManager")]
     [SerializeField] private MoleGameManager gameManager;
@@ -228,8 +222,6 @@ public class Mole : MonoBehaviour
                     StopAllCoroutines();
                     StartCoroutine(QuickHide());
                     //Check if animator is true then trigger end event to restart animation for next round.
-                    
-                    
                     animator.enabled = false;
                     //Turn off hittable so that we cant keep tapping for score.
                     hittable = false;
@@ -237,6 +229,7 @@ public class Mole : MonoBehaviour
                 case MoleType.HardHat:
                     if (lives == 2)
                     {
+                        //Instantiate spark from helmetposition.
                         Vector2 temp = new Vector2(hat.transform.position.x, hat.transform.position.y+2f);
                         gameManager.HelmetSpark(temp);
                         // brokenHat.SetActive(true);
@@ -253,8 +246,7 @@ public class Mole : MonoBehaviour
                         {
                             animator.SetTrigger("End");
                         }
-                        // hatSparks.Play();
-
+ 
                         //HatMole sound
                         audioManager.PlaySound("Click");
                         moleHands.SetActive(false);
@@ -267,9 +259,7 @@ public class Mole : MonoBehaviour
                         StopAllCoroutines();
                         StartCoroutine(QuickHide());
                         //Check if animator is true then trigger end event to restart animation for next round.
-                        
                         animator.enabled = false;
-                       
                         // Turn off hittable so that we cant keep tapping for score.
                         hittable = false;
                     }
@@ -331,7 +321,6 @@ public class Mole : MonoBehaviour
                 moleType = MoleType.HardHat;
                 spriteRenderer.sprite = mole;
                 hat.SetActive(true);
-               // brokenHat.SetActive(false);
                 lives = 2;
             }
             else
@@ -340,7 +329,6 @@ public class Mole : MonoBehaviour
                 moleType = MoleType.Standard;
                 spriteRenderer.sprite = mole;
                 hat.SetActive(false);
-               // brokenHat.SetActive(false);
                 lives = 1;
             }
         }

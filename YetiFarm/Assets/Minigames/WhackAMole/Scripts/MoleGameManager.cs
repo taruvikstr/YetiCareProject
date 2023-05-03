@@ -294,7 +294,7 @@ public class MoleGameManager : MonoBehaviour
         StartCoroutine(DeleteOldPS(tempGameObject));
 
     }
-    //Old particlesystem explosion gameobject is deleted from scene after 3 seconds.
+    //Old particlesystem explosion gameobject is deleted from scene after 2 seconds.
     IEnumerator DeleteOldPS(GameObject particle)
     {
         yield return new WaitForSeconds(2);
@@ -303,17 +303,7 @@ public class MoleGameManager : MonoBehaviour
   
     public void GameOver(int type)
     {
-        //Show message
-        //if(type == 0)
-        //{
-        //    outOfTimeText.SetActive(true);
-        //}
-        //else
-        //{
-        //    bombText.SetActive(true);
-        //}
-        
-
+      
         //Hide all moles
         foreach(Mole mole in moles)
         {
@@ -343,20 +333,12 @@ public class MoleGameManager : MonoBehaviour
             scoreText.text = $"{score}";
         }
         
-        // Increase time little bit.
-       // timeRemaining += 1;
-
         //Remove from active moles.
         currentMoles.Remove(moles[moleIndex]);
     }
     public void Missed(int moleIndex, bool isMole)
     {
-        if (isMole)
-        {
-            //Decrease time by a little bit.
-           // timeRemaining -= 2;
-        }
-       
+        
         currentMoles.Remove(moles[moleIndex]);
     }
 
@@ -373,7 +355,7 @@ public class MoleGameManager : MonoBehaviour
                 difficultyLevel = score;
                 if (vegetablesStart != vegetables)
                 {
-                 //   audioManager.PlaySound("VegePick");
+                 
                     GameOver(0);
                 }
                 // Set timer text objects to false during endless mode
