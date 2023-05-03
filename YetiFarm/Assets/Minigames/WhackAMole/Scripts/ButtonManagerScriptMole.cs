@@ -147,7 +147,7 @@ public class ButtonManagerScriptMole : MonoBehaviour
             //moleDifficultyHandle.GetComponent<Image>().color = disabledColor;
             //moleDifficultyHandleText.GetComponent<TextMeshProUGUI>().color = disabledColor;
             //rowsSlider.interactable = false;
-            rowsSlider.gameObject.SetActive(false);
+            //rowsSlider.gameObject.SetActive(false);
             //rowsDifficultyHandle.GetComponent<Image>().color = disabledColor;
             //rowsDifficultyHandleText.GetComponent<TextMeshProUGUI>().color = disabledColor;
         }
