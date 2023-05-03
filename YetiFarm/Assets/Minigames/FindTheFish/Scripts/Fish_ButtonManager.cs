@@ -19,6 +19,8 @@ public class Fish_ButtonManager : MonoBehaviour
     public Slider patternAmountSlider;
     public Slider timeAmountSlider;
 
+    [SerializeField] private GameObject screenFlip;
+
     private void Awake() // Set values to defaults.
     {
         Time.timeScale = 1;
@@ -45,6 +47,9 @@ public class Fish_ButtonManager : MonoBehaviour
     {
         Application.targetFrameRate = 60;
         QualitySettings.vSyncCount = 1;
+
+        if (playerAmountValue > 2) screenFlip.SetActive(true);
+        else screenFlip.SetActive(false);
     }
 
     private void UpdateSliderHandleValues()
@@ -66,6 +71,9 @@ public class Fish_ButtonManager : MonoBehaviour
     {
         playerAmountValue = (int)slider.value;
         playersSlider.text = playerAmountValue.ToString();
+
+        if (playerAmountValue > 2) screenFlip.SetActive(true);
+        else screenFlip.SetActive(false);
     }
 
     public void UpdateGameSpeed(Slider slider)
