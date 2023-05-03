@@ -20,7 +20,7 @@ public class Mole : MonoBehaviour
 
     [Header("GameManager")]
     [SerializeField] private MoleGameManager gameManager;
-    [SerializeField] private TMPro.TextMeshPro grabTimerText;
+ //   [SerializeField] private TMPro.TextMeshPro grabTimerText;
 
     public AudioManager audioManager;
     //Sprite offset of the sprite to hide it
@@ -44,7 +44,7 @@ public class Mole : MonoBehaviour
 
     public RuntimeAnimatorController moleGrabbingAnimation;
     public RuntimeAnimatorController bombAnimation;
-    public RuntimeAnimatorController pullingAnim;
+  // public RuntimeAnimatorController pullingAnim;
     public RuntimeAnimatorController hatTurn;
 
     //Mole Parameters
@@ -112,7 +112,7 @@ public class Mole : MonoBehaviour
             }
 
             // Start timer for grabbing animation    
-            grabTimerText.enabled = true;
+          //  grabTimerText.enabled = true;
            // Debug.Log(grabAnimationDuration);
             //Switch to moleGrabbing animation
             animator.runtimeAnimatorController = moleGrabbingAnimation;
@@ -127,7 +127,7 @@ public class Mole : MonoBehaviour
             while (grabAnimationDuration > 0f)
             {
 
-                grabTimerText.text = Mathf.Round(grabAnimationDuration).ToString();
+              //  grabTimerText.text = Mathf.Round(grabAnimationDuration).ToString();
                 grabAnimationDuration -= Time.deltaTime;
                 
                 yield return null;
@@ -142,7 +142,7 @@ public class Mole : MonoBehaviour
             animator.enabled = false;
             hatAnimator.enabled = false;
             vegetable.SetActive(false);
-            grabTimerText.enabled = false;
+         //   grabTimerText.enabled = false;
         }
 
 
@@ -174,7 +174,7 @@ public class Mole : MonoBehaviour
 
     public void Hide()
     {
-        grabTimerText.enabled = false;
+       // grabTimerText.enabled = false;
         moleHands.SetActive(false);
         transform.localPosition = startPosition;
         boxCollider2D.offset = boxOffsetHidden;
@@ -208,14 +208,18 @@ public class Mole : MonoBehaviour
                     spriteRenderer.sprite = moleHit;
                     gameManager.AddScore(moleIndex, moleType != MoleType.Bomb);
                     //Hide mole grabbing timer if mole is hit
-                    grabTimerText.enabled = false;
+                   // grabTimerText.enabled = false;
                     //Stop Coroutines
                     StopAllCoroutines();
                     StartCoroutine(QuickHide());
-                    //Turn off hittable so that we cant keep tapping for score.
-                    animator.SetTrigger("End");
-                    animator.enabled = false;
+                    //Check if animator is true then trigger end event to restart animation for next round.
+                    if(animator.enabled == true)
+                    {
+                        animator.SetTrigger("End");
+                    }
                     
+                    animator.enabled = false;
+                    //Turn off hittable so that we cant keep tapping for score.
                     hittable = false;
                     break;
                 case MoleType.HardHat:
@@ -242,10 +246,15 @@ public class Mole : MonoBehaviour
                         spriteRenderer.sprite = moleHit;
                         gameManager.AddScore(moleIndex, moleType != MoleType.Bomb);
                         //Hide mole grabbing timer if mole is hit
-                        grabTimerText.enabled = false;
+                      //  grabTimerText.enabled = false;
                         //Stop the animation
                         StopAllCoroutines();
                         StartCoroutine(QuickHide());
+                        //Check if animator is true then trigger end event to restart animation for next round.
+                        if (animator.enabled == true )
+                        {
+                            animator.SetTrigger("End");
+                        }
                         animator.enabled = false;
                        
                         // Turn off hittable so that we cant keep tapping for score.
