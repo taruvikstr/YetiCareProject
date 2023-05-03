@@ -10,38 +10,28 @@ using UnityEditor;
 
 public class BerryManager : MonoBehaviour 
 {
-    public Transform[] berrySpawnerList; // List of berry spawnpoints in scene
+    public Transform[] berrySpawnerList;
     
     public TMP_Text endgame_txt;
-    public static int endGame = 0; // When endgame == 4, game ends
+    public static int endGame = 0;
 
     public GameObject birdSpawn;
-    public GameObject containers; // Buckets
+    public GameObject containers;
     public GameObject buttonManager;
 
-    public static int bManagerDesiredScore; // Amount of berries that need to be picked
+    public static int bManagerDesiredScore;
     public static int bManagerGameMode;
-    public static int bManagerDifficulty; // 3 bird difficulties 
+    public static int bManagerDifficulty;
 
-    private int birdCount = 0; // How many birds in scene
+    private int birdCount = 0;
     private bool birdSoundOn = false;
-    public static bool gameOn = false; // While player is picking berries, the game is on 
+    public static bool gameOn = false;
 
 
     private void Awake()
     {
-        GameObject berrySpawnPointObject = GameObject.Find("SpawnPoints");
         containers = GameObject.Find("Containers");
         birdSpawn = GameObject.Find("BirdSpawn");
-
-        if (berrySpawnPointObject == null)
-        {
-            Debug.Log("BERRY NOT FOUND");
-        }
-        else
-        {
-            Debug.Log("Marja löytyi");
-        }
     }
 
     private void Update()
@@ -51,7 +41,6 @@ public class BerryManager : MonoBehaviour
         // Bird's sound
         if (birdCount > 0 && birdSoundOn == false)
         {
-            Debug.Log(birdCount);
             FindObjectOfType<AudioManager>().PlaySound("BirdFlap");
             birdSoundOn = true;
         }
@@ -73,10 +62,10 @@ public class BerryManager : MonoBehaviour
             }
             buttonManager.GetComponent<ButtonManagerForestBounty>().ReturnToSettingScreen();
         }
+
         // This happens when bird gathers all berries
         if (BirdSpawnBehavior.birdScoreCounter == 0 && bManagerGameMode == 2 && gameOn != false)
         {
-            Debug.Log("BirdScore: " + BirdSpawnBehavior.birdScoreCounter + "\n Gamemode: " + bManagerGameMode + "\n gameOn: " + gameOn);
             gameOn = false;
             buttonManager.GetComponent<ButtonManagerForestBounty>().ActivateGameOverScreen(0);
         }
@@ -111,14 +100,13 @@ public class BerryManager : MonoBehaviour
         int[] bucketScores = new int[4];
         int difference = desiredSum / 4;
 
-        // Using uniform distribution so that the random generated bucket scores wont differ too much from each other
-        // generate scores for buckets
+        // Generate scores for buckets
         for (int i = 0; i < 3; i++)
         {
             bucketScores[i] = Random.Range(difference - difference/4, difference + difference/4);
             desiredSum -= bucketScores[i];
         }
-        bucketScores[3] = desiredSum; // last bucket gets whatever is left from the desired sum        
+        bucketScores[3] = desiredSum; // Last bucket gets whatever is left from the desired sum        
         containers.GetComponent<BucketSpawn>().SpawnBuckets();
 
         // Sets berry spawn points's difficulty values and spawn delay
@@ -132,19 +120,20 @@ public class BerryManager : MonoBehaviour
         {
             case (1, 2):
                 birdSpawn.GetComponent<BirdSpawnBehavior>().birdSpawnRate = 15f;
-                birdSpawn.GetComponent<BirdSpawnBehavior>().BirdSpawnStarter(); // Starts bird 
+                birdSpawn.GetComponent<BirdSpawnBehavior>().BirdSpawnStarter();
                 break;
 
             case (2, 2):
                 birdSpawn.GetComponent<BirdSpawnBehavior>().birdSpawnRate = 10f;
-                birdSpawn.GetComponent<BirdSpawnBehavior>().BirdSpawnStarter(); // Starts bird 
+                birdSpawn.GetComponent<BirdSpawnBehavior>().BirdSpawnStarter();
                 break;
 
             case (3, 2):
-                birdSpawn.GetComponent<BirdSpawnBehavior>().birdSpawnRate = 5f; // set bird to spawn a bit faster
-                birdSpawn.GetComponent<BirdSpawnBehavior>().BirdSpawnStarter(); // Starts bird 
+                birdSpawn.GetComponent<BirdSpawnBehavior>().birdSpawnRate = 5f;
+                birdSpawn.GetComponent<BirdSpawnBehavior>().BirdSpawnStarter();
                 break;
         }
+
         BerryBucket[] childContainers = containers.GetComponentsInChildren<BerryBucket>();
         int temp = 0;
         foreach (BerryBucket childContainer in childContainers)
