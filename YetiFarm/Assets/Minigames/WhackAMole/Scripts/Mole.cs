@@ -14,7 +14,6 @@ public class Mole : MonoBehaviour
 
     [Header("GameManager")]
     [SerializeField] private MoleGameManager gameManager;
- //   [SerializeField] private TMPro.TextMeshPro grabTimerText;
 
     public AudioManager audioManager;
     //Sprite offset of the sprite to hide it
@@ -38,7 +37,6 @@ public class Mole : MonoBehaviour
 
     public RuntimeAnimatorController moleGrabbingAnimation;
     public RuntimeAnimatorController bombAnimation;
-  // public RuntimeAnimatorController pullingAnim;
     public RuntimeAnimatorController hatTurn;
 
     //Mole Parameters
@@ -55,7 +53,6 @@ public class Mole : MonoBehaviour
     private IEnumerator ShowHide(Vector2 start, Vector2 end)
     {
         // Startposition
-
         transform.localPosition = start;
         float elapsed = 0f;
         while (elapsed < showDuration)
@@ -105,9 +102,6 @@ public class Mole : MonoBehaviour
                     break;
             }
 
-            // Start timer for grabbing animation    
-          //  grabTimerText.enabled = true;
-           // Debug.Log(grabAnimationDuration);
             //Switch to moleGrabbing animation
             animator.runtimeAnimatorController = moleGrabbingAnimation;
             //  hatAnimator.runtimeAnimatorController = hatTurn;
@@ -120,13 +114,13 @@ public class Mole : MonoBehaviour
            
             animator.enabled = true;
             animator.SetTrigger("Start");
-          
-            
 
+
+            // Start timer for grabbing animation  
             while (grabAnimationDuration > 0f)
             {
 
-              //  grabTimerText.text = Mathf.Round(grabAnimationDuration).ToString();
+           
                 grabAnimationDuration -= Time.deltaTime;
                 
                 yield return null;
@@ -147,7 +141,7 @@ public class Mole : MonoBehaviour
             animator.enabled = false;
             hatAnimator.enabled = false;
             vegetable.SetActive(false);
-         //   grabTimerText.enabled = false;
+       
         }
 
 
@@ -172,14 +166,14 @@ public class Mole : MonoBehaviour
         {
             hittable = false;
             //We only give time penalty if it isnt a bomb
-            gameManager.Missed(moleIndex, moleType != MoleType.Bomb);
+            gameManager.Missed(moleIndex);
         }
 
     }
 
     public void Hide()
     {
-       // grabTimerText.enabled = false;
+       
         moleHands.SetActive(false);
         transform.localPosition = startPosition;
         boxCollider2D.offset = boxOffsetHidden;
@@ -213,11 +207,8 @@ public class Mole : MonoBehaviour
 
 
                     moleHands.SetActive(false);
-                    Debug.Log("normal hit");
                     spriteRenderer.sprite = moleHit;
                     gameManager.AddScore(moleIndex, moleType != MoleType.Bomb);
-                    //Hide mole grabbing timer if mole is hit
-                   // grabTimerText.enabled = false;
                     //Stop Coroutines
                     StopAllCoroutines();
                     StartCoroutine(QuickHide());
@@ -232,7 +223,6 @@ public class Mole : MonoBehaviour
                         //Instantiate spark from helmetposition.
                         Vector2 temp = new Vector2(hat.transform.position.x, hat.transform.position.y+2f);
                         gameManager.HelmetSpark(temp);
-                        // brokenHat.SetActive(true);
                         hatAnimator.enabled = false;
                         hat.SetActive(false);
                         audioManager.PlaySound("HelmetHit");
@@ -250,7 +240,6 @@ public class Mole : MonoBehaviour
                         //HatMole sound
                         audioManager.PlaySound("Click");
                         moleHands.SetActive(false);
-                        Debug.Log("hatHit");
                         spriteRenderer.sprite = moleHit;
                         gameManager.AddScore(moleIndex, moleType != MoleType.Bomb);
                         //Hide mole grabbing timer if mole is hit
@@ -267,7 +256,6 @@ public class Mole : MonoBehaviour
                 case MoleType.Bomb:
 
                     //Game over, 1 for bomb.
-                    Debug.Log("Bomb hit");
                     if (vegetable.activeInHierarchy)
                     {
                         gameManager.vegetables -= 1;
