@@ -131,13 +131,13 @@ public class MoleGameManager : MonoBehaviour
             {
                 for (int i = 0; i < 6; i++)
                 {
-                    Debug.Log(molesInGame);
+                    
                     random = Random.Range(0, moles.Count);
 
                     while (samenumbercheck.Contains(random))
                     {
                         random = Random.Range(0, moles.Count);
-                        Debug.Log("Sama numero " + random);
+                        
                     }
                     moles[random].vegetable.SetActive(false);
                     vegetables -= 1;
@@ -159,7 +159,7 @@ public class MoleGameManager : MonoBehaviour
                     while (samenumbercheck.Contains(random))
                     {
                         random = Random.Range(0, moles.Count);
-                        Debug.Log("Sama numero " + random);
+                       
                     }
                     //Disable vegetable from hole when it is disabled.
                     moles[random].vegetable.SetActive(false);
@@ -169,7 +169,7 @@ public class MoleGameManager : MonoBehaviour
                     moles[random].StopAllCoroutines();
                     moles.Remove(moles[random]);
                     
-                   // Debug.Log(samenumbercheck[i]);
+                  
                 }
             }
             //If rows are something else than all in use, it will be priority over active mole count.
