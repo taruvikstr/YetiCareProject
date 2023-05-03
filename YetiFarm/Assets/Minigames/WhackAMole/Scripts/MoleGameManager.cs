@@ -66,7 +66,6 @@ public class MoleGameManager : MonoBehaviour
         scoreTextObject.SetActive(false);
         timeTextObject.SetActive(false);
         timeheader.SetActive(false);
-       // exitButton.SetActive(false);
         vegeCount.SetActive(false);
         vegeCountHeader.SetActive(false);
         
@@ -336,7 +335,7 @@ public class MoleGameManager : MonoBehaviour
         //Remove from active moles.
         currentMoles.Remove(moles[moleIndex]);
     }
-    public void Missed(int moleIndex, bool isMole)
+    public void Missed(int moleIndex)
     {
         
         currentMoles.Remove(moles[moleIndex]);
